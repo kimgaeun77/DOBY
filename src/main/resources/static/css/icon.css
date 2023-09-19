@@ -1,0 +1,81 @@
+.icon {
+    display: inline-block;
+    width: var(--icon-size-1);
+    height: var(--icon-size-1);
+    background-size: var(--icon-size-1);
+
+    box-sizing: border-box;
+    overflow: hidden;
+    padding: 0px;
+    border: none;
+}
+
+.icon::before {
+    content: '';
+    display: inline-block;
+    height: inherit;
+    width: inherit;
+    /* background-size: inherit; */
+
+    -webkit-mask-repeat: no-repeat;
+    mask-repeat: no-repeat;
+    -webkit-mask-size: inherit;
+    mask-size: inherit;
+
+    background-color: black;
+}
+
+.icon-size-0 {
+    width: var(--icon-size-0);
+    height: var(--icon-size-0);
+    -webkit-mask-size: var(--icon-size-0);
+    mask-size: var(--icon-size-0);
+}
+
+.icon-size-1 {
+    width: var(--icon-size-1);
+    height: var(--icon-size-1);
+    -webkit-mask-size: var(--icon-size-1);
+    mask-size: var(--icon-size-1);
+}
+
+.icon-size-2 {
+    width: var(--icon-size-2);
+    height: var(--icon-size-2);
+    -webkit-mask-size: var(--icon-size-2);
+    mask-size: var(--icon-size-2);
+}
+
+.icon-user::before {
+    -webkit-mask-image: url(../icon/user.svg);
+    mask-image: url(../icon/user.svg);
+}
+
+.icon-person::before {
+    -webkit-mask-image: url(../icon/person.svg);
+    mask-image: url(../icon/person.svg);
+}
+
+.icon-menu::before {
+    -webkit-mask-image: url(../icon/menu.svg);
+    mask-image: url(../icon/menu.svg);
+}
+
+.icon-col-menu::before {
+    -webkit-mask-image: url(../icon/col-menu.svg);
+    mask-image: url(../icon/col-menu.svg);
+}
+
+.icon-share::before {
+    -webkit-mask-image: url(../icon/share.svg);
+    mask-image: url(../icon/share.svg);
+}
+
+.icon-wish::before {
+    -webkit-mask-image: url(../icon/wish.svg);
+    mask-image: url(../icon/wish.svg);
+}
+
+.icon-color-5::before {
+    background-color: var(--color-base-5);
+}
