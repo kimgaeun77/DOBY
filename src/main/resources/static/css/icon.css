@@ -1,10 +1,16 @@
+/* icon, deco 기본사이즈는 모두 15px 입니다 */
+
+/* 특정 element를 icon-box로 만들때 사용 */
 .icon {
     display: inline-block;
-    width: var(--icon-size-1);
-    height: var(--icon-size-1);
-    background-size: var(--icon-size-1);
+    width: var(--icon-size-0);
+    height: var(--icon-size-0);
+
+    -webkit-mask-size: var(--icon-size-0);
+    mask-size: var(--icon-size-0);
 
     box-sizing: border-box;
+    /* 텍스트 숨김 처리 등 */
     overflow: hidden;
     padding: 0px;
     border: none;
@@ -15,67 +21,221 @@
     display: inline-block;
     height: inherit;
     width: inherit;
-    /* background-size: inherit; */
 
     -webkit-mask-repeat: no-repeat;
     mask-repeat: no-repeat;
+
+    -webkit-mask-position: center;
+    mask-position: center;
+
     -webkit-mask-size: inherit;
     mask-size: inherit;
 
-    background-color: black;
+    background-color: var(--color-base-black);
 }
 
-.icon-size-0 {
+/* 글씨랑 아이콘이랑 같이 사용할 때 or 특정 element안에 이모티콘을 넣을때 사용 ex) 필터버튼, 검색버튼 */
+.deco::before {
+    content: '';
+    display: inline-block;
     width: var(--icon-size-0);
     height: var(--icon-size-0);
+    /* 데코는 보통 흰색을 많이 사용 */
+    background-color: var(--color-base-white);
+
+    -webkit-mask-repeat: no-repeat;
+    mask-repeat: no-repeat;
+
+    -webkit-mask-position: center;
+    mask-position: center;
+
     -webkit-mask-size: var(--icon-size-0);
     mask-size: var(--icon-size-0);
+
+    margin-right: 5px;
 }
 
+/* ---------------- icon size (deco에는 사용 불가) ------- */
+/* 
+    --icon-size-0: 15px;
+    --icon-size-1: 20px;
+    --icon-size-2: 30px;
+  */
+
+.icon-size-0 {
+    /* 지역변수 */
+    --icon-size: var(--icon-size-0);
+
+    width: var(--icon-size);
+    height: var(--icon-size);
+
+    -webkit-mask-size: var(--icon-size);
+    mask-size: var(--icon-size);
+}
+
+
 .icon-size-1 {
-    width: var(--icon-size-1);
-    height: var(--icon-size-1);
-    -webkit-mask-size: var(--icon-size-1);
-    mask-size: var(--icon-size-1);
+    --icon-size: var(--icon-size-1);
+
+    width: var(--icon-size);
+    height: var(--icon-size);
+
+    -webkit-mask-size: var(--icon-size);
+    mask-size: var(--icon-size);
 }
 
 .icon-size-2 {
-    width: var(--icon-size-2);
-    height: var(--icon-size-2);
-    -webkit-mask-size: var(--icon-size-2);
-    mask-size: var(--icon-size-2);
+    --icon-size: var(--icon-size-2);
+
+    width: var(--icon-size);
+    height: var(--icon-size);
+
+    -webkit-mask-size: var(--icon-size);
+    mask-size: var(--icon-size);
+}
+
+/* ---------------- deco size ------------------------- */
+
+/* 
+    --icon-size-0: 15px;
+    --icon-size-1: 20px;
+    --icon-size-2: 30px;
+  */
+
+.deco-size-0::before {
+    --icon-size: var(--icon-size-0);
+
+    width: var(--icon-size);
+    height: var(--icon-size);
+
+    -webkit-mask-size: var(--icon-size);
+    mask-size: var(--icon-size);
+}
+
+.deco-size-1::before {
+    --icon-size: var(--icon-size-1);
+
+    width: var(--icon-size);
+    height: var(--icon-size);
+
+    -webkit-mask-size: var(--icon-size);
+    mask-size: var(--icon-size);
+}
+
+.deco-size-2::before {
+    --icon-size: var(--icon-size-2);
+
+    width: var(--icon-size);
+    height: var(--icon-size);
+
+    -webkit-mask-size: var(--icon-size);
+    mask-size: var(--icon-size);
+}
+
+
+/* ---------------- icon color (icon, deco 모두 사용 가능) ------- */
+
+/*  
+    --icon-color-0: #FFFFFF;
+    --icon-color-1: #878787;
+    --icon-color-2: #717171;
+    --icon-color-3: #535355;
+    --icon-color-4: #000000;
+   */
+
+.icon-color-0::before {
+    background-color: var(--color-base-white);
+}
+
+.icon-color-1::before {
+    background-color: var(--color-base-5);
+}
+
+.icon-color-2::before {
+    background-color: var(--color-base-6);
+}
+
+.icon-color-3::before {
+    background-color: var(--color-base-7);
+}
+
+.icon-color-4::before {
+    background-color: var(--color-base-black);
+}
+
+/* ---------------- icon svg ------------------------- */
+
+.icon-write::before {
+    -webkit-mask-image: url(/icon/write.svg);
+    mask-image: url(/icon/write.svg);
+}
+
+.icon-search::before {
+    -webkit-mask-image: url(/icon/search.svg);
+    mask-image: url(/icon/search.svg);
+}
+
+.icon-filter::before {
+    -webkit-mask-image: url(/icon/filter.svg);
+    mask-image: url(/icon/filter.svg);
+}
+
+.icon-prev::before {
+    -webkit-mask-image: url(/icon/prev.svg);
+    mask-image: url(/icon/prev.svg);
+}
+
+.icon-next::before {
+    -webkit-mask-image: url(/icon/next.svg);
+    mask-image: url(/icon/next.svg);
+}
+
+.icon-pin::before {
+    -webkit-mask-image: url(/icon/pin.svg);
+    mask-image: url(/icon/pin.svg);
+}
+
+.icon-views::before {
+    -webkit-mask-image: url(/icon/views.svg);
+    mask-image: url(/icon/views.svg);
+}
+
+.icon-likes::before {
+    -webkit-mask-image: url(/icon/likes.svg);
+    mask-image: url(/icon/likes.svg);
+}
+
+.icon-comments::before {
+    -webkit-mask-image: url(/icon/comments.svg);
+    mask-image: url(/icon/comments.svg);
 }
 
 .icon-user::before {
-    -webkit-mask-image: url(../icon/user.svg);
-    mask-image: url(../icon/user.svg);
+    -webkit-mask-image: url(/icon/user.svg);
+    mask-image: url(/icon/user.svg);
 }
 
 .icon-person::before {
-    -webkit-mask-image: url(../icon/person.svg);
-    mask-image: url(../icon/person.svg);
+    -webkit-mask-image: url(/icon/person.svg);
+    mask-image: url(/icon/person.svg);
 }
 
 .icon-menu::before {
-    -webkit-mask-image: url(../icon/menu.svg);
-    mask-image: url(../icon/menu.svg);
+    -webkit-mask-image: url(/icon/menu.svg);
+    mask-image: url(/icon/menu.svg);
 }
 
 .icon-col-menu::before {
-    -webkit-mask-image: url(../icon/col-menu.svg);
-    mask-image: url(../icon/col-menu.svg);
+    -webkit-mask-image: url(/icon/col-menu.svg);
+    mask-image: url(/icon/col-menu.svg);
 }
 
 .icon-share::before {
-    -webkit-mask-image: url(../icon/share.svg);
-    mask-image: url(../icon/share.svg);
+    -webkit-mask-image: url(/icon/share.svg);
+    mask-image: url(/icon/share.svg);
 }
 
 .icon-wish::before {
-    -webkit-mask-image: url(../icon/wish.svg);
-    mask-image: url(../icon/wish.svg);
-}
-
-.icon-color-5::before {
-    background-color: var(--color-base-5);
+    -webkit-mask-image: url(/icon/wish.svg);
+    mask-image: url(/icon/wish.svg);
 }
