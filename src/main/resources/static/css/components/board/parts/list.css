@@ -1,0 +1,304 @@
+.board-list{
+  /* margin */
+  margin-top: 30px;
+  margin-bottom: 40px;
+}
+
+.board-list
+  .item{
+  border-bottom: 0.5px solid var(--color-base-3);
+  padding: 12px;
+}
+
+.board-list
+  .item
+    .board{
+    display: flex;
+    flex-direction: column;
+    row-gap: 12px;
+
+    /* margin */
+    margin: 5px 0px;
+}
+
+/* 게시글이 고정일 때(조건문으로 pin값 검사 후 배경색 classList에 추가함. */
+.board-list
+  .item.pin{
+  background-color: var(--color-trans-0);
+} 
+
+/* 프로필 이미지, 닉네임, 작성시간 box */
+.board-list
+  .item
+    .write-info-box{
+      display: flex;
+      align-items: center;
+      column-gap: 10px;
+      color: var(--color-base-black);
+}
+
+/* 프로필 이미지, 닉네임 box */
+.board-list
+  .item
+    .write-info-box
+      .profile{
+        display: flex;
+        align-items: center;
+        column-gap: 5px;
+}
+
+
+/* 프로필 이미지 컨테이너*/
+.board-list
+  .item
+    .write-info-box
+      .profile
+        .img-container{  
+      width: 15px;
+      height: 15px;
+      overflow: hidden;
+      border-radius: 9999px;
+}
+
+/* 프로필 이미지 */
+.board-list
+  .item
+    .write-info-box
+      .profile
+        .img{  
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+
+}
+
+/* 닉네임 */
+.board-list
+  .item
+    .write-info-box
+      .profile
+        .nickname{
+          font-size: 13px;
+          /* 글자수 넘치는거 닉네임 제한 둘거면 굳이 안해도 될 듯*/
+          overflow: hidden;
+          text-overflow: ellipsis;
+          white-space: nowrap;
+} 
+
+/* 작성시간 */
+.board-list
+  .item
+    .write-info-box
+      .reg-date{
+        font-size: 13px;
+}
+
+/* ---- 게시글 제목 부분 ----- */
+
+/* 게시글 제목 */
+.board-list
+  .item
+    .title-container{
+      display: flex;
+      align-items: center;
+      column-gap: 10px;
+}
+
+.board-list
+  .item.pin
+    .title-container::before{
+      /* icon box 생성 */
+      content: '';
+      display: inline-block;
+      width: var(--icon-size-1);
+      height: var(--icon-size-1);
+      background-color: var(--color-main-2);
+    
+      -webkit-mask-repeat: no-repeat;
+      mask-repeat: no-repeat;
+
+      -webkit-mask-position: center;
+      mask-position: center;
+
+      -webkit-mask-size: var(--icon-size-1);
+      mask-size: var(--icon-size-1);
+
+      /* 아이콘 넣어주기 */
+      -webkit-mask-image: url(/icon/pin.svg);
+      mask-image: url(/icon/pin.svg);
+      
+      flex-shrink: 0;
+}
+
+.board-list
+  .item
+    .title-container
+      .title-box{
+        font-size: var(--font-size-3);
+        font-weight: 700;
+
+        /* 글자수 넘치는거 */
+        overflow: hidden;
+        text-overflow: ellipsis;
+        white-space: nowrap;
+        
+}
+
+/* 링크누르면 제목 색깔 변경 */
+.board-list
+  .item
+    .title-container
+      .title-box
+        .title:visited{
+        color: var(--color-base-4);
+}
+
+/* 게시글 이미지 아이콘 */
+.board-list
+  .item.img
+    .title-container::after{
+
+      /* icon box 생성 */
+      content: '';
+      display: inline-block;
+      width: var(--icon-size-1);
+      height: var(--icon-size-1);
+      background-color: var(--color-base-7);
+    
+      -webkit-mask-repeat: no-repeat;
+      mask-repeat: no-repeat;
+
+      -webkit-mask-position: center;
+      mask-position: center;
+
+      -webkit-mask-size: var(--icon-size-1);
+      mask-size: var(--icon-size-1);
+      /* 아이콘 넣어주기 */
+      -webkit-mask-image: url(/icon/image.svg);
+      mask-image: url(/icon/image.svg);
+
+      flex-shrink: 0;
+}
+
+/* 카테고리이름, tag, views, likes, comments - box */
+.board-list
+  .item
+    .board-info{
+      display: flex;
+      align-items: flex-end;
+      justify-content: space-between;
+}
+
+.board-list
+  .item
+    .board-info
+      .category-name-tag-box{
+      display: flex;
+      column-gap: 10px;
+}
+      
+
+/* 카테고리 이름(조약돌)스트로크.ver !default! */
+.board-list
+  .item
+    .board-info
+      .category-name{
+    
+      background-color: var(--color-base-white);
+      border-radius: 150px;
+      border: 1px solid var(--color-main-2);
+      padding: 3px 8px;
+      align-self: flex-end;
+
+      /* text style*/
+      color: var(--color-main-2);
+      font-weight: 600;
+      font-size: var(--font-size-0);
+  
+}
+
+/* 카테고리 이름(조약돌)꽉채운.ver - 고정핀일때 */
+.board-list
+  .item.pin
+    .board-info
+      .category-name{
+
+      background-color: var(--color-main-2);
+
+      /* text style*/
+      color: var(--color-base-white);
+}
+
+/* 태그 */
+.board-list
+  .item
+    .board-info
+      .tag-list{
+        align-self: center;
+        display: flex;
+        column-gap: 8px;
+
+        color: var(--color-base-8);
+        font-size: var(--font-size-1);
+}
+
+.board-list
+  .item
+    .board-info
+    .tag-list
+      .tag::before{
+      content: '#';
+}
+
+.board-list
+  .item
+    .board-info
+      .view-like-comment-box{
+      display: flex;
+      font-size: 13px;
+      column-gap: 8px;
+      color: var(--color-base-black);
+
+}
+
+/* 조회 수 */
+.board-list
+  .item
+    .view-like-comment-box
+      .views{
+        display: flex;
+        align-items: center;
+      }
+
+/* 좋아요 수 */
+.board-list
+  .item
+    .view-like-comment-box
+      .likes{
+    display: flex;
+    align-items: center;
+  }
+
+
+/* 댓글 수 */
+.board-list
+  .item
+    .view-like-comment-box
+      .comments{
+    display: flex;
+    align-items: center;
+  }
+
+
+@media(min-width: 700px){
+/* 게시글 제목 키우기 */
+
+  .board-list
+    .item
+      .title-container
+        .title-box
+          .title{
+          font-size: var(--font-size-4);
+  }
+  
+}

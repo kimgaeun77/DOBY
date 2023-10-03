@@ -1,0 +1,35 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Document</title>
+  <link href="/css/reset.css" rel="stylesheet" type="text/css">
+  <link href="/css/root.css" rel="stylesheet" type="text/css">
+  <link href="/css/utils.css" rel="stylesheet" type="text/css">
+  <link href="/css/style.css" rel="stylesheet" type="text/css">
+  <link href="/css/icon.css" rel="stylesheet" type="text/css">
+  <link href="/css/components/board/parts/search-filter-btn.css" rel="stylesheet" type="text/css">
+</head>
+
+<body>
+  <div class="search-filter-box md:align-self:center">
+    <button class="btn search-btn deco deco-size-1 icon-color-1 icon-search md:d:none">
+    </button>
+    <div class="filter">
+      <button class="btn filter-btn deco icon-color-1 icon-filter">
+      </button>
+      <!-- 필터 버튼 눌렀을 때 -->
+      <ul class="sort-list d:none">
+        <!-- 음 ajax로 할거면 a링크 안달아도될듯 -->
+        <li class="item"><a href="">최신순</a></li>
+        <li class="item"><a href="">댓글순</a></li>
+        <li class="item"><a href="">추천순</a></li>
+        <li class="item"><a href="">조회순</a></li>
+      </ul>
+    </div>
+  </div>
+</body>
+
+</html>

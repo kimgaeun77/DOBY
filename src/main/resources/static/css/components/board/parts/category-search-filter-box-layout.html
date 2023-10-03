@@ -1,0 +1,58 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Document</title>
+  <link href="/css/reset.css" rel="stylesheet" type="text/css">
+  <link href="/css/root.css" rel="stylesheet" type="text/css">
+  <link href="/css/utils.css" rel="stylesheet" type="text/css">
+  <link href="/css/style.css" rel="stylesheet" type="text/css">
+  <link href="/css/icon.css" rel="stylesheet" type="text/css">
+  <link href="/css/components/board/parts/category.css" rel="stylesheet" type="text/css">
+  <link href="/css/components/board/parts/search-filter-btn.css" rel="stylesheet" type="text/css">
+  <link href="/css/components/board/parts/search-form.css" rel="stylesheet" type="text/css">
+  <link href="/css/components/board/parts/category-search-filter-box-layout.css" rel="stylesheet" type="text/css">
+</head>
+
+<body>
+  <!-- 카테고리 + 검색 filiter -->
+  <div class="category-search-filter-box">
+
+    <ul class="category">
+      <li><a class="item active" href="">전체</a></li>
+      <li><a class="item" href="">LOG</a></li>
+      <li><a class="item" href="">코드Q&A</a></li>
+    </ul>
+
+    <div class="search-filter-box md:align-self:center">
+      <button class="btn search-btn deco deco-size-1 icon-color-1 icon-search md:d:none">
+      </button>
+      <div class="filter">
+        <button class="btn filter-btn deco icon-color-1 icon-filter">
+        </button>
+        <!-- 필터 버튼 눌렀을 때 -->
+        <ul class="sort-list d:none">
+          <!-- 음 ajax로 할거면 a링크 안달아도될듯 -->
+          <li class="item"><a>최신순</a></li>
+          <li class="item"><a>댓글순</a></li>
+          <li class="item"><a>추천순</a></li>
+          <li class="item"><a>조회순</a></li>
+        </ul>
+      </div>
+    </div>
+
+    <!-- 검색 버튼 눌렀을 때 -->
+    <form class="search-form d:none md:d:block" action="" method="">
+      <fieldset class="search-input-box">
+        <legend class="d:none">검색어입력</legend>
+        <input class="input" type="text" placeholder="검색어를 입력해주세요">
+        <input class="search" type="submit" value="검색">
+      </fieldset>
+    </form>
+
+  </div>
+</body>
+
+</html>

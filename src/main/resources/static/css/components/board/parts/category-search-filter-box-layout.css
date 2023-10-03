@@ -1,0 +1,49 @@
+.category-search-filter-box{
+  display: grid;
+                                          /* 더 많은 콘텐츠가 있을 경우 공간을 더 갖게된다. */
+  grid-template-columns: minmax(190px, auto) 1fr minmax(40px, auto);
+  /* 검색 input box가 그려졌을 때  */
+  grid-row-gap: 30px;
+  row-gap: 30px;
+
+  /* grid 정렬 */
+  justify-items: start;
+  align-items: start;
+
+  /* margin */
+  margin-top: 20px;
+}
+
+/* 카테고리 배치 */
+.category-search-filter-box
+  .category{
+  grid-column: 1;
+  grid-row: 1;
+
+}
+
+/* 검색,필터 버튼 배치 */
+.category-search-filter-box
+  .search-filter-box{
+  grid-column: 3;
+  grid-row: 1;
+
+}
+
+/* 검색폼 배치 */
+.search-form{
+  grid-row: 2;
+  grid-column: 1 / 4;
+}
+
+@media(min-width: 700px){
+
+    /* 검색폼 배치 이동 */
+    .search-form{
+      grid-column: 2; 
+      grid-row: 1;
+      justify-self: end;
+      /* 필터랑 간격 margin */
+      margin-right: 15px;
+    }
+}

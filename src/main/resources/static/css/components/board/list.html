@@ -1,0 +1,491 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Document</title>
+  <link href="/css/reset.css" rel="stylesheet" type="text/css">
+  <link href="/css/root.css" rel="stylesheet" type="text/css">
+  <link href="/css/utils.css" rel="stylesheet" type="text/css">
+  <link href="/css/style.css" rel="stylesheet" type="text/css">
+  <link href="/css/icon.css" rel="stylesheet" type="text/css">
+  <link href="/css/components/board/list.css" rel="stylesheet" type="text/css">
+  <script src="/css/js/list.js" defer></script>
+</head>
+
+<body>
+  <main class="main">
+    <!-------------------- 게시글 배너 ----------------------->
+    <div class="banner-box">
+      <section class="banner">
+        <h1 class="board-name">커뮤니티</h1>
+        <p class="catchphrase">다양한 개발 지식을 공유해보세요.</p>
+      </section>
+    </div>
+    <!--------------------- 게시글 부분 ------------------>
+    <div class="container">
+      <!--작성하기 button -->
+      <div class="btn-write-box d:inline-block">
+        <a class="btn btn-write deco deco-size-1 icon-write" href="" >작성하기</a>
+      </div>
+
+      <!-- 카테고리 + 검색 filiter -->
+      <div class="category-search-filter-box">
+ 
+        <ul class="category">
+          <li><a class="item active" href="">전체</a></li>
+          <li><a class="item" href="">LOG</a></li>
+          <li><a class="item" href="">코드Q&A</a></li>
+        </ul>
+        
+        <div class="search-filter-box md:align-self:center">
+          <button class="btn search-btn deco deco-size-1 icon-color-1 icon-search md:d:none">
+          </button>
+          <div class="filter">
+            <button class="btn filter-btn deco icon-color-1 icon-filter">
+            </button>
+            <!-- 필터 버튼 눌렀을 때 -->
+            <ul class="sort-list d:none">
+              <!-- 음 ajax로 할거면 a링크 안달아도될듯 -->
+              <li class="item"><a href="">최신순</a></li>
+              <li class="item"><a href="">댓글순</a></li>
+              <li class="item"><a href="">추천순</a></li>
+              <li class="item"><a href="">조회순</a></li>
+            </ul>
+          </div>
+        </div>
+
+        <!-- 검색 버튼 눌렀을 때 -->
+        <form class="search-form d:none md:d:block" action="" method="">
+          <fieldset class="search-input-box">
+            <legend class="d:none">검색어입력</legend>
+            <input class="input" type="text" placeholder="검색어를 입력해주세요">
+            <input class="search" type="submit" value="검색">
+          </fieldset>
+        </form>
+
+      </div>
+
+      <!-- --게시글 목록------ -->
+      <section class="board-list">
+        <h1 class="d:none">게시글 목록</h1>
+        <ul class="board-list">
+          <li class="item pin img">
+            <div class="board">
+
+              <div class="write-info-box">
+                <div class="profile">
+                  <div class="img-container">
+                    <img class="img" src="/image/profile2.jpg" alt="프로필사진">
+                  </div>
+                  <div class="nickname">김가구리</div>
+                </div>
+                <div class="reg-date">5분전</div>
+              </div>
+
+              <div class="title-container">
+                <div class="title-box">
+                  <a class="title" href="">최종합격 30곳! 어디로 가야할까요?ㅎㅎ 기분이 좋네요 아주~</a>
+                </div>
+              </div>
+
+              <div class="board-info">
+                <div class="category-name-tag-box"> 
+                  <div class="category-name">코드 Q&A</div>
+                  <ul class="tag-list">
+                    <li class="tag">개발</li>
+                    <li class="tag">스프링</li>
+                    <li class="tag">자바</li>
+                  </ul>
+                </div>
+
+                <div class="view-like-comment-box">
+                  <div class="views deco icon-color-3 icon-views">000</div>
+                  <div class="likes deco icon-color-3 icon-likes">17</div>
+                  <div class="comments deco icon-color-3 icon-comments">0</div>
+                </div>
+              </div>
+            </div>
+
+          </li>
+
+          <li class="item pin img">
+            <div class="board">
+              <div class="write-info-box">
+                <div class="profile">
+                  <div class="img-container">
+                    <img class="img" src="/image/profile2.jpg" alt="프로필사진">
+                  </div>
+                  <div class="nickname">김가구리</div>
+                </div>
+                <div class="reg-date">5분전</div>
+              </div>
+
+              <div class="title-container">
+                <div class="title-box">
+                  <a class="title" href="">최종합격 30곳! 어디로 가야할까요?ㅎㅎ 기분이 좋네요 아주~</a>
+                </div>
+              </div>
+
+              <div class="board-info">
+                <div class="category-name-tag-box"> 
+                  <div class="category-name">코드 Q&A</div>
+                  <ul class="tag-list">
+                    <li class="tag">개발</li>
+                    <li class="tag">스프링</li>
+                    <li class="tag">자바</li>
+                  </ul>
+                </div>
+
+                <div class="view-like-comment-box">
+                  <div class="views deco icon-color-3 icon-views">000</div>
+                  <div class="likes deco icon-color-3 icon-likes">17</div>
+                  <div class="comments deco icon-color-3 icon-comments">0</div>
+                </div>
+              </div>
+            </div>
+
+          </li>
+
+          <li class="item">
+            <div class="board">
+              <div class="write-info-box">
+                <div class="profile">
+                  <div class="img-container">
+                    <img class="img" src="/image/profile2.jpg" alt="프로필사진">
+                  </div>
+                  <div class="nickname">김가구리</div>
+                </div>
+                <div class="reg-date">5분전</div>
+              </div>
+
+              <div class="title-container">
+                <div class="title-box">
+                  <a class="title" href="">최종합격 30곳! 어디로 가야할까요?ㅎㅎ 기분이 좋네요 아주~</a>
+                </div>
+              </div>
+
+              <div class="board-info">
+                <div class="category-name-tag-box"> 
+                  <div class="category-name">코드 Q&A</div>
+                  <ul class="tag-list">
+                    <li class="tag">개발</li>
+                    <li class="tag">스프링</li>
+                    <li class="tag">자바</li>
+                  </ul>
+                </div>
+
+                <div class="view-like-comment-box">
+                  <div class="views deco icon-color-3 icon-views">000</div>
+                  <div class="likes deco icon-color-3 icon-likes">17</div>
+                  <div class="comments deco icon-color-3 icon-comments">0</div>
+                </div>
+              </div>
+            </div>
+
+          </li>
+
+          <li class="item">
+            <div class="board">
+              <div class="write-info-box">
+                <div class="profile">
+                  <div class="img-container">
+                    <img class="img" src="/image/profile2.jpg" alt="프로필사진">
+                  </div>
+                  <div class="nickname">김가구리</div>
+                </div>
+                <div class="reg-date">5분전</div>
+              </div>
+
+              <div class="title-container">
+                <div class="title-box">
+                  <a class="title" href="">최종합격 30곳! 어디로 가야할까요?ㅎㅎ 기분이 좋네요 아주~</a>
+                </div>
+              </div>
+
+              <div class="board-info">
+                <div class="category-name-tag-box"> 
+                  <div class="category-name">코드 Q&A</div>
+                  <ul class="tag-list">
+                    <li class="tag">개발</li>
+                    <li class="tag">스프링</li>
+                    <li class="tag">자바</li>
+                  </ul>
+                </div>
+
+                <div class="view-like-comment-box">
+                  <div class="views deco icon-color-3 icon-views">000</div>
+                  <div class="likes deco icon-color-3 icon-likes">17</div>
+                  <div class="comments deco icon-color-3 icon-comments">0</div>
+                </div>
+              </div>
+            </div>
+
+          </li>
+
+          <li class="item">
+            <div class="board">
+              <div class="write-info-box">
+                <div class="profile">
+                  <div class="img-container">
+                    <img class="img" src="/image/profile2.jpg" alt="프로필사진">
+                  </div>
+                  <div class="nickname">김가구리</div>
+                </div>
+                <div class="reg-date">5분전</div>
+              </div>
+
+              <div class="title-container">
+                <div class="title-box">
+                  <a class="title" href="">최종합격 30곳! 어디로 가야할까요?ㅎㅎ 기분이 좋네요 아주~</a>
+                </div>
+              </div>
+
+              <div class="board-info">
+                <div class="category-name-tag-box"> 
+                  <div class="category-name">코드 Q&A</div>
+                  <ul class="tag-list">
+                    <li class="tag">개발</li>
+                    <li class="tag">스프링</li>
+                    <li class="tag">자바</li>
+                  </ul>
+                </div>
+
+                <div class="view-like-comment-box">
+                  <div class="views deco icon-color-3 icon-views">000</div>
+                  <div class="likes deco icon-color-3 icon-likes">17</div>
+                  <div class="comments deco icon-color-3 icon-comments">0</div>
+                </div>
+              </div>
+            </div>
+
+          </li>
+
+          <li class="item">
+            <div class="board">
+              <div class="write-info-box">
+                <div class="profile">
+                  <div class="img-container">
+                    <img class="img" src="/image/profile2.jpg" alt="프로필사진">
+                  </div>
+                  <div class="nickname">김가구리</div>
+                </div>
+                <div class="reg-date">5분전</div>
+              </div>
+
+              <div class="title-container">
+                <div class="title-box">
+                  <a class="title" href="">최종합격 30곳! 어디로 가야할까요?ㅎㅎ 기분이 좋네요 아주~</a>
+                </div>
+              </div>
+
+              <div class="board-info">
+                <div class="category-name-tag-box"> 
+                  <div class="category-name">코드 Q&A</div>
+                  <ul class="tag-list">
+                    <li class="tag">개발</li>
+                    <li class="tag">스프링</li>
+                    <li class="tag">자바</li>
+                  </ul>
+                </div>
+
+                <div class="view-like-comment-box">
+                  <div class="views deco icon-color-3 icon-views">000</div>
+                  <div class="likes deco icon-color-3 icon-likes">17</div>
+                  <div class="comments deco icon-color-3 icon-comments">0</div>
+                </div>
+              </div>
+            </div>
+
+          </li>
+
+          <li class="item">
+            <div class="board">
+              <div class="write-info-box">
+                <div class="profile">
+                  <div class="img-container">
+                    <img class="img" src="/image/profile2.jpg" alt="프로필사진">
+                  </div>
+                  <div class="nickname">김가구리</div>
+                </div>
+                <div class="reg-date">5분전</div>
+              </div>
+
+              <div class="title-container">
+                <div class="title-box">
+                  <a class="title" href="">최종합격 30곳! 어디로 가야할까요?ㅎㅎ 기분이 좋네요 아주~</a>
+                </div>
+              </div>
+
+              <div class="board-info">
+                <div class="category-name-tag-box"> 
+                  <div class="category-name">코드 Q&A</div>
+                  <ul class="tag-list">
+                    <li class="tag">개발</li>
+                    <li class="tag">스프링</li>
+                    <li class="tag">자바</li>
+                  </ul>
+                </div>
+
+                <div class="view-like-comment-box">
+                  <div class="views deco icon-color-3 icon-views">000</div>
+                  <div class="likes deco icon-color-3 icon-likes">17</div>
+                  <div class="comments deco icon-color-3 icon-comments">0</div>
+                </div>
+              </div>
+            </div>
+
+          </li>
+
+          <li class="item">
+            <div class="board">
+              <div class="write-info-box">
+                <div class="profile">
+                  <div class="img-container">
+                    <img class="img" src="/image/profile2.jpg" alt="프로필사진">
+                  </div>
+                  <div class="nickname">김가구리</div>
+                </div>
+                <div class="reg-date">5분전</div>
+              </div>
+
+              <div class="title-container">
+                <div class="title-box">
+                  <a class="title" href="">최종합격 30곳! 어디로 가야할까요?ㅎㅎ 기분이 좋네요 아주~</a>
+                </div>
+              </div>
+
+              <div class="board-info">
+                <div class="category-name-tag-box"> 
+                  <div class="category-name">코드 Q&A</div>
+                  <ul class="tag-list">
+                    <li class="tag">개발</li>
+                    <li class="tag">스프링</li>
+                    <li class="tag">자바</li>
+                  </ul>
+                </div>
+
+                <div class="view-like-comment-box">
+                  <div class="views deco icon-color-3 icon-views">000</div>
+                  <div class="likes deco icon-color-3 icon-likes">17</div>
+                  <div class="comments deco icon-color-3 icon-comments">0</div>
+                </div>
+              </div>
+            </div>
+
+          </li>
+
+          <li class="item">
+            <div class="board">
+              <div class="write-info-box">
+                <div class="profile">
+                  <div class="img-container">
+                    <img class="img" src="/image/profile2.jpg" alt="프로필사진">
+                  </div>
+                  <div class="nickname">김가구리</div>
+                </div>
+                <div class="reg-date">5분전</div>
+              </div>
+
+              <div class="title-container">
+                <div class="title-box">
+                  <a class="title" href="">최종합격 30곳! 어디로 가야할까요?ㅎㅎ 기분이 좋네요 아주~</a>
+                </div>
+              </div>
+
+              <div class="board-info">
+                <div class="category-name-tag-box"> 
+                  <div class="category-name">코드 Q&A</div>
+                  <ul class="tag-list">
+                    <li class="tag">개발</li>
+                    <li class="tag">스프링</li>
+                    <li class="tag">자바</li>
+                  </ul>
+                </div>
+
+                <div class="view-like-comment-box">
+                  <div class="views deco icon-color-3 icon-views">000</div>
+                  <div class="likes deco icon-color-3 icon-likes">17</div>
+                  <div class="comments deco icon-color-3 icon-comments">0</div>
+                </div>
+              </div>
+            </div>
+
+          </li>
+
+          <li class="item">
+            <div class="board">
+              <div class="write-info-box">
+                <div class="profile">
+                  <div class="img-container">
+                    <img class="img" src="/image/profile2.jpg" alt="프로필사진">
+                  </div>
+                  <div class="nickname">김가구리</div>
+                </div>
+                <div class="reg-date">5분전</div>
+              </div>
+
+              <div class="title-container">
+                <div class="title-box">
+                  <a class="title" href="">최종합격 30곳! 어디로 가야할까요?ㅎㅎ 기분이 좋네요 아주~</a>
+                </div>
+              </div>
+
+              <div class="board-info">
+                <div class="category-name-tag-box"> 
+                  <div class="category-name">코드 Q&A</div>
+                  <ul class="tag-list">
+                    <li class="tag">개발</li>
+                    <li class="tag">스프링</li>
+                    <li class="tag">자바</li>
+                  </ul>
+                </div>
+
+                <div class="view-like-comment-box">
+                  <div class="views deco icon-color-3 icon-views">000</div>
+                  <div class="likes deco icon-color-3 icon-likes">17</div>
+                  <div class="comments deco icon-color-3 icon-comments">0</div>
+                </div>
+              </div>
+            </div>
+
+          </li>
+        </ul>
+      </section>
+
+      <!-- --페이징------ -->
+      <section>
+        <h1 class="d:none">페이징</h1>
+        <ul class="paging">
+          <li>
+            <a class="item arrow arrow-prev" href=""></a>
+          </li>
+          <li>
+            <a class="item active" href="">1</a>
+          </li>
+          <li>
+            <a class="item" href="">2</a>
+          </li>
+          <li>
+            <a class="item" href="">3</a>
+          </li>
+          <li>
+            <a class="item" href="">4</a>
+          </li>
+          <li>
+            <a class="item" href="">5</a>
+          </li>
+          <li>
+            <a class="item arrow arrow-next" href=""></a>
+          </li>
+        </ul>
+      </section>
+
+
+    </div>
+
+  </main>
+</body>
+
+</html>
