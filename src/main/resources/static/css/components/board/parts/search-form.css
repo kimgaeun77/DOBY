@@ -1,0 +1,68 @@
+/* -------- 검색 버튼 눌렀을 때 그려지는 input box -------- */
+.search-form{
+  width: 90%;
+}
+
+.search-form
+  .search-input-box{
+  width: 100%;
+
+  display: flex;
+  align-items: center;
+
+  position: relative;
+}
+
+.search-input-box
+  .input{
+
+  width: 100%;
+  height: 30px;
+  border: 1.5px solid var(--color-base-3);
+  border-radius: 15px;
+  padding-left: 35px;
+  
+}
+
+.search-input-box
+  .input::placeholder{
+
+  font-size: var(--font-size-1);
+  color: var(--color-base-5);
+}
+
+.search-input-box
+  .search{
+
+  order: -1;
+  position: absolute;
+  left: 10px;
+
+}
+
+/* input 태그는 컨테이너가 아니기때문에 ::before이런거 못씀 */
+
+.search-input-box
+  .search{
+
+    display: inline-block;
+    width: var(--icon-size-1);
+    height: var(--icon-size-1);
+  
+    -webkit-mask-size: var(--icon-size-1);
+    mask-size: var(--icon-size-1);
+    
+    -webkit-mask-image: url(/icon/search.svg);
+    mask-image: url(/icon/search.svg);
+    background-color: var(--color-base-5);
+
+    text-indent: -999px;
+
+}
+
+@media(min-width: 700px){
+
+    .search-form{
+    max-width: 350px;
+    }
+}
