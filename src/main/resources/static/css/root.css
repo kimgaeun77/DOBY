@@ -1,32 +1,27 @@
 :root {
+
     /* ============================================= color ======================================================== */
-
+  
     /* ----------- base color ---------------------- */
-
-    --color-base-white: #ffffff;
-    --color-base-0: #fafafa;
-    --color-base-1: #e0e0e0;
-    --color-base-2: #d9d9d9;
-    --color-base-3: #d6d5d5;
-    --color-base-4: #acacac;
+  
+    --color-base-white: #FFFFFF;
+    --color-base-0: #FAFAFA;
+    --color-base-1: #E0E0E0;
+    --color-base-2: #D9D9D9;
+    --color-base-3: #D6D5D5;
+    --color-base-4: #ACACAC;
     --color-base-5: #878787;
     --color-base-6: #717171;
     --color-base-7: #535355;
     --color-base-8: #434343;
     --color-base-9: #292929;
-    --color-base-10: #cfc7c7;
-    --color-base-11: #f7f7ff;
+    --color-base-10: #CFC7C7;
+    --color-base-11: #F7F7FF;
     --color-base-black: #000000;
-
-    /* --------- font color -------------------------------- */
-
-    --color-font-white: #ffffff;
-    --color-font-0: #acacac;
-    --color-font-1: #878787;
-    --color-font-2: #535355;
-
+  
+  
     /* --------- trans(투명) color ------------------------- */
-
+  
     --color-trans-0: rgba(111, 166, 244, 0.15);
     /* 커뮤니티 */
     --color-trans-1: rgba(250, 115, 115, 0.1);
@@ -37,53 +32,41 @@
     /* 공지사항 */
     --color-trans-4: rgba(255, 240, 136, 0.5);
     /* 메인페이지 banner */
-
+  
+  
     /* --------- main color ------------------------------- */
-
-    --color-main-0: #fa7373;
-    --color-main-1: #b56fcf;
-    --color-main-2: #6fa6f4;
-    --color-main-3: #facc57;
-    --color-main-4: #ea83a8;
-    --color-main-5: #353535;
+  
+    --color-main-0: #FA7373;
+    --color-main-1: #B56FCF;
+    --color-main-2: #6FA6F4;
+    --color-main-3: #FACC57;
+    --color-main-4: #EA83A8;
     /* 관리자 aside */
-
+    --color-main-5: #353535;
+  
+  
     /* -------- accent color -------------------------------- */
-
-    --color-accent-0: #fb4646;
-
+  
+    /* warning 메시지, 신고사유 등 */
+    --color-accent-0: #FB4646;
+  
+  
     /* ============================================= size ======================================================== */
-
+  
     /* -------- font size -------------------------------- */
-
-    /* mobile */
-    --font-m-size-0: 12px;
-    --font-m-size-1: 14px;
-    --font-m-size-2: 16px;
-    --font-m-size-3: 18px;
-    --font-m-size-4: 20px;
-
-    /* desktop */
-    --font-d-size-0: 18px;
-    --font-d-size-1: 20px;
-    --font-d-size-2: 24px;
-
-    /* ------- icon size -------------------------------- */
-
-    --icon-size-0: 10px;
-    --icon-size-1: 15px;
-    --icon-size-2: 20px;
-    --icon-size-3: 25px;
-    --icon-size-4: 30px;
-    --icon-size-5: 35px;
-
-    /* ============================================= gap ======================================================== */
-
-    --gap-0: 20px;
-    --gap-1: 25px;
-    --gap-2: 32px;
-
-    --icon-size-0: 17px;
-    --icon-size-1: 10px;
+  
+    --font-size-0: 12px;
+    --font-size-1: 14px;
+    --font-size-2: 16px;
+    --font-size-3: 18px;
+    --font-size-4: 20px;
+    --font-size-5: 24px;
+  
+    
+    /* -------- icon size -------------------------------- */
+  
+    --icon-size-0: 15px;
+    --icon-size-1: 20px;
     --icon-size-2: 30px;
-}
+  
+  }
