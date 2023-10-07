@@ -95,89 +95,91 @@
 
 /* ---- 게시글 제목 부분 ----- */
 
-/* 게시글 제목 */
+ /* 게시글 제목 */
 .board-list
   .item
-    .title-container{
-      display: flex;
-      align-items: center;
-      column-gap: 10px;
+    .title-box{
+    display: flex;
+    align-items: center;
+    column-gap: 10px;
+    /* text style */
+    font-size: var(--font-size-2);
+    font-weight: 600;
 }
+
+
+.board-list
+  .item
+    .title-box
+      .title{
+      /* text 넘치는거 처리 */
+      overflow: hidden;
+      text-overflow: ellipsis;
+      white-space: nowrap;
+}
+
 
 .board-list
   .item.pin
-    .title-container::before{
-      /* icon box 생성 */
-      content: '';
-      display: inline-block;
-      width: var(--icon-size-1);
-      height: var(--icon-size-1);
-      background-color: var(--color-main-2);
-    
-      -webkit-mask-repeat: no-repeat;
-      mask-repeat: no-repeat;
+    .title-box::before{
+    /* icon box 생성 */
+    content: '';
+    display: inline-block;
+    width: var(--icon-size-1);
+    height: var(--icon-size-1);
+    background-color: var(--color-main-2);
 
-      -webkit-mask-position: center;
-      mask-position: center;
+    -webkit-mask-repeat: no-repeat;
+    mask-repeat: no-repeat;
 
-      -webkit-mask-size: var(--icon-size-1);
-      mask-size: var(--icon-size-1);
+    -webkit-mask-position: center;
+    mask-position: center;
 
-      /* 아이콘 넣어주기 */
-      -webkit-mask-image: url(/icon/pin.svg);
-      mask-image: url(/icon/pin.svg);
-      
-      flex-shrink: 0;
-}
+    -webkit-mask-size: var(--icon-size-1);
+    mask-size: var(--icon-size-1);
 
-.board-list
-  .item
-    .title-container
-      .title-box{
-        font-size: var(--font-size-3);
-        font-weight: 700;
+    /* 아이콘 넣어주기 */
+    -webkit-mask-image: url(/icon/pin.svg);
+    mask-image: url(/icon/pin.svg);
 
-        /* 글자수 넘치는거 */
-        overflow: hidden;
-        text-overflow: ellipsis;
-        white-space: nowrap;
-        
+    flex-shrink: 0;
 }
 
 /* 링크누르면 제목 색깔 변경 */
+
 .board-list
   .item
-    .title-container
-      .title-box
-        .title:visited{
-        color: var(--color-base-4);
+    .title-box
+      .title:visited{
+      color: var(--color-base-4);
 }
 
 /* 게시글 이미지 아이콘 */
+
 .board-list
   .item.img
-    .title-container::after{
+    .title-box::after{
 
-      /* icon box 생성 */
-      content: '';
-      display: inline-block;
-      width: var(--icon-size-1);
-      height: var(--icon-size-1);
-      background-color: var(--color-base-7);
-    
-      -webkit-mask-repeat: no-repeat;
-      mask-repeat: no-repeat;
+    /* icon box 생성 */
+    content: '';
+    display: inline-block;
+    width: var(--icon-size-1);
+    height: var(--icon-size-1);
+    background-color: var(--color-base-7);
 
-      -webkit-mask-position: center;
-      mask-position: center;
+    -webkit-mask-repeat: no-repeat;
+    mask-repeat: no-repeat;
 
-      -webkit-mask-size: var(--icon-size-1);
-      mask-size: var(--icon-size-1);
-      /* 아이콘 넣어주기 */
-      -webkit-mask-image: url(/icon/image.svg);
-      mask-image: url(/icon/image.svg);
+    -webkit-mask-position: center;
+    mask-position: center;
 
-      flex-shrink: 0;
+    -webkit-mask-size: var(--icon-size-1);
+    mask-size: var(--icon-size-1);
+    /* 아이콘 넣어주기 */
+    -webkit-mask-image: url(/icon/image.svg);
+    mask-image: url(/icon/image.svg);
+
+    flex-shrink: 0;
 }
 
 /* 카테고리이름, tag, views, likes, comments - box */
@@ -242,6 +244,18 @@
         font-size: var(--font-size-1);
 }
 
+/* 태그 줄임 추가 (375px까지 줄였을 때 줄임을 위해서) */
+.board-list
+  .item
+    .board-info
+      .tag-list
+        .tag{
+          display: -webkit-box;
+          -webkit-box-orient: vertical;
+          -webkit-line-clamp: 1;
+          overflow: hidden;
+}
+
 .board-list
   .item
     .board-info
@@ -291,14 +305,11 @@
 
 
 @media(min-width: 700px){
-/* 게시글 제목 키우기 */
-
-  .board-list
-    .item
-      .title-container
-        .title-box
-          .title{
-          font-size: var(--font-size-4);
+  /* 게시글 제목 키우기 */
+    .board-list
+      .item
+          .title-box
+            .title{
+            font-size: var(--font-size-3);
   }
-  
 }

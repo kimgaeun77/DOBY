@@ -14,6 +14,6 @@
 /* 카테고리 눌렀을 때 */
 .category
   .item.active{
-  font-weight: 700;
+  font-weight: 600;
   color: var(--color-main-2);
 }
