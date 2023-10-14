@@ -85,6 +85,15 @@
           white-space: nowrap;
 } 
 
+/* 닉네임 호버시 */
+.board-list
+  .item
+    .write-info-box
+      .profile
+        .nickname:hover{
+        color: var(--color-main-2);
+} 
+
 /* 작성시간 */
 .board-list
   .item
@@ -197,6 +206,9 @@
       .category-name-tag-box{
       display: flex;
       column-gap: 10px;
+
+      /* 추가 */
+      overflow: hidden;
 }
       
 
