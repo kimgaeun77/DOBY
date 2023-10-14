@@ -239,3 +239,18 @@
     -webkit-mask-image: url(/icon/wish.svg);
     mask-image: url(/icon/wish.svg);
 }
+/* 위에까지가 깃 dev브랜치에 올린거 아래부터 새로 추가한것들 */
+.icon-fire::before {
+    -webkit-mask-image: url(/icon/fire.svg);
+    mask-image: url(/icon/fire.svg);
+}
+
+.icon-card-prev::before{
+    -webkit-mask-image: url(/icon/with/card-prev.svg);
+    mask-image: url(/icon/with/card-prev.svg);
+}
+
+.icon-card-next::before{
+    -webkit-mask-image: url(/icon/with/card-next.svg);
+    mask-image: url(/icon/with/card-next.svg);
+}

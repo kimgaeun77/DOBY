@@ -1,7 +1,7 @@
 /* ========================= banner ====================== */
 .banner-box{
   height: 220px;
-  background-color: var(--color-trans-0);
+  background-color: var(--color-trans-2);
 }
 
 .banner{
@@ -16,7 +16,7 @@
   .board-name{
     font-size: 33px;
     font-weight: 700;
-    color: var(--color-main-2);
+    color: var(--color-main-3);
   }
 
 .banner
@@ -41,7 +41,7 @@
     align-items: center;
 
     padding: 8px 15px;
-    background-color: var(--color-main-2);
+    background-color: var(--color-main-3);
     border-radius: 5px;
 
     /* text style */
@@ -68,42 +68,13 @@
   margin-top: 20px;
 }
 
-.container
-  .category-search-filter-box
-    .category{
-    grid-column: 1;
-    grid-row: 1;
-
-    display: flex;
-    column-gap: 25px;
-    font-size: var(--font-size-3);
-    font-weight: 500;
-}
-
-/* 카테고리 호버했을 때 */
-.container
-  .category-search-filter-box
-    .category
-      .item:hover{
-    color: var(--color-main-2);
-
-}
-
-/* 카테고리 눌렀을 때 */
-.container
-  .category-search-filter-box
-    .category
-      .item.active{
-      font-weight: 600;
-      color: var(--color-main-2);
-
-}
 /* --------- 검색버튼 + 필터 버튼 공통 ----------------- */
 .container
   .category-search-filter-box
     .search-filter-box{
     grid-column: 3;
     grid-row: 1;
+    align-self: center;
 
     display: flex;
     column-gap: 15px;
@@ -255,7 +226,7 @@
   .container
     .sort-list
       .item:hover{
-        color: var(--color-main-2);
+        color: var(--color-main-3);
   }
 
 /* ----------- 게시글 목록 -------------------- */
@@ -292,7 +263,7 @@
   .container
     .board-list
       .item.pin{
-      background-color: var(--color-trans-0);
+      background-color: var(--color-trans-2);
     
   } 
 
@@ -366,7 +337,7 @@
       .write-info-box
         .profile
           .nickname:hover{
-          color: var(--color-main-2);
+          color: var(--color-main-3);
 } 
 
  /* 작성시간 */
@@ -413,7 +384,7 @@
         display: inline-block;
         width: var(--icon-size-1);
         height: var(--icon-size-1);
-        background-color: var(--color-main-2);
+        background-color: var(--color-main-3);
       
         -webkit-mask-repeat: no-repeat;
         mask-repeat: no-repeat;
@@ -485,44 +456,10 @@
         .category-name-tag-box{
         display: flex;
         column-gap: 10px;
-        
+
         /* 추가 */
         overflow: hidden;
-}
-        
-
-/* 카테고리 이름(조약돌)스트로크.ver !default! */
-.container
-  .board-list
-    .item
-      .board-info
-        .category-name{
-      
-        background-color: var(--color-base-white);
-        border-radius: 150px;
-        border: 1px solid var(--color-main-2);
-        padding: 3px 8px;
-        align-self: flex-end;
-
-        /* text style*/
-        color: var(--color-main-2);
-        font-weight: 600;
-        font-size: var(--font-size-0);
-    
-  }
-
-  /* 카테고리 이름(조약돌)꽉채운.ver - 고정핀일때 */
-.container
-  .board-list
-    .item.pin
-      .board-info
-        .category-name{
-
-        background-color: var(--color-main-2);
-
-        /* text style*/
-        color: var(--color-base-white);
-}
+}        
 
   /* 태그 */
 .container
@@ -665,8 +602,8 @@
   .paging
     .item.active{
 
-    border: 1px solid var(--color-main-2);
-    background-color: var(--color-main-2);
+    border: 1px solid var(--color-main-3);
+    background-color: var(--color-main-3);
     color: var(--color-base-white);
 }
 

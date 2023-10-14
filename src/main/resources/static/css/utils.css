@@ -1,3 +1,4 @@
+/* display */
 .d\:none {
     display: none !important;
 }
@@ -38,5 +39,13 @@
     .md\:d\:flex {
         display: flex !important;
     }
+    /* 필터 버튼 (grid-item)*/
+    .md\:align-self\:center{
+        align-self: center;
+    }
+}
 
+/* 추가 */
+.cursor\:pointer:hover{
+    cursor: pointer;
 }
