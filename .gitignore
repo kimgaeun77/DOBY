@@ -307,3 +307,6 @@ $RECYCLE.BIN/
 
 # Windows shortcuts
 *.lnk
+
+application*.yml
+application*.properties
