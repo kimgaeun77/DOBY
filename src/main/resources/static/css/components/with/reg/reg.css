@@ -1,0 +1,668 @@
+.main {
+    flex-direction: column;
+    align-items: center;
+}
+
+.btn {
+    flex-shrink: 0;
+}
+
+.reg-form {
+    width: 90%;
+    height: 100%;
+    flex-direction: column;
+}
+
+.main .back-title-box {
+    align-items: center;
+}
+
+.main .back-box {
+    font-size: 0;
+    line-height: 0;
+}
+
+.main .back-box>a::before {
+    background-color: var(--color-base-9);
+}
+
+.reg-form .back-title-box .title {
+    font-size: 18px;
+    font-weight: 600;
+}
+
+.reg-form .progress-box {
+    align-self: flex-end;
+    color: var(--color-main-0);
+    font-size: 16px;
+    font-weight: 600;
+}
+
+.reg-form .form-box .desc-box {
+    font-size: 18px;
+    color: var(--color-base-5);
+}
+
+.reg-form .form-box .title {
+    font-size: 16px;
+    font-weight: 600;
+}
+
+.reg-form .form-box .category-box .btn,
+.reg-form .form-box .way-box .btn,
+.reg-form .form-box .contact-box .btn {
+    border: 1px solid var(--color-base-5);
+    border-radius: 50px;
+    padding: 5px 12px;
+    font-size: 16px;
+    font-weight: 600;
+}
+
+.reg-form .form-box .btn.active {
+    background-color: var(--color-main-0);
+    border-color: var(--color-main-0);
+    color: var(--color-base-white);
+}
+
+.date-label {
+    width: 100%;
+}
+
+.reg-form .form-box .deadline-box,
+.reg-form .form-box .period-box {
+    flex-direction: column;
+}
+
+.reg-form .form-box .deadline-box .deadline {
+    position: relative;
+    border: 1px solid var(--color-base-2);
+    border-radius: 10px;
+    width: 100%;
+    padding: 10px 40px;
+    background: url(/icon/calendar.svg) no-repeat left 10px center / 20px auto;
+}
+
+.reg-form .form-box .deadline-box .deadline::-webkit-inner-spin-button {
+    display: none;
+}
+
+.reg-form .form-box .deadline-box .deadline::-webkit-calendar-picker-indicator {
+    position: absolute;
+    left: 0;
+    top: 0;
+    width: 100%;
+    height: 100%;
+    background: transparent;
+    color: transparent;
+    cursor: pointer;
+}
+
+.reg-form .form-box .deadline-box .deadline::before {
+    content: attr(data-placeholder);
+    width: 100%;
+}
+
+.reg-form .form-box .deadline-box .deadline::-webkit-datetime-edit-text,
+.reg-form .form-box .deadline-box .deadline::-webkit-datetime-edit-month-field,
+.reg-form .form-box .deadline-box .deadline::-webkit-datetime-edit-day-field,
+.reg-form .form-box .deadline-box .deadline::-webkit-datetime-edit-year-field {
+    color: var(--color-base-7);
+}
+
+.reg-form .form-box .period-box .select-box {
+    position: relative;
+    width: 100%;
+}
+
+.reg-form .form-box .period-box .label {
+    width: 100%;
+    text-align: start;
+    padding: 10px 10px;
+    font-size: 13px;
+    color: var(--color-base-7);
+    border: 1px solid var(--color-base-2);
+    border-radius: 10px;
+    background: url(/icon/down_arrow.svg) no-repeat right 10px center / 20px auto;
+}
+
+.label.up {
+    background-image: url(/icon/up_arrow.svg) !important;
+}
+
+.reg-form .form-box .period-box .select-box .list {
+
+    position: absolute;
+    border: 1px solid var(--color-base-2);
+    border-radius: 10px;
+    overflow: hidden;
+    width: 100%;
+    background-color: var(--color-base-white);
+    z-index: 999;
+
+}
+
+
+.reg-form .form-box .period-box .select-box .list .item {
+    padding: 10px 10px;
+    font-size: 14px;
+    font-weight: 400;
+}
+
+.reg-form .form-box .period-box .select-box .list .item:hover {
+    background-color: var(--color-base-2);
+    cursor: pointer;
+    font-weight: 600;
+}
+
+.reg-form .form-box .warning {
+    font-size: 14px;
+    font-weight: 600;
+    color: var(--color-main-0);
+}
+
+.reg-form .submit-box {
+    text-align: center;
+    background-color: var(--color-main-0);
+    border-radius: 20px;
+    height: 50px;
+}
+
+.reg-form .submit-box .submit {
+    border: none;
+    background-color: transparent;
+    font-size: 20px;
+    font-weight: 600;
+    color: var(--color-base-white);
+    height: 100%;
+    width: 100%;
+}
+
+.reg-form .title-box {
+    flex-direction: column;
+}
+
+.reg-form .title-box .board-title-box .board-title,
+.reg-form .contact-box .contact-link-box .contact-link {
+    border: 1px solid var(--color-base-2);
+    border-radius: 10px;
+    width: 100%;
+    padding: 10px 10px;
+}
+
+.reg-form .content-box .board-content-box {
+    width: 100%;
+}
+
+.reg-form .form-box .position-count-box .box {
+    width: 100%;
+    justify-content: space-between;
+}
+
+.reg-form .form-box .position-count-box .position {
+    border: 1px solid var(--color-base-5);
+    border-radius: 10px;
+    padding: 5px 20px;
+    font-size: 16px;
+    font-weight: 600;
+}
+
+.reg-form .form-box .content-box .editor-box {
+    width: 100%;
+}
+
+.reg-form .form-box .tech-position-box {
+    flex-direction: row;
+}
+
+.reg-form .form-box .box-item {
+    display: flex;
+    flex-direction: column;
+}
+
+.reg-form .form-box .tech-position-box .total-list .item {
+    display: flex;
+    justify-content: space-between;
+
+    /* width: 150px; */
+
+    column-gap: 10px;
+}
+
+.reg-form .form-box .tech-position-box .total-list .item .label {
+    border: 1px solid var(--color-base-2);
+    border-radius: 10px;
+
+    padding: 8px 20px 8px 10px;
+
+    text-align: center;
+
+    font-weight: 500;
+    font-size: 14px;
+
+    background: url(/icon/down_arrow.svg) no-repeat right 3px center / 20px auto;
+
+}
+
+.reg-form .form-box .tech-position-box .total-list .item .tech-box,
+.reg-form .form-box .tech-position-box .total-list .item .position-box,
+.reg-form .form-box .tech-position-box .total-list .item .capacity-box {
+    position: relative;
+    flex-grow: 1;
+    flex-shrink: 0;
+}
+
+.reg-form .form-box .tech-position-box .total-list .item .list {
+    position: absolute;
+    width: 100%;
+
+    background-color: var(--color-base-white);
+    border: 1px solid var(--color-base-2);
+    border-radius: 10px;
+    overflow: hidden;
+    z-index: 1;
+}
+
+.reg-form .form-box .tech-position-box .total-list .item .list .item {
+    padding: 10px 10px;
+    font-size: 14px;
+}
+
+.reg-form .form-box .tech-position-box .total-list .item .list .item:hover {
+    background-color: var(--color-base-2);
+    cursor: pointer;
+    font-weight: 600;
+}
+
+.reg-form .form-box .tech-position-box .total-list .item .capacity-box .btn {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    text-indent: -9999px;
+    padding: 0 5px;
+}
+
+.reg-form .form-box .tech-position-box .total-list .item .capacity-box .btn.plus {
+    border-left: 2px solid var(--color-base-3);
+}
+
+.reg-form .form-box .tech-position-box .total-list .item .capacity-box .btn.minus {
+    border-right: 2px solid var(--color-base-3);
+}
+
+.reg-form .form-box .tech-position-box .total-list .item .capacity-box .value {
+    display: flex;
+    justify-content: center;
+    align-content: center;
+    flex-wrap: wrap;
+    font-size: 18px;
+    font-weight: 600;
+    padding: 0 10px;
+}
+
+.reg-form .form-box .tech-position-box .btn-box .btn {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+
+    background-color: var(--color-base-0);
+
+    text-indent: -9999px;
+
+    border: 0.3px solid var(--color-base-1);
+    border-radius: 100px;
+
+    width: 20px;
+    height: 20px;
+}
+
+.reg-form .form-box .tech-position-box .total-list .box {
+    display: flex;
+    flex-direction: column;
+}
+
+.reg-form .form-box .tech-position-box .total-list>.item {
+    display: grid;
+    grid-template: "tech position capacity" 1fr/ 1fr 1fr 1fr;
+}
+
+.reg-form .warning::before {
+    content: "※";
+    padding-right: 5px;
+}
+
+.reg-form .cancel-box {
+    display: none;
+}
+
+
+.ck.ck-editor__main {
+    border-radius: 0 0 10px 10px;
+}
+
+.reg-form .form-box .deadline-box .deadline::before {
+    color: var(--color-base-7);
+}
+
+.reg-form .content-input .content-input-title,
+.reg-form .info-input .info-input-title {
+    font-weight: 600;
+    font-size: var(--font-size-4);
+    /* color: var(--color-base-7); */
+}
+
+.reg-form .info-input::after {
+    content: "";
+    display: block;
+    border-bottom: 1px solid var(--color-base-3);
+}
+
+.reg-form .tech-position-box {
+    max-width: 700px;
+}
+
+.reg-form .tech-position-box .total-list {
+    width: 100%;
+}
+
+.reg-form .info-input .info-input-title {
+    margin-top: 10px;
+}
+
+
+
+
+@media (min-width: 700px) {
+    .reg-form {
+        max-width: 1120px;
+        width: 100%;
+        margin-left: auto;
+        margin-right: auto;
+    }
+
+    .reg-form .form-box .box-item {
+        flex-direction: row;
+        align-items: center;
+    }
+
+    .reg-form .form-box .box-item.title-box,
+    .reg-form .form-box .box-item.tech-position-box,
+    .reg-form .form-box .box-item.content-box {
+        flex-direction: column;
+
+        align-items: flex-start;
+    }
+
+    .reg-form .form-box .box-item div:first-child {
+        flex-shrink: 0;
+    }
+
+    .reg-form .form-box .deadline-box,
+    .reg-form .form-box .period-box {
+        display: inline-flex;
+    }
+
+    .reg-form .form-box .period-box .label {
+        padding: 10px 15px 10px 10px;
+        height: 40px;
+        display: flex;
+        justify-content: flex-start;
+        align-items: center;
+    }
+
+    .reg-form .deadline-period-box {
+        display: flex;
+    }
+
+
+    .reg-form .form-box .deadline-box,
+    .reg-form .form-box .period-box {
+        width: 350px;
+    }
+
+    .reg-form .deadline-period-box {
+        width: 700px;
+    }
+
+    .reg-form .form-box .contact-box {
+        width: 700px;
+        display: flex;
+    }
+
+    .reg-form .contact-box .contact-link-box {
+        flex-grow: 1;
+    }
+
+    .reg-form .title-box .board-title-box {
+        width: 100%;
+    }
+
+    .reg-form .back-box {
+        display: none;
+    }
+
+    .reg-form .cancel-box {
+        display: inline-block;
+    }
+
+    .reg-form .cancel-submit-box {
+        display: flex;
+        justify-content: flex-end;
+        align-items: center;
+
+        column-gap: 30px;
+    }
+
+    .reg-form .cancel-submit-box .btn.cancel-box {
+        border: 1px solid var(--color-base-4);
+        display: flex;
+        align-items: center;
+        justify-content: center;
+
+        color: var(--color-base-5);
+        background-color: var(--color-base-white);
+    }
+
+    .reg-form .cancel-submit-box .btn {
+        border-radius: 10px;
+        width: 130px;
+        height: 40px;
+        font-size: 20px;
+        font-weight: 600;
+    }
+
+
+    .reg-form .cancel-submit-box .btn:hover {
+        cursor: pointer;
+    }
+
+    .reg-form .deadline-box .date-label,
+    .reg-form .period-box .select-box,
+    .reg-form .contact-box .contact-link-box {
+        position: relative;
+    }
+
+    .reg-form .deadline-box .warning-box,
+    .reg-form .period-box .warning-box,
+    .reg-form .contact-box .warning-box {
+        position: absolute;
+    }
+
+    .reg-form .form-box .tech-position-box .total-list .item .label {
+        height: 40px;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+    }
+
+    .reg-form .contact-box .contact-link-box .contact-link {
+        height: 40px;
+    }
+
+}
+
+/* ------layout---------------- */
+.reg-form {
+    margin-top: 25px;
+}
+
+.reg-form .back-title-box .title {
+    margin-left: 10px;
+}
+
+.reg-form .progress-box {
+    margin-top: 10px;
+}
+
+.reg-form .form-box {
+    margin-top: 10px;
+}
+
+.reg-form .form-box .box-item {
+    margin-top: 30px;
+}
+
+.reg-form .form-box .category-box .btn,
+.reg-form .form-box .way-box .btn,
+.reg-form .form-box .contact-box .btn {
+    margin-top: 10px;
+    margin-right: 10px;
+}
+
+.reg-form .form-box .period-box .label,
+.reg-form .form-box .deadline-box .deadline {
+    margin-top: 10px;
+}
+
+.reg-form .form-box .period-box .select-box .list {
+    margin-top: 5px;
+}
+
+.reg-form .form-box .warning {
+    margin-top: 5px;
+    margin-left: 3px;
+}
+
+.reg-form .submit-box {
+    margin-top: 15px;
+    margin-bottom: 10px;
+}
+
+
+.reg-form .title-box .board-title-box .board-title {
+    margin-top: 10px;
+}
+
+.reg-form .form-box .desc-box {
+    margin-top: 30px;
+}
+
+.reg-form .form-box .position-count-box .box {
+    margin-top: 20px;
+}
+
+.reg-form .form-box .text-editor {
+    margin-top: 10px;
+}
+
+.reg-form .form-box .content-box .editor-box {
+    margin-top: 10px;
+}
+
+.reg-form .form-box .tech-position-box .total-list .item .list {
+    margin-top: 5px;
+}
+
+.reg-form .form-box .tech-position-box .total-list .item .count-box .btn::before {
+    margin: 0;
+}
+
+.reg-form .tech-position-box .btn-box .btn::before {
+    margin: 0;
+}
+
+.reg-form .tech-position-box .btn-box {
+    margin-left: 10px;
+}
+
+.reg-form .tech-position-box .btn-box .plus {
+    margin-left: 8px;
+}
+
+.reg-form .tech-position-box .total-list>.item {
+    margin-top: 10px;
+}
+
+.reg-form .contact-box .contact-link-box .contact-link {
+    margin-top: 10px;
+}
+
+.reg-form .info-input .info-input-title {
+    margin-top: 30px;
+    margin-bottom: 50px;
+}
+
+.reg-form .content-input .content-input-title {
+    margin-top: 30px;
+}
+
+.reg-form .info-input::after {
+    margin-top: 30px;
+}
+
+@media (min-width: 700px) {
+
+    .reg-form .contact-box .contact-link-box .contact-link,
+    .reg-form .form-box .category-box .btn,
+    .reg-form .form-box .way-box .btn,
+    .reg-form .form-box .contact-box .btn {
+        margin-top: 0;
+    }
+
+    .reg-form .btn-box {
+        margin-left: 10px;
+    }
+
+    .reg-form .tech-position-box .total-list>.item,
+    .reg-form .form-box .period-box .label,
+    .reg-form .form-box .deadline-box .deadline {
+        margin-top: 0;
+    }
+
+    .reg-form .form-box .deadline-box .date-label,
+    .reg-form .form-box .period-box .select-box {
+        margin-left: 10px;
+    }
+
+    .reg-form .form-box .period-box {
+        margin-left: 15px;
+    }
+
+    .reg-form .form-box .tech-position-box .total-list {
+        margin-top: 10px;
+    }
+
+    .reg-form .form-box .tech-position-box .total-list>.item {
+        margin-top: 10px;
+    }
+
+    .reg-form .back-title-box .title {
+        margin: 0;
+    }
+
+    .reg-form .submit-box {
+        margin: 0;
+    }
+
+    .reg-form .cancel-submit-box {
+        margin-top: 30px;
+        margin-bottom: 30px;
+    }
+
+    .reg-form .content-input .content-input-title {
+        margin-top: 50px;
+    }
+
+    .reg-form .info-input::after {
+        margin-top: 50px;
+    }
+}
