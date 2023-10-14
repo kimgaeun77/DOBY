@@ -239,18 +239,54 @@
     -webkit-mask-image: url(/icon/wish.svg);
     mask-image: url(/icon/wish.svg);
 }
+
 /* 위에까지가 깃 dev브랜치에 올린거 아래부터 새로 추가한것들 */
 .icon-fire::before {
     -webkit-mask-image: url(/icon/fire.svg);
     mask-image: url(/icon/fire.svg);
 }
 
-.icon-card-prev::before{
+.icon-card-prev::before {
     -webkit-mask-image: url(/icon/with/card-prev.svg);
     mask-image: url(/icon/with/card-prev.svg);
 }
 
-.icon-card-next::before{
+.icon-card-next::before {
     -webkit-mask-image: url(/icon/with/card-next.svg);
     mask-image: url(/icon/with/card-next.svg);
+}
+
+.icon-check_complete::before {
+    -webkit-mask-image: url(/icon/check_complete.svg);
+    mask-image: url(/icon/check_complete.svg);
+}
+
+.icon-edit_square::before {
+    -webkit-mask-image: url(/icon/edit_square.svg);
+    mask-image: url(/icon/edit_square.svg);
+}
+
+.icon-check_v::before {
+    -webkit-mask-image: url(/icon/check_v.svg);
+    mask-image: url(/icon/check_v.svg);
+}
+
+.icon-plus::before {
+    -webkit-mask-image: url(/icon/plus.svg);
+    mask-image: url(/icon/plus.svg);
+}
+
+.icon-minus::before {
+    -webkit-mask-image: url(/icon/minus.svg);
+    mask-image: url(/icon/minus.svg);
+}
+
+.icon-x::before {
+    -webkit-mask-image: url(/icon/x.svg);
+    mask-image: url(/icon/x.svg);
+}
+
+.icon-heart::before {
+    -webkit-mask-image: url(/icon/heart.svg);
+    mask-image: url(/icon/heart.svg);
 }
