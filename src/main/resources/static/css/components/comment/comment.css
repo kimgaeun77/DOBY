@@ -1,0 +1,320 @@
+#comment-reg-list {
+    width: 100%;
+    justify-content: center;
+
+    max-width: 1120px;
+    margin: 0 auto;
+
+    padding: 0 20px;
+}
+
+.ck-rounded-corners .ck.ck-editor__top .ck-sticky-panel .ck-toolbar {
+    border-radius: 5px 5px 0 0 !important;
+}
+
+.ck-rounded-corners .ck.ck-editor__main > .ck-editor__editable,
+.ck.ck-editor__main > .ck-editor__editable.ck-rounded-corners {
+    border-radius: 0 0 5px 5px !important;
+}
+
+.comment-reg-form .ck-editor__editable {
+    height: 100px;
+}
+
+.ck-rounded-corners .ck.ck-dropdown .ck-dropdown__panel .ck-list {
+    max-height: 100px;
+}
+
+.comment-reg-form {
+    overflow: hidden;
+    width: 100%;
+}
+
+.comment-reg-count-box {
+    display: flex;
+    flex-direction: column;
+    width: 100%;
+}
+
+
+.img-form-box {
+    display: flex;
+    border-radius: 5px;
+    column-gap: 10px;
+}
+
+.comment-reg-count-box .comment-count-box {
+    font-size: var(--font-size-1);
+    font-weight: 500;
+}
+
+.img-box {
+    height: 40px;
+    width: 40px;
+
+    border-radius: 50%;
+    overflow: hidden;
+
+    flex-shrink: 0;
+}
+
+.img-box .profile-img {
+    height: 100%;
+    width: 100%;
+
+    object-fit: cover;
+}
+
+.comment-reg-form {
+    flex-grow: 1;
+}
+
+.comment-reg-form::-webkit-scrollbar {
+    display: none;
+}
+
+.comment-reg-form .btn-box {
+    justify-content: flex-end;
+}
+
+
+.comment-reg-form .submit-btn {
+    border-radius: 5px;
+    padding: 7px 15px;
+
+
+    color: var(--color-base-white);
+    font-weight: 600;
+    font-size: var(--font-size-1);
+}
+
+.community .comment-reg-form .submit-btn {
+    background-color: var(--color-main-2);
+}
+
+.with .comment-reg-form .submit-btn {
+    background-color: var(--color-main-0);
+}
+
+.smalltalk .comment-reg-form .submit-btn {
+    background-color: var(--color-main-3);
+}
+
+.community .comment-list-box .icon-likes_fill::before {
+    background-color: var(--color-main-2);
+}
+
+.with .comment-list-box .icon-likes_fill::before {
+    background-color: var(--color-main-0);
+}
+
+.smalltalk .comment-list-box .icon-likes_fill::before {
+    background-color: var(--color-main-3);
+}
+
+.comment-list-box .icon-likes::before {
+    background-color: var(--color-base-5);
+}
+
+.comment-list-box > .item {
+    padding: 20px 5px;
+}
+
+.comment-list-box .item .comment-box {
+    display: flex;
+    column-gap: 10px;
+}
+
+.comment-list-box .item .comment-info-box {
+    display: grid;
+    width: 100%;
+    grid-template: 'info menu' 20px
+        'content contect' 1fr
+        'util like' 20px
+        / 1fr min-content;
+
+    row-gap: 10px;
+    position: relative;
+}
+
+.comment-list-box .item .comment-box .info-box .reg-time {
+    font-size: 14px;
+}
+
+.comment-list-box .item .comment-box .info-box {
+    grid-area: info;
+}
+
+.comment-list-box .item .comment-box .menu-box {
+    grid-area: menu;
+    display: flex;
+    justify-content: flex-end;
+    align-items: center;
+}
+
+.comment-list-box .item .comment-box .content-box {
+    grid-area: content;
+}
+
+.comment-list-box .item .comment-box .util-box {
+    grid-area: util;
+}
+
+.comment-list-box .item .comment-box .like-box {
+    grid-area: like;
+}
+
+.comment-list-box .item .comment-box .info-box {
+    display: flex;
+    justify-content: flex-start;
+    align-items: center;
+    font-size: var(--font-size-1);
+
+    color: var(--color-base-5);
+}
+
+.comment-list-box .item .comment-box .info-box .nickname {
+    font-weight: 500;
+}
+
+.comment-list-box .item .comment-box .info-box .reg-time {
+    font-weight: 400;
+}
+
+.comment-list-box .item .comment-box .content-box {
+    font-size: var(--font-size-1);
+    font-weight: 400;
+}
+
+.comment-list-box .item .comment-box .util-box {
+    font-size: var(--font-size-0);
+    font-weight: 400;
+    display: flex;
+    align-items: center;
+}
+
+
+.comment-list-box .item .comment-box .like-box {
+    display: flex;
+    align-items: center;
+    justify-content: flex-end;
+    font-size: var(--font-size-0);
+}
+
+.comment-list-box .comment-info-box .comment-down-btn {
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+}
+
+.comment-list-box .menu-box .list {
+    position: absolute;
+    border: 1px solid var(--color-base-2);
+    border-radius: 10px;
+    overflow: hidden;
+    width: 80px;
+    background-color: var(--color-base-white);
+    z-index: 999;
+
+    right: 0;
+    top: 18px;
+}
+
+.comment-list-box .menu-box .list .item {
+    padding: 5px;
+    font-size: 14px;
+    font-weight: 400;
+
+    display: flex;
+    justify-content: center;
+}
+
+.comment-list-box .menu-box .list .item:hover {
+    background-color: var(--color-base-2);
+    cursor: pointer;
+    font-weight: 600;
+}
+
+.comment-list-box .sub-comment-list .item .comment-info-box {
+    display: grid;
+    width: 100%;
+    grid-template: 'info menu' 20px
+        'content like' 1fr
+        / 1fr min-content;
+
+    row-gap: 10px;
+
+    position: relative;
+}
+
+.comment-list-box .sub-comment-list .item .comment-info-box .like-box {
+    align-items: flex-end;
+}
+
+
+code {
+    font-size: 12px;
+}
+
+sub-comment-editor-box {
+
+}
+
+@media (min-width: 700px) {
+    #comment-reg-list {
+        padding: 0;
+    }
+}
+
+#comment-list {
+    margin-top: 20px;
+}
+
+.comment-reg-count-box .comment-count-box {
+    margin-top: 20px;
+}
+
+.comment-reg-form .btn-box {
+    margin-top: 10px;
+}
+
+.img-form-box {
+    margin-top: 20px;
+}
+
+.comment-list-box .item .comment-box .info-box .reg-time {
+    margin-left: 10px;
+}
+
+
+.comment-list-box .item .comment-box .util-box .comment-down-btn {
+    margin-right: 10px;
+}
+
+.comment-list-box .item .comment-box .like-box .like-count {
+    margin: 0 5px;
+}
+
+.comment-list-box .sub-comment-list {
+    margin-top: 20px;
+}
+
+.comment-list-box .sub-comment-list > .item {
+    margin: 30px 0 30px 50px;
+}
+
+.comment-list-box .sub-comment-list > .item:last-child {
+    margin: 30px 0 0 50px;
+}
+
+.sub-comment-editor-box {
+    margin: 0 0 0 50px;
+}
+
+.content-box {
+    overflow: auto;
+}
+
+/* layout */
+@media (min-width: 700px) {
+}

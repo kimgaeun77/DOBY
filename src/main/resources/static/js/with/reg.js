@@ -1,4 +1,7 @@
+import {editor} from '/js/utils/ckeditor/content.js';
+
 window.addEventListener('load', function () {
+
 
     /* 뒤로가기 버튼 */
     let backButton = document.querySelector('#back-btn');
@@ -21,7 +24,7 @@ window.addEventListener('load', function () {
         element.classList.add('active');
         activeCategoryButton = element;
 
-        let radio = element.querySelector('input[type="radio"');
+        let radio = element.querySelector('input[type="radio"]');
         radio.checked = true;
     }
 
@@ -54,7 +57,7 @@ window.addEventListener('load', function () {
 
     deadlineInput.onchange = () => {
         deadlineInput.dataset.placeholder = deadlineInput.value;
-        if (deadlineInput.dataset.placeholder == '' || deadlineInput.dataset.placeholder == null) deadlineInput.dataset.placeholder = '날짜를 선택해주세요.';
+        if (deadlineInput.dataset.placeholder === '' || deadlineInput.dataset.placeholder == null) deadlineInput.dataset.placeholder = '날짜를 선택해주세요.';
     }
 
     /* 모집기한 과거는 선택 못하게*/
@@ -66,12 +69,12 @@ window.addEventListener('load', function () {
     /* 진행기간 */
     let periodInput = document.querySelector('#period-value');
     let periodBox = document.querySelector('#period-box');
-    let periodLable = periodBox.querySelector('.label');
+    let periodLabel = periodBox.querySelector('.label');
     let periodSelectList = periodBox.querySelector('.list');
     let periodWarning = periodBox.querySelector('.warning');
 
-    periodLable.onclick = () => {
-        periodLable.classList.toggle('up');
+    periodLabel.onclick = () => {
+        periodLabel.classList.toggle('up');
         periodSelectList.classList.toggle('d:none');
     };
 
@@ -79,45 +82,167 @@ window.addEventListener('load', function () {
         let element = e.target;
         if (element.tagName !== 'LI') return
 
-        periodLable.classList.toggle('up');
+        periodLabel.classList.toggle('up');
         periodWarning.classList.add('d:none');
         periodSelectList.classList.add('d:none');
-        periodLable.innerHTML = element.innerHTML;
+        periodLabel.innerHTML = element.innerHTML;
         periodInput.value = element.dataset.id;
     }
 
-    /* 기술스택 & 포지션 */
+    /* 기술스택 */
+
+    let techSelectBox = document.querySelector('#tech-select-box');
+    let label = techSelectBox.querySelector('.label');
+    let selectBox = techSelectBox.querySelector('.select-box');
+    let placeholder = techSelectBox.querySelector('.select-placeholder');
+    let selectList = selectBox.querySelector('.list');
+    let selectedList = techSelectBox.querySelector('.selected-box .list');
+
+    let techData = [];
+    let selectedCount = 0;
+
+    async function getTechList() {
+        let response = await fetch(`/api/techs`);
+        return await response.json();
+    }
+
+    getTechList().then(data => {
+
+        for (const item of data)
+            item.isSelect = false;
+
+        techData = data;
+        renderSelectList();
+    })
+
+    function renderSelectList() {
+        selectedList.innerHTML = "";
+        selectList.innerHTML = "";
+        selectedCount = 0;
+        for (const tech of techData) {
+
+            if (tech.isSelect) {
+                selectedCount++;
+                let template = `<li class="item" data-id="${tech.id}">
+                                           <div>${tech.name}</div>
+                                           <div class="btn-box"><button type="button" class="icon icon-x">삭제</button></div>
+                                       </li>`;
+                selectedList.insertAdjacentHTML("beforeend", template);
+            } else {
+                let template = `<li class="item" data-id="${tech.id}">${tech.name}</li>`;
+                selectList.insertAdjacentHTML("beforeend", template);
+            }
+
+        }
+
+        if (selectedCount === 0)
+            placeholder.classList.remove('d:none')
+        else
+            placeholder.classList.add('d:none')
+    }
+
+
+    label.onclick = (e) => {
+        let element = e.target;
+
+        if (!(element.classList.contains('label')
+            || element.classList.contains('select-placeholder')
+            || element.classList.contains('list')))
+            return;
+
+        selectBox.classList.toggle('d:none');
+        label.classList.toggle('up');
+
+        let warning = techSelectBox.querySelector('.warning');
+        warning.classList.add('d:none');
+    }
+
+    selectBox.onclick = (e) => {
+        let element = e.target;
+
+        if (!element.classList.contains('item'))
+            return;
+
+        selectBox.classList.toggle('d:none');
+        label.classList.toggle('up');
+
+        let techId = parseInt(element.dataset.id);
+
+        let index = techData.findIndex(e => e.id === techId);
+
+        techData[index].isSelect = true;
+
+
+        renderSelectList();
+    }
+
+    selectedList.onclick = (e) => {
+        let element = e.target;
+
+        if (!element.classList.contains('icon'))
+            return;
+
+        let techItem = element.parentNode.parentNode;
+
+        let techId = parseInt(techItem.dataset.id);
+
+        let index = techData.findIndex(e => e.id === techId);
+        techData[index].isSelect = false;
+        renderSelectList();
+
+    }
+
+    /* 포지션 */
     let techPositionBox = document.querySelector('#tech-position-box');
     let selectUL = techPositionBox.querySelector('.total-list');
     let minusButton = techPositionBox.querySelector('.btn.minus');
     let plusButton = techPositionBox.querySelector('.btn.plus');
     let techPositionList = techPositionBox.querySelector('.total-list');
-    let currentSelect = techPositionList.querySelector('.tech-box .list');
+    let currentSelect = techPositionList.querySelector('.position-box .list');
     let techPositionWarning = techPositionBox.querySelector('.warning');
+    let duplicateWarning = techPositionBox.querySelector('.warning-duplicate');
+    let currentElement = null;
     let itemCount = 1;
+
+    let clickCount = 0;
 
     selectUL.onclick = function (e) {
 
         let element = e.target;
-        let isVaild = element.classList.contains('label') || element.classList.contains('item');
 
-        if (!isVaild) return;
+        if (clickCount === 0)
+            currentElement = element
+
+        clickCount++;
+
+        let isValid = element.classList.contains('label') || element.classList.contains('item');
+
+        if (!isValid) return;
 
         if (element.classList.contains('label')) {
-            // debugger;
-            techPositionWarning.classList.add('d:none');
 
+            techPositionWarning.classList.add('d:none');
+            duplicateWarning.classList.add('d:none');
             let list = element.parentNode.querySelector('.list');
+            currentSelect.classList.remove('up');
             element.classList.toggle('up');
+
             if (currentSelect === list) {
                 list.classList.toggle('d:none');
                 return;
             }
-            currentSelect.classList.add('d:none')
+            currentSelect.classList.add('d:none');
             list.classList.remove('d:none');
             currentSelect = list;
+            if (clickCount !== 0)
+                currentElement.classList.remove('up');
+            currentElement = element;
         } else {
             let list = element.parentNode;
+
+            if (list.classList.contains('total-list'))
+                return;
+
             let box = list.parentNode;
 
             let label = box.querySelector('.label');
@@ -131,39 +256,43 @@ window.addEventListener('load', function () {
         }
     }
 
-    plusButton.onclick = () => {
-        if (itemCount == 10)
-            return;
+    let positionList = []
 
+    async function getPositionList() {
+        let response = await fetch(`/api/positions`);
+        return await response.json();
+    }
+
+    getPositionList().then(data => {
+
+        for (const p of data) {
+            p.isSelect = false;
+        }
+
+        positionList = data;
+
+
+    })
+
+    plusButton.onclick = createPositionSelect;
+
+    function createPositionSelect() {
+        if (itemCount === positionList.length)
+            return;
         itemCount++;
+
+        let list = "";
+
+        for (const p of positionList)
+            list += `<li class="item" data-value="${p.id}">${p.name}</li>`
+
 
         let template =
             `<li class="item">
-                <div class="tech-box">
-                    <div class="label h:cursor">기술 스택</div>
-                    <input type="hidden" name="tech" class="tech">
-                    <ul class="list d:none">
-                        <li class="item" data-value="1">Java</li>
-                        <li class="item" data-value="2">Spring</li>
-                        <li class="item" data-value="3">Kotlin</li>
-                        <li class="item" data-value="4">JavaScript</li>
-                        <li class="item" data-value="5">TypeScript</li>
-                        <li class="item" data-value="6">Node.js</li>
-                        <li class="item" data-value="7">React</li>
-                        <li class="item" data-value="8">Vue</li>
-                        <li class="item" data-value="9">Angular</li>
-                        <li class="item" data-value="10">Python</li>
-                        <li class="item" data-value="11">Django</li>
-                    </ul>
-                </div>
                 <div class="position-box">
                     <div class="label h:cursor">포지션</div>
                     <input type="hidden" name="position" class="position">
-                    <ul class="list d:none">
-                        <li class="item" data-value="1">백엔드</li>
-                        <li class="item" data-value="2">프론트엔드</li>
-                        <li class="item" data-value="3">퍼블리셔</li>
-                    </ul>
+                    <ul class="list d:none">` + list + `</ul>
                 </div>
                 <div class="capacity-box">
                     <div class="label h:cursor">인원수</div>
@@ -183,7 +312,7 @@ window.addEventListener('load', function () {
 
 
     minusButton.onclick = () => {
-        if (itemCount == 1) {
+        if (itemCount === 1) {
             return;
         }
         itemCount--;
@@ -204,6 +333,7 @@ window.addEventListener('load', function () {
     let contactButtonBox = contactBox.querySelector('.btn-box');
     let activeContactButton = contactButtonBox.querySelector('.active');
     let contactInput = contactBox.querySelector('.contact-link');
+
     let contactWarning = contactBox.querySelector('.warning');
 
     contactButtonBox.onclick = function (e) {
@@ -215,7 +345,7 @@ window.addEventListener('load', function () {
         element.classList.add('active');
         activeContactButton = element;
 
-        let radio = element.querySelector('input[type="radio"');
+        let radio = element.querySelector('input[type="radio"]');
         radio.checked = true;
     }
 
@@ -233,55 +363,77 @@ window.addEventListener('load', function () {
         contentWarning.classList.add('d:none');
     }
 
-    /* 취소 버튼 */
-
-    let cancelBox = document.querySelector('#cancel-box');
-    let cancelButton = cancelBox.querySelector('.cancel')
-
-    cancelButton.onclick = function () {
-        console.log("눌림");
-        history.back();
-    }
-
-    /* 폼 */
-    let form = document.querySelector('#form');
 
     function checkValid(inputArray, warningArray) {
 
         let size = inputArray.length;
-        let isVaild = true;
+        let isValid = true;
 
         for (let i = 0; i < size; i++)
-            if (inputArray[i].value == '' || inputArray[i].value == null) {
+            if (inputArray[i].value === '' || inputArray[i].value == null) {
                 warningArray[i].classList.remove('d:none');
-                isVaild = false;
+                isValid = false;
             }
 
-        return isVaild;
+        return isValid;
     }
 
 
-    function checkSelectValid(techList, positionList, capacityList) {
+    function checkSelectValid(positionList, capacityList) {
 
-        let isVaild = true;
-        let size = techList.length;
+        let isValid = true;
+        let size = positionList.length;
         let warning = techPositionBox.querySelector('.warning');
 
         for (let i = 0; i < size; i++)
-            if (techList[i].value == "" || positionList[i].value == "" || capacityList[i].value == "") {
+            if (positionList[i].value === "" || capacityList[i].value === "") {
                 warning.classList.remove('d:none');
-                isVaild = false;
-                return isVaild;
+                isValid = false;
+                return isValid;
             }
 
 
-        if (!isVaild) return;
+        if (!isValid) return;
 
         warning.classList.add('d:none');
-        return isVaild;
+        return isValid;
     }
 
-    form.onsubmit = function () {
+    let submitButton = document.querySelector('#submit');
+
+
+    function checkSelectTech(count) {
+
+        let warning = techSelectBox.querySelector('.warning');
+        if (count === 0)
+            warning.classList.remove('d:none');
+        else
+            warning.classList.add('d:none');
+
+        return count !== 0;
+    }
+
+    function checkDuplicatePosition(list) {
+
+        let isNotDuplicate = true;
+
+        loop: for (const e1 of list)
+            for (const e2 of list) {
+                if (e1 === e2) continue;
+                if (e1.value === e2.value) {
+                    isNotDuplicate = false;
+                    break loop;
+                }
+            }
+
+        if (!isNotDuplicate)
+            duplicateWarning.classList.remove('d:none');
+
+        return isNotDuplicate;
+    }
+
+    submitButton.onclick = async function () {
+
         let contentInput = document.querySelector('#content-box').querySelector('input[type="hidden"]');
         contentInput.value = editor.getData();
 
@@ -289,13 +441,136 @@ window.addEventListener('load', function () {
         let warningArray = [deadlineWarning, periodWarning, titleWarning, contentWarning, contactWarning];
 
         let itemList = document.querySelector('.total-list');
-        let techList = itemList.querySelectorAll('.tech');
         let positionList = itemList.querySelectorAll('.position');
         let capacityList = itemList.querySelectorAll('.capacity');
 
-        let isInputVaild = checkValid(inputArray, warningArray);
-        let isSelectVaild = checkSelectValid(techList, positionList, capacityList);
+        let isInputValid = checkValid(inputArray, warningArray);
+        let isSelectValid = checkSelectValid(positionList, capacityList);
+        let isSelectTech = checkSelectTech(selectedCount);
 
-        return isInputVaild && isSelectVaild;
+        let isNotDuplicatePosition = checkDuplicatePosition(positionList);
+
+        let techSelectList = [];
+
+        for (const tech of techData)
+            if (tech.isSelect)
+                techSelectList.push(tech.id);
+
+        if (isInputValid && isSelectValid && isSelectTech && isNotDuplicatePosition) {
+
+            let categoryValue = document.querySelector('input[name="c"]:checked').value;
+            let wayValue = document.querySelector('input[name="w"]:checked').value;
+            let contactValue = document.querySelector('input[name="ct"]:checked').value;
+
+            let data = {
+                title: titleInput.value,
+                content: contentInput.value,
+                deadline: deadlineInput.value,
+                periodId: periodInput.value,
+                categoryId: categoryValue,
+                wayId: wayValue,
+                contactId: contactValue,
+                link: contactInput.value
+            }
+
+            let withId = await submitWith(data);
+
+            let capacityInputList = document.querySelectorAll('input[name="capacity"]');
+            let positionInputList = document.querySelectorAll('input[name="position"]');
+
+            let techSubmitResult = false;
+            let positionSubmitResult = false;
+
+            for (let i = 0; i < capacityInputList.length; i++) {
+
+                if (capacityInputList[i].value === 0)
+                    continue;
+
+                let positionData = {
+                    withId,
+                    "positionId": positionInputList[i].value,
+                    "capacity": capacityInputList[i].value
+                }
+                positionSubmitResult = await submitPosition(positionData);
+            }
+
+
+            for (const techId of techSelectList) {
+                let data = {withId, techId}
+                techSubmitResult = await submitTech(data);
+            }
+
+            if (techSubmitResult && positionSubmitResult)
+                location.href = `/with/detail?id=${withId}`;
+
+        }
+
     }
+
+    const submitWith = async (data) => {
+
+        let config = {
+            method: "POST",
+            headers: {"Content-Type": "application/json"},
+            body: JSON.stringify(data)
+        }
+
+        const response = await fetch("/api/withs", config);
+
+        if (response.status === 201) {
+            const data = await response.json();
+            return data.id;
+        }
+    }
+
+    const submitTech = async (data) => {
+
+        let config = {
+            method: "POST",
+            headers: {"Content-Type": "application/json"},
+            body: JSON.stringify(data)
+        }
+
+        const response = await fetch("/api/with-techs", config);
+
+        if (response.status === 200)
+            return true;
+    }
+
+    const submitPosition = async (data) => {
+
+        let config = {
+            method: "POST",
+            headers: {"Content-Type": "application/json"},
+            body: JSON.stringify(data)
+        }
+
+        const response = await fetch("/api/with-positions", config);
+
+        if (response.status === 200)
+            return true;
+    }
+
+
+    const cancelModalBox = document.querySelector('.modal-box.cancel');
+    const cancelModalOkButton = cancelModalBox.querySelector('.btn-yes');
+    const cancelModalNoButton = cancelModalBox.querySelector('.btn-no');
+
+
+    /* 취소 버튼 */
+
+    let cancelBox = document.querySelector('#cancel-box');
+
+    cancelBox.onclick = () => {
+        cancelModalBox.classList.add('open');
+    }
+
+    cancelModalOkButton.onclick = () => {
+        history.back();
+    }
+
+    cancelModalNoButton.onclick = () => {
+        cancelModalBox.classList.remove('open');
+    }
+
 });

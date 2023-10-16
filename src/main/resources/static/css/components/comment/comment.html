@@ -1,0 +1,581 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8"/>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+    <!-- css -->
+    <link href="/css/reset.css" rel="stylesheet" type="text/css"/>
+    <link href="/css/root.css" rel="stylesheet" type="text/css"/>
+    <link href="/css/style.css" rel="stylesheet" type="text/css"/>
+    <link href="/css/icon.css" rel="stylesheet" type="text/css"/>
+    <link href="/css/utils.css" rel="stylesheet" type="text/css"/>
+    <link href="/css/utils/editor/style.css" rel="stylesheet" type="text/css"/>
+    <link href="/css/components/comment/comment.css" rel="stylesheet" type="text/css"/>
+    <!-- js -->
+    <script src="/js/utils/ckeditor/ckeditor.js"></script>
+    <script type="module" src="/js/parts/comment/comment.js"></script>
+    <title>모임 게시글 등록</title>
+</head>
+
+<body>
+<main class="main d:flex">
+    <section id="comment-reg-list" class="community">
+        <section id="comment-reg" class="d:flex">
+            <h1 class="d:none">댓글 작성</h1>
+            <div class="comment-reg-count-box">
+                <div class="comment-count-box">
+                    <span><samp class="comment-count">10</samp>개의 댓글</span>
+                </div>
+                <div class="img-form-box">
+                    <div class="img-box">
+                        <img class="profile-img" src="https://avatars.githubusercontent.com/u/143318125?v=4" alt="">
+                    </div>
+                    <div class="comment-reg-form">
+                        <div class="editor-box">
+                            <span class="editor"></span>
+                        </div>
+                        <div class="btn-box d:flex">
+                            <button class="submit-btn cursor:pointer">댓글 작성</button>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+        <section id="comment-list">
+            <h1 class="d:none">댓글 목록</h1>
+            <ul class="comment-list-box">
+                <li class="item">
+                    <div class="root-comment comment-box">
+                        <div class="img-box">
+                            <img class="profile-img" src="https://avatars.githubusercontent.com/u/143318125?v=4"
+                                 alt="">
+                        </div>
+                        <div class="comment-info-box">
+                            <div class="info-box">
+                                <span class="nickname cursor:pointer">김가구리</span>
+                                <span class="reg-time">12:31</span>
+                            </div>
+                            <div class="menu-box">
+                                <div class="menu-btn-box"><a
+                                        class="menu icon icon-dots icon-size-3  icon-color-3 cursor:pointer">메뉴</a>
+                                </div>
+                                <ul class="list d:none">
+                                    <li><a class="item edit">수정하기</a></li>
+                                    <li><a class="item delete">삭제하기</a></li>
+                                </ul>
+                            </div>
+                            <div class="content-box">
+                                <span class="content">왈라비티 추천합니다!</span>
+                            </div>
+                            <div class="util-box">
+                                <a class="comment-down-btn btn cursor:pointer icon-color-2 icon-down-arrow deco">
+                                    댓글&nbsp;<span class="comment-count">3</span>개</a>
+                                <a class="comment-reg-btn btn cursor:pointer">댓글 쓰기</a>
+                            </div>
+                            <div class="like-box">
+                                <a class="like icon icon-likes_fill icon-size-0 cursor:pointer">좋아요</a>
+                                <span class="like-count">15</span>
+                            </div>
+                        </div>
+                    </div>
+                    <ul class="sub-comment-list d:none">
+                        <li class="item">
+                            <div class="sub-comment comment-box">
+                                <div class="img-box">
+                                    <img class="profile-img"
+                                         src="https://avatars.githubusercontent.com/u/143318125?v=4" alt="">
+                                </div>
+                                <div class="comment-info-box">
+                                    <div class="info-box">
+                                        <span class="nickname cursor:pointer">김가구리</span>
+                                        <span class="reg-time">12:31</span>
+                                    </div>
+                                    <div class="menu-box">
+                                        <div class="menu-btn-box"><a
+                                                class="menu icon icon-dots icon-size-3  icon-color-3 cursor:pointer">메뉴</a>
+                                        </div>
+                                        <ul class="list d:none">
+                                            <li><a class="item edit">수정하기</a></li>
+                                            <li><a class="item delete">삭제하기</a></li>
+                                        </ul>
+                                    </div>
+                                    <div class="content-box">
+                                        <span class="content">왈라비티 추천합니다!</span>
+                                    </div>
+                                    <div class="like-box">
+                                        <a class="like icon icon-likes_fill icon-size-0 cursor:pointer">좋아요</a>
+                                        <span class="like-count">15</span>
+                                    </div>
+                                </div>
+                            </div>
+                        </li>
+
+                        <li class="item">
+                            <div class="sub-comment comment-box">
+                                <div class="img-box">
+                                    <img class="profile-img"
+                                         src="https://avatars.githubusercontent.com/u/143318125?v=4" alt="">
+                                </div>
+                                <div class="comment-info-box">
+                                    <div class="info-box">
+                                        <span class="nickname cursor:pointer">김가구리</span>
+                                        <span class="reg-time">12:31</span>
+                                    </div>
+                                    <div class="menu-box">
+                                        <div class="menu-btn-box"><a
+                                                class="menu icon icon-dots icon-size-3  icon-color-3 cursor:pointer">메뉴</a>
+                                        </div>
+                                        <ul class="list d:none">
+                                            <li><a class="item edit">수정하기</a></li>
+                                            <li><a class="item delete">삭제하기</a></li>
+                                        </ul>
+                                    </div>
+                                    <div class="content-box">
+                                            <span class="content">왈라비티 추천합니다!
+                                            </span>
+                                    </div>
+                                    <div class="like-box">
+                                        <a class="like icon icon-likes_fill icon-size-0 cursor:pointer">좋아요</a>
+                                        <span class="like-count">15</span>
+                                    </div>
+                                </div>
+                            </div>
+                        </li>
+
+                        <li class="item">
+                            <div class="sub-comment comment-box">
+                                <div class="img-box">
+                                    <img class="profile-img"
+                                         src="https://avatars.githubusercontent.com/u/143318125?v=4" alt="">
+                                </div>
+                                <div class="comment-info-box">
+                                    <div class="info-box">
+                                        <span class="nickname cursor:pointer">김가구리</span>
+                                        <span class="reg-time">12:31</span>
+                                    </div>
+                                    <div class="menu-box">
+                                        <div class="menu-btn-box"><a
+                                                class="menu icon icon-dots icon-size-3  icon-color-3 cursor:pointer">메뉴</a>
+                                        </div>
+                                        <ul class="list d:none">
+                                            <li><a class="item edit">수정하기</a></li>
+                                            <li><a class="item delete">삭제하기</a></li>
+                                        </ul>
+                                    </div>
+                                    <div class="content-box">
+                                        <span class="content">왈라비티 추천합니다!</span>
+                                    </div>
+                                    <div class="like-box">
+                                        <a class="like icon icon-likes_fill icon-size-0 cursor:pointer">좋아요</a>
+                                        <span class="like-count">15</span>
+                                    </div>
+                                </div>
+                            </div>
+                        </li>
+                    </ul>
+
+                </li>
+
+                <li class="item">
+                    <div class="root-comment comment-box">
+                        <div class="img-box">
+                            <img class="profile-img" src="https://avatars.githubusercontent.com/u/143318125?v=4"
+                                 alt="">
+                        </div>
+                        <div class="comment-info-box">
+                            <div class="info-box">
+                                <span class="nickname cursor:pointer">김가구리</span>
+                                <span class="reg-time">12:31</span>
+                            </div>
+                            <div class="menu-box">
+                                <div class="menu-btn-box"><a
+                                        class="menu icon icon-dots icon-size-3  icon-color-3 cursor:pointer">메뉴</a>
+                                </div>
+                                <ul class="list d:none">
+                                    <li><a class="item edit">수정하기</a></li>
+                                    <li><a class="item delete">삭제하기</a></li>
+                                </ul>
+                            </div>
+                            <div class="content-box">
+                                <span class="content">왈라비티 추천합니다!</span>
+                            </div>
+                            <div class="util-box">
+                                <a class="comment-down-btn btn cursor:pointer icon-color-2 icon-down-arrow deco">
+                                    댓글&nbsp;<span class="comment-count">3</span>개</a>
+                                <a class="comment-reg-btn btn cursor:pointer">댓글 쓰기</a>
+                            </div>
+                            <div class="like-box">
+                                <a class="like icon icon-likes_fill icon-size-0 cursor:pointer">좋아요</a>
+                                <span class="like-count">15</span>
+                            </div>
+                        </div>
+                    </div>
+                    <ul class="sub-comment-list d:none">
+                        <li class="item">
+                            <div class="sub-comment comment-box">
+                                <div class="img-box">
+                                    <img class="profile-img"
+                                         src="https://avatars.githubusercontent.com/u/143318125?v=4" alt="">
+                                </div>
+                                <div class="comment-info-box">
+                                    <div class="info-box">
+                                        <span class="nickname cursor:pointer">김가구리</span>
+                                        <span class="reg-time">12:31</span>
+                                    </div>
+                                    <div class="menu-box">
+                                        <div class="menu-btn-box"><a
+                                                class="menu icon icon-dots icon-size-3  icon-color-3 cursor:pointer">메뉴</a>
+                                        </div>
+                                        <ul class="list d:none">
+                                            <li><a class="item edit">수정하기</a></li>
+                                            <li><a class="item delete">삭제하기</a></li>
+                                        </ul>
+                                    </div>
+                                    <div class="content-box">
+                                        <span class="content">왈라비티 추천합니다!</span>
+                                    </div>
+                                    <div class="like-box">
+                                        <a class="like icon icon-likes_fill icon-size-0 cursor:pointer">좋아요</a>
+                                        <span class="like-count">15</span>
+                                    </div>
+                                </div>
+                            </div>
+                        </li>
+
+                        <li class="item">
+                            <div class="sub-comment comment-box">
+                                <div class="img-box">
+                                    <img class="profile-img"
+                                         src="https://avatars.githubusercontent.com/u/143318125?v=4" alt="">
+                                </div>
+                                <div class="comment-info-box">
+                                    <div class="info-box">
+                                        <span class="nickname cursor:pointer">김가구리</span>
+                                        <span class="reg-time">12:31</span>
+                                    </div>
+                                    <div class="menu-box">
+                                        <div class="menu-btn-box"><a
+                                                class="menu icon icon-dots icon-size-3  icon-color-3 cursor:pointer">메뉴</a>
+                                        </div>
+                                        <ul class="list d:none">
+                                            <li><a class="item edit">수정하기</a></li>
+                                            <li><a class="item delete">삭제하기</a></li>
+                                        </ul>
+                                    </div>
+                                    <div class="content-box">
+                                            <span class="content">왈라비티 추천합니다!
+                                            </span>
+                                    </div>
+                                    <div class="like-box">
+                                        <a class="like icon icon-likes_fill icon-size-0 cursor:pointer">좋아요</a>
+                                        <span class="like-count">15</span>
+                                    </div>
+                                </div>
+                            </div>
+                        </li>
+
+                        <li class="item">
+                            <div class="sub-comment comment-box">
+                                <div class="img-box">
+                                    <img class="profile-img"
+                                         src="https://avatars.githubusercontent.com/u/143318125?v=4" alt="">
+                                </div>
+                                <div class="comment-info-box">
+                                    <div class="info-box">
+                                        <span class="nickname cursor:pointer">김가구리</span>
+                                        <span class="reg-time">12:31</span>
+                                    </div>
+                                    <div class="menu-box">
+                                        <div class="menu-btn-box"><a
+                                                class="menu icon icon-dots icon-size-3  icon-color-3 cursor:pointer">메뉴</a>
+                                        </div>
+                                        <ul class="list d:none">
+                                            <li><a class="item edit">수정하기</a></li>
+                                            <li><a class="item delete">삭제하기</a></li>
+                                        </ul>
+                                    </div>
+                                    <div class="content-box">
+                                        <span class="content">왈라비티 추천합니다!</span>
+                                    </div>
+                                    <div class="like-box">
+                                        <a class="like icon icon-likes_fill icon-size-0 cursor:pointer">좋아요</a>
+                                        <span class="like-count">15</span>
+                                    </div>
+                                </div>
+                            </div>
+                        </li>
+                    </ul>
+
+                </li>
+
+                <li class="item">
+                    <div class="root-comment comment-box">
+                        <div class="img-box">
+                            <img class="profile-img" src="https://avatars.githubusercontent.com/u/143318125?v=4"
+                                 alt="">
+                        </div>
+                        <div class="comment-info-box">
+                            <div class="info-box">
+                                <span class="nickname cursor:pointer">김가구리</span>
+                                <span class="reg-time">12:31</span>
+                            </div>
+                            <div class="menu-box">
+                                <div class="menu-btn-box"><a
+                                        class="menu icon icon-dots icon-size-3  icon-color-3 cursor:pointer">메뉴</a>
+                                </div>
+                                <ul class="list d:none">
+                                    <li><a class="item edit">수정하기</a></li>
+                                    <li><a class="item delete">삭제하기</a></li>
+                                </ul>
+                            </div>
+                            <div class="content-box">
+                                <span class="content">왈라비티 추천합니다!</span>
+                            </div>
+                            <div class="util-box">
+                                <a class="comment-down-btn btn cursor:pointer icon-color-2 icon-down-arrow deco">
+                                    댓글&nbsp;<span class="comment-count">3</span>개</a>
+                                <a class="comment-reg-btn btn cursor:pointer">댓글 쓰기</a>
+                            </div>
+                            <div class="like-box">
+                                <a class="like icon icon-likes_fill icon-size-0 cursor:pointer">좋아요</a>
+                                <span class="like-count">15</span>
+                            </div>
+                        </div>
+                    </div>
+                    <ul class="sub-comment-list d:none">
+                        <li class="item">
+                            <div class="sub-comment comment-box">
+                                <div class="img-box">
+                                    <img class="profile-img"
+                                         src="https://avatars.githubusercontent.com/u/143318125?v=4" alt="">
+                                </div>
+                                <div class="comment-info-box">
+                                    <div class="info-box">
+                                        <span class="nickname cursor:pointer">김가구리</span>
+                                        <span class="reg-time">12:31</span>
+                                    </div>
+                                    <div class="menu-box">
+                                        <div class="menu-btn-box"><a
+                                                class="menu icon icon-dots icon-size-3  icon-color-3 cursor:pointer">메뉴</a>
+                                        </div>
+                                        <ul class="list d:none">
+                                            <li><a class="item edit">수정하기</a></li>
+                                            <li><a class="item delete">삭제하기</a></li>
+                                        </ul>
+                                    </div>
+                                    <div class="content-box">
+                                        <span class="content">왈라비티 추천합니다!</span>
+                                    </div>
+                                    <div class="like-box">
+                                        <a class="like icon icon-likes_fill icon-size-0 cursor:pointer">좋아요</a>
+                                        <span class="like-count">15</span>
+                                    </div>
+                                </div>
+                            </div>
+                        </li>
+
+                        <li class="item">
+                            <div class="sub-comment comment-box">
+                                <div class="img-box">
+                                    <img class="profile-img"
+                                         src="https://avatars.githubusercontent.com/u/143318125?v=4" alt="">
+                                </div>
+                                <div class="comment-info-box">
+                                    <div class="info-box">
+                                        <span class="nickname cursor:pointer">김가구리</span>
+                                        <span class="reg-time">12:31</span>
+                                    </div>
+                                    <div class="menu-box">
+                                        <div class="menu-btn-box"><a
+                                                class="menu icon icon-dots icon-size-3  icon-color-3 cursor:pointer">메뉴</a>
+                                        </div>
+                                        <ul class="list d:none">
+                                            <li><a class="item edit">수정하기</a></li>
+                                            <li><a class="item delete">삭제하기</a></li>
+                                        </ul>
+                                    </div>
+                                    <div class="content-box">
+                                            <span class="content">왈라비티 추천합니다!
+                                            </span>
+                                    </div>
+                                    <div class="like-box">
+                                        <a class="like icon icon-likes_fill icon-size-0 cursor:pointer">좋아요</a>
+                                        <span class="like-count">15</span>
+                                    </div>
+                                </div>
+                            </div>
+                        </li>
+
+                        <li class="item">
+                            <div class="sub-comment comment-box">
+                                <div class="img-box">
+                                    <img class="profile-img"
+                                         src="https://avatars.githubusercontent.com/u/143318125?v=4" alt="">
+                                </div>
+                                <div class="comment-info-box">
+                                    <div class="info-box">
+                                        <span class="nickname cursor:pointer">김가구리</span>
+                                        <span class="reg-time">12:31</span>
+                                    </div>
+                                    <div class="menu-box">
+                                        <div class="menu-btn-box"><a
+                                                class="menu icon icon-dots icon-size-3  icon-color-3 cursor:pointer">메뉴</a>
+                                        </div>
+                                        <ul class="list d:none">
+                                            <li><a class="item edit">수정하기</a></li>
+                                            <li><a class="item delete">삭제하기</a></li>
+                                        </ul>
+                                    </div>
+                                    <div class="content-box">
+                                        <span class="content">왈라비티 추천합니다!</span>
+                                    </div>
+                                    <div class="like-box">
+                                        <a class="like icon icon-likes_fill icon-size-0 cursor:pointer">좋아요</a>
+                                        <span class="like-count">15</span>
+                                    </div>
+                                </div>
+                            </div>
+                        </li>
+                    </ul>
+
+                </li>
+
+                <li class="item">
+                    <div class="root-comment comment-box">
+                        <div class="img-box">
+                            <img class="profile-img" src="https://avatars.githubusercontent.com/u/143318125?v=4"
+                                 alt="">
+                        </div>
+                        <div class="comment-info-box">
+                            <div class="info-box">
+                                <span class="nickname cursor:pointer">김가구리</span>
+                                <span class="reg-time">12:31</span>
+                            </div>
+                            <div class="menu-box">
+                                <div class="menu-btn-box"><a
+                                        class="menu icon icon-dots icon-size-3  icon-color-3 cursor:pointer">메뉴</a>
+                                </div>
+                                <ul class="list d:none">
+                                    <li><a class="item edit">수정하기</a></li>
+                                    <li><a class="item delete">삭제하기</a></li>
+                                </ul>
+                            </div>
+                            <div class="content-box">
+                                <span class="content">왈라비티 추천합니다!</span>
+                            </div>
+                            <div class="util-box">
+                                <a class="comment-down-btn btn cursor:pointer icon-color-2 icon-down-arrow deco">
+                                    댓글&nbsp;<span class="comment-count">3</span>개</a>
+                                <a class="comment-reg-btn btn cursor:pointer">댓글 쓰기</a>
+                            </div>
+                            <div class="like-box">
+                                <a class="like icon icon-likes_fill icon-size-0 cursor:pointer">좋아요</a>
+                                <span class="like-count">15</span>
+                            </div>
+                        </div>
+                    </div>
+                    <ul class="sub-comment-list d:none">
+                        <li class="item">
+                            <div class="sub-comment comment-box">
+                                <div class="img-box">
+                                    <img class="profile-img"
+                                         src="https://avatars.githubusercontent.com/u/143318125?v=4" alt="">
+                                </div>
+                                <div class="comment-info-box">
+                                    <div class="info-box">
+                                        <span class="nickname cursor:pointer">김가구리</span>
+                                        <span class="reg-time">12:31</span>
+                                    </div>
+                                    <div class="menu-box">
+                                        <div class="menu-btn-box"><a
+                                                class="menu icon icon-dots icon-size-3  icon-color-3 cursor:pointer">메뉴</a>
+                                        </div>
+                                        <ul class="list d:none">
+                                            <li><a class="item edit">수정하기</a></li>
+                                            <li><a class="item delete">삭제하기</a></li>
+                                        </ul>
+                                    </div>
+                                    <div class="content-box">
+                                        <span class="content">왈라비티 추천합니다!</span>
+                                    </div>
+                                    <div class="like-box">
+                                        <a class="like icon icon-likes_fill icon-size-0 cursor:pointer">좋아요</a>
+                                        <span class="like-count">15</span>
+                                    </div>
+                                </div>
+                            </div>
+                        </li>
+
+                        <li class="item">
+                            <div class="sub-comment comment-box">
+                                <div class="img-box">
+                                    <img class="profile-img"
+                                         src="https://avatars.githubusercontent.com/u/143318125?v=4" alt="">
+                                </div>
+                                <div class="comment-info-box">
+                                    <div class="info-box">
+                                        <span class="nickname cursor:pointer">김가구리</span>
+                                        <span class="reg-time">12:31</span>
+                                    </div>
+                                    <div class="menu-box">
+                                        <div class="menu-btn-box"><a
+                                                class="menu icon icon-dots icon-size-3  icon-color-3 cursor:pointer">메뉴</a>
+                                        </div>
+                                        <ul class="list d:none">
+                                            <li><a class="item edit">수정하기</a></li>
+                                            <li><a class="item delete">삭제하기</a></li>
+                                        </ul>
+                                    </div>
+                                    <div class="content-box">
+                                            <span class="content">왈라비티 추천합니다!
+                                            </span>
+                                    </div>
+                                    <div class="like-box">
+                                        <a class="like icon icon-likes_fill icon-size-0 cursor:pointer">좋아요</a>
+                                        <span class="like-count">15</span>
+                                    </div>
+                                </div>
+                            </div>
+                        </li>
+
+                        <li class="item">
+                            <div class="sub-comment comment-box">
+                                <div class="img-box">
+                                    <img class="profile-img"
+                                         src="https://avatars.githubusercontent.com/u/143318125?v=4" alt="">
+                                </div>
+                                <div class="comment-info-box">
+                                    <div class="info-box">
+                                        <span class="nickname cursor:pointer">김가구리</span>
+                                        <span class="reg-time">12:31</span>
+                                    </div>
+                                    <div class="menu-box">
+                                        <div class="menu-btn-box"><a
+                                                class="menu icon icon-dots icon-size-3  icon-color-3 cursor:pointer">메뉴</a>
+                                        </div>
+                                        <ul class="list d:none">
+                                            <li><a class="item edit">수정하기</a></li>
+                                            <li><a class="item delete">삭제하기</a></li>
+                                        </ul>
+                                    </div>
+                                    <div class="content-box">
+                                        <span class="content">왈라비티 추천합니다!</span>
+                                    </div>
+                                    <div class="like-box">
+                                        <a class="like icon icon-likes_fill icon-size-0 cursor:pointer">좋아요</a>
+                                        <span class="like-count">15</span>
+                                    </div>
+                                </div>
+                            </div>
+                        </li>
+                    </ul>
+
+                </li>
+            </ul>
+        </section>
+    </section>
+</main>
+</body>
+
+</html>
