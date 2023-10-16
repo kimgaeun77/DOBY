@@ -1,7 +1,20 @@
 server:
     port: 80
 
+
 spring:
+    profiles:
+        active: dev
     output:
         ansi:
             enabled: always
+    servlet:
+        multipart:
+            max-file-size: 50MB
+            max-request-size: 50MB
+
+mybatis:
+    mapper-locations: classpath:mappers/*Mapper.xml
+    type-aliases-package: kr.co.doby.web.entity
+    configuration:
+        map-underscore-to-camel-case: true
