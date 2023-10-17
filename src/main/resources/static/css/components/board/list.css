@@ -326,8 +326,8 @@
       .write-info-box
         .profile
           .img-container{  
-        width: 15px;
-        height: 15px;
+        width: 20px;
+        height: 20px;
         overflow: hidden;
         border-radius: 9999px;
   }
@@ -474,7 +474,7 @@
     .item
       .board-info{
         display: flex;
-        align-items: flex-end;
+        align-items: center;
         justify-content: space-between;
 }
 
@@ -484,6 +484,7 @@
       .board-info
         .category-name-tag-box{
         display: flex;
+        align-items: center;
         column-gap: 10px;
         
         /* 추가 */
@@ -502,12 +503,13 @@
         border-radius: 150px;
         border: 1px solid var(--color-main-2);
         padding: 3px 8px;
-        align-self: flex-end;
 
         /* text style*/
         color: var(--color-main-2);
         font-weight: 600;
         font-size: var(--font-size-0);
+
+        flex-shrink: 0;
     
   }
 
@@ -530,7 +532,6 @@
     .item
       .board-info
         .tag-list{
-          align-self: center;
           display: flex;
           column-gap: 8px;
 
