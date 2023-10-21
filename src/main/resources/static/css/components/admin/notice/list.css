@@ -1,0 +1,607 @@
+/* ========================= banner ====================== */
+.banner-box{
+  height: 220px;
+  background-color: var(--color-trans-3);
+}
+
+.banner{
+  width: 100%;
+  height: 100%;
+  
+  padding-top: 60px;
+  padding-left: 20px;
+}
+
+.banner
+  .board-name{
+    font-size: 33px;
+    font-weight: 700;
+    color: var(--color-main-5);
+  }
+
+.banner
+  .catchphrase{
+    font-size: var(--font-size-3);
+    font-weight: 600;
+    color: var(--color-base-5);
+    /* margin */
+    margin-top: 25px;
+}
+/* =========================== container ======================= */
+.container{
+  width: 100%;
+  padding: 30px 20px;
+}
+
+/* --------- 카테고리 ----------------- */
+.container
+  .category-search-filter-box{
+  display: grid;
+                                          /* 더 많은 콘텐츠가 있을 경우 공간을 더 갖게된다. */
+  grid-template-columns: minmax(190px, auto) 1fr minmax(40px, auto);
+  /* 검색 input box가 그려졌을 때  */
+  grid-row-gap: 30px;
+  row-gap: 30px;
+
+  /* grid 정렬 */
+  justify-items: start;
+  align-items: center;
+
+  /* margin */
+  margin-top: 20px;
+}
+
+
+/*-----------작성하기 버튼-----------*/
+.container
+  .btn-write-box
+    .btn-write{
+    display: flex;
+    align-items: center;
+
+    grid-column: 1;
+    grid-row: 1;
+
+    padding: 8px 15px;
+    background-color: var(--color-main-white);
+
+    border: 1px solid var(--color-base-3);
+    border-radius: 5px;
+    
+    /* text style */
+    color: var(--color-base-7);
+    font-size: var(--font-size-3);
+    font-weight: 600;
+}
+
+.container
+  .category-search-filter-box
+    .category{
+    grid-column: 1;
+    grid-row: 1;
+
+    display: flex;
+    column-gap: 25px;
+    font-size: var(--font-size-3);
+    font-weight: 500;
+}
+
+/* 카테고리 호버했을 때 */
+.container
+  .category-search-filter-box
+    .category
+      .item:hover{
+    color: var(--color-main-2);
+
+}
+
+/* 카테고리 눌렀을 때 */
+.container
+  .category-search-filter-box
+    .category
+      .item.active{
+      font-weight: 600;
+      color: var(--color-main-2);
+
+}
+/* --------- 검색버튼 + 필터 버튼 공통 ----------------- */
+.container
+  .category-search-filter-box
+    .search-filter-box{
+    grid-column: 3;
+    grid-row: 1;
+
+    display: flex;
+    column-gap: 15px;
+
+  }
+.container
+  .category-search-filter-box
+    .search-filter-box
+      .btn{
+    border: 1px solid var(--color-base-1);
+    border-radius: 3px;
+    height: 25px;
+    width: 40px;
+    box-sizing: border-box;
+    box-shadow: 0px 1px 4px 0px rgba(0, 0, 0, 0.16);
+
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.container
+  .category-search-filter-box
+    .search-filter-box
+      .btn.deco::before{
+      margin-right: 0;
+}
+
+
+/* -------- 검색 버튼 눌렀을 때 그려지는 input box -------- */
+.container
+  .search-form{
+    grid-row: 2;
+    grid-column: 1 / 4;
+
+    width: 90%;
+
+  }
+
+.container
+  .search-form
+    .search-input-box{
+    width: 100%;
+
+    display: flex;
+    align-items: center;
+
+    position: relative;
+  }
+
+
+.container
+  .search-input-box
+    .input{
+
+    width: 100%;
+    height: 30px;
+    border: 1.5px solid var(--color-base-3);
+    border-radius: 15px;
+    padding-left: 35px;
+    
+  }
+
+.container
+  .search-input-box
+    .input::placeholder{
+
+    font-size: var(--font-size-1);
+    color: var(--color-base-5);
+  }
+
+.container
+  .search-input-box
+    .search{
+
+    order: -1;
+    position: absolute;
+    left: 10px;
+
+  }
+
+/* input 태그는 컨테이너가 아니기때문에 ::before이런거 못씀 */
+.container
+  .search-input-box
+    .search{
+
+      display: inline-block;
+      width: var(--icon-size-1);
+      height: var(--icon-size-1);
+    
+      -webkit-mask-size: var(--icon-size-1);
+      mask-size: var(--icon-size-1);
+      
+      -webkit-mask-image: url(/icon/search.svg);
+      mask-image: url(/icon/search.svg);
+      background-color: var(--color-base-5);
+
+      text-indent: -999px;
+
+  }
+
+  /* -------- 필터 버튼 눌렀을 때 그려지는 정렬 필터 목록 -------- */
+.container 
+  .category-search-filter-box
+    .search-filter-box
+      .filter{
+      /* 부모 */
+      position: relative;
+  }
+.container 
+  .category-search-filter-box
+    .search-filter-box
+      .filter
+        .sort-list{
+        width: 95px;
+        border: 1px solid var(--color-base-3);
+        box-shadow: 0px 1px 4px 0px rgba(0, 0, 0, 0.16);
+        border-radius: 10px;
+        padding: 10px 15px;
+        background-color: var(--color-base-white);
+    
+        /* text style*/
+        text-align: left;
+        font-weight: 500;
+    
+        /* 자식 */
+        position: absolute;
+        right: 1px;
+        margin-top: 10px;
+        z-index: 1;
+    }
+  
+.container
+  .sort-list
+    .item{
+    /* margin */
+    margin-bottom: 8px;
+}
+  
+  /* 마지막 친구도 마진줘서 없애버림 */
+  .container
+    .sort-list
+      .item:last-child{
+        /* margin */
+        margin: 0;
+  }
+  
+  /* 호버 */
+  .container
+    .sort-list
+      .item:hover{
+        color: var(--color-main-2);
+  }
+
+/* ----------- 게시글 목록 -------------------- */
+
+.container
+  .board-list{
+    /* margin */
+    margin-top: 30px;
+    margin-bottom: 40px;
+  }
+
+
+.container
+  .board-list
+    .item{
+    border-bottom: 0.5px solid var(--color-base-3);
+    padding: 12px;
+    
+  }
+
+  .container
+    .board-list
+      .item
+        .board{
+        display: flex;
+        flex-direction: column;
+        row-gap: 12px;
+
+        /* margin */
+        margin: 5px 0px;
+  }
+
+  /* 게시글이 고정일 때(조건문으로 pin값 검사 후 배경색 classList에 추가함. */
+  .container
+    .board-list
+      .item.pin{
+      background-color: var(--color-trans-3);
+    
+  } 
+
+/* 프로필 이미지, 닉네임, 작성시간 box */
+.container
+  .board-list
+    .item
+      .write-info-box{
+        display: flex;
+        align-items: center;
+        column-gap: 10px;
+        color: var(--color-base-black);
+}
+
+/* 프로필 이미지, 닉네임 box */
+.container
+  .board-list
+    .item
+      .write-info-box
+        .profile{
+          display: flex;
+          align-items: center;
+          column-gap: 5px;
+        }
+
+
+/* 프로필 이미지 컨테이너*/
+.container
+  .board-list
+    .item
+      .write-info-box
+        .profile
+          .img-container{  
+        width: 15px;
+        height: 15px;
+        overflow: hidden;
+        border-radius: 9999px;
+  }
+
+/* 프로필 이미지 */
+.container
+  .board-list
+    .item
+      .write-info-box
+        .profile
+          .img{  
+        width: 100%;
+        height: 100%;
+        object-fit: cover;
+
+  }
+
+ /* 닉네임 */ 
+.container
+  .board-list
+    .item
+      .write-info-box
+        .profile
+          .nickname{
+            font-size: 13px;
+            /* 글자수 넘치는거 닉네임 제한 둘거면 굳이 안해도 될 듯*/
+            overflow: hidden;
+            text-overflow: ellipsis;
+            white-space: nowrap;
+} 
+
+ /* 작성시간 */
+.container
+  .board-list
+    .item
+      .write-info-box
+        .reg-date{
+          font-size: 13px;
+}
+
+/* ---- 게시글 제목 부분 ----- */
+
+ /* 게시글 제목 */
+.container
+.board-list
+  .item
+    .title-box{
+      display: flex;
+      align-items: center;
+      column-gap: 10px;
+      /* text style */
+      font-size: var(--font-size-2);
+      font-weight: 600;
+}
+
+.container
+.board-list
+  .item
+    .title-box
+      .title{
+      /* text 넘치는거 처리 */
+      overflow: hidden;
+      text-overflow: ellipsis;
+      white-space: nowrap;
+}
+
+.container
+.board-list
+  .item.pin
+    .title-box::before{
+      /* icon box 생성 */
+      content: '';
+      display: inline-block;
+      width: var(--icon-size-1);
+      height: var(--icon-size-1);
+      background-color: var(--color-base-7);
+    
+      -webkit-mask-repeat: no-repeat;
+      mask-repeat: no-repeat;
+
+      -webkit-mask-position: center;
+      mask-position: center;
+
+      -webkit-mask-size: var(--icon-size-1);
+      mask-size: var(--icon-size-1);
+
+      /* 아이콘 넣어주기 */
+      -webkit-mask-image: url(/icon/pin.svg);
+      mask-image: url(/icon/pin.svg);
+      
+      flex-shrink: 0;
+}
+
+/* 링크누르면 제목 색깔 변경 */
+  .container
+  .board-list
+    .item
+      .title-container
+        .title-box
+          .title:visited{
+          color: var(--color-base-4);
+}
+
+/* 게시글 이미지 아이콘 */
+.container
+  .board-list
+    .item.img
+      .title-box::after{
+
+        /* icon box 생성 */
+        content: '';
+        display: inline-block;
+        width: var(--icon-size-1);
+        height: var(--icon-size-1);
+        background-color: var(--color-base-7);
+      
+        -webkit-mask-repeat: no-repeat;
+        mask-repeat: no-repeat;
+
+        -webkit-mask-position: center;
+        mask-position: center;
+
+        -webkit-mask-size: var(--icon-size-1);
+        mask-size: var(--icon-size-1);
+        /* 아이콘 넣어주기 */
+        -webkit-mask-image: url(/icon/image.svg);
+        mask-image: url(/icon/image.svg);
+
+        flex-shrink: 0;
+}
+
+/* 카테고리이름, tag, views, likes, comments - box */
+.container
+  .board-list
+    .item
+      .board-info{
+        display: flex;
+        align-items: flex-end;
+        justify-content: flex-end;
+}
+
+.container
+  .board-list
+    .item
+      .board-info
+        .category-name-tag-box{
+        display: flex;
+        column-gap: 10px;
+}
+        
+
+/* 조회 수 */
+.container
+  .board-list
+    .item
+      .view-like-comment-box
+        .views{
+          display: flex;
+          align-items: center;
+        }
+
+
+/* -------------- paging ----------------------*/
+
+.container
+  .paging{
+    display: flex;
+    justify-content: center;
+
+    /* font-size가 커지면 gap도 넓어짐 */
+    column-gap: 0.75em;
+
+    /* text style */
+    color: var(--color-base-6);
+    font-size: var(--font-size-1);
+    font-weight: 600;
+    text-align: center;
+
+    /* 고정폭 글자 제어 */
+    font-variant-numeric: tabular-nums;
+
+  }
+
+.container
+  .paging
+    .item{
+    display: inline-block;
+    border: 1px solid var(--color-base-10);
+    border-radius: 5px;
+    padding: 4px 8px;
+    min-width: 2em;
+}
+
+.container
+  .paging
+    .item.arrow{
+    height: 100%;
+}
+
+.container
+  .paging
+    .item.arrow.arrow-prev{
+    background-image: url(/icon/prev.svg);
+    background-repeat: no-repeat; 
+    background-position: left center;
+    
+}
+
+.container
+  .paging
+    .item.arrow.arrow-next{
+    background-image: url(/icon/next.svg);
+    background-repeat: no-repeat;
+    background-position: right center;
+
+}
+
+/* 페이징 눌렀을 때 prev,next는 활성화시킬 필요없음 */
+.container
+  .paging
+    .item.active{
+
+    border: 1px solid var(--color-base-3);
+    background-color: var(--color-base-3);
+    color: var(--color-base-white);
+}
+
+/* -------media 쿼리----------------------------- */
+
+@media(min-width: 700px){
+
+  /* 게시글 제목 키우기 */
+  .container
+    .board-list
+      .item
+        .title-container
+          .title-box
+            .title{
+            font-size: var(--font-size-3);
+  }
+
+    /* 검색폼 */
+    .container
+      .search-form{
+      max-width: 350px;
+      grid-column: 2; 
+      grid-row: 1;
+      justify-self: end;
+      /* 필터랑 간격 margin */
+      margin-right: 15px;
+    }
+
+    /* 페이징 크기 변하게 하기 */
+   .container
+    .paging{
+    font-size: 15px;
+    }
+
+    /* ---------- layout ---------------*/
+
+    .banner-box
+      .banner{
+        max-width: 1120px;
+        margin: 0 auto;
+      }
+
+    .container{
+      max-width: 1120px;
+      margin: 0 auto;
+    }
+}

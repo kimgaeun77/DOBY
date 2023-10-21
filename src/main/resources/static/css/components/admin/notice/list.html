@@ -1,0 +1,445 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Document</title>
+  <link href="/css/reset.css" rel="stylesheet" type="text/css">
+  <link href="/css/root.css" rel="stylesheet" type="text/css">
+  <link href="/css/utils.css" rel="stylesheet" type="text/css">
+  <link href="/css/style.css" rel="stylesheet" type="text/css">
+  <link href="/css/icon.css" rel="stylesheet" type="text/css">
+  <link href="/css/components/admin/notice/list.css" rel="stylesheet" type="text/css">
+  <link href="/css/components/header/header.css" rel="stylesheet" type="text/css" />
+  <link href="/css/components/footer/footer.css" rel="stylesheet" type="text/css" />
+  <script src="/css/js/list.js" defer></script>
+</head>
+<!-- 헤더 -->
+<header class="header d:flex">
+  <h1 class="title d:none">DOBY!</h1>
+  <div class="box d:flex">
+      <a class="logo" href="/">DOBY!</a>
+
+      <nav class="category">
+          <ul class="item-box d:flex">
+              <li class="c:main-2"><a href="/community">커뮤니티</a></li>
+              <li class="c:main-3"><a href="/smalltalk">스몰톡</a></li>
+              <li class="c:main-0"><a href="/with">모임</a></li>
+              <li class="c:main-5"><a href="/notice">공지사항</a></li>
+          </ul>
+      </nav>
+
+      <!-- 검색 -->
+      <form class="search-form" action="" method="">
+          <fieldset class="search-input-box">
+              <legend class="d:none">검색어입력</legend>
+              <input class="input" type="text" placeholder="검색어를 입력해주세요" />
+              <input class="search" type="submit" value="검색" />
+          </fieldset>
+      </form>
+
+      <span class="menu icon icon-menu icon-size-2 md:d:none">메뉴</span>
+
+      <!-- <a class="login icon icon-user icon-size-2" href="/signup.html">로그인</a> -->
+
+      <div class="profile-box">
+          <img class="profile" src="https://avatars.githubusercontent.com/u/143318125?v=4" alt="프로필" />
+          <div class="list-box d:none">
+              <ul class="list d:flex">
+                  <li class="item"><a href="/user/1234" class="link">프로필</a></li>
+                  <li class="item"><a href="/activity" class="link">활동내역</a></li>
+                  <li class="item"><a href="/logout" class="link">로그아웃</a></li>
+              </ul>
+          </div>
+      </div>
+  </div>
+</header>
+<!--  -->
+<body>
+  <main class="main">
+    <!-------------------- 게시글 배너 ----------------------->
+    <div class="banner-box">
+      <section class="banner">
+        <h1 class="board-name">공지사항</h1>
+        <p class="catchphrase">DOBY의 새 소식을 알려드립니다.</p>
+      </section>
+    </div>
+    <!--------------------- 게시글 부분 ------------------>
+    <div class="container">
+
+      <!-- 카테고리 + 검색 filiter -->
+      <div class="category-search-filter-box">
+        <!--작성하기 button -->
+        <div class="btn-write-box d:inline-block">
+          <a class="btn btn-write deco icon-color-3 deco-size-1 icon-write" href="">작성하기</a>
+        </div>
+        <div class="search-filter-box md:align-self:center">
+          <button class="btn search-btn deco deco-size-1 icon-color-1 icon-search md:d:none">
+          </button>
+          <div class="filter">
+            <button class="btn filter-btn deco icon-color-1 icon-filter">
+            </button>
+            <!-- 필터 버튼 눌렀을 때 -->
+            <ul class="sort-list d:none">
+              <!-- 음 ajax로 할거면 a링크 안달아도될듯 -->
+              <li class="item"><a href="">최신순</a></li>
+              <li class="item"><a href="">댓글순</a></li>
+              <li class="item"><a href="">추천순</a></li>
+              <li class="item"><a href="">조회순</a></li>
+            </ul>
+          </div>
+        </div>
+
+        <!-- 검색 버튼 눌렀을 때 -->
+        <form class="search-form d:none md:d:block" action="" method="">
+          <fieldset class="search-input-box">
+            <legend class="d:none">검색어입력</legend>
+            <input class="input" type="text" placeholder="검색어를 입력해주세요">
+            <input class="search" type="submit" value="검색">
+          </fieldset>
+        </form>
+
+      </div>
+
+      <!-- --게시글 목록------ -->
+      <section class="board-list">
+        <h1 class="d:none">게시글 목록</h1>
+        <ul class="board-list">
+
+          <li class="item pin img">
+            <div class="board">
+              <!-- TOP -->
+              <div class="write-info-box">
+                <div class="profile">
+                  <div class="img-container">
+                    <img class="img" src="/image/go_to_mars.png" alt="프로필사진">
+                  </div>
+                  <div class="nickname">DOBY!</div>
+                </div>
+                <div class="reg-date">5분전</div>
+              </div>
+              <!-- 증간 -->
+                <div class="title-box">
+                  <a class="title" href="">DOBY 릴리즈했습니다~👏👏👏</a>
+                </div>
+              <!-- 아래 -->
+              <div class="board-info">
+
+                <div class="view-like-comment-box">
+                  <div class="views deco icon-color-3 icon-views">000</div>
+                </div>
+              </div>
+
+            </div>
+
+          </li>
+
+          <li class="item pin img">
+            <div class="board">
+              <!-- TOP -->
+              <div class="write-info-box">
+                <div class="profile">
+                  <div class="img-container">
+                    <img class="img" src="/image/go_to_mars.png" alt="프로필사진">
+                  </div>
+                  <div class="nickname">DOBY!</div>
+                </div>
+                <div class="reg-date">5분전</div>
+              </div>
+              <!-- 증간 -->
+                <div class="title-box">
+                  <a class="title" href="">DOBY 릴리즈했습니다~👏👏👏</a>
+                </div>
+              <!-- 아래 -->
+              <div class="board-info">
+
+                <div class="view-like-comment-box">
+                  <div class="views deco icon-color-3 icon-views">000</div>
+                </div>
+              </div>
+
+            </div>
+
+          </li>
+
+          <li class="item">
+            <div class="board">
+              <!-- TOP -->
+              <div class="write-info-box">
+                <div class="profile">
+                  <div class="img-container">
+                    <img class="img" src="/image/go_to_mars.png" alt="프로필사진">
+                  </div>
+                  <div class="nickname">DOBY!</div>
+                </div>
+                <div class="reg-date">5분전</div>
+              </div>
+              <!-- 증간 -->
+                <div class="title-box">
+                  <a class="title" href="">DOBY 릴리즈했습니다~👏👏👏</a>
+                </div>
+              <!-- 아래 -->
+              <div class="board-info">
+
+                <div class="view-like-comment-box">
+                  <div class="views deco icon-color-3 icon-views">000</div>
+                </div>
+              </div>
+
+            </div>
+
+          </li>
+
+          <li class="item">
+            <div class="board">
+              <!-- TOP -->
+              <div class="write-info-box">
+                <div class="profile">
+                  <div class="img-container">
+                    <img class="img" src="/image/go_to_mars.png" alt="프로필사진">
+                  </div>
+                  <div class="nickname">DOBY!</div>
+                </div>
+                <div class="reg-date">5분전</div>
+              </div>
+              <!-- 증간 -->
+                <div class="title-box">
+                  <a class="title" href="">DOBY 릴리즈했습니다~👏👏👏</a>
+                </div>
+              <!-- 아래 -->
+              <div class="board-info">
+
+                <div class="view-like-comment-box">
+                  <div class="views deco icon-color-3 icon-views">000</div>
+                </div>
+              </div>
+
+            </div>
+
+          </li>
+
+          <li class="item">
+            <div class="board">
+              <!-- TOP -->
+              <div class="write-info-box">
+                <div class="profile">
+                  <div class="img-container">
+                    <img class="img" src="/image/go_to_mars.png" alt="프로필사진">
+                  </div>
+                  <div class="nickname">DOBY!</div>
+                </div>
+                <div class="reg-date">5분전</div>
+              </div>
+              <!-- 증간 -->
+                <div class="title-box">
+                  <a class="title" href="">DOBY 릴리즈했습니다~👏👏👏</a>
+                </div>
+              <!-- 아래 -->
+              <div class="board-info">
+
+                <div class="view-like-comment-box">
+                  <div class="views deco icon-color-3 icon-views">000</div>
+                </div>
+              </div>
+
+            </div>
+
+          </li>
+
+          <li class="item">
+            <div class="board">
+              <!-- TOP -->
+              <div class="write-info-box">
+                <div class="profile">
+                  <div class="img-container">
+                    <img class="img" src="/image/go_to_mars.png" alt="프로필사진">
+                  </div>
+                  <div class="nickname">DOBY!</div>
+                </div>
+                <div class="reg-date">5분전</div>
+              </div>
+              <!-- 증간 -->
+                <div class="title-box">
+                  <a class="title" href="">DOBY 릴리즈했습니다~👏👏👏</a>
+                </div>
+              <!-- 아래 -->
+              <div class="board-info">
+
+                <div class="view-like-comment-box">
+                  <div class="views deco icon-color-3 icon-views">000</div>
+                </div>
+              </div>
+
+            </div>
+
+          </li>
+
+          <li class="item">
+            <div class="board">
+              <!-- TOP -->
+              <div class="write-info-box">
+                <div class="profile">
+                  <div class="img-container">
+                    <img class="img" src="/image/go_to_mars.png" alt="프로필사진">
+                  </div>
+                  <div class="nickname">DOBY!</div>
+                </div>
+                <div class="reg-date">5분전</div>
+              </div>
+              <!-- 증간 -->
+                <div class="title-box">
+                  <a class="title" href="">DOBY 릴리즈했습니다~👏👏👏</a>
+                </div>
+              <!-- 아래 -->
+              <div class="board-info">
+
+                <div class="view-like-comment-box">
+                  <div class="views deco icon-color-3 icon-views">000</div>
+                </div>
+              </div>
+
+            </div>
+
+          </li>
+
+          <li class="item">
+            <div class="board">
+              <!-- TOP -->
+              <div class="write-info-box">
+                <div class="profile">
+                  <div class="img-container">
+                    <img class="img" src="/image/go_to_mars.png" alt="프로필사진">
+                  </div>
+                  <div class="nickname">DOBY!</div>
+                </div>
+                <div class="reg-date">5분전</div>
+              </div>
+              <!-- 증간 -->
+                <div class="title-box">
+                  <a class="title" href="">DOBY 릴리즈했습니다~👏👏👏</a>
+                </div>
+              <!-- 아래 -->
+              <div class="board-info">
+
+                <div class="view-like-comment-box">
+                  <div class="views deco icon-color-3 icon-views">000</div>
+                </div>
+              </div>
+
+            </div>
+
+          </li>
+
+          <li class="item">
+            <div class="board">
+              <!-- TOP -->
+              <div class="write-info-box">
+                <div class="profile">
+                  <div class="img-container">
+                    <img class="img" src="/image/go_to_mars.png" alt="프로필사진">
+                  </div>
+                  <div class="nickname">DOBY!</div>
+                </div>
+                <div class="reg-date">5분전</div>
+              </div>
+              <!-- 증간 -->
+                <div class="title-box">
+                  <a class="title" href="">DOBY 릴리즈했습니다~👏👏👏</a>
+                </div>
+              <!-- 아래 -->
+              <div class="board-info">
+
+                <div class="view-like-comment-box">
+                  <div class="views deco icon-color-3 icon-views">000</div>
+                </div>
+              </div>
+
+            </div>
+
+          </li>
+
+          <li class="item">
+            <div class="board">
+              <!-- TOP -->
+              <div class="write-info-box">
+                <div class="profile">
+                  <div class="img-container">
+                    <img class="img" src="/image/go_to_mars.png" alt="프로필사진">
+                  </div>
+                  <div class="nickname">DOBY!</div>
+                </div>
+                <div class="reg-date">5분전</div>
+              </div>
+              <!-- 증간 -->
+                <div class="title-box">
+                  <a class="title" href="">DOBY 릴리즈했습니다~👏👏👏</a>
+                </div>
+              <!-- 아래 -->
+              <div class="board-info">
+
+                <div class="view-like-comment-box">
+                  <div class="views deco icon-color-3 icon-views">000</div>
+                </div>
+              </div>
+
+            </div>
+
+          </li>
+
+        </ul>
+      </section>
+
+      <!-- --페이징------ -->
+      <section>
+        <h1 class="d:none">페이징</h1>
+        <ul class="paging">
+          <li>
+            <a class="item arrow arrow-prev" href=""></a>
+          </li>
+          <li>
+            <a class="item active" href="">1</a>
+          </li>
+          <li>
+            <a class="item" href="">2</a>
+          </li>
+          <li>
+            <a class="item" href="">3</a>
+          </li>
+          <li>
+            <a class="item" href="">4</a>
+          </li>
+          <li>
+            <a class="item" href="">5</a>
+          </li>
+          <li>
+            <a class="item arrow arrow-next" href=""></a>
+          </li>
+        </ul>
+      </section>
+
+
+    </div>
+
+  </main>
+  <footer class="footer d:flex">
+    <div class="box d:flex">
+        <div class="content-box">
+            <ul class="list d:flex">
+                <li class="item">구성 및 연락처</li>
+                <li class="item">이용 약관</li>
+                <li class="item">개인정보 처리방침</li>
+            </ul>
+            <div class="info d:flex">
+                <span>Copyright ⓒ All Right Reserved.</span>
+                <span>Contact : admin@doby.co.kr</span>
+            </div>
+        </div>
+        <div class="logo-box">
+            <span class="logo">DOBY!</span>
+        </div>
+    </div>
+</footer>
+</body>
+
+</html>
