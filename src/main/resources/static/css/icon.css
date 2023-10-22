@@ -131,7 +131,56 @@
     -webkit-mask-size: var(--icon-size);
     mask-size: var(--icon-size);
 }
+/* --------- desk top icon size 추가 --- */
+/*  
+    --icon-size-0: 15px;
+    --icon-size-1: 20px;
+    --icon-size-1-1: 25px;
+    --icon-size-2: 30px; 
+*/
 
+@media(min-width: 700px){
+    .md\:icon-size-0{
+    --icon-size: var(--icon-size-0);
+
+    width: var(--icon-size);
+    height: var(--icon-size);
+
+    -webkit-mask-size: var(--icon-size);
+    mask-size: var(--icon-size);
+    }
+
+    .md\:icon-size-1{
+        --icon-size: var(--icon-size-1);
+    
+        width: var(--icon-size);
+        height: var(--icon-size);
+    
+        -webkit-mask-size: var(--icon-size);
+        mask-size: var(--icon-size);
+    }
+
+    .md\:icon-size-1-1{
+        --icon-size: var(--icon-size-1-1);
+    
+        width: var(--icon-size);
+        height: var(--icon-size);
+    
+        -webkit-mask-size: var(--icon-size);
+        mask-size: var(--icon-size);
+    }
+
+    .md\:icon-size-2{
+        --icon-size: var(--icon-size-2);
+    
+        width: var(--icon-size);
+        height: var(--icon-size);
+    
+        -webkit-mask-size: var(--icon-size);
+        mask-size: var(--icon-size);
+    }
+    
+  }
 
 /* ---------------- icon color (icon, deco 모두 사용 가능) ------- */
 
