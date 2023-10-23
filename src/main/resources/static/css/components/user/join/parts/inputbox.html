@@ -1,0 +1,30 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Document</title>
+
+    <link href="/css/reset.css" rel="stylesheet" type="text/css" />
+    <link href="/css/utils.css" rel="stylesheet" type="text/css" />
+    <link href="/css/style.css" rel="stylesheet" type="text/css" />
+    <link href="/css/root.css" rel="stylesheet" type="text/css" />
+    <link
+      href="/css/components/user/join/parts/inputbox.css"
+      rel="stylesheet"
+      type="text/css"
+    />
+  </head>
+  <li class="input-box-set">
+    <label class="input-label" for="email"
+      >이메일
+      <input
+        type="email"
+        id="email"
+        placeholder="이메일을 입력해주세요"
+        pattern="^[a-zA-Z0-9\-_.]+@[a-zA-Z0-9]+\.[a-zA-Z0-9\.]+$"
+        class="email-input-box input-box"
+        required
+    /></label>
+  </li>
+</html>
