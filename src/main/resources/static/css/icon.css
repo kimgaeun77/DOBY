@@ -333,3 +333,28 @@
     -webkit-mask-image: url(/icon/dots.svg);
     mask-image: url(/icon/dots.svg);
 }
+
+/* ---------------- login ------------------- */
+.icon-kakao:before {
+    -webkit-mask-image: url(/icon/kakao.svg);
+    mask-image: url(/icon/kakao.svg);
+  }
+  
+  .icon-google:before {
+    -webkit-mask-image: url(/icon/google.svg);
+    mask-image: url(/icon/google.svg);
+  }
+  .icon-naver:before {
+    -webkit-mask-image: url(/icon/naver.svg);
+    mask-image: url(/icon/naver.svg);
+  }
+  
+  .icon-login-doby:before {
+    -webkit-mask-image: url(/icon/login-doby.svg);
+    mask-image: url(/icon/login-doby.svg);
+  }
+  .icon-warning::before {
+    -webkit-mask-image: url(/icon/warning.svg);
+    mask-image: url(/icon/warning.svg);
+    /* -webkit-mask-position: center; */
+  }
