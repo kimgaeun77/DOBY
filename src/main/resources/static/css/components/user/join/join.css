@@ -1,0 +1,105 @@
+.join-page {
+  display: flex;
+  justify-content: center;
+}
+
+.join {
+  display: flex;
+  flex-direction: column;
+  margin: 50px 20px;
+  align-items: center;
+  /* 임시너비 */
+  width: 100%;
+  max-width: 450px;
+}
+
+/* 로고 박스 */
+.join .logo-link-box {
+  width: 190px;
+  height: 80px;
+}
+/* 로고 박스 - svg */
+.join .logo-link-box .logo-link {
+  width: 100%;
+  height: 100%;
+  background-image: url(/icon/logo_full.svg);
+  background-repeat: no-repeat;
+  background-size: cover;
+}
+/* doby 회원이 되어주세요 */
+.join .greet {
+  display: flex;
+  align-items: center;
+  width: 100%;
+  column-gap: 20px;
+  font-size: var(--font-size-2);
+  font-weight: 600;
+  padding: 20px 0;
+  /* flex-shrink: 1; */
+}
+
+/* doby 회원이 되어주세요 - line */
+.join .greet::before,
+.join .greet::after {
+  content: "";
+  flex: 1;
+  width: auto;
+  height: 0px;
+  border-bottom: 1px solid var(--color-base-4);
+}
+
+/* 사용자 입력 form 부분 */
+.join-form {
+  width: 100%;
+}
+.join .input-box-set-bundle {
+  display: inline-flex;
+  flex-direction: column;
+  align-items: center;
+  align-content: center;
+  row-gap: 35px;
+  width: 100%;
+}
+
+.join .input-box-set .btn-certif {
+  background-color: rgba(250, 204, 87, 0.45);
+  cursor: default;
+}
+
+.join .input-box-set .btn-certif.active {
+  background-color: var(--color-main-3);
+  cursor: pointer;
+}
+
+.join .input-box-set-bundle .toggle-box {
+  font-weight: 600;
+  justify-content: space-between;
+  align-items: center;
+  flex-shrink: 1;
+}
+
+.join .btn-join {
+  width: auto;
+}
+
+.join .input-box-set .input-label .btn-certif {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+@media (min-width: 700px) {
+  .join {
+    margin: 50px 50px;
+  }
+
+  .join .logo-link-box {
+    width: 285px;
+    height: 120px;
+    margin-bottom: 20px;
+  }
+
+  .join .btn-join {
+    font-size: 18px;
+  }
+}
