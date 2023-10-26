@@ -177,11 +177,18 @@
   display: flex;
   column-gap: 15px;
   justify-content: flex-end;
-
+  font-size: 0;
+  align-items: center;
   /* margin */
   margin-top: 30px;
 }
 
+/* 좋아요버튼 */
+.content-container
+  .like-share-btn-container
+    .like-btn.icon-likes-fill::before{
+    background-color: var(--color-main-2);
+}
 /* -------media 쿼리----------------------------- */
 
 @media(min-width: 700px){
