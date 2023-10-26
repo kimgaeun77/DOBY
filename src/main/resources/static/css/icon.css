@@ -59,6 +59,7 @@
 /* 
     --icon-size-0: 15px;
     --icon-size-1: 20px;
+    --icon-size-1-1: 25px;
     --icon-size-2: 30px;
   */
 
@@ -73,9 +74,18 @@
     mask-size: var(--icon-size);
 }
 
-
 .icon-size-1 {
     --icon-size: var(--icon-size-1);
+
+    width: var(--icon-size);
+    height: var(--icon-size);
+
+    -webkit-mask-size: var(--icon-size);
+    mask-size: var(--icon-size);
+}
+
+.icon-size-1-1 {
+    --icon-size: var(--icon-size-1-1);
 
     width: var(--icon-size);
     height: var(--icon-size);
@@ -99,6 +109,7 @@
 /* 
     --icon-size-0: 15px;
     --icon-size-1: 20px;
+    --icon-size-1-1: 25px;
     --icon-size-2: 30px;
   */
 
@@ -114,6 +125,16 @@
 
 .deco-size-1::before {
     --icon-size: var(--icon-size-1);
+
+    width: var(--icon-size);
+    height: var(--icon-size);
+
+    -webkit-mask-size: var(--icon-size);
+    mask-size: var(--icon-size);
+}
+
+.deco-size-1-1::before {
+    --icon-size: var(--icon-size-1-1);
 
     width: var(--icon-size);
     height: var(--icon-size);
@@ -254,6 +275,11 @@
     mask-image: url(/icon/likes.svg);
 }
 
+.icon-likes-fill::before {
+    -webkit-mask-image: url(/icon/likes-fill.svg);
+    mask-image: url(/icon/likes-fill.svg);
+}
+
 .icon-comments::before {
     -webkit-mask-image: url(/icon/comments.svg);
     mask-image: url(/icon/comments.svg);
@@ -323,38 +349,32 @@
     mask-image: url(/icon/x.svg);
 }
 
-.icon-heart::before {
-    -webkit-mask-image: url(/icon/heart.svg);
-    mask-image: url(/icon/heart.svg);
-}
-
-/* 위에까지가 깃 dev브랜치에 올린거 아래부터 새로 추가한것들 */
 .icon-dots::before{
     -webkit-mask-image: url(/icon/dots.svg);
     mask-image: url(/icon/dots.svg);
 }
 
-/* ---------------- login ------------------- */
 .icon-kakao:before {
-    -webkit-mask-image: url(/icon/kakao.svg);
-    mask-image: url(/icon/kakao.svg);
-  }
-  
-  .icon-google:before {
-    -webkit-mask-image: url(/icon/google.svg);
-    mask-image: url(/icon/google.svg);
-  }
-  .icon-naver:before {
-    -webkit-mask-image: url(/icon/naver.svg);
-    mask-image: url(/icon/naver.svg);
-  }
-  
-  .icon-login-doby:before {
-    -webkit-mask-image: url(/icon/login-doby.svg);
-    mask-image: url(/icon/login-doby.svg);
-  }
-  .icon-warning::before {
-    -webkit-mask-image: url(/icon/warning.svg);
-    mask-image: url(/icon/warning.svg);
-    /* -webkit-mask-position: center; */
-  }
+  -webkit-mask-image: url(/icon/kakao.svg);
+  mask-image: url(/icon/kakao.svg);
+}
+
+.icon-google:before {
+  -webkit-mask-image: url(/icon/google.svg);
+  mask-image: url(/icon/google.svg);
+}
+
+.icon-naver:before {
+  -webkit-mask-image: url(/icon/naver.svg);
+  mask-image: url(/icon/naver.svg);
+}
+
+.icon-login-doby:before {
+  -webkit-mask-image: url(/icon/login-doby.svg);
+  mask-image: url(/icon/login-doby.svg);
+}
+
+.icon-warning::before {
+  -webkit-mask-image: url(/icon/warning.svg);
+  mask-image: url(/icon/warning.svg);
+}
