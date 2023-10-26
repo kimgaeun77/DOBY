@@ -354,22 +354,22 @@
     mask-image: url(/icon/dots.svg);
 }
 
-.icon-kakao:before {
+.icon-kakao::before {
   -webkit-mask-image: url(/icon/kakao.svg);
   mask-image: url(/icon/kakao.svg);
 }
 
-.icon-google:before {
+.icon-google::before {
   -webkit-mask-image: url(/icon/google.svg);
   mask-image: url(/icon/google.svg);
 }
 
-.icon-naver:before {
+.icon-naver::before {
   -webkit-mask-image: url(/icon/naver.svg);
   mask-image: url(/icon/naver.svg);
 }
 
-.icon-login-doby:before {
+.icon-login-doby::before {
   -webkit-mask-image: url(/icon/login-doby.svg);
   mask-image: url(/icon/login-doby.svg);
 }
