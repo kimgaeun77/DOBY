@@ -48,6 +48,13 @@
   margin-top: 30px;
 }
 
+/* 공통 속성 (카테고리, 제목, 본문, 태그) */
+.container>form
+  .section-box{
+  display: flex;
+  flex-direction: column;
+}
+
 /* 공통 속성 (카테고리, 제목, 태그 input box)*/
 .container>form
   .input{
@@ -58,16 +65,30 @@
   padding-right: 25px;
   
   background: url(/icon/down_arrow.svg) no-repeat right 3px center;
+
+  /* margin */
+  margin-top: 10px;
+}
+
+/* 공통 속성 (카테고리, 제목, 태그) 경고메시지 */
+.container>form
+  .warning{
+    display: flex;
+    align-items: center;
+    font-size: var(--font-size-0);
+    color: var(--color-accent-0);
+    /* margin */
+    margin-top: 3px;
+}
+
+/* 공통 속성 (카테고리, 제목, 태그) 경고메시지 아이콘 */
+.container>form
+  .warning::before{
+  content: "※";
+  margin-right: 5px;
 }
 
 /* -------------카테고리 --------*/
-.container>form
-  .category-outer-box{
-    display: flex;
-    flex-direction: column;
-    row-gap: 10px;
-}
-
 .container>form
   .category-inner-box{
     /* 부모 */
@@ -82,9 +103,12 @@
       border-radius: 10px;
       border: 1px solid var(--color-base-2);
       overflow: hidden;
+
       /* 자식 */
       position: absolute;
-      top: 40px;  
+
+      /* margin */
+      margin-top: 3px;
 }
 
 /* 카테고리 필터 목록 */
@@ -118,36 +142,20 @@
 
 /* -------------제목 --------*/
 .container>form
-  .title-box{
-    display: flex;
-    flex-direction: column;
-    row-gap: 10px;
-}
-
-.container>form
   .title-box
     .input-title{
     background: none;
     padding-right: 10px;
 }
 
-/* -------------본문 --------*/
-
+/* ------------- 본문 --------*/
 .container>form
-  .content-box{
-  display: flex;
-  flex-direction: column;
-  row-gap: 10px;
+  .section-box.content-box
+    .ck-editor{
+    /* margin */
+    margin-top: 10px;
 }
-
 /* -------------태그 --------*/
-
-.container>form
-  .tag-outer-box{
-    display: flex;
-    flex-direction: column;
-    row-gap: 10px;
-}
 
 .container>form
   .tag-outer-box
@@ -155,22 +163,53 @@
       /* 부모 */
       position: relative;
 }
-
+/* 선택된 태그 박스 */
 .container>form
   .tag-outer-box
     .tag-inner-box
-      .input-tag{
+      .input-tag-box{
+
+      display: flex;
+      gap: 10px;
+      flex-wrap: wrap;
       /* margin */
       margin-bottom: 3px;
 }
 
-/* 태그 메시지 */
+/* 선택된 태그 아이템 */
 .container>form
   .tag-outer-box
     .tag-inner-box
-      .tag-msg{
-      font-size: var(--font-size-0);
-      color: var(--color-main-2);
+      .input-tag-box
+        .selected-tag{
+
+        display: flex;
+        column-gap: 5px;
+        align-items: center;
+
+        padding: 5px 10px;
+        border-radius: 5px;
+        background-color: var(--color-base-1);
+
+        font-size: var(--font-size-0);
+        font-weight: 600;
+}
+
+/* 선택된 태그 취소 버튼 호버했을 때  */
+.container>form
+  .tag-outer-box
+    .tag-inner-box
+      .input-tag-box
+        .selected-tag
+          .cancel-btn:hover::before{
+          background-color: var(--color-main-2);
+}
+
+/* 태그 메시지 */
+.tag-inner-box
+  .tag-msg{
+  font-size: var(--font-size-0);
+  color: var(--color-main-2);
 }
 
 /* 태그 검색 목록 */
@@ -182,15 +221,18 @@
       /* 고정 높이 */
       max-height: 150px;
       /* 검색된 결과가 없을때 */
-      min-height: 50px;
+      min-height: 100px;
       border-radius: 10px;
       border: 1px solid var(--color-base-2);
       overflow: hidden auto;
       box-shadow: 0px 1px 4px 0px rgba(0, 0, 0, 0.16);
+      background-color: var(--color-base-white);
 
       /* 자식 */
       position: absolute;
-      top: 40px;
+
+      /* margin */
+      margin-top: 3px;
 }
 
 .container>form
@@ -221,6 +263,42 @@
         background-color: var(--color-base-3);
 }
 
+/* 태그 검색된 결과가 없을 때 */
+.container>form
+  .tag-outer-box
+    .tag-inner-box
+      .tags
+        .no-search-msg{
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        min-height: inherit;
+        font-weight: 500;
+}
+
+/* 태그 로딩 이미지 */
+.container>form
+  .tag-outer-box
+    .tag-inner-box
+      .tags
+        .loading-img{
+          display: flex;
+          justify-content: center;
+          align-items: center;
+          min-height: inherit;
+}
+
+/* 태그 로딩 이미지 */
+.container>form
+  .tag-outer-box
+    .tag-inner-box
+      .tags
+        .loading-img
+          img{
+          width: 50px;
+          height: 50px;
+  }
+
 /* -------------버튼 --------*/
 .container>form
   .save-cancel-btn-box{
@@ -247,7 +325,7 @@
   .save-cancel-btn-box
     .cancel-btn{
       border: 1px solid var(--color-base-3);
-
+      background-color: var(--color-base-white);
       /* text style */
       color: var(--color-base-5);
 

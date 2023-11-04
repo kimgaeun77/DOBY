@@ -166,7 +166,11 @@ input::-webkit-inner-spin-button {
     margin: 0;
 }
 
-/* 새로 추가한 reset */
 button{
 	all: unset; 
 }
+
+/* 새로 추가한 reset */
+[contenteditable] {
+    outline: 0px solid transparent;
+  }

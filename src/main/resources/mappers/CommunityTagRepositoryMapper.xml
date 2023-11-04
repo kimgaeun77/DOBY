@@ -1,0 +1,22 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper
+        PUBLIC "-//mybatis.org//DTD Config 3.0//EN"
+        "https://mybatis.org/dtd/mybatis-3-mapper.dtd">
+
+<mapper namespace="kr.co.doby.web.repository.CommunityTagRepository">
+
+    <select id="findViewAllByCommunityId" resultType="CommunityTagView">
+        select * from community_tag_view where community_id = #{id}
+    </select>
+
+    <insert id="save" parameterType="CommunityTag">
+        insert into community_tag
+        (community_id, tag_id)
+        values
+        (#{communityId},#{tagId})
+    </insert>
+
+    <delete id="deleteByCommunityId">
+        delete from community_tag where community_id = #{communityId}
+    </delete>
+</mapper>

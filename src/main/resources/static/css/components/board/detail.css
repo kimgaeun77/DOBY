@@ -169,6 +169,8 @@
   .tag-list
     .item::before{
     content: '#';
+    /* margin */
+    margin-right: 2px;;
 } 
 
 /* 좋아요 공유하기 버튼 */

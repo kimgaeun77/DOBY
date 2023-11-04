@@ -1,0 +1,333 @@
+.container{
+  padding: 30px;
+}
+
+/* 캐치프레이즈, 뒤로가기 버튼 */
+.container
+  .catchphrase-back-btn-box{
+  display: flex;
+  align-items: center;
+  column-gap: 10px;
+}
+
+/* 캐치프레이즈 */
+.container
+  .catchphrase-back-btn-box
+    .catchphrase{
+    font-weight: 600;
+    font-size: var(--font-size-4);
+}
+
+.container
+  .catchphrase-back-btn-box
+    .catchphrase::after{
+      content: '📢';
+      margin-left: 5px;
+}
+
+/* 뒤로가기 버튼 */
+.container
+  .catchphrase-back-btn-box
+    .back-btn.icon-x{
+    order: -1;
+    flex-shrink: 0;
+}
+
+.container
+  .catchphrase-back-btn-box
+    .back-btn.icon-x:before{
+    background-color: #292929;
+}
+/* ============= form ====== */
+.container>form{
+  display: flex;
+  flex-direction: column;
+  row-gap: 20px;
+
+  /* margin */
+  margin-top: 30px;
+}
+
+/* 공통 속성 (카테고리, 제목, 본문, 태그) */
+.container>form
+  .section-box{
+  display: flex;
+  flex-direction: column;
+}
+
+/* 공통 속성 (카테고리, 제목, 태그 input box)*/
+.container>form
+  .input{
+  width: 100%;
+  border: 1px solid var(--color-base-2);
+  border-radius: 10px;
+  padding: 10px;
+  padding-right: 25px;
+  
+  background: url(/icon/down_arrow.svg) no-repeat right 3px center;
+
+  /* margin */
+  margin-top: 10px;
+}
+
+/* 공통 속성 (카테고리, 제목, 태그) 경고메시지 */
+.container>form
+  .warning{
+    display: flex;
+    align-items: center;
+    font-size: var(--font-size-0);
+    color: var(--color-accent-0);
+    /* margin */
+    margin-top: 3px;
+}
+
+/* 공통 속성 (카테고리, 제목, 태그) 경고메시지 아이콘 */
+.container>form
+  .warning::before{
+  content: "※";
+  margin-right: 5px;
+}
+
+/* -------------제목 --------*/
+.container>form
+  .title-box
+    .input-title{
+    background: none;
+    padding-right: 10px;
+}
+
+/* ------------- 본문 --------*/
+.container>form
+  .section-box.content-box
+    .ck-editor{
+    /* margin */
+    margin-top: 10px;
+}
+/* -------------태그 --------*/
+
+.container>form
+  .tag-outer-box
+    .tag-inner-box{
+      /* 부모 */
+      position: relative;
+}
+/* 선택된 태그 박스 */
+.container>form
+  .tag-outer-box
+    .tag-inner-box
+      .input-tag-box{
+
+      display: flex;
+      gap: 10px;
+      flex-wrap: wrap;
+      /* margin */
+      margin-bottom: 3px;
+}
+
+/* 선택된 태그 아이템 */
+.container>form
+  .tag-outer-box
+    .tag-inner-box
+      .input-tag-box
+        .selected-tag{
+
+        display: flex;
+        column-gap: 5px;
+        align-items: center;
+
+        padding: 5px 10px;
+        border-radius: 5px;
+        background-color: var(--color-base-1);
+
+        font-size: var(--font-size-0);
+        font-weight: 600;
+}
+
+/* 선택된 태그 취소 버튼 호버했을 때  */
+.container>form
+  .tag-outer-box
+    .tag-inner-box
+      .input-tag-box
+        .selected-tag
+          .cancel-btn:hover::before{
+          background-color: var(--color-main-3);
+}
+
+/* 태그 메시지 */
+.tag-inner-box
+  .tag-msg{
+  font-size: var(--font-size-0);
+  color: var(--color-main-3);
+}
+
+/* 태그 검색 목록 */
+.container>form
+  .tag-outer-box
+    .tag-inner-box
+      .tags{
+      width: 100%;
+      /* 고정 높이 */
+      max-height: 150px;
+      /* 검색된 결과가 없을때 */
+      min-height: 100px;
+      border-radius: 10px;
+      border: 1px solid var(--color-base-2);
+      overflow: hidden auto;
+      box-shadow: 0px 1px 4px 0px rgba(0, 0, 0, 0.16);
+      background-color: var(--color-base-white);
+
+      /* 자식 */
+      position: absolute;
+
+      /* margin */
+      margin-top: 3px;
+}
+
+.container>form
+  .tag-outer-box
+    .tag-inner-box
+      .tags
+        .item{
+        padding: 10px;
+        border-bottom: 1px solid var(--color-base-2);
+        background-color: var(--color-base-white);
+}
+
+/* 마지막 아이템 보더 없앰 */
+.container>form
+  .tag-outer-box
+    .tag-inner-box
+      .tags
+        .item:last-child{
+        border-bottom: none;
+}
+
+/* 태그 검색 목록 호버시 */
+.container>form
+  .tag-outer-box
+    .tag-inner-box
+      .tags
+        .item:hover{
+        background-color: var(--color-base-3);
+}
+
+/* 태그 검색된 결과가 없을 때 */
+.container>form
+  .tag-outer-box
+    .tag-inner-box
+      .tags
+        .no-search-msg{
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        min-height: inherit;
+        font-weight: 500;
+}
+
+/* 태그 로딩 이미지 */
+.container>form
+  .tag-outer-box
+    .tag-inner-box
+      .tags
+        .loading-img{
+          display: flex;
+          justify-content: center;
+          align-items: center;
+          min-height: inherit;
+}
+
+/* 태그 로딩 이미지 */
+.container>form
+  .tag-outer-box
+    .tag-inner-box
+      .tags
+        .loading-img
+          img{
+          width: 50px;
+          height: 50px;
+  }
+
+/* -------------버튼 --------*/
+.container>form
+  .save-cancel-btn-box{
+    display: flex;
+    column-gap: 10px;
+    justify-content: flex-end;
+}
+
+/* 등록, 취소버튼 공통 */
+.container>form
+  .save-cancel-btn-box
+    .btn{
+      border-radius: 10px;
+      padding: 0.6em 5em;
+
+      /* text style */
+      font-size: var(--font-size-2);
+      font-weight: 600;
+
+}
+
+/* 취소버튼 */
+.container>form
+  .save-cancel-btn-box
+    .cancel-btn{
+      border: 1px solid var(--color-base-3);
+      background-color: var(--color-base-white);
+      /* text style */
+      color: var(--color-base-5);
+
+}
+
+/* 등록버튼 */
+.container>form
+  .save-cancel-btn-box
+    .save-btn{
+    background-color: var(--color-main-3);
+
+    /* text style */
+    color: var(--color-base-white);
+
+    flex-grow: 1;
+}
+
+/* -------media 쿼리----------------------------- */
+@media(min-width: 700px){
+
+  /* 캐치프레이즈 */
+  .container
+    .catchphrase-back-btn-box
+      .catchphrase{
+        font-size: var(--font-size-5);
+  }
+
+  /* 태그 메시지 */
+  .container>form
+    .tag-outer-box
+      .tag-inner-box
+        .tag-msg{
+          font-size: var(--font-size-1);
+  }
+
+  /* 등록, 취소버튼 공통 */
+  .container>form
+    .save-cancel-btn-box
+      .btn{
+      padding: 0.6em 2.5em;
+        
+    }
+
+  /* 등록버튼*/
+  .container>form
+    .save-cancel-btn-box
+      .save-btn{
+      flex-grow: 0;
+  }
+
+    /* ---------- layout ---------------*/
+
+    .container{
+      max-width: 1120px;
+      margin: 0 auto;
+    }
+}

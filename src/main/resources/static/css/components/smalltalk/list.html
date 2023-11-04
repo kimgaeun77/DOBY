@@ -44,27 +44,27 @@
             <!-- 필터 버튼 눌렀을 때 -->
             <ul class="sort-list d:none">
               <!-- 음 ajax로 할거면 a링크 안달아도될듯 -->
-              <li class="item"><a href="">최신순</a></li>
-              <li class="item"><a href="">댓글순</a></li>
-              <li class="item"><a href="">추천순</a></li>
-              <li class="item"><a href="">조회순</a></li>
+              <li><a class="item active" href="">최신순</a></li>
+              <li><a class="item" href="">조회순</a></li>
+              <li><a class="item" href="">추천순</a></li>
+              <li><a class="item" href="">댓글순</a></li>
             </ul>
           </div>
         </div>
 
         <!-- 검색 버튼 눌렀을 때 -->
-        <form class="search-form d:none md:d:block md:align-self:center" action="" method="">
+        <form class="search-form d:none md:d:block md:align-self:center">
           <fieldset class="search-input-box">
             <legend class="d:none">검색어입력</legend>
             <input class="input" type="text" placeholder="검색어를 입력해주세요">
-            <input class="search" type="submit" value="검색">
+            <input class="search" type="button" value="검색">
           </fieldset>
         </form>
 
       </div>
 
       <!-- --게시글 목록------ -->
-      <section class="board-list">
+      <section>
         <h1 class="d:none">게시글 목록</h1>
         <ul class="board-list">
           <li class="item pin">

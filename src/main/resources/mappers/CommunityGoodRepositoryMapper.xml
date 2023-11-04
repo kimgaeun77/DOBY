@@ -1,0 +1,20 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper
+        PUBLIC "-//mybatis.org//DTD Config 3.0//EN"
+        "https://mybatis.org/dtd/mybatis-3-mapper.dtd">
+
+<mapper namespace="kr.co.doby.web.repository.CommunityGoodRepository">
+
+    <select id="findById" resultType="CommunityGood">
+        select * from community_good where community_id = #{id} and member_id = #{memberId}
+    </select>
+
+    <insert id="save" parameterType="CommunityGood">
+        insert into community_good values (#{memberId}, #{communityId})
+    </insert>
+
+    <delete id="delete">
+        delete from community_good where member_id = #{memberId} and community_id = #{communityId}
+    </delete>
+
+</mapper>
