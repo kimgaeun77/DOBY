@@ -1,0 +1,138 @@
+.category-search-filter-box {
+  width: 100%;
+  /* 긁어옴 */
+  display: grid;
+  grid-template-columns: minmax(190px, auto) minmax(10px, auto) 1fr;
+  /* minmax(40px, auto); */
+  grid-row-gap: 30px;
+  row-gap: 30px;
+  justify-items: start;
+  align-items: start;
+}
+.search-form {
+  grid-row: 2;
+  grid-column: 1 / 4;
+  width: 90%;
+}
+.search-filter-box {
+  /* display: flex; */
+  grid-row: 1;
+  grid-column: 3;
+  margin-left: auto;
+}
+
+.admin-user-section {
+  width: 100%;
+  margin: 0 auto 40px auto;
+}
+
+.admin-user-content {
+  min-width: 180px;
+  max-width: 1120px;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  row-gap: 20px;
+  margin: 20px;
+}
+
+.user-table {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  width: 100%;
+  font-size: 16px;
+  margin-bottom: 20px;
+}
+.user-table .table-header {
+  width: 100%;
+  background-color: var(--color-main-5);
+  color: var(--color-base-white);
+  border-radius: 7px;
+  margin-bottom: 15px;
+}
+
+.user-table .table-header .table-row {
+  font-weight: 600;
+  margin: 10px 15px;
+  display: grid;
+
+  grid-template-columns: 1fr 3fr 3fr; /* 1:3:3 비율의 그리드 컬럼 설정 */
+  grid-gap: 5px; /* 그리드 셀 간의 간격을 설정할 수 있습니다. */
+}
+.user-table .table-header .table-row .table-header-colunm {
+  text-align: center;
+  margin-left: auto;
+  margin-right: auto;
+}
+.user-table .table-body {
+  width: 100%;
+  padding-left: 15px;
+  padding-right: 15px;
+}
+.user-table .table-body .table-row {
+  border-bottom: 1px solid var(--color-base-3);
+  color: var(--color-base-7);
+  font-weight: 500;
+  display: grid;
+  grid-template-columns: 1fr 3fr 3fr; /* 1:3:3 비율의 그리드 컬럼 설정 */
+  grid-gap: 5px; /* 그리드 셀 간의 간격을 설정할 수 있습니다. */
+}
+.user-table .table-body .table-row:nth-child(n + 9) {
+  display: none;
+}
+.user-table .table-body .table-row .table-data {
+  width: inherit;
+  margin: 10px 15px;
+  text-align: center;
+  line-height: 30px;
+  margin-left: auto;
+  margin-right: auto;
+}
+.user-table .table-body .table-row .data-num,
+.data-mail {
+  display: none;
+}
+
+.paging .item.active {
+  border: 1px solid var(--color-base-10);
+  background-color: var(--color-base-6);
+  color: var(--color-base-white);
+}
+
+@media (min-width: 700px) {
+  main {
+    display: flex;
+    padding: 0 0 0 280px;
+  }
+
+  .banner_title {
+    height: 65px;
+    margin-top: 106px;
+  }
+
+  .search-form {
+    max-width: 350px;
+    grid-column: 3;
+    grid-row: 1;
+    justify-self: end;
+    margin-right: 15px;
+  }
+
+  .admin-user-section {
+    max-width: 820px;
+  }
+  .user-table .table-header .table-row {
+    grid-template-columns: 1fr 3fr 3fr 4fr 4fr; /* 1:3:3 비율의 그리드 컬럼 설정 */
+  }
+  .user-table .table-body .table-row {
+    grid-template-columns: 1fr 3fr 3fr 4fr 4fr; /* 1:3:3 비율의 그리드 컬럼 설정 */
+  }
+  .user-table .table-body .table-row:nth-child(n + 9) {
+    display: grid;
+  }
+  .user-table .table-body .table-row .data-num,
+  .data-mail {
+    display: flex;
+  }
+}

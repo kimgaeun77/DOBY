@@ -1,0 +1,204 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Document</title>
+    <script src="/js/admin/user.js"></script>
+    <link href="/css/reset.css" rel="stylesheet" type="text/css" />
+    <link href="/css/root.css" rel="stylesheet" type="text/css" />
+    <link href="/css/style.css" rel="stylesheet" type="text/css" />
+    <link href="/css/utils.css" rel="stylesheet" type="text/css" />
+    <link href="/css/icon.css" rel="stylesheet" type="text/css" />
+    <link
+      href="/css/components/admin/aside.css"
+      rel="stylesheet"
+      type="text/css"
+    />
+    <link
+      href="/css/components/admin/blind/parts/blind_banner.css"
+      rel="stylesheet"
+      type="text/css"
+    />
+    <link
+      href="/css/components/board/parts/search-form.css"
+      rel="stylesheet"
+      type="text/css"
+    />
+    <link
+      href="/css/components/board/parts/search-filter-btn.css"
+      rel="stylesheet"
+      type="text/css"
+    />
+    <link
+      href="/css/components/board/parts/paging.css"
+      rel="stylesheet"
+      type="text/css"
+    />
+    <link
+      href="/css/components/admin/member/member.css"
+      rel="stylesheet"
+      type="text/css"
+    />
+  </head>
+  <body>
+    <main>
+      <section class="d:none md:admin-aside admin-aside">
+        <h1 class="admin-aside-title">DOBY!</h1>
+        <nav>
+          <h1>사이트 관리</h1>
+          <ul class="management">
+            <li class="manage-user"><a href="">회원 관리</a></li>
+            <li class="manage-article"><a href="">게시글 관리</a></li>
+            <li class="manage-blind"><a href="">블라인드 관리</a></li>
+            <li class="manage-notice"><a href="">공지사항 관리</a></li>
+          </ul>
+          <ul class="toDoby-logout">
+            <li class="toDoby"><a href="">도비로 돌아가기</a></li>
+            <li class="logout"><a href="">로그아웃</a></li>
+          </ul>
+        </nav>
+      </section>
+      <section class="admin-user-section">
+        <section class="banner">
+          <h1 class="banner_title">회원 관리</h1>
+        </section>
+        <section class="admin-user-content">
+          <div class="category-search-filter-box">
+            <div class="search-filter-box md:align-self:center">
+              <button
+                class="btn search-btn deco deco-size-1 icon-color-1 icon-search md:d:none"
+              ></button>
+            </div>
+            <!-- 검색 버튼 눌렀을 때 -->
+            <form class="search-form d:none md:d:block" action="" method="">
+              <fieldset class="search-input-box">
+                <legend class="d:none">검색어입력</legend>
+                <input
+                  class="input"
+                  type="text"
+                  placeholder="검색어를 입력해주세요"
+                />
+                <input class="search" type="submit" value="검색" />
+              </fieldset>
+            </form>
+          </div>
+
+          <table class="user-table">
+            <thead class="table-header">
+              <tr class="table-row">
+                <th class="table-header-colunm" scope="col">번호</th>
+                <th class="table-header-colunm" scope="col">닉네임</th>
+                <th class="table-header-colunm" scope="col">이름</th>
+                <th scope="col" class="table-header-colunm d:none md:d:flex">
+                  전화번호
+                </th>
+                <th scope="col" class="table-header-colunm d:none md:d:flex">
+                  이메일
+                </th>
+              </tr>
+            </thead>
+            <tbody class="table-body">
+              <tr class="table-row">
+                <td class="table-data data-id">1</td>
+                <td class="table-data data-nick">김구리</td>
+                <td class="table-data data-name">김가은</td>
+                <td class="table-data data-num">010-2452-4244</td>
+                <td class="table-data data-mail">kk@gmail.com</td>
+              </tr>
+              <tr class="table-row">
+                <td class="table-data data-id">2</td>
+                <td class="table-data data-nick">임구리</td>
+                <td class="table-data data-name">임지혜</td>
+                <td class="table-data data-num">010-2452-4244</td>
+                <td class="table-data data-mail">kk@gmail.com</td>
+              </tr>
+              <tr class="table-row">
+                <td class="table-data data-id">3</td>
+                <td class="table-data data-nick">차구리</td>
+                <td class="table-data data-name">차원석</td>
+                <td class="table-data data-num">010-2452-4244</td>
+                <td class="table-data data-mail">kk@gmail.com</td>
+              </tr>
+              <tr class="table-row">
+                <td class="table-data data-id">4</td>
+                <td class="table-data data-nick">이구리</td>
+                <td class="table-data data-name">이송희</td>
+                <td class="table-data data-num">010-2452-4244</td>
+                <td class="table-data data-mail">kk@gmail.com</td>
+              </tr>
+              <tr class="table-row">
+                <td class="table-data data-id">5</td>
+                <td class="table-data data-nick">박구리</td>
+                <td class="table-data data-name">박지영</td>
+                <td class="table-data data-num">010-2452-4244</td>
+                <td class="table-data data-mail">kk@gmail.com</td>
+              </tr>
+              <tr class="table-row">
+                <td class="table-data data-id">6</td>
+                <td class="table-data data-nick">로얄사임당</td>
+                <td class="table-data data-name">브리트니점례</td>
+                <td class="table-data data-num">010-2452-4244</td>
+                <td class="table-data data-mail">kk@gmail.com</td>
+              </tr>
+              <tr class="table-row">
+                <td class="table-data data-id">7</td>
+                <td class="table-data data-nick">뚜벅쵸</td>
+                <td class="table-data data-name">박두복</td>
+                <td class="table-data data-num">010-2452-4244</td>
+                <td class="table-data data-mail">kk@gmail.com</td>
+              </tr>
+              <tr class="table-row">
+                <td class="table-data data-id">8</td>
+                <td class="table-data data-nick">강냉이탈곡기</td>
+                <td class="table-data data-name">이흰둥</td>
+                <td class="table-data data-num">010-2452-4244</td>
+                <td class="table-data data-mail">kk@gmail.com</td>
+              </tr>
+              <tr class="table-row">
+                <td class="table-data data-id">9</td>
+                <td class="table-data data-nick">잭콕</td>
+                <td class="table-data data-name">다니엘</td>
+                <td class="table-data data-num">010-2452-4244</td>
+                <td class="table-data data-mail">kk@gmail.com</td>
+              </tr>
+              <tr class="table-row">
+                <td class="table-data data-id">10</td>
+                <td class="table-data data-nick">내도도도독</td>
+                <td class="table-data data-name">김동료</td>
+                <td class="table-data data-num">010-2452-4244</td>
+                <td class="table-data data-mail">kk@gmail.com</td>
+              </tr>
+            </tbody>
+          </table>
+        </section>
+        <section>
+          <h1 class="d:none">페이징</h1>
+          <ul class="paging">
+            <li>
+              <a class="item arrow arrow-prev" href=""></a>
+            </li>
+            <li>
+              <a class="item num active" href="">1</a>
+            </li>
+            <li>
+              <a class="item num" href="">2</a>
+            </li>
+            <li>
+              <a class="item num" href="">3</a>
+            </li>
+            <li>
+              <a class="item num" href="">4</a>
+            </li>
+            <li>
+              <a class="item num" href="">5</a>
+            </li>
+            <li>
+              <a class="item arrow arrow-next" href=""></a>
+            </li>
+          </ul>
+        </section>
+      </section>
+    </main>
+  </body>
+</html>
