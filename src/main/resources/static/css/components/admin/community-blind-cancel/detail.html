@@ -1,0 +1,153 @@
+<!DOCTYPE html>
+<html
+  lang="en"
+  xmlns:th="http://www.thymeleaf.org"
+  xmlns:layout="http://www.ultraq.net.nz/thymeleaf/layout"
+  layout:decorate="~{admin/inc/layout_header.html}"
+>
+  <head>
+    <meta charset="UTF-8" />
+
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Document</title>
+    <script src="/js/admin/detail.js"></script>
+    <link href="/css/reset.css" rel="stylesheet" type="text/css" />
+    <link href="/css/root.css" rel="stylesheet" type="text/css" />
+    <link href="/css/utils.css" rel="stylesheet" type="text/css" />
+    <link href="/css/style.css" rel="stylesheet" type="text/css" />
+    <link href="/css/icon.css" rel="stylesheet" type="text/css" />
+    <link
+      href="/css/components/admin/blind/parts/detail.css"
+      rel="stylesheet"
+      type="text/css"
+    />
+    <script src="/js/modals/report-reason-modal.js"></script>
+    <link
+      href="/css/components/modals/report-modal/report-modal.css"
+      rel="stylesheet"
+      type="text/css"
+    />
+    <!-- <script src="/js/board/detail.js"></script> -->
+  </head>
+
+  <body>
+    <main layout:fragment="main" th:object="${communityBlindCancelDetail}">
+      <!-- 게시글 정보 -->
+      <section>
+        <h1 class="d:none">게시글정보</h1>
+        <div class="board-info">
+          <!-- 게시글 카테고리  -->
+          <!-- <div class="category">LOG</div> -->
+
+          <!-- 게시글 제목, ... 버튼   -->
+          <div class="title-dots-btn-container">
+            <h2>
+              <a href="/community" class="title" th:text="*{title}"
+                >@왈$라viTy로 오세요@@@</a
+              >
+            </h2>
+
+            <div class="dots-btn-list-container">
+              <button
+                class="dots-btn icon icon-size-1 icon-dots icon-color-3 cursor:pointer"
+              >
+                게시글 상세 버튼모음
+              </button>
+              <!-- 관리자일때만 보이는 메뉴 -->
+              <ul class="list d:none">
+                <li class="item">처리중</li>
+                <li class="item">승인</li>
+                <li class="item">거절</li>
+              </ul>
+            </div>
+          </div>
+
+          <!-- 작성 정보, 조회수 -->
+          <dl class="write-info">
+            <div class="item">
+              <dt class="dt hit">카테고리</dt>
+              <dd th:text="*{categoryName}">Smalltalk</dd>
+            </div>
+            <div class="item">
+              <dt class="dt reg-date">작성일자</dt>
+              <dd th:text="*{#dates.format(regDate, 'yyyy.MM.dd  HH:mm')}">
+                2023.08.01
+              </dd>
+            </div>
+            <div class="item">
+              <dt class="dt writer">작성자</dt>
+              <dd>
+                <a class="cursor:pointer" th:text="*{nickname}">김구리</a>
+              </dd>
+            </div>
+          </dl>
+          <div class="report-reason">
+            사유: <span th:text="*{reportReason}">광고성 글 게재</span>
+          </div>
+        </div>
+      </section>
+
+      <!-- 게시글 내용 -->
+
+      <section>
+        <h1 class="d:none">게시글내용</h1>
+        <div class="content-container">
+          <!-- 글 내용 -->
+          <div class="content" th:text="*{cancelReason}"></div>
+
+          <!--            <a class="openModal">모달열기</a>-->
+          <!--            <div class="width:100">-->
+          <!--                <section class="report-modal d:none">-->
+          <!--                    <h1>신고 사유를 선택해주세요.</h1>-->
+          <!--                    <div class="reason-select-box">-->
+          <!--                        <button-->
+          <!--                                type="button"-->
+          <!--                                class="reason-select-btn select-btn icon-expand-down"-->
+          <!--                        >-->
+          <!--                            신고 사유 선택-->
+          <!--                            &lt;!&ndash; <img src="/icon/expand-down.svg " alt="" class="icon-down" /> &ndash;&gt;-->
+          <!--                        </button>-->
+          <!--                        <ul class="selectbox-option d:none">-->
+          <!--                            <li class="option-btn" th:data-post="1">-->
+          <!--                                욕설, 비방, 차별, 혐오-->
+          <!--                            </li>-->
+          <!--                            <li class="option-btn" th:data-post="2">홍보, 영리목적-->
+          <!--                            </li>-->
+          <!--                            <li class="option-btn" th:data-post="3">불법 정보-->
+          <!--                            </li>-->
+          <!--                            <li class="option-btn" th:data-post="4">음란, 청소년 유해-->
+          <!--                            </li>-->
+          <!--                            <li class="option-btn" th:data-post="5">-->
+          <!--                                도배, 스팸, 관련 없는 글-->
+          <!--                            </li>-->
+
+          <!--                        </ul>-->
+          <!--                    </div>-->
+
+          <!--                    <div class="report-modal-buttons">-->
+          <!--                        <input type="submit" class="btn btn-report" value="신고하기"/>-->
+          <!--                        <a class="btn btn-close">닫기</a>-->
+          <!--                    </div>-->
+          <!--                </section>-->
+          <!--                <section class="ok-modal report-modal d:none">-->
+          <!--                    <h1>신고가 완료되었습니다.</h1>-->
+          <!--                    <p>클린한 DOBY를 만들어주셔서 감사합니다.</p>-->
+          <!--                    <div class="finish-modal-buttons">-->
+          <!--                        <a class="btn goBack btn-list">목록으로</a>-->
+          <!--                        <a class="btn  btn-close">닫기</a>-->
+          <!--                    </div>-->
+          <!--                </section>-->
+          <!--                <section class="fail-modal report-modal d:none">-->
+          <!--                    <h1>이미 신고된 글입니다.</h1>-->
+          <!--                    <p>신고가 정상적으로 처리되지 않았습니다.</p>-->
+          <!--                    <div class="finish-modal-buttons">-->
+          <!--                        <a class="btn goBack btn-list">목록으로</a>-->
+          <!--                        <a class="btn  btn-close">닫기</a>-->
+          <!--                    </div>-->
+          <!--                </section>-->
+          <!--            </div>-->
+        </div>
+      </section>
+    </main>
+  </body>
+</html>
