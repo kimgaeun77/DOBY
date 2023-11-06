@@ -1,0 +1,221 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Document</title>
+    <script src="/js/admin/blind.js"></script>
+    <link href="/css/reset.css" rel="stylesheet" type="text/css" />
+    <link href="/css/utils.css" rel="stylesheet" type="text/css" />
+    <link href="/css/style.css" rel="stylesheet" type="text/css" />
+    <link href="/css/root.css" rel="stylesheet" type="text/css" />
+    <link href="/css/icon.css" rel="stylesheet" type="text/css" />
+    <link
+      href="/css/components/admin/blind/parts/blind_banner.css"
+      rel="stylesheet"
+      type="text/css"
+    />
+    <link
+      href="/css/components/admin/blind/parts/blind_list.css"
+      rel="stylesheet"
+      type="text/css"
+    />
+
+    <link
+      href="/css/components/admin/aside.css"
+      rel="stylesheet"
+      type="text/css"
+    />
+    <link
+      href="/css/components/board/parts/category.css"
+      rel="stylesheet"
+      type="text/css"
+    />
+    <link
+      href="/css/components/board/parts/search-form.css"
+      rel="stylesheet"
+      type="text/css"
+    />
+    <link
+      href="/css/components/board/parts/search-filter-btn.css"
+      rel="stylesheet"
+      type="text/css"
+    />
+    <link
+      href="/css/components/board/parts/paging.css"
+      rel="stylesheet"
+      type="text/css"
+    />
+    <link
+      href="/css/components/admin/blind/blind.css"
+      rel="stylesheet"
+      type="text/css"
+    />
+  </head>
+  <body>
+    <main class="blind-main">
+      <!-- <section class="d:none md:admin-aside admin-aside">
+        <h1 class="admin-aside-title">DOBY!</h1>
+        <nav>
+          <h1>사이트 관리</h1>
+          <ul class="management">
+            <li class="manage-user"><a href="">회원 관리</a></li>
+            <li class="manage-article"><a href="">게시글 관리</a></li>
+            <li class="manage-blind"><a href="">블라인드 관리</a></li>
+            <li class="manage-notice"><a href="">공지사항 관리</a></li>
+          </ul>
+          <ul class="toDoby-logout">
+            <li class="toDoby"><a href="">도비로 돌아가기</a></li>
+            <li class="logout"><a href="">로그아웃</a></li>
+          </ul>
+        </nav>
+      </section> -->
+      <section class="blind">
+        <section class="banner">
+          <h1 class="banner_title">블라인드 취소 요청</h1>
+        </section>
+        <section class="blind-cancel-content">
+          <!-- 카테고리 + 검색 filiter -->
+          <div class="category-search-filter-box">
+            <ul class="category">
+              <!-- <li><a class="item active" href="">전체</a></li> -->
+              <li><a class="item community active" href="">커뮤니티</a></li>
+              <li><a class="item with" href="">위드미</a></li>
+              <li><a class="item smalltalk" href="">스몰톡</a></li>
+            </ul>
+            <div class="search-filter-box md:align-self:center">
+              <button
+                class="btn search-btn deco deco-size-1 icon-color-1 icon-search md:d:none"
+              ></button>
+            </div>
+            <!-- 검색 버튼 눌렀을 때 -->
+            <form class="search-form d:none md:d:block" action="" method="">
+              <fieldset class="search-input-box">
+                <legend class="d:none">검색어입력</legend>
+                <input
+                  class="input"
+                  type="text"
+                  placeholder="검색어를 입력해주세요"
+                />
+                <input class="search" type="submit" value="검색" />
+              </fieldset>
+            </form>
+          </div>
+
+          <!-- <nav class="category-box">
+            <input type="button" class="btn-search" />
+            <input
+              type="text"
+              class="bar-search"
+              placeholder="검색어를 입력해주세요"
+            />
+          </nav> -->
+
+          <section class="board-list">
+            <h1 class="d:none">블라인드 철회요청 게시글</h1>
+            <ul class="blind_list">
+              <li class="blind-cancel-unit">
+                <div class="status">처리중</div>
+                <div class="title-box">
+                  <a href="" class="user">신사동도라에몽주먹</a>
+                  <a href="" class="title">신고 철회 요청:게시글번호 61654</a>
+                  <div class="category">커뮤니티</div>
+                </div>
+                <div class="reason d:none md:d:block">사유: 욕설 및 비방</div>
+              </li>
+              <li class="blind-cancel-unit">
+                <div class="status">처리중</div>
+                <div class="title-box">
+                  <a href="" class="user">신사동도라에몽주먹</a>
+                  <a href="" class="title">신고 철회 요청:게시글번호 61654</a>
+                  <div class="category with">위드미</div>
+                </div>
+                <div class="reason d:none md:d:block">사유: 욕설 및 비방</div>
+              </li>
+              <li class="blind-cancel-unit">
+                <div class="status">처리중</div>
+                <div class="title-box">
+                  <a href="" class="user">신사동도라에몽주먹</a>
+                  <a href="" class="title">신고 철회 요청:게시글번호 61654</a>
+                  <div class="category">커뮤니티</div>
+                </div>
+                <div class="reason d:none md:d:block">사유: 욕설 및 비방</div>
+              </li>
+              <li class="blind-cancel-unit">
+                <div class="status finish">처리완료</div>
+                <div class="title-box">
+                  <a href="" class="user">신사동도라에몽주먹</a>
+                  <a href="" class="title">신고 철회 요청:게시글번호 61654</a>
+                  <div class="category smalltalk">스몰톡</div>
+                </div>
+                <div class="reason d:none md:d:block">사유: 욕설 및 비방</div>
+              </li>
+              <li class="blind-cancel-unit">
+                <div class="status finish">처리완료</div>
+                <div class="title-box">
+                  <a href="" class="user">신사동도라에몽주먹</a>
+                  <a href="" class="title">신고 철회 요청:게시글번호 61654</a>
+                  <div class="category">커뮤니티</div>
+                </div>
+                <div class="reason d:none md:d:block">사유: 욕설 및 비방</div>
+              </li>
+              <li class="blind-cancel-unit">
+                <div class="status finish">처리완료</div>
+                <div class="title-box">
+                  <a href="" class="user">신사동도라에몽주먹</a>
+                  <a href="" class="title">신고 철회 요청:게시글번호 61654</a>
+                  <div class="category">커뮤니티</div>
+                </div>
+                <div class="reason d:none md:d:block">사유: 욕설 및 비방</div>
+              </li>
+              <li class="blind-cancel-unit">
+                <div class="status finish">처리완료</div>
+                <div class="title-box">
+                  <a href="" class="user">신사동도라에몽주먹</a>
+                  <a href="" class="title">신고 철회 요청:게시글번호 61654</a>
+                  <div class="category">커뮤니티</div>
+                </div>
+                <div class="reason d:none md:d:block">사유: 욕설 및 비방</div>
+              </li>
+              <li class="blind-cancel-unit">
+                <div class="status finish">처리완료</div>
+                <div class="title-box">
+                  <a href="" class="user">신사동도라에몽주먹</a>
+                  <a href="" class="title">신고 철회 요청:게시글번호 61654</a>
+                  <div class="category">커뮤니티</div>
+                </div>
+                <div class="reason d:none md:d:block">사유: 욕설 및 비방</div>
+              </li>
+            </ul>
+          </section>
+          <section>
+            <h1 class="d:none">페이징</h1>
+            <ul class="paging">
+              <li>
+                <a class="item arrow arrow-prev" href=""></a>
+              </li>
+              <li>
+                <a class="item num active" href="">1</a>
+              </li>
+              <li>
+                <a class="item num" href="">2</a>
+              </li>
+              <li>
+                <a class="item num" href="">3</a>
+              </li>
+              <li>
+                <a class="item num" href="">4</a>
+              </li>
+              <li>
+                <a class="item num" href="">5</a>
+              </li>
+              <li>
+                <a class="item arrow arrow-next" href=""></a>
+              </li>
+            </ul>
+          </section>
+        </section>
+      </section>
+    </main>
+  </body>
+</html>
