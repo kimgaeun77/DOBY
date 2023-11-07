@@ -1,0 +1,136 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link href="/css/reset.css" rel="stylesheet" type="text/css" />
+    <link href="/css/root.css" rel="stylesheet" type="text/css" />
+    <link href="/css/style.css" rel="stylesheet" type="text/css" />
+    <link href="/css/utils.css" rel="stylesheet" type="text/css" />
+    <link href="/css/icon.css" rel="stylesheet" type="text/css" />
+    <link href="profile.css" rel="stylesheet" type="text/css" />
+    
+    <script src="/js/member/profile.js" defer></script>
+
+    <title>Document</title>
+</head>
+
+<body>
+    <main class="profile-edit">
+        <!-- 배너 -->
+        <div class="banner">
+            <h1 class="d:none">배너입니다</h1>
+        </div>
+        <!-- aside -->
+        <div class="content-box">
+            <aside class="d:none mypage-aside">
+                <nav>
+                    <h1>내 계정</h1>
+                    <ul>
+                        <li class="icon-user deco active"><a href="">프로필</a></li>
+                        <li class="icon-history deco deco-size-18"><a href="">활동내역</a></li>
+                        <li class="icon-warning deco"><a href="">신고당한 글</a></li>
+                    </ul>
+                </nav>
+            </aside>
+            <!-- 프로필이미지 -->
+            <div class="infomation-box">
+                <div class="img-box">
+                    <div class="profile-img">
+                        <img src="/image/ahn.png">
+                        <div class="btn-upload">
+                            <label class="icon icon-camera icon-size-2 camera deco" for="upload">
+                                <input class="d:none" type="file" id="upload">업로드
+                            </label>
+                        </div>
+                    </div>
+                </div>
+                <!-- 정보입력 -->
+                <form>
+                    <fieldset class="infomation">
+                        <legend class="d:none">내 정보 입력</legend>
+
+                        <label class="d:none" for="nickname">닉네임</label>
+                        <div class="nickname-box">
+                            <input class="nickname" type="text" id="nickname" value="안보현이안보현" readonly required />
+                            <button class="icon icon-pencil icon-size-1 nickname-edit">수정</button>
+                        </div>
+
+                        <label class="label" for="username">아이디</label>
+                        <input class="username input-box" type="text" id="username" value="cantSeeBohyeon" readonly />
+
+                        <label class="label" for="password">비밀번호</label>
+                        <input class="input-box" type="password" id="username" value="asdfasdf" required />
+                        <span class="d:none warning deco icon-warning">비밀번호가 정확한지 확인해 주세요.</span>
+
+                        <div class="phone-input-certif-box">
+                            <div class="phone-input-certif">
+                                <label class="label" for="phone">전화번호</label>
+                                <div class="certif-req">
+                                    <input type="tel" id="phone" class="phone-num-box" value="010-1234-5678" required />
+                                    <input type="submit" id="certif" class="btn-certif cursor:pointer" value="인증요청" />
+                                </div>
+                            </div>
+                            <span class="d:none warning deco icon-warning">휴대전화번호가 정확한지 확인해 주세요.</span>
+                        </div>
+                        <!-- 인증번호 입력 -->
+                        <div class="d:none certif-number-box">
+                            <input type="number" id="certif-input" placeholder="인증번호를 입력해주세요."
+                                class="certif-input-box input-box" />
+                            <span class="cnt-down">2:58</span>
+                        </div>
+
+                        <div class="techstack-box">
+                            <label class="label" for="techstack">기술스택</label>
+                            <div class="tech-input-box">
+
+                            </div>
+                            <button class="icon icon-size-1-1 icon-downarrow list-open cursor:pointer">열기</button>
+                            <button class="d:none icon-size-1-1 icon icon-uparrow list-close cursor:pointer">닫기</button>
+
+                            <div class="d:none tech-list-box">
+                                <ul class="tech-list">
+                                    <li class="item">JS</li>
+                                    <li class="item">TypeScript</li>
+                                    <li class="item">Vue</li>
+                                    <li class="item">React</li>
+                                    <li class="item">Node.js</li>
+                                    <li class="item">Java</li>
+                                    <li class="item">SpringBoot</li>
+                                    <li class="item">Kotlin</li>
+                                    <li class="item">Python</li>
+                                    <li class="item">HTML</li>
+                                    <li class="item">CSS</li>
+                                </ul>
+                            </div>
+                        </div>
+
+                        <label class="label" for="email">이메일</label>
+                        <input class="input-box" type="text" id="email" value="asdf@gmail.com" required />
+                        <span class="d:none warning deco icon-warning">이메일 형식이 정확한지 확인해주세요.</span>
+
+                        <!-- 이메일 수신동의 -->
+                        <div class="toggle-box">
+                            <span class="label">이메일 수신동의</span>
+                            <div class="toggle cursor:pointer">
+                                <div class="toggle-btn"></div>
+                            </div>
+                        </div>
+
+                        <div class="save-withdraw-btn">
+                            <label class="btn btn-save cursor:pointer"> 저장
+                                <input class="d:none" type="submit" value="저장">
+                            </label>
+                            <div class="btn btn-withdraw cursor:pointer">
+                                <a href="">회원탈퇴</a>
+                            </div>
+                        </div>
+                    </fieldset>
+                </form>
+            </div>
+        </div>
+    </main>
+</body>
+
+</html>
