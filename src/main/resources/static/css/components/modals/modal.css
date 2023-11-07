@@ -1,0 +1,50 @@
+body {
+  background-color: rgba(50, 50, 50, 0.1);
+}
+.modal {
+  height: 170px;
+  width: 330px;
+  font-size: 20px;
+  background-color: var(--color-base-white);
+  border-radius: 8px;
+  align-items: center;
+  display: flex;
+  flex-direction: column;
+}
+
+.modal h1 {
+  font-weight: 800;
+  padding-top: 42px;
+}
+.modal-buttons {
+  padding-top: 30px;
+  display: flex;
+  gap: 16px;
+}
+.modal .btn {
+  width: 110px;
+  height: 44px;
+  border-radius: 50px;
+  font-size: 18px;
+  font-weight: bold;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.modal .btn-yes {
+  background-color: var(--color-main-0);
+  color: var(--color-base-white);
+}
+
+.modal .btn-no {
+  background-color: var(--color-base-white);
+  border: 1px solid var(--color-base-5);
+  color: var(--color-base-5);
+}
+
+.modal .btn-confirm {
+  width: 150px;
+  background-color: var(--color-main-0);
+  color: var(--color-base-white);
+}
