@@ -1,0 +1,47 @@
+.modal-body {
+  background-color: rgba(50, 50, 50, 0.1);
+}
+.congrats-modal {
+  height: 170px;
+  width: 330px;
+  font-size: 22px;
+  background-color: var(--color-base-white);
+  border-radius: 8px;
+  align-items: center;
+  display: flex;
+  flex-direction: column;
+}
+.congrats-modal h1 {
+  font-weight: 800;
+  padding-top: 42px;
+}
+.congrats-modal-buttons {
+  padding-top: 30px;
+  display: flex;
+  gap: 16px;
+}
+.congrats-modal .btn {
+  width: 110px;
+  height: 40px;
+  border-radius: 50px;
+  font-size: 18px;
+  font-weight: bold;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.congrats-modal .btn:active {
+  color: #ae8a1e;
+}
+
+.congrats-modal .btn-login {
+  background-color: var(--color-main-3);
+  color: var(--color-base-white);
+}
+
+.congrats-modal .btn-main {
+  background-color: var(--color-base-white);
+  border: 1px solid var(--color-main-3);
+  color: var(--color-main-3);
+}
