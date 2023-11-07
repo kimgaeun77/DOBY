@@ -378,3 +378,18 @@
   -webkit-mask-image: url(/icon/warning.svg);
   mask-image: url(/icon/warning.svg);
 }
+
+.icon-top_right::before {
+  -webkit-mask-image: url(/icon/top_right.svg);
+  mask-image: url(/icon/top_right.svg);
+}
+
+.icon-pin_empty::before {
+  -webkit-mask-image: url(/icon/pin_empty.svg);
+  mask-image: url(/icon/pin_empty.svg);
+}
+
+.icon-trush::before {
+  -webkit-mask-image: url(/icon/trash.svg);
+  mask-image: url(/icon/trash.svg);
+}
