@@ -1,0 +1,162 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link href="/css/reset.css" rel="stylesheet" type="text/css" />
+    <link href="/css/root.css" rel="stylesheet" type="text/css" />
+    <link href="/css/style.css" rel="stylesheet" type="text/css" />
+    <link href="/css/utils.css" rel="stylesheet" type="text/css" />
+    <link href="/css/icon.css" rel="stylesheet" type="text/css" />
+    <!-- component -->
+    <link href="detail.css" rel="stylesheet" type="text/css" />
+    <link href="/css/components/admin/member/detail/parts/aside.css" rel="stylesheet" type="text/css" />
+    <link href="/css/components/admin/member/detail/parts/banner.css" rel="stylesheet" type="text/css" />
+    <link href="/css/components/admin/member/detail/parts/user-infolist.css" rel="stylesheet" type="text/css" />
+    <link href="/css/components/admin/member/detail/parts/d-stopperiod.css" rel="stylesheet" type="text/css" />
+    <link href="/css/components/admin/member/detail/parts/d-stopreason.css" rel="stylesheet" type="text/css" />
+    <link href="/css/components/admin/member/detail/parts/stopactive.css" rel="stylesheet" type="text/css" />
+    <script src="/js/admin/user/detail/detail.js" defer></script>
+
+
+    <title>Document</title>
+</head>
+
+<body>
+    <main>
+        <section class="admin-user-detail">
+        <!-- aside -->
+        <section class="d:none md:admin-aside admin-aside">
+            <h1 class="admin-aside-title">
+                DOBY!
+            </h1>
+            <nav>
+                <h1>사이트 관리</h1>
+                <div class="management">
+    
+                    <span><a class="deco deco-size-1 icon-manage-user" href="">회원 관리</a></span>
+    
+                    <span class="deco deco-size-1 icon-manage-article">게시글 관리</span>
+                    <ul>
+                        <li><a class="" href="">커뮤니티</a></li>
+                        <li><a href="">스몰톡</a></li>
+                        <li><a href="">모임</a></li>
+                    </ul>
+    
+                    <span class="deco deco-size-1 icon-manage-blind">블라인드 관리</span>
+                    <ul>
+                        <li><a href="">커뮤니티</a></li>
+                        <li><a href="">스몰톡</a></li>
+                        <li><a href="">모임</a></li>
+                    </ul>
+    
+                    <span><a class="deco deco-size-1 icon-manage-notice" href="">공지사항 관리</a></span>
+    
+                    <form class="todoby-logout">
+                        <button type="submit" class="todoby cursor:pointer">도비로 돌아가기</button>
+                        <button type="submit" class="logout cursor:pointer">로그아웃</button>
+                    </form>
+                </div>
+    
+            </nav>
+        </section>
+        <!-- banner -->
+        <section class="user-detail-content">
+            <div>
+                <h1 class="d:none">회원 상세정보</h1>
+            </div>
+            <div class="md:banner banner">
+                <div class="user-info">
+                    <h1 class="d:none">회원정보</h1>
+                    <div class="user-img">
+                        <img src="/image/ahn.png" alt="회원 사진">
+                    </div>
+                    <div class="id-period">
+                        <p class="user-id">회원 아이디</p>
+                        <div class="user-stop-period">
+                            <span class="icon-warning period deco">정지 기간</span>
+                            <div class="date">
+                                <span>정지 시작일</span>
+                                <span>정지 종료일</span>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <!-- category -->
+            <div class="underbanner">
+            
+            <!-- user-infolist -->
+            <section class="infolist-container">
+                <div class="infolist-box">
+                    <h1 class="d:none">회원 정보</h1>
+                    <div class="user-infolist">
+                        <dl class="md:infolist infolist">
+                            <dt>이메일
+                            <dd>asdf@naver.com</dd>
+                            </dt>
+                            <dt>이름
+                            <dd>김이름</dd>
+                            </dt>
+                            <dt>닉네임
+                            <dd>Nickname</dd>
+                            </dt>
+                            <dt>전화번호
+                            <dd>010-1234-5678</dd>
+                            </dt>
+                        </dl>
+                    </div>
+                </div>
+                <!-- d-stopperiod -->
+                <div class="d:none stop-period-box">
+                    <div class="stop-period"> 
+                        <span>회원 정지 기간</span> 
+                        <div class="btn-down">
+                            <button class="icon icon-downarrow cursor:pointer">열기</button>
+                        </div>
+                        <div class="d:none btn-up">
+                            <button class="icon icon-uparrow cursor:pointer">닫기</button>
+                        </div>
+                    </div>
+                    <ul class="d:none period-list cursor:pointer">
+                        <li>회원 정지 기간</li>
+                        <li>7일</li>
+                        <li>30일(1개월)</li>
+                        <li>90일(3개월)</li>
+                        <li>1년</li>
+                        <li>영구정지</li>
+                    </ul>
+                </div>
+                <!-- d-stopreason -->
+                <div class="d:none stop-reason-box">
+                    <div class="stop-reason"> 
+                        <span>회원 정지 사유</span>
+                        <div class="btn-down">
+                            <button class="icon icon-downarrow cursor:pointer">열기</button>
+                        </div>
+                        <div class="d:none btn-up">
+                            <button class="icon icon-uparrow cursor:pointer">닫기</button>
+                        </div>
+                    </div>
+                    <ul class="d:none reason-list cursor:pointer">
+                        <li>회원 정지 사유</li>
+                        <li>욕설, 비방, 차별, 혐오</li>
+                        <li>홍보, 영리목적</li>
+                        <li>불법 정보</li>
+                        <li>음란, 청소년 유해</li>
+                        <li>도배, 스팸, 관련 없는 글</li>
+                    </ul>
+                </div>
+                <!-- stopactive -->
+                <button class="md:stop stop cursor:pointer">
+                    활동 정지
+                </button>
+            </div>
+            </section>
+        </section>
+    </section>
+    </main>
+</body>
+
+</html>

@@ -1,0 +1,119 @@
+.banner {
+    background-color: var(--color-trans-3);
+    height: 220px;
+}
+
+.user-info {
+    min-width: 375px;
+
+    display: flex;
+    justify-content: center;
+
+    flex-shrink: 0;
+
+    font-family: 'pretendard';
+    font-weight: bold;
+
+    padding: 55px 20px
+}
+
+.banner .user-img img {
+    width: 100px;
+    height: 100px;
+    border-radius: 50px;
+    object-fit: cover;
+}
+
+.banner .id-period {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    padding: 0px 25px;
+}
+
+.banner .user-info .user-id {
+    color: var(--color-main-7);
+    font-size: 20px;
+    /* font-weight: bold; */
+}
+
+
+/* ========== user-user-stop-period 활성화 =========== */
+
+.banner .user-info .user-stop-period {
+
+    display: flex;
+    flex-direction: column;
+
+    justify-content: center;
+
+    color: var(--color-accent-0);
+    font-size: 14px;
+    margin-top: 10px;
+    font-weight: 500;
+}
+
+.banner .user-info .user-stop-period .period {
+    display: flex;
+    align-items: center;
+}
+
+.banner .user-info .user-stop-period .period.deco::before {
+    background-color: red;
+    -webkit-mask-size: 14px;
+    mask-size: 14px;
+}
+
+.banner .user-info .date {
+    display: flex;
+}
+
+.banner .user-info .date span:nth-child(2) {
+    margin-left: 5px;
+}
+
+.banner .user-info .date span:nth-child(2):before {
+    content: " ~ ";
+}
+
+
+
+@media (min-width: 700px) {
+
+    .md\:banner .user-info {
+        display: flex;
+        justify-content: normal;
+
+        flex-shrink: 0;
+
+        max-width: 1120px;
+
+        padding: 45px 50px 45px 150px;
+        margin: 0px auto;
+        font-family: 'pretendard';
+        font-weight: bold;
+    }
+
+
+    .md\:banner .user-img img {
+        width: 120px;
+        height: 120px;
+        border-radius: 500px;
+    }
+
+
+    .md\:banner .user-info .user-id {
+        color: var(--color-main-7);
+        font-size: 24px;
+        font-weight: bold;
+    }
+
+    /* ========== user-user-stop-period 활성화 =========== */
+
+    .md\:banner .user-info .user-stop-period {
+        color: var(--color-accent-0);
+        font-size: 16px;
+        margin: 15px 0px 0px 0px
+    }
+
+}

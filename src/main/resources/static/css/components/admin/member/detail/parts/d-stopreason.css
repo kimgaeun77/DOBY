@@ -1,0 +1,61 @@
+.stop-reason-box{
+    position: relative;
+}
+
+.stop-reason {
+    display: flex;
+    flex-direction: column;
+
+    border: 1px solid var(--color-base-2);
+    border-radius: 10px;
+
+    padding: 10px;
+}
+
+.stop-reason .btn-down {
+    position: absolute;
+
+    text-indent: 0px;
+
+    top: 13px;
+    right: 10px;
+}
+
+.stop-reason .btn-up {
+    position: absolute;
+
+    text-indent: 0px;
+
+    top: 13px;
+    right: 10px;
+}
+
+/* =============== */
+
+.reason-list {
+    width: inherit;
+    
+    border: 1px solid var(--color-base-2);
+    border-radius: 10px;
+
+    background-color: white;
+    opacity: 1;
+
+    margin-top: 5px;
+
+    position: absolute;
+
+    overflow: hidden;
+
+    z-index: 1;
+}
+
+.reason-list li {
+    padding: 10px;
+}
+
+.reason-list li:hover {
+    background-color: var(--color-base-2);
+
+    font-weight: 600;
+}

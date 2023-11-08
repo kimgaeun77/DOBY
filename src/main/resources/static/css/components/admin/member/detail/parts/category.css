@@ -1,0 +1,40 @@
+.category{
+    display: flex;
+    column-gap: 25px;
+    font-size: var(--font-size-3);
+    font-weight: 500;
+  }
+  
+  /* 카테고리 호버했을 때 */
+  .category
+    .item:hover{
+    color: var(--color-base-7);
+  }
+  
+  /* 카테고리 눌렀을 때 */
+  .category
+    .item.active{
+    font-weight: 700;
+    color: var(--color-base-7);
+  }
+
+  /* category.css */
+  .category{
+    display: flex;
+    column-gap: 25px;
+    font-size: var(--font-size-3);
+    font-weight: 500;
+  }
+  
+  /* 카테고리 호버했을 때 */
+  .category
+    .item:hover{
+    color: var(--color-base-7);
+  }
+  
+  /* 카테고리 눌렀을 때 */
+  .category
+    .item.active{
+    font-weight: 700;
+    color: var(--color-base-7);
+  }
