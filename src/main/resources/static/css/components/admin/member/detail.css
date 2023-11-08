@@ -1,0 +1,104 @@
+.admin-user-detail {
+    display: flex;
+    height: 100%;
+}
+
+.underbanner{
+    margin: 0px 20px;
+}
+
+.user-detail-content{
+    width: 100%;
+    margin: 0px auto;
+}
+
+.infolist-container{
+    display: grid;
+    grid-template-rows: 1fr 50px;
+    grid-area: 
+    "info"
+    "btn";
+}
+
+.admin-aside{
+    flex-shrink: 0;
+    z-index: 1;
+}
+
+
+.stop{
+    justify-self: end;
+    margin: 30px 0px;
+    right: 0px;
+}
+
+
+@media(min-width:700px){
+
+    .underbanner{
+        max-width: 1120px;
+        padding: 0px 50px 0px 150px;
+        margin: 50px auto;
+    }
+
+    .category-box
+    .category{
+    margin: 40px 0px;
+    justify-content: normal;
+}
+
+    .stop-period-box{
+        display: block !important;
+
+        margin: 0px 30px;
+    }
+
+    .stop-reason-box{
+        display: block !important;
+
+        margin: 0px 30px;
+    }
+
+    
+    .infolist-container{
+        display: grid;
+        grid-template-columns: 1fr 1fr;
+        grid-template-rows: repeat(3, 1fr);
+        grid-template-areas: 
+        "info period"
+        "info reason"
+        "none btn";
+        
+        max-width: 1120px;  
+    }
+
+    .infolist-box{
+        grid-area: info;
+        margin-right: 50px;
+    }
+
+    .stop-period-box{
+        width: 100%;
+        grid-area: period;
+    }
+
+    .stop-reason-box{
+        width: 100%;
+        grid-area: reason;
+    }
+
+    .stop{
+        grid-area: btn;
+
+        align-self: flex-end;
+        justify-self: flex-end;
+
+        position: relative;
+        right: -30px;
+    }
+
+    
+    
+
+    
+}
