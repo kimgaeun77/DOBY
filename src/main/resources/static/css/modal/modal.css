@@ -25,6 +25,8 @@ body:has(.modal-box.open) {
 .modal-box.open {
     opacity: 1;
     height: 100%;
+
+    z-index: 999;
 }
 
 .modal-box .modal {
