@@ -1,0 +1,27 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper
+        PUBLIC "-//mybatis.org//DTD Config 3.0//EN"
+        "https://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="kr.co.doby.web.repository.WithTechRepository">
+
+    <select id="findViewAll" resultType="WithTechView">
+        select
+            *
+        from
+            with_tech_view
+        where with_id = #{withId};
+    </select>
+
+    <insert id="save">
+        INSERT INTO with_tech
+            (with_id, tech_id)
+        VALUES(#{withId}, #{techId});
+    </insert>
+
+    <delete id="deleteByWithId" parameterType="WithTech">
+        delete
+         from with_tech
+        where with_id = #{withId}
+    </delete>
+
+</mapper>
