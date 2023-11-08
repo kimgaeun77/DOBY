@@ -54,8 +54,8 @@
     .write-info-box
       .profile
         .img-container{  
-      width: 15px;
-      height: 15px;
+      width: 20px;
+      height: 20px;
       overflow: hidden;
       border-radius: 9999px;
 }
@@ -163,40 +163,12 @@
       color: var(--color-base-4);
 }
 
-/* 게시글 이미지 아이콘 */
-
-.board-list
-  .item.img
-    .title-box::after{
-
-    /* icon box 생성 */
-    content: '';
-    display: inline-block;
-    width: var(--icon-size-1);
-    height: var(--icon-size-1);
-    background-color: var(--color-base-7);
-
-    -webkit-mask-repeat: no-repeat;
-    mask-repeat: no-repeat;
-
-    -webkit-mask-position: center;
-    mask-position: center;
-
-    -webkit-mask-size: var(--icon-size-1);
-    mask-size: var(--icon-size-1);
-    /* 아이콘 넣어주기 */
-    -webkit-mask-image: url(/icon/image.svg);
-    mask-image: url(/icon/image.svg);
-
-    flex-shrink: 0;
-}
-
 /* 카테고리이름, tag, views, likes, comments - box */
 .board-list
   .item
     .board-info{
       display: flex;
-      align-items: flex-end;
+      align-items: center;
       justify-content: space-between;
 }
 
@@ -205,6 +177,7 @@
     .board-info
       .category-name-tag-box{
       display: flex;
+      align-items: center;
       column-gap: 10px;
 
       /* 추가 */
@@ -222,12 +195,13 @@
       border-radius: 150px;
       border: 1px solid var(--color-main-2);
       padding: 3px 8px;
-      align-self: flex-end;
 
       /* text style*/
       color: var(--color-main-2);
       font-weight: 600;
       font-size: var(--font-size-0);
+
+      flex-shrink: 0;
   
 }
 
@@ -248,7 +222,6 @@
   .item
     .board-info
       .tag-list{
-        align-self: center;
         display: flex;
         column-gap: 8px;
 

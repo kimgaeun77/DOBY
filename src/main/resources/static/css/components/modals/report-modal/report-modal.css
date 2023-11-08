@@ -1,0 +1,135 @@
+.modal-body {
+  background-color: rgba(50, 50, 50, 0.1);
+  min-height: 380px;
+}
+
+.modal-body .width\:100 {
+  width: 100%;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+.modal-body .finish-modal,
+.modal-body .report-modal {
+  min-height: 260px;
+  max-height: 260px;
+  font-size: 15px;
+
+  width: 370px;
+  background-color: var(--color-base-white);
+  border-radius: 8px;
+  align-items: center;
+  display: flex;
+  flex-direction: column;
+
+  position: relative;
+}
+
+.report-modal .reason-select-box {
+  position: absolute;
+  top: 50px;
+  z-index: 4;
+}
+
+.modal-body .select-btn {
+  margin-top: 37px;
+  width: 245px;
+  min-height: 32px;
+  padding-left: 10px;
+  box-sizing: border-box;
+  /* padding: 0px 16px; */
+  border-radius: 10px;
+  display: flex;
+  /* justify-content: space-between; */
+  align-items: center;
+  border: 1px solid var(--color-base-7);
+  background: url(/icon/expand-down.svg) no-repeat 97% 50%/25px auto;
+}
+
+.modal-body .select-btn.active {
+  border-radius: 10px 10px 0 0;
+}
+
+.select-btn.active ~ .selectbox-option {
+  display: flex;
+  flex-direction: column;
+  height: 160px;
+  width: 245px;
+  /* z-index: 3; */
+}
+
+.selectbox-option li {
+  padding-left: 10px;
+  border: 1px solid var(--color-base-7);
+  display: flex;
+  /* justify-content: center; */
+  align-items: center;
+  height: 32px;
+  border-top: none;
+  background-color: var(--color-base-white);
+}
+
+.selectbox-option li:hover {
+  background-color: var(--color-base-3);
+}
+
+.selectbox-option li:last-child {
+  border-radius: 0 0 10px 10px;
+}
+
+/* ======버튼을 사용하는 방식===== */
+/* 한번더 눌러서 포커스 해제 및 선택한값으로 박스안의 값이 바뀌는건 자바스크립트로 구현해야한다고 함. */
+.report-modal h1 {
+  font-weight: 800;
+  padding-top: 30px;
+  font-size: 22px;
+}
+
+.report-modal p {
+  font-weight: 700;
+  font-size: 18px;
+  color: var(--color-base-5);
+  padding-top: 36px;
+}
+
+.report-modal-buttons {
+  padding-top: 120px;
+  display: flex;
+  gap: 16px;
+  z-index: 0;
+}
+
+.finish-modal-buttons {
+  padding-top: 60px;
+  display: flex;
+  gap: 16px;
+  z-index: 0;
+}
+
+.modal-body .btn {
+  width: 150px;
+  height: 44px;
+  border-radius: 50px;
+  font-size: 18px;
+  font-weight: bold;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  position: relative;
+}
+
+.modal-body .btn-list,
+.modal-body .btn-report {
+  background-color: var(--color-main-0);
+  color: var(--color-base-white);
+  /* left: 27px; */
+  /* top: 180px; */
+}
+
+.modal-body .btn-close {
+  background-color: var(--color-base-white);
+  border: 1px solid var(--color-base-5);
+  color: var(--color-base-5);
+  /* left: 193px; */
+  /* top: 180px; */
+}

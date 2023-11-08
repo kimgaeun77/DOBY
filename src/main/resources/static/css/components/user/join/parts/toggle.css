@@ -1,0 +1,56 @@
+.toggle-box {
+  display: flex;
+  font-size: 16px;
+}
+.toggle-box .toggleSwitch {
+  min-width: 40px;
+  width: 40px;
+  height: 25px;
+  /* display: flex; */
+  position: relative;
+  border-radius: 30px;
+  background-color: var(--color-main-3);
+  /* box-shadow: 0 0 16px 3px rgba(0 0 0 / 15%); */
+  cursor: pointer;
+}
+
+.toggle-box .toggleSwitch .toggleButton {
+  width: 20px;
+  height: 20px;
+  position: absolute;
+  top: 2.4px;
+  left: 17px;
+  border-radius: 50%;
+  background: #fef5dd;
+}
+
+.toggle-box #toggle:checked ~ .toggleSwitch {
+  background-color: var(--color-base-3);
+}
+/* 체크되면 상자색 변하게 하는애 */
+
+.toggle-box #toggle:checked ~ .toggleSwitch .toggleButton {
+  left: calc(100% - 37px);
+  background: var(--color-base-white);
+}
+/* 체크되면 동그라미 색과 위치 변하게 하는애 */
+.toggle-box .toggleSwitch,
+.toggleButton {
+  transition: all 0.2s ease-in;
+}
+/* 스무스하게 움직이게하는애 */
+@media (min-width: 700px) {
+  .toggle-box .toggleSwitch {
+    min-width: 58px;
+    height: 37px;
+  }
+  .toggle-box .toggleSwitch .toggleButton {
+    width: 30px;
+    height: 30px;
+    top: 3px;
+    left: 24px;
+  }
+  .toggle-box #toggle:checked ~ .toggleSwitch .toggleButton {
+    left: calc(100% - 54px);
+  }
+}

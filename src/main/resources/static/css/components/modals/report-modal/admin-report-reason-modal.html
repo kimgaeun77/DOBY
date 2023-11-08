@@ -1,0 +1,78 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Document</title>
+    <script src="/js/modals/admin-report-modal.js"></script>
+    <link href="/css/reset.css" rel="stylesheet" type="text/css" />
+    <link href="/css/root.css" rel="stylesheet" type="text/css" />
+    <link href="/css/style.css" rel="stylesheet" type="text/css" />
+    <link href="/css/utils.css" rel="stylesheet" type="text/css" />
+    <link href="/css/icon.css" rel="stylesheet" type="text/css" />
+
+    <link
+      href="/css/components/modals/report-modal/admin-report-modal.css"
+      rel="stylesheet"
+      type="text/css"
+    />
+  </head>
+  <body class="modal-body">
+    <section class="admin-report-modal report-modal">
+      <h1>정지 사유와 기간을 선택해주세요.</h1>
+      <div class="reason-select-box">
+        <button type="button" class="select-btn reason-select-btn">
+          정지 사유 선택
+        </button>
+        <ul class="selectbox-option d:none">
+          <li>
+            <button type="button" class="option-btn">
+              욕설, 비방, 차별, 혐오
+            </button>
+          </li>
+          <li>
+            <button type="button" class="option-btn">홍보, 영리목적</button>
+          </li>
+          <li><button type="button" class="option-btn">불법 정보</button></li>
+          <li>
+            <button type="button" class="option-btn">음란, 청소년 유해</button>
+          </li>
+          <li>
+            <button type="button" class="option-btn">
+              도배, 스팸, 관련 없는 글
+            </button>
+          </li>
+        </ul>
+      </div>
+      <div class="period-select-box">
+        <button type="button" class="select-btn period-select-btn">
+          정지 기간 선택
+        </button>
+        <ul class="selectbox-option d:none">
+          <li>
+            <button type="button" class="option-btn">7일</button>
+          </li>
+          <li>
+            <button type="button" class="option-btn">1개월</button>
+          </li>
+          <li>
+            <button type="button" class="option-btn">3개월</button>
+          </li>
+          <li>
+            <button type="button" class="option-btn">6개월</button>
+          </li>
+          <li>
+            <button type="button" class="option-btn">1년</button>
+          </li>
+          <li>
+            <button type="button" class="option-btn">영구정지</button>
+          </li>
+        </ul>
+      </div>
+      <div class="report-modal-buttons">
+        <input type="submit" class="btn btn-admin-report" value="완료" />
+        <a class="btn btn-close">닫기</a>
+      </div>
+    </section>
+  </body>
+</html>

@@ -1,0 +1,95 @@
+.blind {
+  min-width: 355px;
+  /*padding: 0;*/
+}
+.blind .blind-cancel-content {
+  margin: 20px;
+}
+.blind .category-search-filter-box {
+  /* 긁어옴 */
+  display: grid;
+  grid-template-columns: minmax(190px, auto) minmax(10px, auto) 1fr;
+  /* minmax(40px, auto); */
+  /* grid-template-rows: 1fr 1fr; */
+
+  grid-row-gap: 30px;
+  /* row-gap: 30px; */
+  justify-items: start;
+  align-items: start;
+  margin-top: 20px;
+}
+.blind .category-search-filter-box .category {
+  grid-column: 1;
+  grid-row: 1;
+  display: flex;
+  column-gap: 25px;
+  font-size: var(--font-size-3);
+  font-weight: 500;
+}
+.blind .search-form {
+  grid-row: 2;
+  grid-column: 1 / 4;
+  width: 90%;
+}
+.blind .search-filter-box {
+  /* display: flex; */
+  grid-row: 1;
+  grid-column: 3;
+  margin-left: auto;
+}
+.blind .board-list {
+  margin-top: 30px;
+  margin-bottom: 40px;
+}
+.blind .paging .item.active {
+  border: 1px solid var(--color-base-10);
+  background-color: var(--color-base-6);
+  color: var(--color-base-white);
+}
+.blind .category .item.active,
+.blind .category .item:hover {
+  color: var(--color-main-5);
+}
+.blind .category .item.community.active,
+.blind .category .item.community:hover {
+  color: var(--color-main-2);
+}
+.blind .category .item.with.active,
+.blind .category .item.with:hover {
+  color: var(--color-main-0);
+}
+.blind .category .item.smalltalk.active,
+.blind .category .item.smalltalk:hover {
+  color: var(--color-main-3);
+}
+
+@media (min-width: 700px) {
+  .blind-main {
+    display: flex;
+    /* justify-content: space-between; */
+    padding: 0 0 0 280px;
+  }
+
+  .blind {
+    min-width: 375px;
+    display: flex;
+    flex-direction: column;
+    flex-grow: 1;
+    flex-basis: 0;
+    /*margin: 0 min(0px, auto) 0 min(280px, auto);*/
+    margin: 0 auto;
+    max-width: 1020px;
+    /*padding: 0 0 0 280px;*/
+  }
+  .blind .search-form {
+    max-width: 350px;
+    grid-column: 3;
+    grid-row: 1;
+    justify-self: end;
+    margin-right: 15px;
+  }
+  .blind .blind_list {
+    margin-top: 42px;
+    /* min-width: 700px; */
+  }
+}

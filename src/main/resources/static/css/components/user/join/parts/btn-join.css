@@ -1,0 +1,24 @@
+.btn-certif {
+  width: 90px;
+  min-width: 78px;
+  height: 40px;
+  border: none;
+  border-radius: 15px;
+  background-color: rgba(250, 204, 87, 0.45);
+  color: var(--color-base-white);
+  font-size: var(--font-size-2);
+  font-weight: 600;
+  text-align: center;
+}
+/* 체크되면 상자색 변하게 하는애 */
+input:valid ~ .btn-certif {
+  background-color: var(--color-main-3);
+  cursor: pointer;
+}
+
+@media (min-width: 700px) {
+  .btn-certif {
+    width: 100px;
+    height: 45px;
+  }
+}
