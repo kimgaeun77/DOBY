@@ -1,6 +1,25 @@
 window.addEventListener('load', function () {
 
+
+    const csrfToken = document.querySelector('#csrf').content;
+    const memberIdMeta = document.querySelector('#member-id');
+    let memberId = null;
+
+    if (memberIdMeta)
+        memberId = memberIdMeta.content;
     const withId = parseInt(document.querySelector('#with-id').dataset.withId);
+
+    const loginModal = document.querySelector('.modal-box.login');
+    const loginModalYesButton = loginModal.querySelector('.btn-yes');
+    const loginModalNoButton = loginModal.querySelector('.btn-no');
+
+    loginModalYesButton.onclick = () => {
+        location.href = `/user/login`;
+    }
+
+    loginModalNoButton.onclick = () => {
+        loginModal.classList.remove('open');
+    }
 
     let currentBars = document.querySelectorAll('.current-bar');
     let btnMinus = document.querySelectorAll('.minus');
@@ -60,6 +79,12 @@ window.addEventListener('load', function () {
     let wishBtn = document.querySelector('.wish');
 
     wishBtn.onclick = function () {
+
+        if (memberId === null) {
+            loginModal.classList.add('open');
+            return;
+        }
+
         wishBtn.classList.toggle('active');
 
         let method = null;
@@ -73,7 +98,10 @@ window.addEventListener('load', function () {
 
         let config = {
             method,
-            headers: {"Content-Type": "application/json"}
+            headers: {
+                "Content-Type": "application/json",
+                "x-csrf-token": csrfToken
+            }
         }
 
         let promise = fetch(url, config);
@@ -83,9 +111,10 @@ window.addEventListener('load', function () {
     let btnMenu = document.getElementById('btn-menu');
     let menuItemBox = document.getElementById('menu-item-box');
 
-    btnMenu.onclick = function () {
-        menuItemBox.classList.toggle('d:none');
-    }
+    if (btnMenu)
+        btnMenu.onclick = function () {
+            menuItemBox.classList.toggle('d:none');
+        }
 
 
     let deleteButton = document.querySelector('#delete-button');
@@ -103,19 +132,20 @@ window.addEventListener('load', function () {
 
     let editCurrentButton = document.querySelector('#edit-current-btn');
 
-    editCurrentButton.onclick = async () => {
+    if (editCurrentButton)
+        editCurrentButton.onclick = async () => {
 
-        for (let i = 0; i < positionIds.length; i++) {
-            let data = {
-                withId,
-                positionId: positionIds[i],
-                current: current[i]
+            for (let i = 0; i < positionIds.length; i++) {
+                let data = {
+                    withId,
+                    positionId: positionIds[i],
+                    current: current[i]
+                }
+                await editCurrent(data);
             }
-            await editCurrent(data);
-        }
 
-        editModalBox.classList.add('open');
-    }
+            editModalBox.classList.add('open');
+        }
 
     editModalOkButton.onclick = () => {
         editModalBox.classList.remove('open');
@@ -173,7 +203,10 @@ window.addEventListener('load', function () {
     async function deleteWith() {
         let config = {
             method: "DELETE",
-            headers: {"Content-Type": "application/json"}
+            headers: {
+                "Content-Type": "application/json",
+                "x-csrf-token": csrfToken
+            }
         }
 
         let response = await fetch(`/api/withs/${withId}`, config);
@@ -194,14 +227,17 @@ window.addEventListener('load', function () {
     editButton.onclick = editWith;
 
     function editWith() {
-        location.href = `/with/edit?id=${withId}`;
+        location.href = `/member/with/edit?id=${withId}`;
     }
 
 
     async function editCurrent(data) {
         let config = {
             method: "PUT",
-            headers: {"Content-Type": "application/json"},
+            headers: {
+                "Content-Type": "application/json",
+                "x-csrf-token": csrfToken
+            },
             body: JSON.stringify(data)
         }
 

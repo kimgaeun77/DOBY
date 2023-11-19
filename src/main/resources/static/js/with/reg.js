@@ -2,6 +2,8 @@ import {editor} from '/js/utils/ckeditor/content.js';
 
 window.addEventListener('load', function () {
 
+    const csrfToken = document.querySelector('#csrf').content;
+    const memberId = document.querySelector('#member-id').content;
 
     /* 뒤로가기 버튼 */
     let backButton = document.querySelector('#back-btn');
@@ -511,7 +513,10 @@ window.addEventListener('load', function () {
 
         let config = {
             method: "POST",
-            headers: {"Content-Type": "application/json"},
+            headers: {
+                "Content-Type": "application/json",
+                "x-csrf-token": csrfToken
+            },
             body: JSON.stringify(data)
         }
 
@@ -527,7 +532,10 @@ window.addEventListener('load', function () {
 
         let config = {
             method: "POST",
-            headers: {"Content-Type": "application/json"},
+            headers: {
+                "Content-Type": "application/json",
+                "x-csrf-token": csrfToken
+            },
             body: JSON.stringify(data)
         }
 
@@ -541,7 +549,10 @@ window.addEventListener('load', function () {
 
         let config = {
             method: "POST",
-            headers: {"Content-Type": "application/json"},
+            headers: {
+                "Content-Type": "application/json",
+                "x-csrf-token": csrfToken
+            },
             body: JSON.stringify(data)
         }
 

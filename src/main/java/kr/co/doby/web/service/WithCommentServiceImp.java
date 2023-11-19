@@ -17,9 +17,7 @@ public class WithCommentServiceImp implements WithCommentService {
     private WithCommentRepository repository;
 
     @Override
-    public void reg(WithComment withComment) {
-        Long memberId = 1L;
-
+    public void reg(WithComment withComment, Long memberId) {
         withComment.setMemberId(memberId);
 
         repository.save(withComment);
@@ -44,6 +42,15 @@ public class WithCommentServiceImp implements WithCommentService {
 
     @Override
     public void delete(Long id) {
+        WithComment withComment = repository.findById(id);
         repository.deleteById(id);
+
+        if (withComment.getParentId() == null)
+            repository.deleteByParentId(id);
+    }
+
+    @Override
+    public Integer getCommentCount(Long withId) {
+        return repository.countByWithId(withId);
     }
 }

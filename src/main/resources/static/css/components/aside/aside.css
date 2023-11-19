@@ -62,6 +62,8 @@ body:has(.aside.open) {
 .menu-block .info-box .profile-image-box .profile {
     height: 100%;
     width: 100%;
+
+    object-fit: cover;
 }
 
 .aside .link-box {

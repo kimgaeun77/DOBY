@@ -1,5 +1,6 @@
 package kr.co.doby.web.controller.api;
 
+import kr.co.doby.web.config.auth.DobyUserDetails;
 import kr.co.doby.web.entity.With;
 import kr.co.doby.web.entity.WithView;
 import kr.co.doby.web.etc.Paging;
@@ -7,6 +8,7 @@ import kr.co.doby.web.service.WithService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
+import org.springframework.security.core.annotation.AuthenticationPrincipal;
 import org.springframework.web.bind.annotation.*;
 import org.springframework.web.servlet.support.ServletUriComponentsBuilder;
 
@@ -28,9 +30,15 @@ public class WithController {
             @RequestParam(name = "t", required = false) List<Long> techList,
             @RequestParam(name = "po", required = false) Long positionId,
             @RequestParam(name = "w", required = false) Long wayId,
-            @RequestParam(name = "wi", required = false) Boolean isWish
+            @RequestParam(name = "wi", required = false) Boolean isWish,
+            @AuthenticationPrincipal DobyUserDetails member
     ) {
-        List<WithView> list = service.getViewList(page, categoryId, query, techList, positionId, wayId, isWish);
+        Long memberId = null;
+
+        if (member != null)
+            memberId = member.getId();
+
+        List<WithView> list = service.getViewList(page, categoryId, query, techList, positionId, wayId, isWish, memberId);
         return ResponseEntity.ok(list);
     }
 
@@ -49,9 +57,9 @@ public class WithController {
     }
 
     @PostMapping
-    public ResponseEntity<With> reg(@RequestBody With with) {
+    public ResponseEntity<With> reg(@RequestBody With with, @AuthenticationPrincipal DobyUserDetails member) {
 
-        With saveWith = service.reg(with);
+        With saveWith = service.reg(with, member.getId());
 
         URI location = ServletUriComponentsBuilder.fromCurrentRequest()
                 .path("/{id}")
@@ -71,9 +79,9 @@ public class WithController {
     }
 
     @DeleteMapping("{with-id}")
-    public ResponseEntity<?> delete(@PathVariable("with-id") Long id) {
+    public ResponseEntity<?> delete(@PathVariable("with-id") Long id, @AuthenticationPrincipal DobyUserDetails member) {
 
-        boolean result = service.delete(id);
+        boolean result = service.delete(id, member.getId());
 
         if (!result)
             return ResponseEntity.status(HttpStatus.FORBIDDEN).build();

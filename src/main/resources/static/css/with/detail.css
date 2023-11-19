@@ -1,5 +1,5 @@
 footer {
-    display: none;
+    display: none !important;
 }
 
 .main {
@@ -568,6 +568,10 @@ footer {
 }
 
 @media (min-width: 700px) {
+
+    footer {
+        display: flex !important;
+    }
 
     .main {
         padding-bottom: 0;

@@ -11,7 +11,6 @@ public interface WithRepository {
 
     With findById(Long id);
 
-
     void save(With with);
 
     With last();

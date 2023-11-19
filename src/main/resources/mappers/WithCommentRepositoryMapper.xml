@@ -4,54 +4,55 @@
         "https://mybatis.org/dtd/mybatis-3-mapper.dtd">
 <mapper namespace="kr.co.doby.web.repository.WithCommentRepository">
 
+    <select id="findById" resultType="WithComment">
+        select *
+        from with_comment
+        where id = ${id};
+    </select>
+
     <select id="findViewAll" resultType="WithCommentView">
-        select
-            *
-        from
-            with_comment_view
-        where
-            parent_id is null
-        and
-            with_id = #{withId}
-        and
-            del = 0
+        select *
+        from with_comment_view
+        where parent_id is null
+          and with_id = #{withId}
+          and del = 0
         order by id
     </select>
 
     <insert id="save" parameterType="WithComment">
         insert into with_comment
             (content, member_id, with_id, parent_id)
-        values
-            (#{content},#{memberId},#{withId},#{parentId})
+        values (#{content}, #{memberId}, #{withId}, #{parentId})
 
     </insert>
 
     <select id="findViewAllByParentId" resultType="WithCommentView">
-        select
-            *
-        from
-            with_comment_view
-        where
-            parent_id = #{parentId}
-        and
-            del = 0
+        select *
+        from with_comment_view
+        where parent_id = #{parentId}
+          and del = 0
         order by id
     </select>
 
     <delete id="deleteById">
         update
             with_comment
-        set
-            del = 1
-        where
-            id = #{id}
+        set del = 1
+        where id = #{id}
     </delete>
 
     <select id="countByWithId">
         select count(*)
         from with_comment
         where del = 0
-        and with_id = #{withId}
+          and with_id = #{withId}
     </select>
+
+    <update id="deleteByParentId">
+        update
+        with_comment
+        set del = 1
+        where parent_id = #{parentId}
+    </update>
 
 </mapper>

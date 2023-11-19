@@ -8,6 +8,7 @@ import java.util.List;
 
 @Mapper
 public interface WithCommentRepository {
+    WithComment findById(Long id);
 
     List<WithCommentView> findViewAll(Long withId);
 
@@ -18,4 +19,6 @@ public interface WithCommentRepository {
     void deleteById(Long id);
 
     int countByWithId(Long withId);
+
+    void deleteByParentId(Long parentId);
 }

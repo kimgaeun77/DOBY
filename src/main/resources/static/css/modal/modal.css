@@ -79,17 +79,17 @@ body:has(.modal-box.open) {
 
 .btn-yes {
     background-color: var(--color-main-0);
-    color: var(--color-base-white);
+    color: var(--color-base-white) !important;
 }
 
 .btn-no {
     background-color: var(--color-base-white);
     border: 1px solid var(--color-base-5);
-    color: var(--color-base-5);
+    color: var(--color-base-5) !important;
 }
 
 .btn-confirm {
     width: 150px;
     background-color: var(--color-main-0);
-    color: var(--color-base-white);
+    color: var(--color-base-white) !important;
 }
