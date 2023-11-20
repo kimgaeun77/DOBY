@@ -1,0 +1,42 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper
+        PUBLIC "-//mybatis.org//DTD Config 3.0//EN"
+        "https://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="kr.co.doby.web.repository.WithPositionRepository">
+
+    <select id="findViewAll" resultType="WithPositionView">
+        select
+            *
+        from
+            with_position_view
+        where with_id = #{withId};
+    </select>
+
+    <select id="countCapacityById">
+        select
+            SUM(capacity) as capacity
+        from
+            with_position
+        where with_id = ${withId};
+    </select>
+
+
+    <insert id="save">
+        INSERT INTO with_position
+            (with_id, position_id, capacity)
+        VALUES(#{withId}, #{positionId}, #{capacity});
+    </insert>
+
+    <select id="update" parameterType="WithPosition">
+        update with_position
+        set current = #{current}
+        where with_id =#{withId}
+        and position_id = #{positionId}
+    </select>
+
+    <delete id="deleteByWithId">
+        delete from with_position
+        where with_id = #{withId}
+    </delete>
+
+</mapper>

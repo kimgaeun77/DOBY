@@ -1,0 +1,252 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org"
+      xmlns:layout="http://www.ultraq.net.nz/thymeleaf/layout"
+      xmlns:sec="http://www.thymeleaf.org/extras/spring-security"
+      layout:decorate="~{inc/layout}">
+<head>
+    <link href="/css/with/detail.css" rel="stylesheet" type="text/css"/>
+    <link href="/css/components/comment/comment.css" rel="stylesheet" type="text/css"/>
+    <link href="/css/utils/editor/style.css" rel="stylesheet" type="text/css"/>
+    <link href="/css/utils/highlight/styles/atom-one-dark.min.css" rel="stylesheet">
+    <link href="/css/modal/modal.css" rel="stylesheet">
+    <script src="/js/utils/ckeditor/ckeditor.js"></script>
+    <script type="module" src="/js/with/comment.js"></script>
+    <script src="/js/with/detail.js"></script>
+    <script src="/js/utils/highlight/highlight.min.js"></script>
+    <script src="/js/utils/highlight/setting.js"></script>
+    <title>모임 상세</title>
+</head>
+
+<body>
+<main layout:fragment="main" class="main">
+    <section class="board d:flex">
+        <h1 class="d:none">게시글</h1>
+        <span class="category">with me!</span>
+        <section class="title-box d:flex">
+            <h1 class="title" th:text="${with.title}">통신판매 디저트 플랫폼 프로젝트 흰둥 디저트 개발자 구인합니다!</h1>
+            <div class="d:none" id="with-id" th:data-with-id="${with.id}"></div>
+            <div class="status-box" th:classappend="${with.close ? 'close' : ''}">
+                <span class="status" th:text="${with.close ? '마감됨' : '모집중'}">모집중</span>
+            </div>
+        </section>
+        <section class="info-box d:flex">
+            <h1 class="d:none">게시글 정보</h1>
+            <div class="board-info d:flex">
+                <div class="writer">
+                    <span class="colon">작성자</span>
+                    <span th:text="${member.nickname}">김오리</span>
+                </div>
+                <div class="date">
+                    <span class="colon">작성일자</span>
+                    <span th:text="${with.timeDifference}">2023.08.01</span>
+                </div>
+                <div class="hit">
+                    <span class="colon">조회수</span>
+                    <span><span th:text="${with.hit}">592</span>회</span>
+                </div>
+            </div>
+            <div class="menu-box d:flex">
+                <div class="icon-box"><a class="share icon icon-share icon-size-0 icon-color-5 cursor:pointer"
+                                         id="btn-share">공유</a>
+                </div>
+                <div class="icon-box" sec:authorize="isAuthenticated()"
+                     th:if="${with.memberId == #authentication.principal.id}"><a
+                        class="menu icon icon-col-menu icon-size-0 icon-color-5 cursor:pointer"
+                        id="btn-menu">메뉴</a>
+                </div>
+                <div class="menu-item-box d:none" id="menu-item-box">
+                    <ul class="list d:flex">
+                        <li class="item" id="edit-button"><a>수정하기</a></li>
+                        <li class="item" id="delete-button"><a>삭제하기</a></li>
+                    </ul>
+                </div>
+            </div>
+        </section>
+        <section class="guide">
+            <h1 class="d:none">프로젝트 정보</h1>
+            <div class="category">
+                <span class="key">모집 구분</span>
+                <span class="value" th:text="${category.name}">프로젝트</span>
+            </div>
+            <div class="way">
+                <span class="key">진행 방식</span>
+                <span class="value" th:text="${way.name}">온라인</span>
+            </div>
+            <div class="personnel">
+                <span class="key">모집 인원</span>
+                <span class="value"><span th:text="${capacity}">6</span>명</span>
+            </div>
+            <div class="date">
+                <span class="key">마감 일자</span>
+                <span class="value" th:text="${#dates.format(with.deadline, 'yyyy.MM.dd')}">2023.08.01</span>
+            </div>
+            <div class="contact">
+                <span class="key">연락 방법</span>
+                <span class="value" th:text="${contact.name}">이메일</span>
+            </div>
+            <div class="period">
+                <span class="key">진행 기간</span>
+                <span class="value" th:text="${period.period}">3개월</span>
+            </div>
+            <div class="position">
+                <span class="key">포지션</span>
+                <div class="value">
+                    <ul class="list">
+                        <li class="box" th:each="p : ${positionList}" th:text="${p.name}">백엔드</li>
+                    </ul>
+                </div>
+            </div>
+            <div class="tech">
+                <span class="key">기술 스택</span>
+                <div class="value">
+                    <ul class="list">
+                        <li class="box" th:each="t : ${techList}" th:text="${t.name}">Java</li>
+                    </ul>
+                </div>
+            </div>
+        </section>
+
+        <section class="recruit-status d:flex">
+            <h1 class="title">모집현황</h1>
+            <div class="edit deco icon-check_v icon-color-1 cursor:pointer d:flex" id="edit-current-btn"
+                 sec:authorize="isAuthenticated()"
+                 th:if="${with.memberId == #authentication.principal.id}"><a
+                    class="submit">수정완료</a></div>
+            <div class="position">
+                <ul class="list">
+                    <li class="item" th:data-id="${p.positionId}" th:each="p : ${positionList}"
+                        th:classappend="${p.positionId == 1 ? 'back' : ''} + ${p.positionId == 2 ? 'front' : ''} + ${p.positionId == 3 ? 'publish' : ''}">
+                        <div class="control-box d:flex">
+                            <div class="title" th:text="${p.name}">백엔드</div>
+                            <div class="btn-box d:flex" sec:authorize="isAuthenticated()"
+                                 th:if="${with.memberId == #authentication.principal.id}">
+                                <a class="btn minus deco deco-size-1 icon-color-3 icon-minus cursor:pointer"></a>
+                                <a class="btn plus deco deco-size-1 icon-color-3 icon-plus cursor:pointer"></a>
+                            </div>
+                        </div>
+                        <div class="status-box d:flex">
+                            <div class="bar-box">
+                                <div class="capacity-bar bar" th:text="${p.capacity}"
+                                     th:data-capacity="${p.capacity}">5
+                                </div>
+                                <div class="current-bar bar" th:text="${p.current}" th:data-current="${p.current}">2
+                                </div>
+                            </div>
+                            <div class="status_count_box" th:classappend="${p.capacity == p.current ? 'max' : ''}">
+                                <span class="status_count" th:text="${p.current + '/' + p.capacity}">3/4</span>
+                            </div>
+                        </div>
+                    </li>
+                </ul>
+            </div>
+        </section>
+
+        <section class="content editor-content">
+            <h1 class="d:none">게시글 내용</h1>
+            <div th:utext="${with.content}">
+                <span class="f:700">프로젝트 소개</span>
+                <br/><br/>
+                <span class="f:500">통신판매 디저트 플랫폼 사이드 프로젝트 프론트엔드 개발팀원 추가 구인 합니다.</span>
+                <br/><br/>
+                안녕하세요. 통신판매 디저트 플랫폼 서비스 프로젝트 진행중인 흰둥 디저트입니다.
+                <br/><br/>
+                저희 흰둥 디저트는 네이버 스토어팜 등에서 통신판 매를 위주로 하는 업체들의 공유 플랫폼을 개발하는 프로젝트를 진행 중에 있습니다.
+                <br/><br/>
+                자세한 사항은 하단의 링크를 참고해주시면 감사 하겠습니다.
+                <br/><br/>
+                https://www.notion.so/20230601-git-2-b0d4 895f34ba47f3be05a060070b56ee
+            </div>
+
+        </section>
+
+        <div class="contact-wish-box">
+            <a class="contact cursor:pointer" th:data-contact="${with.link}">연락하기</a>
+            <a class="wish icon-wish icon icon-size-2 cursor:pointer"
+               th:classappend="${isWish != null && isWish ? 'active' : ''}"
+               th:data-with-id="${with.id}">찜하기</a>
+        </div>
+    </section>
+    <section id="comment-reg-list" class="with">
+        <section id="comment-reg" class="d:flex">
+            <h1 class="d:none">댓글 작성</h1>
+            <div class="comment-reg-count-box">
+                <div class="comment-count-box">
+                    <span><span class="comment-count" th:text="${commentCount}">10</span>개의 댓글</span>
+                </div>
+                <div class="img-form-box">
+                    <div class="img-box">
+                        <img class="profile-img" sec:authorize="isAuthenticated()"
+                             th:src="@{https://file.doby.co.kr/profiles/{img}(img=${#authentication.principal.profileImage})}"
+                             alt="">
+
+                        <img class="profile-img" sec:authorize="!isAuthenticated()"
+                             src="/image/user.svg"
+                             alt="">
+                    </div>
+                    <div class="comment-reg-form">
+                        <div class="editor-box">
+                            <span class="comment-editor"></span>
+                        </div>
+                        <div class="btn-box d:flex">
+                            <button class="submit-btn cursor:pointer">댓글 작성</button>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+        <section id="comment-list">
+            <h1 class="d:none">댓글 목록</h1>
+            <ul class="comment-list-box">
+            </ul>
+        </section>
+    </section>
+    <section class="modal-box delete">
+        <div class="modal">
+            <h1>글을 삭제하시겠습니까?</h1>
+            <div class="modal-buttons">
+                <a class="btn btn-yes cursor:pointer">네</a>
+                <a class="btn btn-no cursor:pointer">아니요</a>
+            </div>
+        </div>
+    </section>
+
+    <section class="modal-box copy">
+        <div class="modal">
+            <h1>주소가 복사되었습니다.</h1>
+            <div class="modal-buttons">
+                <a class="btn btn-yes cursor:pointer">닫기</a>
+            </div>
+        </div>
+    </section>
+
+    <section class="modal-box edit">
+        <div class="modal">
+            <h1>수정이 완료되었습니다.</h1>
+            <div class="modal-buttons">
+                <a class="btn btn-yes cursor:pointer">닫기</a>
+            </div>
+        </div>
+    </section>
+
+    <section class="modal-box contact">
+        <div class="modal">
+            <h1>이메일 또는 링크가 복사되었습니다.</h1>
+            <div class="modal-buttons">
+                <a class="btn btn-yes cursor:pointer">닫기</a>
+            </div>
+        </div>
+    </section>
+
+    <section class="modal-box login">
+        <div class="modal">
+            <h1>로그인이 필요합니다.</h1>
+            <div class="modal-buttons">
+                <a class="btn btn-yes cursor:pointer" href="/user/login">확인</a>
+                <a class="btn btn-no cursor:pointer">닫기</a>
+            </div>
+        </div>
+    </section>
+</main>
+</body>
+
+</html>

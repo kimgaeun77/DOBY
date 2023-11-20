@@ -1,0 +1,25 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org" xmlns:layout="http://www.ultraq.net.nz/thymeleaf/layout"
+      layout:decorate="~{inc/layout}">
+
+<head>
+    <link href="/css/error/error.css" rel="stylesheet">
+    <title>DOBY!</title>
+</head>
+
+<body>
+<main layout:fragment="main" class="main">
+    <section class="error-box">
+        <h1 class="d:none">오류</h1>
+        <div class="img-box"><img src="/image/error/error.svg" alt="에러"></div>
+        <div class="error">ERROR</div>
+        <div class="msg">죄송합니다. 오류가 발생하였습니다.</div>
+        <div class="back-box"><a href="/">
+            <span class="icon icon-right_arrow icon-size-2 back-icon"></span>
+            <span>메인으로 돌아가기</span></a>
+        </div>
+    </section>
+</main>
+</body>
+
+</html>

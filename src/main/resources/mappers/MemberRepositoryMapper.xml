@@ -2,11 +2,18 @@
 <!DOCTYPE mapper
         PUBLIC "-//mybatis.org//DTD Config 3.0//EN"
         "https://mybatis.org/dtd/mybatis-3-mapper.dtd">
-
 <mapper namespace="kr.co.doby.web.repository.MemberRepository">
 
     <select id="findById" resultType="Member">
-        select * from member where id = #{id}
+        select *
+        from member
+        where id = ${id}
     </select>
 
+    <select id="findByUsername" resultType="Member">
+        select *
+        from member
+        where username = #{username}
+    </select>
+  
 </mapper>

@@ -1,0 +1,310 @@
+.filter-box {
+    display: flex;
+    position: fixed;
+
+    flex-direction: column;
+    align-items: center;
+
+    left: 0;
+    bottom: 0;
+
+    height: 50%;
+    width: 100%;
+
+    border: 1px solid var(--color-base-3);
+    border-radius: 30px 30px 0 0;
+    background-color: var(--color-base-white);
+
+    z-index: 999;
+    overflow: scroll;
+}
+
+.filter-box .item-box .list .item:has(:checked) {
+    background-color: var(--color-base-3);
+}
+
+.stack-icon::before {
+    display: inline-block;
+    content: '';
+    width: 20px;
+    height: 20px;
+
+    border-radius: 20px;
+    border: 0.3px solid var(--color-base-black);
+
+    margin-right: 5px;
+}
+
+.filter-box::-webkit-scrollbar {
+    display: none;
+}
+
+.filter-box .category-menu {
+    position: sticky;
+
+    align-self: stretch;
+
+    padding-top: 25px;
+
+    left: 0;
+    top: 0;
+
+    flex-direction: column;
+    align-items: center;
+
+    background-color: var(--color-base-white);
+}
+
+.filter-box .category-menu .list {
+    justify-content: center;
+
+    text-align: center;
+
+    font-weight: 500;
+    font-size: 16px;
+
+    width: 80%;
+}
+
+.filter-box .category-menu .list .item {
+    flex-shrink: 0;
+
+    flex-grow: 1;
+
+    border-bottom: 2px solid var(--color-base-4);
+
+    padding-bottom: 10px;
+}
+
+.filter-box .category-menu .list .item.active,
+.filter-box .category-menu .list .item:hover {
+    cursor: pointer;
+    border-bottom: 2px solid var(--color-main-0);
+
+    font-weight: 600;
+}
+
+.filter-box .item-box {
+    width: 85%;
+    align-self: center;
+    flex-grow: 1;
+}
+
+.filter-box .item-box .list {
+    flex-wrap: wrap;
+    column-gap: 15px;
+    row-gap: 15px;
+
+    justify-content: flex-start;
+
+    overflow: scroll;
+}
+
+.filter-box .item-box .list::-webkit-scrollbar {
+    display: none;
+}
+
+.filter-box .item-box .list .item {
+    flex-shrink: 0;
+
+    display: flex;
+    align-items: center;
+
+    font-size: 15px;
+    font-weight: 400;
+
+    border: 0.5px solid var(--color-base-1);
+    border-radius: 100px;
+
+    background-color: var(--color-base-11);
+
+    padding: 7px 10px;
+}
+
+
+.filter-box .item-box .list .item label {
+    width: 100%;
+    appearance: none;
+}
+
+.filter-box .item-box .list .item:hover {
+    cursor: pointer;
+}
+
+.filter-box .clear-apply-box {
+    width: 100%;
+
+    padding: 15px 10%;
+
+    column-gap: 10px;
+
+    background-color: var(--color-base-white);
+}
+
+.filter-box .clear-apply-box .clear-box,
+.filter-box .clear-apply-box .apply {
+    padding: 10px 35px;
+    border-radius: 50px;
+}
+
+.filter-box .clear-apply-box .clear-box {
+    border: 1px solid var(--color-base-2);
+    background-color: var(--color-base-0);
+}
+
+.filter-box .clear-apply-box .apply {
+    text-align: center;
+
+    flex-grow: 1;
+    background-color: var(--color-main-0);
+}
+
+.filter-box .clear-apply-box .clear-box .clear,
+.filter-box .clear-apply-box .apply {
+    font-size: 18px;
+    font-weight: 600;
+}
+
+.filter-box .clear-apply-box .apply {
+    color: var(--color-base-white);
+}
+
+.filter-box .item-box .item::before {
+    display: none;
+}
+
+.filter-box .item-box .item::before {
+    background-repeat: no-repeat;
+    background-position: center;
+    background-size: 15px;
+}
+
+.filter-box .item-box .item.java::before {
+    background-image: url(/icon/tech/java.svg);
+    border-color: #1565c0;
+}
+
+.filter-box .item-box .item.spring::before {
+    background-image: url(/icon/tech/spring.svg);
+    border-color: #6db33f;
+}
+
+.filter-box .item-box .item.kotlin::before {
+    background-image: url(/icon/tech/kotlin.svg);
+    border-color: #7d6cdf;
+}
+
+.filter-box .item-box .item.js::before {
+    background-image: url(/icon/tech/javascript.svg);
+    border-color: #ffd600;
+}
+
+.filter-box .item-box .item.ts::before {
+    background-image: url(/icon/tech/typescript.svg);
+    border-color: #1976d2;
+}
+
+.filter-box .item-box .item.node::before {
+    background-image: url(/icon/tech/nodejs.svg);
+    border-color: #6bbf47;
+}
+
+.filter-box .item-box .item.react::before {
+    background-image: url(/icon/tech/react.svg);
+    border-color: #00d8ff;
+}
+
+.filter-box .item-box .item.vue::before {
+    background-image: url(/icon/tech/vue.svg);
+    border-color: #42b883;
+}
+
+.filter-box .item-box .item.angular::before {
+    background-image: url(/icon/tech/angular.svg);
+    border-color: #dd0031;
+}
+
+.filter-box .item-box .item.python::before {
+    background-image: url(/icon/tech/python.svg);
+    border-color: #366994;
+}
+
+.filter-box .item-box .item.django::before {
+    background-image: url(/icon/tech/django.svg);
+    border-color: #44b78b;
+}
+
+@media (min-width: 700px) {
+    .filter-box {
+        width: 650px;
+        min-height: 300px;
+        border-radius: 30px;
+
+        position: absolute;
+
+        left: unset;
+
+        right: 0;
+        top: 40px;
+    }
+
+    .filter-box .category-menu {
+        /* justify-content: flex-start; */
+        align-items: center;
+        align-self: stretch;
+    }
+
+    .filter-box .category-menu .list {
+        width: 90%;
+        justify-content: flex-start;
+    }
+
+    .filter-box .category-menu .list::after {
+        content: '';
+        height: inherit;
+        flex-grow: 1;
+        border-bottom: 2px solid var(--color-base-4);
+    }
+
+    .filter-box .category-menu .list .item {
+        padding-left: 15px;
+        padding-right: 15px;
+
+        flex-grow: 0;
+    }
+
+    .filter-box .item-box {
+        width: 90%;
+    }
+
+    .filter-box .clear-apply-box {
+        padding: 15px 5%;
+
+        justify-content: flex-end;
+    }
+
+    .filter-box .clear-apply-box .apply {
+        flex-grow: 0;
+    }
+
+    .filter-box .item-box .item::before {
+        display: inline-block;
+    }
+}
+
+/* layout */
+
+
+.filter-box .item-box {
+    margin-top: 15px;
+}
+
+.filter-box .clear-apply-box {
+    position: sticky;
+
+    bottom: 0;
+    left: 0;
+}
+
+@media (min-width: 700px) {
+}

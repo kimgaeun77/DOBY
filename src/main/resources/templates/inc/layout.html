@@ -1,18 +1,30 @@
 <!DOCTYPE html>
-<html xmlns:th="http://www.thymeleaf.org" xmlns:layout="http://www.ultraq.net.nz/thymeleaf/layout" lang="en">
+<html xmlns:th="http://www.thymeleaf.org"
+      xmlns:layout="http://www.ultraq.net.nz/thymeleaf/layout"
+      xmlns:sec="http://www.thymeleaf.org/extras/spring-security" lang="en">
 <head>
     <meta charset="UTF-8">
-    <title>Title</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="_csrf" th:content="${_csrf.token}" id="csrf">
+    <meta name="member-id" sec:authorize="isAuthenticated()" th:content="${#authentication.principal.id}"
+          id="member-id">
+    <meta name="profile-image" sec:authorize="isAuthenticated()" th:content="${#authentication.principal.profileImage}"
+          id="profile-image">
     <link href="/css/reset.css" rel="stylesheet" type="text/css">
     <link href="/css/root.css" rel="stylesheet" type="text/css">
-    <link href="/css/utils.css" rel="stylesheet" type="text/css">
     <link href="/css/style.css" rel="stylesheet" type="text/css">
     <link href="/css/icon.css" rel="stylesheet" type="text/css">
     <link href="/css/components/header/header.css" rel="stylesheet" type="text/css">
+    <link href="/css/components/aside/aside.css" rel="stylesheet" type="text/css">
     <link href="/css/components/footer/footer.css" rel="stylesheet" type="text/css">
+    <link href="/css/utils.css" rel="stylesheet" type="text/css"/>
+    <link rel="shortcut icon" href="/favicon/D.svg?v=1" type="image/x-icon">
+    <script src="/js/header/header.js"></script>
+    <script src="/js/aside/aside.js"></script>
 </head>
 <body spellcheck="false">
 <div th:replace="~{inc/header::.header}"></div>
+<div th:replace="~{inc/aside::.aside}"></div>
 <div layout:fragment="main"></div>
 <div th:replace="~{inc/footer::.footer}"></div>
 </body>

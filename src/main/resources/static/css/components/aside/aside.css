@@ -1,0 +1,150 @@
+body:has(.aside.open) {
+    overflow: hidden;
+}
+
+.aside {
+    position: fixed;
+    right: 0;
+    top: 0;
+
+    width: 100%;
+    height: 0;
+
+    display: flex;
+    justify-content: end;
+    align-items: stretch;
+    background-color: rgba(50, 50, 50, 0.5);
+    z-index: 99999;
+
+    opacity: 0;
+    transition: opacity .5s;
+}
+
+.aside.open {
+
+    height: 100%;
+    opacity: 1;
+}
+
+.menu-block {
+    width: 65%;
+    background-color: var(--color-base-white);
+
+    transition: transform .5s;
+    transform: translateX(100%);
+}
+
+.open .menu-block {
+    transform: translateX(0);
+}
+
+.menu-block .info-box {
+    display: flex;
+    align-items: center;
+
+    padding: 10px 10px 10px 15px;
+    box-shadow: 0 1px 2px rgba(85, 85, 85, 0.25);
+
+}
+
+.menu-block .info-box .username-box {
+    font-size: var(--font-size-2);
+    font-weight: 500;
+}
+
+.menu-block .info-box .profile-image-box {
+    height: 40px;
+    width: 40px;
+    border-radius: 50%;
+    overflow: hidden;
+}
+
+.menu-block .info-box .profile-image-box .profile {
+    height: 100%;
+    width: 100%;
+
+    object-fit: cover;
+}
+
+.aside .link-box {
+    padding: 20px;
+
+    font-size: var(--font-size-2);
+    font-weight: 500;
+}
+
+.aside .link-box .list li {
+    padding: 15px 0;
+    cursor: pointer;
+}
+
+.aside .link-box .list li a:hover {
+    font-weight: 600;
+}
+
+.aside .link-box .list li:first-child {
+    padding-top: 20px;
+}
+
+.aside .link-box .list li:last-child {
+    padding-bottom: 20px;
+}
+
+.aside .link-box .list li .community:hover {
+    color: var(--color-main-2);
+}
+
+.aside .link-box .list li .with:hover {
+    color: var(--color-main-0);
+}
+
+.aside .link-box .list li .smalltalk:hover {
+    color: var(--color-main-3);
+}
+
+.aside .link-box .list li .notice:hover {
+    color: var(--color-main-5);
+}
+
+
+/*.aside .link-box .list.notice-list li {*/
+/*    padding: 20px 0;*/
+/*}*/
+
+.aside .link-box .board-list::after,
+.aside .link-box .notice-list::after {
+    content: '';
+    display: block;
+    width: 95%;
+    height: 1px;
+
+    box-shadow: 0 1px 2px rgba(85, 85, 85, 0.25);
+}
+
+@media (min-width: 700px) {
+    .aside {
+        display: none;
+    }
+}
+
+.menu-block .info-box {
+    margin-top: 15px;
+}
+
+.menu-block .info-box .close-btn {
+    margin-left: auto;
+}
+
+.menu-block .info-box .username-box {
+    margin-left: 7px;
+}
+
+/* layout*/
+
+.aside .link-box .board-list::after,
+.aside .link-box .notice-list::after {
+    margin: 0 auto;
+}
+
+@media (min-width: 700px) {
+}

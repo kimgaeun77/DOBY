@@ -2,197 +2,198 @@
 <html lang="en">
 
 <head>
-    <meta charset="UTF-8" />
-    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <meta charset="UTF-8"/>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
     <!-- css -->
-    <link href="/css/reset.css" rel="stylesheet" type="text/css" />
-    <link href="/css/root.css" rel="stylesheet" type="text/css" />
-    <link href="/css/style.css" rel="stylesheet" type="text/css" />
-    <link href="/css/icon.css" rel="stylesheet" type="text/css" />
-    <link href="/css/utils.css" rel="stylesheet" type="text/css" />
-    <link href="/css/components/with/reg/reg.css" rel="stylesheet" type="text/css" />
-    <link href="/css/editor/style.css" rel="stylesheet" type="text/css" />
+    <link href="/css/reset.css" rel="stylesheet" type="text/css"/>
+    <link href="/css/root.css" rel="stylesheet" type="text/css"/>
+    <link href="/css/style.css" rel="stylesheet" type="text/css"/>
+    <link href="/css/icon.css" rel="stylesheet" type="text/css"/>
+    <link href="/css/utils.css" rel="stylesheet" type="text/css"/>
+    <link href="/css/components/with/reg/reg.css" rel="stylesheet" type="text/css"/>
+    <link href="/css/utils/editor/style.css" rel="stylesheet" type="text/css"/>
     <!-- js -->
     <script type="module" src="/js/with/reg.js"></script>
     <title>모임 게시글 등록</title>
 </head>
 
 <body>
-    <main class="main d:flex">
-        <section class="reg-form d:flex">
-            <div class="back-title-box d:flex">
-                <div class="back-box"><a class="icon icon-x icon-size-1 cursor:pointer back" id="back-btn">뒤로가기</a>
-                </div>
+<main class="main d:flex">
+    <section class="reg-form d:flex">
+        <div class="back-title-box d:flex">
+            <div class="back-box"><a class="icon icon-x icon-size-1 cursor:pointer back" id="back-btn">뒤로가기</a>
             </div>
-            <section class="form-box">
-                <h1 class="d:none">정보 입력 폼</h1>
-                <form id="form">
+        </div>
+        <section class="form-box">
+            <h1 class="d:none">정보 입력 폼</h1>
+            <form id="form">
 
-                    <section class="info-input">
-                        <h1 class="info-input-title">1. 기본 정보를 입력해주세요
-                        </h1>
-                        <div class="category-box box-item" id="category-box">
-                            <div><span class="title">카테고리</span></div>
-                            <div class="d:flex btn-box">
-                                <div class="study btn cursor:pointer active">스터디<input type="radio" name="c" value="1"
-                                        class="category d:none" checked /></div>
-                                <div class="project btn cursor:pointer">프로젝트<input type="radio" name="c" value="2"
-                                        class="category d:none" /></div>
+                <section class="info-input">
+                    <h1 class="info-input-title">1. 기본 정보를 입력해주세요
+                    </h1>
+                    <div class="category-box box-item" id="category-box">
+                        <div><span class="title">카테고리</span></div>
+                        <div class="d:flex btn-box">
+                            <div class="study btn cursor:pointer active">스터디<input type="radio" name="c" value="1"
+                                                                                   class="category d:none" checked/>
                             </div>
+                            <div class="project btn cursor:pointer">프로젝트<input type="radio" name="c" value="2"
+                                                                               class="category d:none"/></div>
                         </div>
+                    </div>
 
-                        <div class="way-box box-item" id="way-box">
-                            <div><span class="title">진행방식</span></div>
-                            <div class="d:flex btn-box">
-                                <div class="study btn cursor:pointer active">온라인<input type="radio" name="w" value="1"
-                                        class="way d:none" checked /></div>
-                                <div class="project btn cursor:pointer">오프라인
-                                    <input type="radio" name="w" value="2" class="way d:none" />
-                                </div>
-                                <div class="both btn cursor:pointer">온·오프라인 병행<input type="radio" name="w" value="3"
-                                        class="way d:none" /></div>
+                    <div class="way-box box-item" id="way-box">
+                        <div><span class="title">진행방식</span></div>
+                        <div class="d:flex btn-box">
+                            <div class="study btn cursor:pointer active">온라인<input type="radio" name="w" value="1"
+                                                                                   class="way d:none" checked/></div>
+                            <div class="project btn cursor:pointer">오프라인
+                                <input type="radio" name="w" value="2" class="way d:none"/>
                             </div>
+                            <div class="both btn cursor:pointer">온·오프라인 병행<input type="radio" name="w" value="3"
+                                                                                 class="way d:none"/></div>
                         </div>
+                    </div>
 
-                        <div class="deadline-period-box">
+                    <div class="deadline-period-box">
 
-                            <div class="deadline-box box-item" id="deadline-box">
-                                <div><span class="title">모집기한</span></div>
-                                <div class="date-label">
-                                    <div><input type="date" class="deadline" name="d" id="deadline"
-                                            data-placeholder="날짜를 선택해주세요." /></div>
-                                    <div class="warning-box">
-                                        <span class="warning d:none"> 모집기한을 선택해주세요.</span>
-                                    </div>
-                                </div>
-                            </div>
-
-                            <div class="period-box box-item" id="period-box">
-                                <div><span class="title">진행기간</span></div>
-                                <div class="select-box">
-                                    <input type="hidden" name="p" id="period-value" />
-                                    <div class="label cursor:pointer">선택해주세요.</div>
-                                    <ul class="list d:none">
-                                        <li class="item" data-id="1">미정</li>
-                                        <li class="item" data-id="2">1개월</li>
-                                        <li class="item" data-id="3">2개월</li>
-                                        <li class="item" data-id="4">3개월</li>
-                                        <li class="item" data-id="5">4개월</li>
-                                        <li class="item" data-id="6">5개월</li>
-                                        <li class="item" data-id="7">6개월</li>
-                                        <li class="item" data-id="8">장기</li>
-                                    </ul>
-                                    <div class="warning-box">
-                                        <span class="warning d:none">진행 기간을 선택해주세요.</span>
-                                    </div>
-                                </div>
-                            </div>
-                        </div>
-
-                        <div class="contact-box box-item" id="contact-box">
-                            <div><span class="title">연락 방법</span></div>
-                            <div class="d:flex btn-box">
-                                <div class="chat btn cursor:pointer active">링크<input type="radio" name="ct" value="1"
-                                        class="link d:none" checked /></div>
-                                <div class="link btn cursor:pointer">이메일<input type="radio" name="ct" value="2"
-                                        class="email d:none" />
-                                </div>
-                            </div>
-                            <div class="contact-link-box">
-                                <div> <input type="text" name="link" id="link" class="contact-link"
-                                        placeholder="링크나 이메일을 입력해주세요." /></div>
+                        <div class="deadline-box box-item" id="deadline-box">
+                            <div><span class="title">모집기한</span></div>
+                            <div class="date-label">
+                                <div><input type="date" class="deadline" name="d" id="deadline"
+                                            data-placeholder="날짜를 선택해주세요."/></div>
                                 <div class="warning-box">
-                                    <span class="warning d:none">링크나 이메일을 입력해주세요.</span>
+                                    <span class="warning d:none"> 모집기한을 선택해주세요.</span>
                                 </div>
                             </div>
-
                         </div>
 
-                        <div class="tech-position-box box-item" id="tech-position-box">
-                            <div class="d:flex">
-                                <div class="title-box"><span class="title">기술스택 / 포지션</span></div>
-                                <div class="btn-box d:flex">
-                                    <a class="btn minus deco deco-size-1 icon-color-3 icon-minus cursor:pointer"></a>
-                                    <a class="btn plus deco deco-size-1 icon-color-3 icon-plus cursor:pointer"></a>
+                        <div class="period-box box-item" id="period-box">
+                            <div><span class="title">진행기간</span></div>
+                            <div class="select-box">
+                                <input type="hidden" name="p" id="period-value"/>
+                                <div class="label cursor:pointer">선택해주세요.</div>
+                                <ul class="list d:none">
+                                    <li class="item" data-id="1">미정</li>
+                                    <li class="item" data-id="2">1개월</li>
+                                    <li class="item" data-id="3">2개월</li>
+                                    <li class="item" data-id="4">3개월</li>
+                                    <li class="item" data-id="5">4개월</li>
+                                    <li class="item" data-id="6">5개월</li>
+                                    <li class="item" data-id="7">6개월</li>
+                                    <li class="item" data-id="8">장기</li>
+                                </ul>
+                                <div class="warning-box">
+                                    <span class="warning d:none">진행 기간을 선택해주세요.</span>
                                 </div>
                             </div>
-                            <ul class="total-list">
-                                <li class="item">
-                                    <div class="tech-box">
-                                        <div class="label cursor:pointer">기술 스택</div>
-                                        <input type="hidden" name="tech" class="tech">
-                                        <ul class="list d:none">
-                                            <li class="item" data-value="1">Java</li>
-                                            <li class="item" data-value="2">Spring</li>
-                                            <li class="item" data-value="3">Kotlin</li>
-                                            <li class="item" data-value="4">JavaScript</li>
-                                            <li class="item" data-value="5">TypeScript</li>
-                                            <li class="item" data-value="6">Node.js</li>
-                                            <li class="item" data-value="7">React</li>
-                                            <li class="item" data-value="8">Vue</li>
-                                            <li class="item" data-value="9">Angular</li>
-                                            <li class="item" data-value="10">Python</li>
-                                            <li class="item" data-value="11">Django</li>
-                                        </ul>
-                                    </div>
-                                    <div class="position-box">
-                                        <div class="label cursor:pointer">포지션</div>
-                                        <input type="hidden" name="position" class="position">
-                                        <ul class="list d:none">
-                                            <li class="item" data-value="1">백엔드</li>
-                                            <li class="item" data-value="2">프론트엔드</li>
-                                            <li class="item" data-value="3">퍼블리셔</li>
-                                        </ul>
-                                    </div>
-                                    <div class="capacity-box">
-                                        <div class="label cursor:pointer">인원수</div>
-                                        <input type="hidden" name="capacity" class="capacity">
-                                        <ul class="list d:none">
-                                            <li class="item" data-value="1">1명</li>
-                                            <li class="item" data-value="2">2명</li>
-                                            <li class="item" data-value="3">3명</li>
-                                            <li class="item" data-value="4">4명</li>
-                                            <li class="item" data-value="5">5명</li>
-                                        </ul>
-                                    </div>
-                                </li>
-                            </ul>
-                            <span class="warning d:none"> 선택되지 않은 항목이 있습니다.</span>
                         </div>
+                    </div>
 
-                    </section>
-                    <section class="content-input">
-                        <h1 class="content-input-title">2. 모임에 대해 소개해 주세요.</h1>
-                        <div class="title-box box-item" id="title-box">
-                            <div><span class="title">제목</span></div>
-                            <div class="board-title-box">
-                                <input type="text" name="t" id="title" class="board-title" placeholder="제목을 입력해주세요." />
+                    <div class="contact-box box-item" id="contact-box">
+                        <div><span class="title">연락 방법</span></div>
+                        <div class="d:flex btn-box">
+                            <div class="chat btn cursor:pointer active">링크<input type="radio" name="ct" value="1"
+                                                                                 class="link d:none" checked/></div>
+                            <div class="link btn cursor:pointer">이메일<input type="radio" name="ct" value="2"
+                                                                           class="email d:none"/>
                             </div>
-                            <span class="warning d:none"> 제목을 입력해주세요.</span>
                         </div>
-
-                        <div class="content-box box-item" id="content-box">
-                            <div><span class="title">내용</span></div>
-                            <div class="editor-box">
-                                <div class="editor"></div>
+                        <div class="contact-link-box">
+                            <div><input type="text" name="link" id="link" class="contact-link"
+                                        placeholder="링크나 이메일을 입력해주세요."/></div>
+                            <div class="warning-box">
+                                <span class="warning d:none">링크나 이메일을 입력해주세요.</span>
                             </div>
-                            <input type="hidden" name="content" />
-                            <span class="warning d:none"> 내용을 입력해주세요.</span>
                         </div>
-                    </section>
 
-                </form>
-            </section>
-            <div class="cancel-submit-box">
-                <div class="cancel-box btn" id="cancel-box">
-                    <a class="cancel">취소</a>
-                </div>
-                <div class="submit-box btn">
-                    <input type="submit" value="등록" class="submit cursor:pointer" form="form" />
-                </div>
-            </div>
+                    </div>
+
+                    <div class="tech-position-box box-item" id="tech-position-box">
+                        <div class="d:flex">
+                            <div class="title-box"><span class="title">기술스택 / 포지션</span></div>
+                            <div class="btn-box d:flex">
+                                <a class="btn minus deco deco-size-1 icon-color-3 icon-minus cursor:pointer"></a>
+                                <a class="btn plus deco deco-size-1 icon-color-3 icon-plus cursor:pointer"></a>
+                            </div>
+                        </div>
+                        <ul class="total-list">
+                            <li class="item">
+                                <div class="tech-box">
+                                    <div class="label cursor:pointer">기술 스택</div>
+                                    <input type="hidden" name="tech" class="tech">
+                                    <ul class="list d:none">
+                                        <li class="item" data-value="1">Java</li>
+                                        <li class="item" data-value="2">Spring</li>
+                                        <li class="item" data-value="3">Kotlin</li>
+                                        <li class="item" data-value="4">JavaScript</li>
+                                        <li class="item" data-value="5">TypeScript</li>
+                                        <li class="item" data-value="6">Node.js</li>
+                                        <li class="item" data-value="7">React</li>
+                                        <li class="item" data-value="8">Vue</li>
+                                        <li class="item" data-value="9">Angular</li>
+                                        <li class="item" data-value="10">Python</li>
+                                        <li class="item" data-value="11">Django</li>
+                                    </ul>
+                                </div>
+                                <div class="position-box">
+                                    <div class="label cursor:pointer">포지션</div>
+                                    <input type="hidden" name="position" class="position">
+                                    <ul class="list d:none">
+                                        <li class="item" data-value="1">백엔드</li>
+                                        <li class="item" data-value="2">프론트엔드</li>
+                                        <li class="item" data-value="3">퍼블리셔</li>
+                                    </ul>
+                                </div>
+                                <div class="capacity-box">
+                                    <div class="label cursor:pointer">인원수</div>
+                                    <input type="hidden" name="capacity" class="capacity">
+                                    <ul class="list d:none">
+                                        <li class="item" data-value="1">1명</li>
+                                        <li class="item" data-value="2">2명</li>
+                                        <li class="item" data-value="3">3명</li>
+                                        <li class="item" data-value="4">4명</li>
+                                        <li class="item" data-value="5">5명</li>
+                                    </ul>
+                                </div>
+                            </li>
+                        </ul>
+                        <span class="warning d:none"> 선택되지 않은 항목이 있습니다.</span>
+                    </div>
+
+                </section>
+                <section class="content-input">
+                    <h1 class="content-input-title">2. 모임에 대해 소개해 주세요.</h1>
+                    <div class="title-box box-item" id="title-box">
+                        <div><span class="title">제목</span></div>
+                        <div class="board-title-box">
+                            <input type="text" name="t" id="title" class="board-title" placeholder="제목을 입력해주세요."/>
+                        </div>
+                        <span class="warning d:none"> 제목을 입력해주세요.</span>
+                    </div>
+
+                    <div class="content-box box-item" id="content-box">
+                        <div><span class="title">내용</span></div>
+                        <div class="editor-box">
+                            <div class="editor"></div>
+                        </div>
+                        <input type="hidden" name="content"/>
+                        <span class="warning d:none"> 내용을 입력해주세요.</span>
+                    </div>
+                </section>
+
+            </form>
         </section>
-    </main>
+        <div class="cancel-submit-box">
+            <div class="cancel-box btn" id="cancel-box">
+                <a class="cancel">취소</a>
+            </div>
+            <div class="submit-box btn">
+                <input type="submit" value="등록" class="submit cursor:pointer" form="form"/>
+            </div>
+        </div>
+    </section>
+</main>
 </body>
 
 </html>

@@ -1,0 +1,37 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper
+        PUBLIC "-//mybatis.org//DTD Config 3.0//EN"
+        "https://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="kr.co.doby.web.repository.WishRepository">
+
+
+    <select id="findById" resultType="Wish">
+
+        select
+            *
+        from
+            wish
+        where
+            member_id = #{memberId}
+          and
+            with_id = ${withId}
+
+    </select>
+
+    <insert id="save">
+        insert into
+            wish
+        values
+            (#{memberId}, #{withId})
+    </insert>
+
+    <insert id="deleteById">
+        delete from
+            wish
+        where
+            member_id = #{memberId}
+        and
+            with_id = #{withId}
+    </insert>
+
+</mapper>

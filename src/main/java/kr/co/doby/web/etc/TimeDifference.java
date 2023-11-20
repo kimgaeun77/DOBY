@@ -1,8 +1,7 @@
 package kr.co.doby.web.etc;
 
-import org.springframework.stereotype.Component;
-
 import java.util.Date;
+
 public class TimeDifference {
 
     public static String getTimeDifference(Date date) {

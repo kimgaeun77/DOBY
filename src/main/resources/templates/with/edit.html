@@ -1,0 +1,223 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org" xmlns:layout="http://www.ultraq.net.nz/thymeleaf/layout"
+      layout:decorate="~{inc/layout}">
+<head>
+    <link href="/css/with/edit.css" rel="stylesheet" type="text/css"/>
+    <link href="/css/modal/modal.css" rel="stylesheet">
+    <link href="/css/utils/editor/style.css" rel="stylesheet" type="text/css"/>
+    <script src="/js/utils/ckeditor/ckeditor.js"></script>
+    <script type="module" src="/js/with/edit.js" defer></script>
+    <title>모임 상세</title>
+</head>
+<body>
+<main layout:fragment="main" class="main">
+    <section class="reg-form d:flex">
+        <div class="back-title-box d:flex">
+            <div class="back-box"><a class="icon icon-x icon-size-1 cursor:pointer back" id="back-btn">뒤로가기</a>
+            </div>
+        </div>
+        <section class="form-box">
+            <h1 class="d:none">정보 입력 폼</h1>
+            <form id="form">
+                <div class="d:none" id="with-id" th:data-with-id="${with.id}"></div>
+                <section class="info-input">
+                    <h1 class="info-input-title">1. 기본 정보를 입력해주세요
+                    </h1>
+                    <div class="category-box box-item" id="category-box">
+                        <div><span class="title">카테고리</span></div>
+                        <div class="d:flex btn-box">
+                            <div class="study btn cursor:pointer"
+                                 th:classappend="${with.categoryId == 1 ? 'active':''}">프로젝트<input type="radio" name="c"
+                                                                                                   value="1"
+                                                                                                   class="category d:none"
+                                                                                                   th:checked="${with.categoryId == 1}"/>
+                            </div>
+                            <div class="project btn cursor:pointer"
+                                 th:classappend="${with.categoryId == 2 ? 'active':''}">스터디<input type="radio" name="c"
+                                                                                                  value="2"
+                                                                                                  class="category d:none"
+                                                                                                  th:checked="${with.categoryId == 2}"/>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="way-box box-item" id="way-box">
+                        <div><span class="title">진행방식</span></div>
+                        <div class="d:flex btn-box">
+                            <div class="study btn cursor:pointer"
+                                 th:classappend="${with.wayId == 1 ? 'active':''}">온라인<input type="radio" name="w"
+                                                                                             value="1"
+                                                                                             class="way d:none"
+                                                                                             th:checked="${with.wayId == 1}"/>
+                            </div>
+                            <div class="project btn cursor:pointer" th:classappend="${with.wayId == 2 ? 'active':''}">
+                                오프라인
+                                <input type="radio" name="w" value="2" class="way d:none"
+                                       th:checked="${with.wayId == 2}"/>
+                            </div>
+                            <div class="both btn cursor:pointer" th:classappend="${with.wayId == 3 ? 'active':''}">
+                                온·오프라인 병행<input type="radio" name="w" value="3"
+                                                class="way d:none" th:checked="${with.wayId == 3}"/></div>
+                        </div>
+                    </div>
+
+                    <div class="deadline-period-box">
+
+                        <div class="deadline-box box-item" id="deadline-box">
+                            <div><span class="title">모집기한</span></div>
+                            <div class="date-label">
+                                <div><input type="date" class="deadline" name="d" id="deadline"
+                                            th:data-placeholder="${#dates.format(with.deadline, 'yyyy-MM-dd')}"
+                                            th:value="${#dates.format(with.deadline, 'yyyy-MM-dd')}"/></div>
+                                <div class="warning-box">
+                                    <span class="warning d:none">모집기한을 선택해주세요.</span>
+                                </div>
+                            </div>
+                        </div>
+
+                        <div class="period-box box-item" id="period-box">
+                            <div><span class="title">진행기간</span></div>
+                            <div class="select-box">
+                                <input type="hidden" name="p" id="period-value" th:value="${with.periodId}"/>
+                                <div class="label arrow cursor:pointer" th:text="${period.period}">선택해주세요.</div>
+                                <ul class="list drop-down d:none">
+                                    <li class="item" data-id="1">미정</li>
+                                    <li class="item" data-id="2">1개월</li>
+                                    <li class="item" data-id="3">2개월</li>
+                                    <li class="item" data-id="4">3개월</li>
+                                    <li class="item" data-id="5">4개월</li>
+                                    <li class="item" data-id="6">5개월</li>
+                                    <li class="item" data-id="7">6개월</li>
+                                    <li class="item" data-id="8">장기</li>
+                                </ul>
+                                <div class="warning-box">
+                                    <span class="warning d:none">진행 기간을 선택해주세요.</span>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="contact-box box-item" id="contact-box">
+                        <div><span class="title">연락 방법</span></div>
+                        <div class="d:flex btn-box">
+                            <div class="chat btn cursor:pointer" th:classappend="${with.contactId == 1 ? 'active':''}">
+                                링크<input type="radio" name="ct" value="1"
+                                         class="link d:none" th:checked="${with.contactId == 1}"/></div>
+                            <div class="link btn cursor:pointer" th:classappend="${with.contactId == 2 ? 'active':''}">
+                                이메일<input type="radio" name="ct" value="2"
+                                          class="email d:none" th:checked="${with.contactId == 2}"/>
+                            </div>
+                        </div>
+                        <div class="contact-link-box">
+                            <div><input type="text" name="link" id="link" class="contact-link"
+                                        placeholder="링크나 이메일을 입력해주세요." th:value="${with.link}"/></div>
+                            <div class="warning-box">
+                                <span class="warning d:none">링크나 이메일을 입력해주세요.</span>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="tech-select-box box-item" id="tech-select-box">
+                        <div class="title-box"><span class="title">기술스택</span></div>
+                        <div class="selected-select-box">
+                            <div class="label arrow selected-box cursor:pointer">
+                                <div class="select-placeholder d:none">선택해주세요</div>
+                                <ul class="list">
+                                    <li class="item" th:each="t : ${techList}" th:data-id="${t.techId}">
+                                        <div th:text="${t.name}">Java</div>
+                                        <div class="btn-box">
+                                            <button type="button" class="icon icon-x">삭제</button>
+                                        </div>
+                                    </li>
+                                </ul>
+                            </div>
+                            <div class="select-box d:none">
+                                <ul class="list drop-down">
+                                </ul>
+                            </div>
+                        </div>
+                        <span class="warning d:none">선택되지 않은 항목이 있습니다.</span>
+                    </div>
+
+                    <div class="tech-position-box box-item" id="tech-position-box">
+                        <div class="d:flex">
+                            <div class="title-box"><span class="title">포지션</span></div>
+                            <div class="btn-box d:flex">
+                                <a class="btn minus deco deco-size-1 icon-color-3 icon-minus cursor:pointer"></a>
+                                <a class="btn plus deco deco-size-1 icon-color-3 icon-plus cursor:pointer"></a>
+                            </div>
+                        </div>
+                        <ul class="total-list">
+                            <li class="item" th:each="p : ${positionList}">
+                                <div class="position-box">
+                                    <div class="label arrow cursor:pointer" th:text="${p.name}">포지션</div>
+                                    <input type="hidden" name="position" class="position" th:value="${p.positionId}">
+                                    <ul class="list drop-down d:none">
+                                        <li class="item" data-value="1">백엔드</li>
+                                        <li class="item" data-value="2">프론트엔드</li>
+                                        <li class="item" data-value="3">퍼블리셔</li>
+                                    </ul>
+                                </div>
+                                <div class="capacity-box">
+                                    <div class="label arrow cursor:pointer"><span th:text="${p.capacity}">3</span>명
+                                    </div>
+                                    <input type="hidden" name="capacity" class="capacity" th:value="${p.capacity}">
+                                    <ul class="list drop-down d:none">
+                                        <li class="item" data-value="1">1명</li>
+                                        <li class="item" data-value="2">2명</li>
+                                        <li class="item" data-value="3">3명</li>
+                                        <li class="item" data-value="4">4명</li>
+                                        <li class="item" data-value="5">5명</li>
+                                    </ul>
+                                </div>
+                            </li>
+                        </ul>
+                        <span class="warning d:none">선택되지 않은 항목이 있습니다.</span>
+                        <span class="warning-duplicate d:none">중복된 포지션이 있습니다.</span>
+                    </div>
+                </section>
+                <section class="content-input">
+                    <h1 class="content-input-title">2. 모임에 대해 소개해 주세요.</h1>
+                    <div class="title-box box-item" id="title-box">
+                        <div><span class="title">제목</span></div>
+                        <div class="board-title-box">
+                            <input type="text" name="t" id="title" class="board-title" placeholder="제목을 입력해주세요."
+                                   th:value="${with.title}"/>
+                        </div>
+                        <span class="warning d:none">제목을 입력해주세요.</span>
+                    </div>
+
+                    <div class="content-box box-item" id="content-box">
+                        <div><span class="title">내용</span></div>
+                        <div class="editor-box">
+                            <div class="editor" th:utext="${with.content}"></div>
+                        </div>
+                        <input type="hidden" name="content"/>
+                        <span class="warning d:none">내용을 입력해주세요.</span>
+                    </div>
+                </section>
+
+            </form>
+        </section>
+        <div class="cancel-submit-box">
+            <div class="cancel-box btn" id="cancel-box">
+                <a class="cancel">취소</a>
+            </div>
+            <div class="submit-box btn" id="submit-box">
+                <button class="submit cursor:pointer" id="submit">수정</button>
+            </div>
+        </div>
+    </section>
+
+    <section class="modal-box cancel">
+        <div class="modal">
+            <h1>글 수정을 취소하시겠습니까?</h1>
+            <div class="modal-buttons">
+                <a class="btn btn-yes cursor:pointer">네</a>
+                <a class="btn btn-no cursor:pointer">아니요</a>
+            </div>
+        </div>
+    </section>
+</main>
+</body>
+</html>

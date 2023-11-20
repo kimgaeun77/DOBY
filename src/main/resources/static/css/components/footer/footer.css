@@ -1,5 +1,10 @@
+footer {
+    margin-top: 80px;
+}
+
 .footer {
-    border-top: 1px solid var(--color-base-4);
+
+    box-shadow: 0px -1px 2px rgba(85, 85, 85, 0.25);
 
     height: 100px;
     width: 100%;
@@ -10,9 +15,13 @@
 
     justify-content: center;
     align-items: center;
+
+    display: flex;
+
+    transition: display .5s;
 }
 
-.footer>* {
+.footer > * {
     flex-shrink: 0;
 }
 
@@ -62,7 +71,12 @@
     background-size: contain
 }
 
-@media (min-width: 700px) {}
+@media (min-width: 700px) {
+    .footer {
+        display: flex;
+    }
+
+}
 
 
 /* layout */

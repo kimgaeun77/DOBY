@@ -1,21 +1,21 @@
 <!DOCTYPE html>
-<html lang="en">
+<html xmlns:th="http://www.thymeleaf.org"
+      xmlns:layout="http://www.ultraq.net.nz/thymeleaf/layout"
+      xmlns:sec="http://www.thymeleaf.org/extras/spring-security" lang="ko">
 <head>
-    <meta charset="UTF-8">
-    <title>Title</title>
 </head>
 <body>
-<header class="header d:flex">
+<header class="header">
     <h1 class="title d:none">DOBY!</h1>
     <div class="box d:flex">
         <a class="logo" href="/">DOBY!</a>
 
         <nav class="category">
             <ul class="item-box d:flex">
-                <li class="c:main-2"><a href="/community">커뮤니티</a></li>
-                <li class="c:main-3"><a href="/smalltalk">스몰톡</a></li>
-                <li class="c:main-0"><a href="/with">모임</a></li>
-                <li class="c:main-5"><a href="/notice">공지사항</a></li>
+                <li class="c:main-2"><a href="/community/list">커뮤니티</a></li>
+                <li class="c:main-0"><a href="/with/list">모임</a></li>
+                <li class="c:main-3"><a href="/smalltalk/list">스몰톡</a></li>
+                <li class="c:main-5"><a href="/notice/list">공지사항</a></li>
             </ul>
         </nav>
 
@@ -28,18 +28,27 @@
             </fieldset>
         </form>
 
-        <span class="menu icon icon-menu icon-size-2 md:d:none">메뉴</span>
+        <span class="menu icon icon-menu icon-size-1 md:d:none" id="header-menu-btn">메뉴</span>
 
-        <!-- <a class="login icon icon-user icon-size-2" href="/login.html">로그인</a> -->
+        <a sec:authorize="!isAuthenticated()" class="login icon icon-user icon-size-2" href="/user/login">로그인</a>
 
-        <div class="profile-box">
-            <img class="profile" src="https://avatars.githubusercontent.com/u/143318125?v=4" alt="프로필"/>
+        <div sec:authorize="isAuthenticated()" class="profile-box">
+            <img class="profile"
+                 th:src="@{https://file.doby.co.kr/profiles/{img}(img=${#authentication.principal.profileImage})}"
+                 alt="프로필"/>
             <div class="list-box d:none">
-                <ul class="list d:flex">
-                    <li class="item"><a href="/user/1234" class="link">프로필</a></li>
-                    <li class="item"><a href="/activity" class="link">활동내역</a></li>
-                    <li class="item"><a href="/logout" class="link">로그아웃</a></li>
-                </ul>
+                <form method="post" action="/logout">
+                    <input type="hidden"
+                           th:name="${_csrf.parameterName}"
+                           th:value="${_csrf.token}"/>
+                    <ul class="list d:flex">
+                        <li class="item"><a href="/user/1234" class="link">프로필</a></li>
+                        <li class="item"><a href="/activity" class="link">활동내역</a></li>
+                        <li class="item">
+                            <button type="submit" class="link">로그아웃</button>
+                        </li>
+                    </ul>
+                </form>
             </div>
         </div>
     </div>

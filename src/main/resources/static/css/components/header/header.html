@@ -2,60 +2,60 @@
 <html lang="en">
 
 <head>
-    <meta charset="UTF-8" />
-    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <link href="/css/reset.css" rel="stylesheet" type="text/css" />
-    <link href="/css/root.css" rel="stylesheet" type="text/css" />
-    <link href="/css/style.css" rel="stylesheet" type="text/css" />
-    <link href="/css/icon.css" rel="stylesheet" type="text/css" />
-    <link href="/css/utils.css" rel="stylesheet" type="text/css" />
-    <link href="/css/components/header/header.css" rel="stylesheet" type="text/css" />
+    <meta charset="UTF-8"/>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+    <link href="/css/reset.css" rel="stylesheet" type="text/css"/>
+    <link href="/css/root.css" rel="stylesheet" type="text/css"/>
+    <link href="/css/style.css" rel="stylesheet" type="text/css"/>
+    <link href="/css/icon.css" rel="stylesheet" type="text/css"/>
+    <link href="/css/utils.css" rel="stylesheet" type="text/css"/>
+    <link href="/css/components/header/header.css" rel="stylesheet" type="text/css"/>
 
     <title>Header</title>
 </head>
 
 <body>
-    <header class="header d:flex">
-        <h1 class="title d:none">DOBY!</h1>
-        <div class="box d:flex">
-            <a class="logo" href="/">DOBY!</a>
+<header class="header d:flex">
+    <h1 class="title d:none">DOBY!</h1>
+    <div class="box d:flex">
+        <a class="logo" href="/">DOBY!</a>
 
-            <nav class="category">
-                <ul class="item-box d:flex">
-                    <li class="c:main-2"><a href="/community">커뮤니티</a></li>
-                    <li class="c:main-3"><a href="/smalltalk">스몰톡</a></li>
-                    <li class="c:main-0"><a href="/with">모임</a></li>
-                    <li class="c:main-5"><a href="/notice">공지사항</a></li>
+        <nav class="category">
+            <ul class="item-box d:flex">
+                <li class="c:main-2"><a href="/community/list">커뮤니티</a></li>
+                <li class="c:main-3"><a href="/smalltalk/list">스몰톡</a></li>
+                <li class="c:main-0"><a href="/with/list">모임</a></li>
+                <li class="c:main-5"><a href="/notice/list">공지사항</a></li>
+            </ul>
+        </nav>
+
+        <!-- 검색 -->
+        <form class="search-form" action="" method="">
+            <fieldset class="search-input-box">
+                <legend class="d:none">검색어입력</legend>
+                <input class="input" type="text" placeholder="검색어를 입력해주세요"/>
+                <input class="search" type="submit" value="검색"/>
+            </fieldset>
+        </form>
+
+        <span class="menu icon icon-menu icon-size-1 md:d:none">메뉴</span>
+
+        <!-- <a class="login icon icon-user icon-size-2" href="/login.html">로그인</a> -->
+
+        <div class="profile-box">
+            <img class="profile" src="https://avatars.githubusercontent.com/u/143318125?v=4" alt="프로필"/>
+            <div class="list-box d:none">
+                <ul class="list d:flex">
+                    <li class="item"><a href="/user/1234" class="link">프로필</a></li>
+                    <li class="item"><a href="/activity" class="link">활동내역</a></li>
+                    <li class="item"><a href="/logout" class="link">로그아웃</a></li>
                 </ul>
-            </nav>
-
-            <!-- 검색 -->
-            <form class="search-form" action="" method="">
-                <fieldset class="search-input-box">
-                    <legend class="d:none">검색어입력</legend>
-                    <input class="input" type="text" placeholder="검색어를 입력해주세요" />
-                    <input class="search" type="submit" value="검색" />
-                </fieldset>
-            </form>
-
-            <span class="menu icon icon-menu icon-size-2 md:d:none">메뉴</span>
-
-            <!-- <a class="login icon icon-user icon-size-2" href="/login.html">로그인</a> -->
-
-            <div class="profile-box">
-                <img class="profile" src="https://avatars.githubusercontent.com/u/143318125?v=4" alt="프로필" />
-                <div class="list-box d:none">
-                    <ul class="list d:flex">
-                        <li class="item"><a href="/user/1234" class="link">프로필</a></li>
-                        <li class="item"><a href="/activity" class="link">활동내역</a></li>
-                        <li class="item"><a href="/logout" class="link">로그아웃</a></li>
-                    </ul>
-                </div>
             </div>
         </div>
-    </header>
+    </div>
+</header>
 
-    <script src="/js/header/header.js"></script>
+<script src="/js/header/header.js"></script>
 </body>
 
 </html>

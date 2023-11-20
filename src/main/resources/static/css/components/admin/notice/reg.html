@@ -1,0 +1,58 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <link href="/css/reset.css" rel="stylesheet" type="text/css">
+    <link href="/css/root.css" rel="stylesheet" type="text/css">
+    <link href="/css/utils.css" rel="stylesheet" type="text/css">
+    <link href="/css/style.css" rel="stylesheet" type="text/css">
+    <link href="/css/icon.css" rel="stylesheet" type="text/css">
+    <link href="/css/components/admin/notice/reg.css" rel="stylesheet" type="text/css">
+
+</head>
+
+<body>
+    <main>
+        <section>
+            <h1 class="d:none">게시글 등록 페이지</h1>
+            <div class="container">
+
+                <!-- 캐치프레이즈 , 뒤로가기 버튼 -->
+                <div class="catchphrase-back-btn-box">
+                    <h2 class="catchphrase">DOBY! 공지사항</h2>
+                    <a class="back-btn icon icon-size-1 icon-x cursor:pointer md:d:none">뒤로 가기 버튼</a>
+                </div>
+
+                <!-- 사용자 입력란 -->
+                <form>
+                    <!-- 제목 -->
+                    <div class="title-box">
+                        <label for="input-title">제목</label>
+                        <input id="input-title" class="input input-title" type="text" placeholder="제목을 입력해 주세요.">
+                    </div>
+
+                    <!-- 본문 -->
+                    <div class="content-box">
+                        <label for="input-content">본문</label>
+                        <input id="input-content" class="input input-content editor" type="text" placeholder="내용을 입력해 주세요.">
+                    </div>
+
+
+                    <!-- 저장, 취소 버튼 -->
+                    <div class="save-cancel-btn-box">
+                        <a class="btn cancel-btn d:none md:d:block cursor:pointer">취소</a>
+                        <input class="btn save-btn cursor:pointer" type="submit" value="등록">
+                    </div>
+                </form>
+
+            </div>
+
+        </section>
+    </main>
+
+</body>
+
+</html>

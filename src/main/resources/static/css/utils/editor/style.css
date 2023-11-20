@@ -74,12 +74,14 @@ figure img {
 .editor-content ul,
 .editor ~ * ul {
     list-style: unset;
+    padding-left: 40px;
 }
 
 .ck ol,
 .editor-content ol,
 .editor ~ * ol {
     list-style: decimal;
+    padding-left: 40px;
 }
 
 .ck strong,
@@ -88,9 +90,10 @@ figure img {
     font-weight: 600;
 }
 
-.ck .ck-powered-by{
+.ck .ck-powered-by {
     display: none !important;
 }
+
 @media (min-width: 700px) {
     .ck-editor__editable {
         height: 300px;
