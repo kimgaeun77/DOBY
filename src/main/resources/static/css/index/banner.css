@@ -62,20 +62,34 @@
     font-weight: 700;
 }
 
+.main-banner .banner-text .doby.main-font {
+    font-weight: 200;
+    color: var(--color-base-6);
+}
+
 .main-banner .banner-text .main-font .d {
     color: var(--color-main-1);
+    font-weight: 700;
 }
 
 .main-banner .banner-text .main-font .o {
     color: var(--color-main-0);
+    font-weight: 700;
 }
 
 .main-banner .banner-text .main-font .b {
     color: var(--color-main-2);
+    font-weight: 700;
 }
 
 .main-banner .banner-text .main-font .y {
     color: var(--color-main-3);
+    font-weight: 700;
+}
+
+.main-banner .banner-text .main-font .exclamation {
+    color: var(--color-main-4);
+    font-weight: 700;
 }
 
 

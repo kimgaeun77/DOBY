@@ -1,7 +1,8 @@
 <!DOCTYPE html>
-<html lang="en" xmlns:th="http://www.thymeleaf.org" xmlns:layout="http://www.ultraq.net.nz/thymeleaf/layout"
+<html lang="en" xmlns:th="http://www.thymeleaf.org"
+      xmlns:layout="http://www.ultraq.net.nz/thymeleaf/layout"
+      xmlns:sec="http://www.thymeleaf.org/extras/spring-security"
       layout:decorate="~{inc/layout}">
-
 <head>
     <link href="/css/with/detail.css" rel="stylesheet" type="text/css"/>
     <link href="/css/components/comment/comment.css" rel="stylesheet" type="text/css"/>
@@ -48,8 +49,10 @@
                 <div class="icon-box"><a class="share icon icon-share icon-size-0 icon-color-5 cursor:pointer"
                                          id="btn-share">공유</a>
                 </div>
-                <div class="icon-box"><a class="menu icon icon-col-menu icon-size-0 icon-color-5 cursor:pointer"
-                                         id="btn-menu">메뉴</a>
+                <div class="icon-box" sec:authorize="isAuthenticated()"
+                     th:if="${with.memberId == #authentication.principal.id}"><a
+                        class="menu icon icon-col-menu icon-size-0 icon-color-5 cursor:pointer"
+                        id="btn-menu">메뉴</a>
                 </div>
                 <div class="menu-item-box d:none" id="menu-item-box">
                     <ul class="list d:flex">
@@ -105,7 +108,9 @@
 
         <section class="recruit-status d:flex">
             <h1 class="title">모집현황</h1>
-            <div class="edit deco icon-check_v icon-color-1 cursor:pointer d:flex" id="edit-current-btn"><a
+            <div class="edit deco icon-check_v icon-color-1 cursor:pointer d:flex" id="edit-current-btn"
+                 sec:authorize="isAuthenticated()"
+                 th:if="${with.memberId == #authentication.principal.id}"><a
                     class="submit">수정완료</a></div>
             <div class="position">
                 <ul class="list">
@@ -113,7 +118,8 @@
                         th:classappend="${p.positionId == 1 ? 'back' : ''} + ${p.positionId == 2 ? 'front' : ''} + ${p.positionId == 3 ? 'publish' : ''}">
                         <div class="control-box d:flex">
                             <div class="title" th:text="${p.name}">백엔드</div>
-                            <div class="btn-box d:flex">
+                            <div class="btn-box d:flex" sec:authorize="isAuthenticated()"
+                                 th:if="${with.memberId == #authentication.principal.id}">
                                 <a class="btn minus deco deco-size-1 icon-color-3 icon-minus cursor:pointer"></a>
                                 <a class="btn plus deco deco-size-1 icon-color-3 icon-plus cursor:pointer"></a>
                             </div>
@@ -155,7 +161,8 @@
 
         <div class="contact-wish-box">
             <a class="contact cursor:pointer" th:data-contact="${with.link}">연락하기</a>
-            <a class="wish icon-wish icon icon-size-2 cursor:pointer" th:classappend="${isWish ? 'active' : ''}"
+            <a class="wish icon-wish icon icon-size-2 cursor:pointer"
+               th:classappend="${isWish != null && isWish ? 'active' : ''}"
                th:data-with-id="${with.id}">찜하기</a>
         </div>
     </section>
@@ -168,7 +175,13 @@
                 </div>
                 <div class="img-form-box">
                     <div class="img-box">
-                        <img class="profile-img" src="https://avatars.githubusercontent.com/u/143318125?v=4" alt="">
+                        <img class="profile-img" sec:authorize="isAuthenticated()"
+                             th:src="@{https://file.doby.co.kr/profiles/{img}(img=${#authentication.principal.profileImage})}"
+                             alt="">
+
+                        <img class="profile-img" sec:authorize="!isAuthenticated()"
+                             src="/image/user.svg"
+                             alt="">
                     </div>
                     <div class="comment-reg-form">
                         <div class="editor-box">
@@ -220,6 +233,16 @@
             <h1>이메일 또는 링크가 복사되었습니다.</h1>
             <div class="modal-buttons">
                 <a class="btn btn-yes cursor:pointer">닫기</a>
+            </div>
+        </div>
+    </section>
+
+    <section class="modal-box login">
+        <div class="modal">
+            <h1>로그인이 필요합니다.</h1>
+            <div class="modal-buttons">
+                <a class="btn btn-yes cursor:pointer" href="/user/login">확인</a>
+                <a class="btn btn-no cursor:pointer">닫기</a>
             </div>
         </div>
     </section>

@@ -6,14 +6,16 @@
 
 
     <select id="findById" resultType="Member">
-        select
-            *
-        from
-            member
-        where
-            id = ${memberId}
+        select *
+        from member
+        where id = ${id}
     </select>
 
+    <select id="findByUsername" resultType="Member">
+        select *
+        from member
+        where username = #{username}
+    </select>
 
 
 </mapper>

@@ -2,10 +2,32 @@ import createEditor from '/js/utils/ckeditor/comment.js';
 
 window.addEventListener('load', async function () {
 
+    const csrfToken = document.querySelector('#csrf').content;
+    const memberIdMeta = document.querySelector('#member-id');
+    const memberProfileMeta = document.querySelector('#profile-image');
+    let memberId = null;
+    let memberProfile = `/image/user.svg`;
+
+    if (memberIdMeta)
+        memberId = memberIdMeta.content;
+
+    if (memberProfileMeta)
+        memberProfile = `https://file.doby.co.kr/profiles/${memberProfileMeta.content}`;
+
+    const loginModal = document.querySelector('.modal-box.login');
+    const loginModalYesButton = loginModal.querySelector('.btn-yes');
+    const loginModalNoButton = loginModal.querySelector('.btn-no');
+
+    loginModalYesButton.onclick = () => {
+        location.href = `/user/login`;
+    }
+
+    loginModalNoButton.onclick = () => {
+        loginModal.classList.remove('open');
+    }
+
+
     const commentEditor = await createEditor('.comment-editor');
-
-    console.log(commentEditor);
-
 
     const withId = parseInt(document.querySelector('#with-id').dataset.withId);
 
@@ -21,16 +43,44 @@ window.addEventListener('load', async function () {
         bindCommentList(data);
     }
 
+    const getCommentCount = async () => {
+
+        let res = await fetch(`/api/with-comments/${withId}`);
+        let data = await res.json();
+
+        console.log(data);
+
+        bindCommentCount(data);
+    }
+
+    const bindCommentCount = (count) => {
+        const commentCountElement = document.querySelector('.comment-count');
+        commentCountElement.innerText = count;
+    }
+
     const bindCommentList = (list) => {
 
         commentList.innerHTML = "";
 
         for (const c of list) {
 
-            let replyCountTemplate = "";
-            if (parseInt(c.replyCount) !== 0)
-                replyCountTemplate =
-                    `<a class="comment-down-btn cursor:pointer icon-color-2 icon-down_arrow deco" data-id="${c.id}">
+            let menuBox = "";
+            if (memberId && (parseInt(memberId) === parseInt(c.memberId)))
+                menuBox = `<div class="menu-box">
+                                <div class="menu-btn-box"><a
+                                        class="menu icon icon-dots icon-size-3  icon-color-3 cursor:pointer">메뉴</a>
+                                </div>
+                                <ul class="list d:none">
+                                    <li><a class="item delete root" data-id="${c.id}">삭제하기</a></li>
+                                </ul>
+                            </div>`;
+
+            let display = '';
+            if (!parseInt(c.replyCount))
+                display = 'd:none';
+
+            let replyCountTemplate =
+                `<a class="comment-down-btn cursor:pointer icon-color-2 icon-down_arrow deco ${display}" data-id="${c.id}">
                     댓글&nbsp<span class="reply-count">${c.replyCount}</span>개
                     </a>`;
 
@@ -45,14 +95,7 @@ window.addEventListener('load', async function () {
                                 <span class="nickname cursor:pointer">${c.nickname}</span>
                                 <span class="reg-time">${c.timeDifference}</span>
                             </div>
-                            <div class="menu-box">
-                                <div class="menu-btn-box"><a
-                                        class="menu icon icon-dots icon-size-3  icon-color-3 cursor:pointer">메뉴</a>
-                                </div>
-                                <ul class="list d:none">
-                                    <li><a class="item delete root" data-id="${c.id}">삭제하기</a></li>
-                                </ul>
-                            </div>
+                            ${menuBox}
                             <div class="content-box">
                                 <span class="content editor-content">${c.content}</span>
                             </div>
@@ -74,9 +117,14 @@ window.addEventListener('load', async function () {
 
     mainCommentRegButton.onclick = async () => {
 
+        if (!memberId) {
+            loginModal.classList.add('open');
+            return;
+        }
+
         const editorContent = commentEditor.getData();
 
-        if (editorContent === "" || editorContent === null || editorContent === undefined)
+        if (!editorContent)
             return;
 
         const data = {
@@ -86,7 +134,10 @@ window.addEventListener('load', async function () {
 
         const config = {
             method: "POST",
-            headers: {"Content-Type": "application/json"},
+            headers: {
+                "Content-Type": "application/json",
+                "x-csrf-token": csrfToken
+            },
             body: JSON.stringify(data)
         }
 
@@ -98,8 +149,11 @@ window.addEventListener('load', async function () {
             alert(e.message)
             return;
         }
+
         getCommentList();
         commentEditor.setData('');
+
+        getCommentCount();
     }
 
     const getSubCommentList = async (pid, target) => {
@@ -113,6 +167,18 @@ window.addEventListener('load', async function () {
         target.innerHTML = "";
 
         for (const c of list) {
+
+            let menuBox = "";
+            if (memberId && parseInt(memberId) === parseInt(c.memberId))
+                menuBox = `<div class="menu-box">
+                                <div class="menu-btn-box"><a
+                                        class="menu icon icon-dots icon-size-3  icon-color-3 cursor:pointer">메뉴</a>
+                                </div>
+                                <ul class="list d:none">
+                                    <li><a class="item delete" data-id="${c.id}">삭제하기</a></li>
+                                </ul>
+                            </div>`;
+
             let template =
                 `<li class="item sub" data-id="${c.id}">
                     <div class="sub-comment comment-box">
@@ -125,14 +191,7 @@ window.addEventListener('load', async function () {
                                 <span class="nickname cursor:pointer">${c.nickname}</span>
                                 <span class="reg-time">${c.timeDifference}</span>
                             </div>
-                            <div class="menu-box">
-                                <div class="menu-btn-box"><a
-                                        class="menu icon icon-dots icon-size-3  icon-color-3 cursor:pointer">메뉴</a>
-                                </div>
-                                <ul class="list d:none">
-                                    <li><a class="item delete" data-id="${c.id}">삭제하기</a></li>
-                                </ul>
-                            </div>
+                        ${menuBox}
                             <div class="content-box">
                                 <span class="content editor-content">${c.content}</span>
                             </div>
@@ -168,7 +227,7 @@ window.addEventListener('load', async function () {
         if (el.classList.contains('menu')) openMenuList(el);
         else if (el.classList.contains('comment-down-btn')) openCommentList(el);
         else if (el.classList.contains('sub-comment-write-btn')) openEditor(el);
-        else if (el.classList.contains('submit-btn')) regSubComment();
+        else if (el.classList.contains('submit-btn')) regSubComment(el);
         else if (el.classList.contains('delete')) deleteComment(el);
 
     }
@@ -189,7 +248,10 @@ window.addEventListener('load', async function () {
 
         const config = {
             method: "DELETE",
-            headers: {"Content-Type": "application/json"}
+            headers: {
+                "Content-Type": "application/json",
+                "x-csrf-token": csrfToken
+            }
         }
 
         const res = await fetch(`/api/with-comments/${id}`, config);
@@ -220,12 +282,22 @@ window.addEventListener('load', async function () {
             const rootId = item.dataset.id;
             getSubCommentList(rootId, subCommentList);
         }
+
+        getCommentCount();
     }
 
-    const regSubComment = async () => {
+    let currentParentComment = null;
+
+    const regSubComment = async (element) => {
+
+        if (!memberId) {
+            loginModal.classList.add('open');
+            return;
+        }
+
         const editorContent = subEditor.getData();
 
-        if (editorContent === "" || editorContent === null || editorContent === undefined)
+        if (!editorContent)
             return;
 
         const data = {
@@ -236,7 +308,10 @@ window.addEventListener('load', async function () {
 
         const config = {
             method: "POST",
-            headers: {"Content-Type": "application/json"},
+            headers: {
+                "Content-Type": "application/json",
+                "x-csrf-token": csrfToken
+            },
             body: JSON.stringify(data)
         }
 
@@ -250,8 +325,33 @@ window.addEventListener('load', async function () {
             return;
         }
 
-        getCommentList();
+        let temp = element;
+
+        while (!temp.classList.contains('root'))
+            temp = temp.parentElement;
+
+
+        getCommentCount();
+
+        const commentOpenButton = temp.querySelector('.comment-down-btn');
+        commentOpenButton.classList.remove('d:none');
+        let replyCountElement = commentOpenButton.querySelector('.reply-count');
+        let replyCount = parseInt(replyCountElement.innerText);
+        replyCount++;
+
+        replyCountElement.innerText = replyCount;
+
+        await openCommentList(commentOpenButton, true);
+
+        if (currentSubCommentEditorBox)
+            currentSubCommentEditorBox.innerHTML = "";
+
+        currentParentComment = null;
+
+
     }
+
+
     const openEditor = async (el) => {
 
         let temp = el;
@@ -261,8 +361,13 @@ window.addEventListener('load', async function () {
 
         currentRootCommentId = parseInt(temp.dataset.id);
 
-        if (currentSubCommentEditorBox !== undefined && currentSubCommentEditorBox !== null)
+        if (currentSubCommentEditorBox)
             currentSubCommentEditorBox.innerHTML = "";
+
+        if (currentParentComment === el) {
+            currentParentComment = null;
+            return;
+        }
 
         let subCommentEditorBox = temp.querySelector('.sub-comment-editor-box');
         currentSubCommentEditorBox = subCommentEditorBox;
@@ -270,7 +375,7 @@ window.addEventListener('load', async function () {
         let editorTemplate =
             `<div class="img-form-box">
                     <div class="img-box">
-                        <img class="profile-img" src="https://avatars.githubusercontent.com/u/143318125?v=4" alt="">
+                        <img class="profile-img" src="${memberProfile}" alt="">
                     </div>
                     <div class="comment-reg-form">
                         <div class="editor-box">
@@ -287,10 +392,10 @@ window.addEventListener('load', async function () {
 
         subEditor = await createEditor('.sub-comment-editor');
 
-
+        currentParentComment = el;
     }
 
-    async function openCommentList(el) {
+    async function openCommentList(el, open) {
 
         let temp = el;
 
@@ -302,10 +407,15 @@ window.addEventListener('load', async function () {
         const id = el.dataset.id;
         await getSubCommentList(id, subCommentList);
 
-        el.classList.toggle('icon-up-arrow');
-        subCommentList.classList.toggle('d:none');
-    }
+        if (open) {
+            el.classList.add('icon-up-arrow');
+            subCommentList.classList.remove('d:none');
+        } else {
+            el.classList.toggle('icon-up-arrow');
+            subCommentList.classList.toggle('d:none');
+        }
 
+    }
 
     let currentMenuList = null;
 
@@ -318,7 +428,7 @@ window.addEventListener('load', async function () {
 
         let list = temp.querySelector('.list')
 
-        if (currentMenuList !== null && currentMenuList !== undefined) {
+        if (currentMenuList) {
             if (currentMenuList === list) {
                 currentMenuList.classList.toggle('d:none');
                 return;

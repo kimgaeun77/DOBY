@@ -26,21 +26,21 @@ public interface WithService {
 
     List<WithCommentView> getCommentViewById(Long id);
 
-    With reg(With with);
+    With reg(With with, Long memberId);
 
-    boolean checkWish(Long id);
+    boolean checkWish(Long id, Long memberId);
 
-    boolean delete(Long id);
+    boolean delete(Long id, Long memberId);
 
     Member getMemberByMemberId(Long memberId);
 
-    boolean isAuthor(Long memberId);
+    boolean isAuthor(Long memberId, Long currentId);
 
     List<Tech> getTechList();
 
     With edit(With with);
 
-    List<WithView> getViewList(Integer page, Long categoryId, String query, List<Long> techList, Long positionId, Long wayId, Boolean isWish);
+    List<WithView> getViewList(Integer page, Long categoryId, String query, List<Long> techList, Long positionId, Long wayId, Boolean isWish, Long memberId);
 
     List<WithView> getNearDeadlineList() throws ParseException;
 

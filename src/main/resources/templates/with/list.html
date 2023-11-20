@@ -1,5 +1,8 @@
 <!DOCTYPE html>
-<html lang="en" xmlns:th="http://www.thymeleaf.org" xmlns:layout="http://www.ultraq.net.nz/thymeleaf/layout"
+<html lang="en"
+      xmlns:th="http://www.thymeleaf.org"
+      xmlns:layout="http://www.ultraq.net.nz/thymeleaf/layout"
+      xmlns:sec="http://www.thymeleaf.org/extras/spring-security"
       layout:decorate="~{inc/layout}">
 <head>
     <link href="/css/with/list.css" rel="stylesheet" type="text/css">
@@ -71,7 +74,9 @@
     <div class="container">
         <!--작성하기 button -->
         <div class="btn-write-box d:inline-block">
-            <a class="btn btn-write deco deco-size-1 icon-write" href="/with/reg">작성하기</a>
+            <a sec:authorize="!isAuthenticated()" class="btn btn-write deco deco-size-1 icon-write" href="/user/login">작성하기</a>
+            <a sec:authorize="isAuthenticated()" class="btn btn-write deco deco-size-1 icon-write"
+               href="/member/with/reg">작성하기</a>
         </div>
 
         <!-- 카테고리 + 검색 filiter -->
@@ -192,9 +197,10 @@
                                 <ul class="list d:flex">
                                     <li><label class="item wish-item"><input class="wish check-box" type="radio"
                                                                              name="wish"/>전체</label></li>
-                                    <li><label class="item wish-item"><input class="wish check-box" type="radio"
-                                                                             name="wish"
-                                                                             data-id="1"/>찜 한 모임</label></li>
+                                    <li sec:authorize="isAuthenticated()"><label class="item wish-item"><input
+                                            class="wish check-box" type="radio"
+                                            name="wish"
+                                            data-id="1"/>찜 한 모임</label></li>
                                 </ul>
                             </div>
                         </form>
@@ -240,11 +246,7 @@
                 </div>
             </div>
         </section>
-
-
     </div>
-
 </main>
 </body>
-
 </html>

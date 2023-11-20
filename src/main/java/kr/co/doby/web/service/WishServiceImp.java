@@ -11,17 +11,13 @@ public class WishServiceImp implements WishService {
     private WishRepository repository;
 
     @Override
-    public void reg(Long withId) {
-
-        Long memberId = 1L;
+    public void reg(Long withId, Long memberId) {
 
         repository.save(memberId, withId);
     }
 
     @Override
-    public void delete(Long withId) {
-
-        Long memberId = 1L;
+    public void delete(Long withId, Long memberId) {
 
         repository.deleteById(memberId, withId);
     }

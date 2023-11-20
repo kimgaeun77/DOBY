@@ -14,6 +14,8 @@ const fetchWithData = async () => {
 
     const queryString = `?p=${currentPage}&c=${currentCategoryId}&q=${currentQuery}&t=${techList}&po=${currentPositionId}&w=${currentWayId}&wi=${isWish}`;
 
+    console.log(queryString);
+
     let withURL = `/api/withs${queryString}`;
     let pagingURL = `/api/withs/paging${queryString}`;
 
@@ -144,6 +146,10 @@ categoryList.onclick = (e) => {
     element.classList.add('active');
 
     currentCategoryId = element.dataset.id;
+
+    if (!currentCategoryId)
+        currentCategoryId = "";
+
     currentCategory = element;
     currentPage = 1;
     fetchWithData();
@@ -231,7 +237,6 @@ const bind = (list) => {
     for (const w of list) {
 
         let techTemplate = "";
-
         for (const t of w.techList)
             techTemplate += `<li class="tag">${t.name}</li>`
 

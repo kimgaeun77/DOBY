@@ -2,6 +2,8 @@ import {editor} from '/js/utils/ckeditor/content.js';
 
 window.addEventListener('load', function () {
 
+    const csrfToken = document.querySelector('#csrf').content;
+    const memberId = document.querySelector('#member-id').content;
     const withId = parseInt(document.querySelector('#with-id').dataset.withId);
 
     /* 뒤로가기 버튼 */
@@ -497,23 +499,16 @@ window.addEventListener('load', function () {
             let position = [];
 
             let config = {
-                method: "DELETE"
+                method: "DELETE",
+                headers: {
+                    "x-csrf-token": csrfToken
+                },
             }
             let deleteResponse = await fetch(`/api/with-positions/${withId}`, config)
 
             if (deleteResponse.status !== 204)
                 new Error();
 
-            // console.log(positionInputList);
-            //
-            // console.log(positionData);
-            //
-            //
-            // for (let i = 0; i < positionInputList.length; i++)
-            //     for (const p of positionData)
-            //         if (parseInt(positionInputList[i].value) === p.positionId)
-            //             position.push({positionId: p.positionId, current: p.current});
-            //
             let techSubmitResult = false;
             let positionSubmitResult = false;
 
@@ -557,7 +552,10 @@ window.addEventListener('load', function () {
 
         let config = {
             method: "DELETE",
-            headers: {"Content-Type": "application/json"}
+            headers: {
+                "Content-Type": "application/json",
+                "x-csrf-token": csrfToken
+            }
         }
 
         const response = await fetch(`/api/with-techs/${withId}`, config);
@@ -570,7 +568,7 @@ window.addEventListener('load', function () {
 
         let config = {
             method: "PUT",
-            headers: {"Content-Type": "application/json"},
+            headers: {"Content-Type": "application/json", "x-csrf-token": csrfToken},
             body: JSON.stringify(data)
         }
 
@@ -586,7 +584,7 @@ window.addEventListener('load', function () {
 
         let config = {
             method: "POST",
-            headers: {"Content-Type": "application/json"},
+            headers: {"Content-Type": "application/json", "x-csrf-token": csrfToken},
             body: JSON.stringify(data)
         }
 
@@ -600,7 +598,7 @@ window.addEventListener('load', function () {
 
         let config = {
             method: "POST",
-            headers: {"Content-Type": "application/json"},
+            headers: {"Content-Type": "application/json", "x-csrf-token": csrfToken},
             body: JSON.stringify(data)
         }
 

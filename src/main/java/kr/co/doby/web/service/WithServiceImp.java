@@ -63,9 +63,9 @@ public class WithServiceImp implements WithService {
     }
 
     @Override
-    public With reg(With with) {
+    public With reg(With with, Long memberId) {
 
-        with.setMemberId(1L);
+        with.setMemberId(memberId);
 
         repository.save(with);
 
@@ -73,9 +73,7 @@ public class WithServiceImp implements WithService {
     }
 
     @Override
-    public boolean checkWish(Long id) {
-
-        Long memberId = 1L;
+    public boolean checkWish(Long id, Long memberId) {
 
         Wish wish = wishRepository.findById(memberId, id);
 
@@ -83,9 +81,7 @@ public class WithServiceImp implements WithService {
     }
 
     @Override
-    public boolean delete(Long id) {
-
-        Long memberId = 2L;
+    public boolean delete(Long id, Long memberId) {
 
         With with = repository.findById(id);
 
@@ -102,8 +98,7 @@ public class WithServiceImp implements WithService {
     }
 
     @Override
-    public boolean isAuthor(Long memberId) {
-        Long currentId = 1L;
+    public boolean isAuthor(Long memberId, Long currentId) {
         return Objects.equals(memberId, currentId);
     }
 
@@ -119,7 +114,7 @@ public class WithServiceImp implements WithService {
     }
 
     @Override
-    public List<WithView> getViewList(Integer page, Long categoryId, String query, List<Long> techList, Long positionId, Long wayId, Boolean isWish) {
+    public List<WithView> getViewList(Integer page, Long categoryId, String query, List<Long> techList, Long positionId, Long wayId, Boolean isWish, Long memberId) {
 
         if (isWish != null && !isWish)
             isWish = null;
@@ -133,7 +128,7 @@ public class WithServiceImp implements WithService {
         int size = 10;
         int offset = size * (page - 1);
 
-        List<WithView> list = repository.findViewAll(offset, size, categoryId, query, techList, positionId, wayId, isWish, 1L);
+        List<WithView> list = repository.findViewAll(offset, size, categoryId, query, techList, positionId, wayId, isWish, memberId);
 
         for (WithView with : list) {
             Date regDate = with.getRegDate();
@@ -232,6 +227,5 @@ public class WithServiceImp implements WithService {
     public List<WithCommentView> getCommentViewById(Long id) {
         return withCommentRepository.findViewAll(id);
     }
-
 
 }

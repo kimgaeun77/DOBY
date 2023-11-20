@@ -1,5 +1,7 @@
 <!DOCTYPE html>
-<html lang="ko">
+<html xmlns:th="http://www.thymeleaf.org"
+      xmlns:layout="http://www.ultraq.net.nz/thymeleaf/layout"
+      xmlns:sec="http://www.thymeleaf.org/extras/spring-security" lang="ko">
 <head>
 </head>
 <body>
@@ -8,10 +10,14 @@
         <h1 class="d:none">메뉴 사이드바</h1>
         <div class="info-box">
             <div class="profile-image-box">
-                <img class="profile" src="/image/user.svg" alt="프로필">
+                <img sec:authorize="!isAuthenticated()" class="profile" src="/image/user.svg" alt="프로필">
+                <img sec:authorize="isAuthenticated()" class="profile"
+                     th:src="@{https://file.doby.co.kr/profiles/{img}(img=${#authentication.principal.profileImage})}"
+                     alt="프로필">
             </div>
             <div class="username-box">
-                <a href="/user/login">로그인하기</a>
+                <a sec:authorize="!isAuthenticated()" href="/user/login">로그인하기</a>
+                <span sec:authorize="isAuthenticated()"><span th:text="${#authentication.principal.nickname}">김오리</span>&nbsp;님</span>
             </div>
             <div class="close-btn icon icon-x icon-size-1">
             </div>
@@ -28,12 +34,19 @@
                 <li><a class="notice" href="/notice/list">공지사항</a></li>
             </ul>
 
-            <ul class="my-list list">
-                <li><a>마이페이지</a></li>
-                <li><a>활동내역</a></li>
-                <li><a>신고당한 글</a></li>
-                <li><a>로그아웃</a></li>
-            </ul>
+            <form method="post" action="/logout">
+                <input type="hidden"
+                       th:name="${_csrf.parameterName}"
+                       th:value="${_csrf.token}"/>
+                <ul class="my-list list">
+                    <li><a>마이페이지</a></li>
+                    <li><a>활동내역</a></li>
+                    <li><a>신고당한 글</a></li>
+                    <li>
+                        <button type="submit" class="link">로그아웃</button>
+                    </li>
+                </ul>
+            </form>
         </section>
 
     </section>

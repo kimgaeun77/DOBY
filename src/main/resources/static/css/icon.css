@@ -152,6 +152,7 @@
     -webkit-mask-size: var(--icon-size);
     mask-size: var(--icon-size);
 }
+
 /* --------- desk top icon size 추가 --- */
 /*  
     --icon-size-0: 15px;
@@ -160,48 +161,48 @@
     --icon-size-2: 30px; 
 */
 
-@media(min-width: 700px){
-    .md\:icon-size-0{
-    --icon-size: var(--icon-size-0);
+@media (min-width: 700px) {
+    .md\:icon-size-0 {
+        --icon-size: var(--icon-size-0);
 
-    width: var(--icon-size);
-    height: var(--icon-size);
+        width: var(--icon-size);
+        height: var(--icon-size);
 
-    -webkit-mask-size: var(--icon-size);
-    mask-size: var(--icon-size);
+        -webkit-mask-size: var(--icon-size);
+        mask-size: var(--icon-size);
     }
 
-    .md\:icon-size-1{
+    .md\:icon-size-1 {
         --icon-size: var(--icon-size-1);
-    
+
         width: var(--icon-size);
         height: var(--icon-size);
-    
+
         -webkit-mask-size: var(--icon-size);
         mask-size: var(--icon-size);
     }
 
-    .md\:icon-size-1-1{
+    .md\:icon-size-1-1 {
         --icon-size: var(--icon-size-1-1);
-    
+
         width: var(--icon-size);
         height: var(--icon-size);
-    
+
         -webkit-mask-size: var(--icon-size);
         mask-size: var(--icon-size);
     }
 
-    .md\:icon-size-2{
+    .md\:icon-size-2 {
         --icon-size: var(--icon-size-2);
-    
+
         width: var(--icon-size);
         height: var(--icon-size);
-    
+
         -webkit-mask-size: var(--icon-size);
         mask-size: var(--icon-size);
     }
-    
-  }
+
+}
 
 /* ---------------- icon color (icon, deco 모두 사용 가능) ------- */
 
@@ -314,6 +315,7 @@
     -webkit-mask-image: url(/icon/wish.svg);
     mask-image: url(/icon/wish.svg);
 }
+
 .icon-fire::before {
     -webkit-mask-image: url(/icon/fire.svg);
     mask-image: url(/icon/fire.svg);
@@ -349,49 +351,49 @@
     mask-image: url(/icon/x.svg);
 }
 
-.icon-dots::before{
+.icon-dots::before {
     -webkit-mask-image: url(/icon/dots.svg);
     mask-image: url(/icon/dots.svg);
 }
 
 .icon-kakao::before {
-  -webkit-mask-image: url(/icon/kakao.svg);
-  mask-image: url(/icon/kakao.svg);
+    -webkit-mask-image: url(/icon/kakao.svg);
+    mask-image: url(/icon/kakao.svg);
 }
 
 .icon-google::before {
-  -webkit-mask-image: url(/icon/google.svg);
-  mask-image: url(/icon/google.svg);
+    -webkit-mask-image: url(/icon/google.svg);
+    mask-image: url(/icon/google.svg);
 }
 
 .icon-naver::before {
-  -webkit-mask-image: url(/icon/naver.svg);
-  mask-image: url(/icon/naver.svg);
+    -webkit-mask-image: url(/icon/naver.svg);
+    mask-image: url(/icon/naver.svg);
 }
 
 .icon-login-doby::before {
-  -webkit-mask-image: url(/icon/login-doby.svg);
-  mask-image: url(/icon/login-doby.svg);
+    -webkit-mask-image: url(/icon/login-doby.svg);
+    mask-image: url(/icon/login-doby.svg);
 }
 
 .icon-warning::before {
-  -webkit-mask-image: url(/icon/warning.svg);
-  mask-image: url(/icon/warning.svg);
+    -webkit-mask-image: url(/icon/warning.svg);
+    mask-image: url(/icon/warning.svg);
 }
 
 .icon-top_right::before {
-  -webkit-mask-image: url(/icon/top_right.svg);
-  mask-image: url(/icon/top_right.svg);
+    -webkit-mask-image: url(/icon/top_right.svg);
+    mask-image: url(/icon/top_right.svg);
 }
 
 .icon-pin_empty::before {
-  -webkit-mask-image: url(/icon/pin_empty.svg);
-  mask-image: url(/icon/pin_empty.svg);
+    -webkit-mask-image: url(/icon/pin_empty.svg);
+    mask-image: url(/icon/pin_empty.svg);
 }
 
 .icon-trush::before {
-  -webkit-mask-image: url(/icon/trash.svg);
-  mask-image: url(/icon/trash.svg);
+    -webkit-mask-image: url(/icon/trash.svg);
+    mask-image: url(/icon/trash.svg);
 }
 
 .icon-camera::before {
@@ -462,4 +464,34 @@
 .icon-down-arrow::before {
     -webkit-mask-image: url(/icon/down-arrow.svg);
     mask-image: url(/icon/down-arrow.svg);
+}
+
+.icon-down_arrow::before {
+    -webkit-mask-image: url(/icon/down_arrow.svg);
+    mask-image: url(/icon/down_arrow.svg);
+}
+
+.icon-up-arrow::before {
+    -webkit-mask-image: url(/icon/up_arrow.svg);
+    mask-image: url(/icon/up_arrow.svg);
+}
+
+.icon-code::before {
+    -webkit-mask-image: url(/icon/code.svg);
+    mask-image: url(/icon/code.svg);
+}
+
+.icon-with::before {
+    -webkit-mask-image: url(/icon/with.svg);
+    mask-image: url(/icon/with.svg);
+}
+
+.icon-smalltalk::before {
+    -webkit-mask-image: url(/icon/smalltalk.svg);
+    mask-image: url(/icon/smalltalk.svg);
+}
+
+.icon-right_arrow::before {
+    -webkit-mask-image: url(/icon/right_arrow.svg);
+    mask-image: url(/icon/right_arrow.svg);
 }
