@@ -12,7 +12,6 @@ import java.util.Date;
 @AllArgsConstructor
 @Builder
 public class Member {
-
     private Long id;
     private String username;
     private String email;
@@ -23,5 +22,4 @@ public class Member {
     private Date regDate;
     private String profileImage;
     private Boolean del;
-
 }

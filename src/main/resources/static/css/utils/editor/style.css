@@ -94,7 +94,6 @@ figure img {
     display: none !important;
 }
 
-
 @media (min-width: 700px) {
     .ck-editor__editable {
         height: 300px;

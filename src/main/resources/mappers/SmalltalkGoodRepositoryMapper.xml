@@ -1,0 +1,20 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper
+        PUBLIC "-//mybatis.org//DTD Config 3.0//EN"
+        "https://mybatis.org/dtd/mybatis-3-mapper.dtd">
+
+<mapper namespace="kr.co.doby.web.repository.SmalltalkGoodRepository">
+
+    <select id="findById" resultType="SmalltalkGood">
+        select * from smalltalk_good where smalltalk_id = #{id} and member_id = #{memberId}
+    </select>
+
+    <insert id="save" parameterType="SmalltalkGood">
+        insert into smalltalk_good values (#{memberId}, #{smalltalkId})
+    </insert>
+
+    <delete id="delete">
+        delete from smalltalk_good where member_id = #{memberId} and smalltalk_id = #{smalltalkId}
+    </delete>
+
+</mapper>

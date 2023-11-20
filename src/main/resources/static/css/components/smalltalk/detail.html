@@ -1,0 +1,95 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Document</title>
+  <link href="/css/reset.css" rel="stylesheet" type="text/css">
+  <link href="/css/root.css" rel="stylesheet" type="text/css">
+  <link href="/css/utils.css" rel="stylesheet" type="text/css">
+  <link href="/css/style.css" rel="stylesheet" type="text/css">
+  <link href="/css/icon.css" rel="stylesheet" type="text/css">
+  <link href="/css/components/smalltalk/detail.css" rel="stylesheet" type="text/css">
+  <script src="/js/smalltalk/detail.js"></script>
+
+</head>
+
+<body>
+  <main>
+    <!-- 게시글 정보 -->
+    <section>
+      <h1 class="d:none">게시글정보</h1>
+      <div class="board-info">
+        <!-- 게시글 카테고리  -->
+        <div class="category">Small Talk</div>
+
+        <!-- 게시글 제목, ... 버튼   -->
+        <div class="title-dots-btn-container">
+          <h2 class="title">노트북 새로 사려고 하는데 노트북 추천해 주세요!!</h2>
+
+          <div class="dots-btn-list-container">
+            <button class="dots-btn icon icon-size-1 icon-dots icon-color-3 cursor:pointer">게시글 상세 버튼모음</button>
+            <!-- 회원일때만 보이는 메뉴 -->
+            <ul class="list d:none">
+              <li class="item"><a>수정하기</a></li>
+              <li class="item"><a>삭제하기</a></li>
+              <li class="item"><a>신고하기</a></li>
+            </ul>
+          </div>
+        </div>
+
+        <!-- 작성 정보, 조회수 -->
+        <dl class="write-info">
+          <div class="item">
+            <dt class="dt writer">작성자</dt>
+            <dd><a class="cursor:pointer">차구리</a></dd>
+          </div>
+
+          <div class="item">
+            <dt class="dt reg-date">작성일자</dt>
+            <dd>2023.06.14</dd>
+          </div>
+
+          <div class="item">
+            <dt class="dt hit">조회수</dt>
+            <dd>543</dd>
+          </div>
+        </dl>
+
+      </div>
+    </section>
+
+    <!-- 게시글 내용 -->
+    <section>
+      <h1 class="d:none">게시글내용</h1>
+      <div class="content-container">
+        <!-- 글 내용 -->
+        <div class="content">
+          <p>오류났는데 제가 리셋했습니다<br>
+            한순간에 블루스크린 띄우더라구요<br>
+            너무 힘들어서 지금도 울고있습니다<br>
+            그립다 매일밤 개발하던게<br>
+            너무너무그리워 내 목숨을 가져가도 좋아<br>
+            제발 살아나줘</p>
+        </div>
+
+        <!-- 태그 목록 -->
+        <ul class="tag-list">
+          <li class="item">일상</li>
+          <li class="item">잡담</li>
+        </ul>
+
+        <!-- 좋아요, 공유하기 버튼 목록 -->
+        <ul class="like-share-btn-container">
+          <li><a class="like-btn icon icon-size-1-1 icon-color-1 icon-likes cursor:pointer">좋아요버튼</a></li>
+          <li><a class="share-btn icon icon-size-1 icon-color-1 icon-share cursor:pointer">공유하기버튼</a></li>
+        </ul>
+      </div>
+    </section>
+
+  </main>
+
+</body>
+
+</html>

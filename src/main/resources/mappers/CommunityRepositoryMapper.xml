@@ -1,0 +1,65 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper
+        PUBLIC "-//mybatis.org//DTD Config 3.0//EN"
+        "https://mybatis.org/dtd/mybatis-3-mapper.dtd">
+
+<mapper namespace="kr.co.doby.web.repository.CommunityRepository">
+    <!-- 검색, 필터 추가 -->
+    <select id="findViewAll" resultType="CommunityView">
+        select * from community_view
+        where blind = 0 and del = 0
+        <if test="categoryId != null">
+            and category_id = #{categoryId}
+        </if>
+        <if test="query != null">
+            and (title like '%${query}%' or content like '%${query}%')
+        </if>
+        <!-- filterName은 디폴트 벨류가 존재함 -->
+        order by pin desc, ${filterName} desc limit #{offset}, #{size}
+    </select>
+
+    <insert id="save" parameterType="Community">
+        insert into community
+        (title, content, member_id, category_id)
+        values
+        (#{title}, #{content}, #{memberId}, #{categoryId})
+    </insert>
+
+    <select id="last" resultType="Community">
+        select * from community
+        where id = (select max(id) from community)
+    </select>
+
+    <select id="findById" resultType="Community">
+        select * from community where id = #{id}
+    </select>
+
+    <update id="updateHitCount">
+        update community set hit = hit + 1 where id = #{id}
+    </update>
+
+    <update id="update" parameterType="Community">
+        update community
+        <set>
+            <if test="title != null">title = #{title},</if>
+            <if test="content != null">content = #{content},</if>
+            <if test="categoryId != null">category_id = #{categoryId}</if>
+        </set>
+        where id = #{id}
+    </update>
+
+    <update id="delete">
+        update community set del = 1 where id = #{id}
+    </update>
+
+    <select id="findAllCount" resultType="Long">
+        select count(id) from community
+        where blind = 0 and del = 0
+        <if test="categoryId != null">
+            and category_id = #{categoryId}
+        </if>
+        <if test="query != null">
+            and (title like '%${query}%' or content like '%${query}%')
+        </if>
+    </select>
+</mapper>

@@ -1,0 +1,114 @@
+<!DOCTYPE html>
+<html lang="en"
+      xmlns:th="http://www.thymeleaf.org"
+      xmlns:layout="http://www.ultraq.net.nz/thymeleaf/layout"
+      layout:decorate="~{inc/layout.html}">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+    <link href="/css/components/board/list.css" rel="stylesheet" type="text/css">
+    <script type="module" src="/js/community/list.js"></script>
+</head>
+<body>
+<main class="main" layout:fragment="main">
+    <!-------------------- 게시글 배너 ----------------------->
+    <div class="banner-box">
+        <section class="banner">
+            <h1 class="board-name">커뮤니티</h1>
+            <p class="catchphrase">다양한 개발 지식을 공유해보세요.</p>
+        </section>
+    </div>
+    <!--------------------- 게시글 부분 ------------------>
+    <div class="container">
+        <!--작성하기 button -->
+        <div class="btn-write-box d:inline-block">
+            <a class="btn btn-write deco deco-size-1 icon-write" href="/member/community/reg">작성하기</a>
+        </div>
+
+        <!-- 카테고리 + 검색 filiter -->
+        <div class="category-search-filter-box">
+
+            <ul class="category">
+                <li><a class="item active" href="">전체</a></li>
+                <li th:each="c : ${categoryList}"><a class="item" href="" th:text="${c.name}" th:data-category-id="${c.id}">LOG</a></li>
+            </ul>
+
+            <div class="search-filter-box md:align-self:center">
+                <button class="btn search-btn deco deco-size-1 icon-color-1 icon-search md:d:none">
+                </button>
+                <div class="filter">
+                    <button class="btn filter-btn deco icon-color-1 icon-filter">
+                    </button>
+                    <!-- 필터 버튼 눌렀을 때 -->
+                    <ul class="sort-list d:none">
+                        <li><a class="item" href="" data-filter-id="1">최신순</a></li>
+                        <li><a class="item" href="" data-filter-id="2">조회순</a></li>
+                        <li><a class="item" href="" data-filter-id="3">추천순</a></li>
+                        <li><a class="item" href="" data-filter-id="4">댓글순</a></li>
+                    </ul>
+                </div>
+            </div>
+
+            <!-- 검색 버튼 눌렀을 때 -->
+            <form class="search-form d:none md:d:block">
+                <fieldset class="search-input-box">
+                    <legend class="d:none">검색어입력</legend>
+                    <input class="input" type="text" placeholder="검색어를 입력해주세요">
+                    <input class="search" type="button" value="검색">
+                </fieldset>
+            </form>
+
+        </div>
+
+        <!-- --게시글 목록------ -->
+        <section>
+            <h1 class="d:none">게시글 목록</h1>
+            <ul class="board-list">
+                <li class="item" th:each="l : ${list}" th:classappend="${l.pin}? 'pin'">
+                    <div class="board">
+
+                        <div class="write-info-box">
+                            <div class="profile">
+                                <div class="img-container">
+                                    <img class="img" src="/image/profile2.jpg" alt="프로필사진" th:src="@{https://file.doby.co.kr/profiles/{img}(img=${l.profileImage})}">
+                                </div>
+                                <a class="nickname" href="" th:text="${l.nickname}">김가구리</a>
+                            </div>
+                            <div class="reg-date" th:text="${l.timeDifference}">5분전</div>
+                        </div>
+
+                        <div class="title-box">
+                            <a class="title" href="" th:text="${l.title}" th:href="@{/community/detail(id=${l.id})}">최종합격 30곳! 어디로 가야할까요?ㅎㅎ 기분이 좋네요 아주~</a>
+                        </div>
+
+                        <div class="board-info">
+                            <div class="category-name-tag-box">
+                                <div class="category-name" th:text="${l.categoryName}">코드 Q&A</div>
+                                <ul class="tag-list">
+                                    <li class="tag" th:each=" t : ${l.tagList}" th:text="${t.name}">개발</li>
+                                </ul>
+                            </div>
+
+                            <div class="view-like-comment-box">
+                                <div class="views deco icon-color-3 icon-views" th:text="${l.hit}">000</div>
+                                <div class="likes deco icon-color-3 icon-likes" th:text="${l.goodCount}">17</div>
+                                <div class="comments deco icon-color-3 icon-comments" th:text="${l.commentCount}">0</div>
+                            </div>
+                        </div>
+                    </div>
+
+                </li>
+            </ul>
+        </section>
+
+        <!-- --페이징------ -->
+        <section>
+            <h1 class="d:none">페이징</h1>
+            <ul class="paging">
+            </ul>
+        </section>
+    </div>
+
+</main>
+</body>
+</html>
