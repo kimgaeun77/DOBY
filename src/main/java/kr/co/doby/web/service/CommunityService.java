@@ -8,6 +8,8 @@ public interface CommunityService {
 
     List<CommunityView> getViewList(Integer page, Long categoryId, String query, Integer filterId);
 
+    String checkFilterNameByFilterId(Integer filterId);
+
     List<CommunityCategory> getCommunityCategoryList();
 
     Community add(Community community);

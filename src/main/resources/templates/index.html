@@ -147,193 +147,43 @@
                 <h1 class="d:none">인기 게시글</h1>
                 <div class="title-more-box">
                     <div class="title">인기 게시글</div>
-                    <div class="more"><a href="/community/list">더보기</a></div>
                 </div>
                 <div class="container">
                     <ul class="board-list">
-                        <li class="item">
+                        <li class="item" th:each="p : ${popularList}">
                             <div class="board">
 
                                 <div class="write-info-box">
                                     <div class="profile">
                                         <div class="img-container">
-                                            <img class="img" src="/image/profile2.jpg" alt="프로필사진">
+                                            <img class="img" src="/image/profile2.jpg" alt="프로필사진"
+                                                 th:src="@{https://file.doby.co.kr/profiles/{img}(img=${p.profileImage})}">
                                         </div>
-                                        <a class="nickname" href="">김가구리</a>
+                                        <a class="nickname" href="" th:text="${p.nickname}">김가구리</a>
                                     </div>
-                                    <div class="reg-date">5분전</div>
+                                    <div class="reg-date" th:text="${p.timeDifference}">5분전</div>
                                 </div>
 
                                 <div class="title-box">
-                                    <a class="title" href="">최종합격 30곳! 어디로 가야할까요?ㅎㅎ 기분이 좋네요 아주~</a>
+                                    <a class="title" href="" th:text="${p.title}"
+                                       th:href="@{${link}(id=${p.id})}" th:with="link=(${p.boardName} == '커뮤니티' ? '/community/detail' : '/smalltalk/detail' )">최종합격 30곳! 어디로 가야할까요?ㅎㅎ 기분이 좋네요 아주~</a>
                                 </div>
 
                                 <div class="board-info">
                                     <div class="category-name-tag-box">
-                                        <div class="category-name">코드 Q&A</div>
+                                        <div class="category-name" th:classappend="${p.boardName} == '커뮤니티' ? 'community' : 'smalltalk'" th:text="${p.boardName}">커뮤니티</div>
                                         <ul class="tag-list">
-                                            <li class="tag">개발</li>
-                                            <li class="tag">스프링</li>
-                                            <li class="tag">자바</li>
+                                            <li class="tag" th:each=" t : ${p.tagList}" th:text="${t.name}">개발</li>
                                         </ul>
                                     </div>
 
                                     <div class="view-like-comment-box">
-                                        <div class="views deco icon-color-3 icon-views">000</div>
-                                        <div class="likes deco icon-color-3 icon-likes">17</div>
-                                        <div class="comments deco icon-color-3 icon-comments">0</div>
-                                    </div>
-                                </div>
-                            </div>
-
-                        </li>
-
-                        <li class="item">
-                            <div class="board">
-
-                                <div class="write-info-box">
-                                    <div class="profile">
-                                        <div class="img-container">
-                                            <img class="img" src="/image/profile2.jpg" alt="프로필사진">
+                                        <div class="views deco icon-color-3 icon-views" th:text="${p.hit}">000</div>
+                                        <div class="likes deco icon-color-3 icon-likes" th:text="${p.goodCount}">17
                                         </div>
-                                        <!-- a태그로 변경 어차피 링크 넣을거라 굳이 utils 클래스 넣을 필요 없음 -->
-                                        <a class="nickname" href="">김가구리</a>
-                                    </div>
-                                    <div class="reg-date">5분전</div>
-                                </div>
-
-                                <div class="title-box">
-                                    <a class="title" href="">최종합격 30곳! 어디로 가야할까요?ㅎㅎ 기분이 좋네요 아주~</a>
-                                </div>
-
-                                <div class="board-info">
-                                    <div class="category-name-tag-box">
-                                        <div class="category-name">코드 Q&A</div>
-                                        <ul class="tag-list">
-                                            <li class="tag">개발</li>
-                                            <li class="tag">스프링</li>
-                                            <li class="tag">자바</li>
-                                        </ul>
-                                    </div>
-
-                                    <div class="view-like-comment-box">
-                                        <div class="views deco icon-color-3 icon-views">000</div>
-                                        <div class="likes deco icon-color-3 icon-likes">17</div>
-                                        <div class="comments deco icon-color-3 icon-comments">0</div>
-                                    </div>
-                                </div>
-                            </div>
-
-                        </li>
-
-                        <li class="item">
-                            <div class="board">
-
-                                <div class="write-info-box">
-                                    <div class="profile">
-                                        <div class="img-container">
-                                            <img class="img" src="/image/profile2.jpg" alt="프로필사진">
+                                        <div class="comments deco icon-color-3 icon-comments"
+                                             th:text="${p.commentCount}">0
                                         </div>
-                                        <!-- a태그로 변경 어차피 링크 넣을거라 굳이 utils 클래스 넣을 필요 없음 -->
-                                        <a class="nickname" href="">김가구리</a>
-                                    </div>
-                                    <div class="reg-date">5분전</div>
-                                </div>
-
-                                <div class="title-box">
-                                    <a class="title" href="">최종합격 30곳! 어디로 가야할까요?ㅎㅎ 기분이 좋네요 아주~</a>
-                                </div>
-
-                                <div class="board-info">
-                                    <div class="category-name-tag-box">
-                                        <div class="category-name">코드 Q&A</div>
-                                        <ul class="tag-list">
-                                            <li class="tag">개발</li>
-                                            <li class="tag">스프링</li>
-                                            <li class="tag">자바</li>
-                                        </ul>
-                                    </div>
-
-                                    <div class="view-like-comment-box">
-                                        <div class="views deco icon-color-3 icon-views">000</div>
-                                        <div class="likes deco icon-color-3 icon-likes">17</div>
-                                        <div class="comments deco icon-color-3 icon-comments">0</div>
-                                    </div>
-                                </div>
-                            </div>
-
-                        </li>
-
-                        <li class="item">
-                            <div class="board">
-
-                                <div class="write-info-box">
-                                    <div class="profile">
-                                        <div class="img-container">
-                                            <img class="img" src="/image/profile2.jpg" alt="프로필사진">
-                                        </div>
-                                        <!-- a태그로 변경 어차피 링크 넣을거라 굳이 utils 클래스 넣을 필요 없음 -->
-                                        <a class="nickname" href="">김가구리</a>
-                                    </div>
-                                    <div class="reg-date">5분전</div>
-                                </div>
-
-                                <div class="title-box">
-                                    <a class="title" href="">최종합격 30곳! 어디로 가야할까요?ㅎㅎ 기분이 좋네요 아주~</a>
-                                </div>
-
-                                <div class="board-info">
-                                    <div class="category-name-tag-box">
-                                        <div class="category-name">코드 Q&A</div>
-                                        <ul class="tag-list">
-                                            <li class="tag">개발</li>
-                                            <li class="tag">스프링</li>
-                                            <li class="tag">자바</li>
-                                        </ul>
-                                    </div>
-
-                                    <div class="view-like-comment-box">
-                                        <div class="views deco icon-color-3 icon-views">000</div>
-                                        <div class="likes deco icon-color-3 icon-likes">17</div>
-                                        <div class="comments deco icon-color-3 icon-comments">0</div>
-                                    </div>
-                                </div>
-                            </div>
-
-                        </li>
-
-                        <li class="item">
-                            <div class="board">
-
-                                <div class="write-info-box">
-                                    <div class="profile">
-                                        <div class="img-container">
-                                            <img class="img" src="/image/profile2.jpg" alt="프로필사진">
-                                        </div>
-                                        <!-- a태그로 변경 어차피 링크 넣을거라 굳이 utils 클래스 넣을 필요 없음 -->
-                                        <a class="nickname" href="">김가구리</a>
-                                    </div>
-                                    <div class="reg-date">5분전</div>
-                                </div>
-
-                                <div class="title-box">
-                                    <a class="title" href="">최종합격 30곳! 어디로 가야할까요?ㅎㅎ 기분이 좋네요 아주~</a>
-                                </div>
-
-                                <div class="board-info">
-                                    <div class="category-name-tag-box">
-                                        <div class="category-name">코드 Q&A</div>
-                                        <ul class="tag-list">
-                                            <li class="tag">개발</li>
-                                            <li class="tag">스프링</li>
-                                            <li class="tag">자바</li>
-                                        </ul>
-                                    </div>
-
-                                    <div class="view-like-comment-box">
-                                        <div class="views deco icon-color-3 icon-views">000</div>
-                                        <div class="likes deco icon-color-3 icon-likes">17</div>
-                                        <div class="comments deco icon-color-3 icon-comments">0</div>
                                     </div>
                                 </div>
                             </div>
@@ -350,189 +200,40 @@
                 </div>
                 <div class="container">
                     <ul class="board-list">
-                        <li class="item">
+                        <li class="item" th:each="c : ${communityList}">
                             <div class="board">
 
                                 <div class="write-info-box">
                                     <div class="profile">
                                         <div class="img-container">
-                                            <img class="img" src="/image/profile2.jpg" alt="프로필사진">
+                                            <img class="img" src="/image/profile2.jpg" alt="프로필사진"
+                                                 th:src="@{https://file.doby.co.kr/profiles/{img}(img=${c.profileImage})}">
                                         </div>
-                                        <a class="nickname" href="">김가구리</a>
+                                        <a class="nickname" href="" th:text="${c.nickname}">김가구리</a>
                                     </div>
-                                    <div class="reg-date">5분전</div>
+                                    <div class="reg-date" th:text="${c.timeDifference}">5분전</div>
                                 </div>
 
                                 <div class="title-box">
-                                    <a class="title" href="">최종합격 30곳! 어디로 가야할까요?ㅎㅎ 기분이 좋네요 아주~</a>
+                                    <a class="title" href="" th:text="${c.title}"
+                                       th:href="@{/community/detail(id=${c.id})}">최종합격 30곳! 어디로 가야할까요?ㅎㅎ 기분이 좋네요 아주~</a>
                                 </div>
 
                                 <div class="board-info">
                                     <div class="category-name-tag-box">
-                                        <div class="category-name">코드 Q&A</div>
+                                        <div class="category-name" th:text="${c.categoryName}">코드 Q&A</div>
                                         <ul class="tag-list">
-                                            <li class="tag">개발</li>
-                                            <li class="tag">스프링</li>
-                                            <li class="tag">자바</li>
+                                            <li class="tag" th:each=" t : ${c.tagList}" th:text="${t.name}">개발</li>
                                         </ul>
                                     </div>
 
                                     <div class="view-like-comment-box">
-                                        <div class="views deco icon-color-3 icon-views">000</div>
-                                        <div class="likes deco icon-color-3 icon-likes">17</div>
-                                        <div class="comments deco icon-color-3 icon-comments">0</div>
-                                    </div>
-                                </div>
-                            </div>
-
-                        </li>
-
-                        <li class="item">
-                            <div class="board">
-
-                                <div class="write-info-box">
-                                    <div class="profile">
-                                        <div class="img-container">
-                                            <img class="img" src="/image/profile2.jpg" alt="프로필사진">
+                                        <div class="views deco icon-color-3 icon-views" th:text="${c.hit}">000</div>
+                                        <div class="likes deco icon-color-3 icon-likes" th:text="${c.goodCount}">17
                                         </div>
-                                        <!-- a태그로 변경 어차피 링크 넣을거라 굳이 utils 클래스 넣을 필요 없음 -->
-                                        <a class="nickname" href="">김가구리</a>
-                                    </div>
-                                    <div class="reg-date">5분전</div>
-                                </div>
-
-                                <div class="title-box">
-                                    <a class="title" href="">최종합격 30곳! 어디로 가야할까요?ㅎㅎ 기분이 좋네요 아주~</a>
-                                </div>
-
-                                <div class="board-info">
-                                    <div class="category-name-tag-box">
-                                        <div class="category-name">코드 Q&A</div>
-                                        <ul class="tag-list">
-                                            <li class="tag">개발</li>
-                                            <li class="tag">스프링</li>
-                                            <li class="tag">자바</li>
-                                        </ul>
-                                    </div>
-
-                                    <div class="view-like-comment-box">
-                                        <div class="views deco icon-color-3 icon-views">000</div>
-                                        <div class="likes deco icon-color-3 icon-likes">17</div>
-                                        <div class="comments deco icon-color-3 icon-comments">0</div>
-                                    </div>
-                                </div>
-                            </div>
-
-                        </li>
-
-                        <li class="item">
-                            <div class="board">
-
-                                <div class="write-info-box">
-                                    <div class="profile">
-                                        <div class="img-container">
-                                            <img class="img" src="/image/profile2.jpg" alt="프로필사진">
+                                        <div class="comments deco icon-color-3 icon-comments"
+                                             th:text="${c.commentCount}">0
                                         </div>
-                                        <!-- a태그로 변경 어차피 링크 넣을거라 굳이 utils 클래스 넣을 필요 없음 -->
-                                        <a class="nickname" href="">김가구리</a>
-                                    </div>
-                                    <div class="reg-date">5분전</div>
-                                </div>
-
-                                <div class="title-box">
-                                    <a class="title" href="">최종합격 30곳! 어디로 가야할까요?ㅎㅎ 기분이 좋네요 아주~</a>
-                                </div>
-
-                                <div class="board-info">
-                                    <div class="category-name-tag-box">
-                                        <div class="category-name">코드 Q&A</div>
-                                        <ul class="tag-list">
-                                            <li class="tag">개발</li>
-                                            <li class="tag">스프링</li>
-                                            <li class="tag">자바</li>
-                                        </ul>
-                                    </div>
-
-                                    <div class="view-like-comment-box">
-                                        <div class="views deco icon-color-3 icon-views">000</div>
-                                        <div class="likes deco icon-color-3 icon-likes">17</div>
-                                        <div class="comments deco icon-color-3 icon-comments">0</div>
-                                    </div>
-                                </div>
-                            </div>
-
-                        </li>
-
-                        <li class="item">
-                            <div class="board">
-
-                                <div class="write-info-box">
-                                    <div class="profile">
-                                        <div class="img-container">
-                                            <img class="img" src="/image/profile2.jpg" alt="프로필사진">
-                                        </div>
-                                        <!-- a태그로 변경 어차피 링크 넣을거라 굳이 utils 클래스 넣을 필요 없음 -->
-                                        <a class="nickname" href="">김가구리</a>
-                                    </div>
-                                    <div class="reg-date">5분전</div>
-                                </div>
-
-                                <div class="title-box">
-                                    <a class="title" href="">최종합격 30곳! 어디로 가야할까요?ㅎㅎ 기분이 좋네요 아주~</a>
-                                </div>
-
-                                <div class="board-info">
-                                    <div class="category-name-tag-box">
-                                        <div class="category-name">코드 Q&A</div>
-                                        <ul class="tag-list">
-                                            <li class="tag">개발</li>
-                                            <li class="tag">스프링</li>
-                                            <li class="tag">자바</li>
-                                        </ul>
-                                    </div>
-
-                                    <div class="view-like-comment-box">
-                                        <div class="views deco icon-color-3 icon-views">000</div>
-                                        <div class="likes deco icon-color-3 icon-likes">17</div>
-                                        <div class="comments deco icon-color-3 icon-comments">0</div>
-                                    </div>
-                                </div>
-                            </div>
-
-                        </li>
-
-                        <li class="item">
-                            <div class="board">
-
-                                <div class="write-info-box">
-                                    <div class="profile">
-                                        <div class="img-container">
-                                            <img class="img" src="/image/profile2.jpg" alt="프로필사진">
-                                        </div>
-                                        <!-- a태그로 변경 어차피 링크 넣을거라 굳이 utils 클래스 넣을 필요 없음 -->
-                                        <a class="nickname" href="">김가구리</a>
-                                    </div>
-                                    <div class="reg-date">5분전</div>
-                                </div>
-
-                                <div class="title-box">
-                                    <a class="title" href="">최종합격 30곳! 어디로 가야할까요?ㅎㅎ 기분이 좋네요 아주~</a>
-                                </div>
-
-                                <div class="board-info">
-                                    <div class="category-name-tag-box">
-                                        <div class="category-name">코드 Q&A</div>
-                                        <ul class="tag-list">
-                                            <li class="tag">개발</li>
-                                            <li class="tag">스프링</li>
-                                            <li class="tag">자바</li>
-                                        </ul>
-                                    </div>
-
-                                    <div class="view-like-comment-box">
-                                        <div class="views deco icon-color-3 icon-views">000</div>
-                                        <div class="likes deco icon-color-3 icon-likes">17</div>
-                                        <div class="comments deco icon-color-3 icon-comments">0</div>
                                     </div>
                                 </div>
                             </div>
@@ -598,193 +299,43 @@
                 <h1 class="d:none">잡담 게시글</h1>
                 <div class="title-more-box">
                     <div class="title">Small Talk</div>
-                    <div class="more"><a href="/community/list">더보기</a></div>
+                    <div class="more"><a href="/smalltalk/list">더보기</a></div>
                 </div>
                 <div class="container">
                     <ul class="board-list">
-                        <li class="item">
+                        <li class="item" th:each="s : ${smalltalkList}">
                             <div class="board">
 
                                 <div class="write-info-box">
                                     <div class="profile">
                                         <div class="img-container">
-                                            <img class="img" src="/image/profile2.jpg" alt="프로필사진">
+                                            <img class="img" src="/image/profile2.jpg" alt="프로필사진"
+                                                 th:src="@{https://file.doby.co.kr/profiles/{img}(img=${s.profileImage})}">
                                         </div>
-                                        <a class="nickname" href="">김가구리</a>
+                                        <a class="nickname" href="" th:text="${s.nickname}">김가구리</a>
                                     </div>
-                                    <div class="reg-date">5분전</div>
+                                    <div class="reg-date" th:text="${s.timeDifference}">5분전</div>
                                 </div>
 
                                 <div class="title-box">
-                                    <a class="title" href="">최종합격 30곳! 어디로 가야할까요?ㅎㅎ 기분이 좋네요 아주~</a>
+                                    <a class="title" href="" th:text="${s.title}"
+                                       th:href="@{/smalltalk/detail(id=${s.id})}">최종합격 30곳! 어디로 가야할까요?ㅎㅎ 기분이 좋네요 아주~</a>
                                 </div>
 
                                 <div class="board-info">
                                     <div class="category-name-tag-box">
-                                        <div class="category-name">코드 Q&A</div>
                                         <ul class="tag-list">
-                                            <li class="tag">개발</li>
-                                            <li class="tag">스프링</li>
-                                            <li class="tag">자바</li>
+                                            <li class="tag" th:each=" t : ${s.tagList}" th:text="${t.name}">일상</li>
                                         </ul>
                                     </div>
 
                                     <div class="view-like-comment-box">
-                                        <div class="views deco icon-color-3 icon-views">000</div>
-                                        <div class="likes deco icon-color-3 icon-likes">17</div>
-                                        <div class="comments deco icon-color-3 icon-comments">0</div>
-                                    </div>
-                                </div>
-                            </div>
-
-                        </li>
-
-                        <li class="item">
-                            <div class="board">
-
-                                <div class="write-info-box">
-                                    <div class="profile">
-                                        <div class="img-container">
-                                            <img class="img" src="/image/profile2.jpg" alt="프로필사진">
+                                        <div class="views deco icon-color-3 icon-views" th:text="${s.hit}">000</div>
+                                        <div class="likes deco icon-color-3 icon-likes" th:text="${s.goodCount}">17
                                         </div>
-                                        <!-- a태그로 변경 어차피 링크 넣을거라 굳이 utils 클래스 넣을 필요 없음 -->
-                                        <a class="nickname" href="">김가구리</a>
-                                    </div>
-                                    <div class="reg-date">5분전</div>
-                                </div>
-
-                                <div class="title-box">
-                                    <a class="title" href="">최종합격 30곳! 어디로 가야할까요?ㅎㅎ 기분이 좋네요 아주~</a>
-                                </div>
-
-                                <div class="board-info">
-                                    <div class="category-name-tag-box">
-                                        <div class="category-name">코드 Q&A</div>
-                                        <ul class="tag-list">
-                                            <li class="tag">개발</li>
-                                            <li class="tag">스프링</li>
-                                            <li class="tag">자바</li>
-                                        </ul>
-                                    </div>
-
-                                    <div class="view-like-comment-box">
-                                        <div class="views deco icon-color-3 icon-views">000</div>
-                                        <div class="likes deco icon-color-3 icon-likes">17</div>
-                                        <div class="comments deco icon-color-3 icon-comments">0</div>
-                                    </div>
-                                </div>
-                            </div>
-
-                        </li>
-
-                        <li class="item">
-                            <div class="board">
-
-                                <div class="write-info-box">
-                                    <div class="profile">
-                                        <div class="img-container">
-                                            <img class="img" src="/image/profile2.jpg" alt="프로필사진">
+                                        <div class="comments deco icon-color-3 icon-comments"
+                                             th:text="${s.commentCount}">0
                                         </div>
-                                        <!-- a태그로 변경 어차피 링크 넣을거라 굳이 utils 클래스 넣을 필요 없음 -->
-                                        <a class="nickname" href="">김가구리</a>
-                                    </div>
-                                    <div class="reg-date">5분전</div>
-                                </div>
-
-                                <div class="title-box">
-                                    <a class="title" href="">최종합격 30곳! 어디로 가야할까요?ㅎㅎ 기분이 좋네요 아주~</a>
-                                </div>
-
-                                <div class="board-info">
-                                    <div class="category-name-tag-box">
-                                        <div class="category-name">코드 Q&A</div>
-                                        <ul class="tag-list">
-                                            <li class="tag">개발</li>
-                                            <li class="tag">스프링</li>
-                                            <li class="tag">자바</li>
-                                        </ul>
-                                    </div>
-
-                                    <div class="view-like-comment-box">
-                                        <div class="views deco icon-color-3 icon-views">000</div>
-                                        <div class="likes deco icon-color-3 icon-likes">17</div>
-                                        <div class="comments deco icon-color-3 icon-comments">0</div>
-                                    </div>
-                                </div>
-                            </div>
-
-                        </li>
-
-                        <li class="item">
-                            <div class="board">
-
-                                <div class="write-info-box">
-                                    <div class="profile">
-                                        <div class="img-container">
-                                            <img class="img" src="/image/profile2.jpg" alt="프로필사진">
-                                        </div>
-                                        <!-- a태그로 변경 어차피 링크 넣을거라 굳이 utils 클래스 넣을 필요 없음 -->
-                                        <a class="nickname" href="">김가구리</a>
-                                    </div>
-                                    <div class="reg-date">5분전</div>
-                                </div>
-
-                                <div class="title-box">
-                                    <a class="title" href="">최종합격 30곳! 어디로 가야할까요?ㅎㅎ 기분이 좋네요 아주~</a>
-                                </div>
-
-                                <div class="board-info">
-                                    <div class="category-name-tag-box">
-                                        <div class="category-name">코드 Q&A</div>
-                                        <ul class="tag-list">
-                                            <li class="tag">개발</li>
-                                            <li class="tag">스프링</li>
-                                            <li class="tag">자바</li>
-                                        </ul>
-                                    </div>
-
-                                    <div class="view-like-comment-box">
-                                        <div class="views deco icon-color-3 icon-views">000</div>
-                                        <div class="likes deco icon-color-3 icon-likes">17</div>
-                                        <div class="comments deco icon-color-3 icon-comments">0</div>
-                                    </div>
-                                </div>
-                            </div>
-
-                        </li>
-
-                        <li class="item">
-                            <div class="board">
-
-                                <div class="write-info-box">
-                                    <div class="profile">
-                                        <div class="img-container">
-                                            <img class="img" src="/image/profile2.jpg" alt="프로필사진">
-                                        </div>
-                                        <!-- a태그로 변경 어차피 링크 넣을거라 굳이 utils 클래스 넣을 필요 없음 -->
-                                        <a class="nickname" href="">김가구리</a>
-                                    </div>
-                                    <div class="reg-date">5분전</div>
-                                </div>
-
-                                <div class="title-box">
-                                    <a class="title" href="">최종합격 30곳! 어디로 가야할까요?ㅎㅎ 기분이 좋네요 아주~</a>
-                                </div>
-
-                                <div class="board-info">
-                                    <div class="category-name-tag-box">
-                                        <div class="category-name">코드 Q&A</div>
-                                        <ul class="tag-list">
-                                            <li class="tag">개발</li>
-                                            <li class="tag">스프링</li>
-                                            <li class="tag">자바</li>
-                                        </ul>
-                                    </div>
-
-                                    <div class="view-like-comment-box">
-                                        <div class="views deco icon-color-3 icon-views">000</div>
-                                        <div class="likes deco icon-color-3 icon-likes">17</div>
-                                        <div class="comments deco icon-color-3 icon-comments">0</div>
                                     </div>
                                 </div>
                             </div>

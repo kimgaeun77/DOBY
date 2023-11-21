@@ -53,7 +53,7 @@ public class CommunityServiceImp implements CommunityService {
     }
 
     // 필터 아이디에 따라 정렬 기준을 리턴하는 함수
-    private String checkFilterNameByFilterId(Integer filterId) {
+    public String checkFilterNameByFilterId(Integer filterId) {
         String filterName = null;
         switch (filterId){
             case 1:
