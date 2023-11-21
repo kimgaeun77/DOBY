@@ -99,11 +99,10 @@
 
 /* 카테고리 호버했을 때 */
 .container
-.category-search-filter-box
+.category-search-filter-box >
 .category
 .item:hover {
     color: var(--color-main-0);
-
 }
 
 /* 카테고리 눌렀을 때 */
@@ -113,7 +112,6 @@
 .item.active {
     font-weight: 600;
     color: var(--color-main-0);
-
 }
 
 /* --------- 검색버튼 + 필터 버튼 공통 ----------------- */

@@ -13,9 +13,7 @@ const fetchWithData = async () => {
     let techList = Array.from(currentTechList);
 
     const queryString = `?p=${currentPage}&c=${currentCategoryId}&q=${currentQuery}&t=${techList}&po=${currentPositionId}&w=${currentWayId}&wi=${isWish}`;
-
-    console.log(queryString);
-
+    
     let withURL = `/api/withs${queryString}`;
     let pagingURL = `/api/withs/paging${queryString}`;
 
