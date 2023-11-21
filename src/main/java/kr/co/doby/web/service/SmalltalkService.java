@@ -8,6 +8,8 @@ public interface SmalltalkService {
 
     List<SmalltalkView> getViewList(Integer page, String query, Integer filterId);
 
+    String checkFilterNameByFilterId(Integer filterId);
+
     Smalltalk add(Smalltalk smalltalk);
 
     Smalltalk getById(Long id);
