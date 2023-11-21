@@ -49,8 +49,6 @@ public class CommunityController {
     // 등록
     @PostMapping
     public ResponseEntity<Community> reg(@RequestBody Community community){
-       //임시
-       community.setMemberId(1L);
        Community newOne = service.add(community);
 
        URI location = ServletUriComponentsBuilder.fromCurrentRequest()

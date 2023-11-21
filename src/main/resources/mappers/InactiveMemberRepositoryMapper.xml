@@ -8,6 +8,6 @@
         select count(id)
         from inactive_member
         where member_id = #{member_id}
-          and now() <![CDATA[<=]]> end_date;
+          and now() <![CDATA[<=]]> end_date
     </select>
 </mapper>

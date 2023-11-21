@@ -3,7 +3,6 @@ package kr.co.doby.web.service;
 import kr.co.doby.web.entity.*;
 import kr.co.doby.web.etc.TimeDifference;
 import kr.co.doby.web.repository.*;
-import kr.co.doby.web.repository.IndexRepository;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 

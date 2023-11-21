@@ -42,8 +42,7 @@ public class SmalltalkController {
     // 등록
     @PostMapping
     public ResponseEntity<Smalltalk> reg(@RequestBody Smalltalk smalltalk){
-       //임시
-       smalltalk.setMemberId(1L);
+
        Smalltalk newOne = service.add(smalltalk);
 
        URI location = ServletUriComponentsBuilder.fromCurrentRequest()
