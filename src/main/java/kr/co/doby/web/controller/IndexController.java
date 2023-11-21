@@ -24,28 +24,24 @@ public class IndexController {
     @Autowired
     private IndexService service;
 
-    @Autowired
-    private WithService withService;
-    
-
     @GetMapping
     public String index(Model model) throws ParseException {
 
         // 모임 카드
         List<WithView> deadlineList = service.getNearDeadlineWithList();
-        
+
         // 인기 게시글(커뮤니티, 스몰톡)
-        List<PopularView> popularList = service.getPopularViewList(1,3);
+        List<PopularView> popularList = service.getPopularViewList(1, 3);
 
         // 커뮤니티
         List<CommunityView> communityList = service.getCommunityViewList(1, null, null, 1);
 
         // 모임
-        List<WithView> withList = withService.getViewList(1, null, null, null, null, null, null, null);
+        List<WithView> withList = service.getWithViewList(1, null, null, null, null, null, null, null);
 
         // 스몰톡
         List<SmalltalkView> smalltalkList = service.getSmalltalkViewList(1, null, 1);
-        
+
 
         model.addAttribute("deadlineList", deadlineList);
         model.addAttribute("popularList", popularList);

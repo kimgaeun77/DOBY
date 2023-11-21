@@ -13,6 +13,8 @@ public interface IndexService {
 
     List<CommunityView> getCommunityViewList(Integer page, Long categoryId, String query, Integer filterId);
 
+    List<WithView> getWithViewList(Integer page, Long categoryId, String query, List<Long> techList, Long positionId, Long wayId, Boolean isWish, Long memberId);
+
     String checkFilterNameByFilterId(Integer filterId);
 
     List<SmalltalkView> getSmalltalkViewList(Integer page, String query, Integer filterId);

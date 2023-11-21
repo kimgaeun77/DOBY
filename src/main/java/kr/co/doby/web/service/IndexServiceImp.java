@@ -78,10 +78,36 @@ public class IndexServiceImp implements IndexService {
         return communityViewAll;
     }
 
+    @Override
+    public List<WithView> getWithViewList(Integer page, Long categoryId, String query, List<Long> techList, Long positionId, Long wayId, Boolean isWish, Long memberId) {
+        if (isWish != null && !isWish)
+            isWish = null;
+
+        if (techList != null && techList.isEmpty())
+            techList = null;
+
+        if ("".equals(query))
+            query = null;
+
+        int size = 10;
+        int offset = size * (page - 1);
+
+        List<WithView> list = withRepository.findViewAll(offset, size, categoryId, query, techList, positionId, wayId, isWish, memberId);
+
+        for (WithView with : list) {
+            Date regDate = with.getRegDate();
+            String timeDifference = TimeDifference.getTimeDifference(regDate);
+            with.setTimeDifference(timeDifference);
+            with.setTechList(withTechRepository.findViewAll(with.getId()));
+        }
+
+        return list;
+    }
+
     // 필터 아이디에 따라 정렬 기준을 리턴하는 함수
     public String checkFilterNameByFilterId(Integer filterId) {
         String filterName = null;
-        switch (filterId){
+        switch (filterId) {
             case 1:
                 filterName = "id";
                 break;
@@ -132,11 +158,10 @@ public class IndexServiceImp implements IndexService {
             long id = p.getId();
             String boardName = p.getBoardName();
 
-            if(boardName.equals("커뮤니티")){
+            if (boardName.equals("커뮤니티")) {
                 List<CommunityTagView> tagList = communityTagRepository.findViewAllByCommunityId(id);
                 p.setTagList(tagList);
-            }
-            else if (boardName.equals("스몰톡")) {
+            } else if (boardName.equals("스몰톡")) {
                 List<SmalltalkTagView> tagList = smalltalkTagRepository.findViewAllBySmalltalkId(id);
                 p.setTagList(tagList);
             }
