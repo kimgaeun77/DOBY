@@ -1,6 +1,7 @@
 .join-page {
   display: flex;
   justify-content: center;
+  align-items: center;
 }
 
 .join {
@@ -9,7 +10,7 @@
   margin: 50px 20px;
   align-items: center;
   /* 임시너비 */
-  width: 100%;
+  width: 95%;
   max-width: 450px;
 }
 
@@ -76,8 +77,39 @@
   justify-content: space-between;
   align-items: center;
   flex-shrink: 1;
+  display: flex;
+  flex-direction: row;
+}
+/* non-active일때 */
+.join .input-box-set .toggle {
+  width: 40px;
+  height: 25px;
+  border-radius: 30px;
+  background-color: var(--color-base-3);
+  cursor: pointer;
 }
 
+.join .input-box-set .toggle .toggle-button {
+  background: #ffffff;
+  width: 20px;
+  height: 20px;
+  border-radius: 15px;
+  position: relative;
+  top: 2.4px;
+  left: 3px;
+  transition: left 0.3s;
+}
+
+/* active 상태일 때 스타일 */
+.join .input-box-set .toggle.active {
+  background-color: var(--color-main-3);
+}
+
+.join .input-box-set .toggle.active .toggle-button {
+  left: 17px;
+  transition: left 0.3s;
+}
+/*  */
 .join .btn-join {
   width: auto;
 }
@@ -86,6 +118,11 @@
   display: flex;
   justify-content: center;
   align-items: center;
+}
+
+.join .privacy-policy {
+  text-decoration-line: underline;
+  cursor: pointer;
 }
 
 @media (min-width: 700px) {
@@ -98,7 +135,24 @@
     height: 120px;
     margin-bottom: 20px;
   }
+  .join .input-box-set .toggle,
+  .join .input-box-set .toggle.toggle.active {
+    width: 58px;
+    height: 37px;
+  }
+  .join .input-box-set .toggle .toggle-button {
+    background: #ffffff;
+    width: 30px;
+    height: 30px;
+    top: 3.2px;
+    left: 4px;
+    border-radius: 15px;
+    position: relative;
+  }
 
+  .join .input-box-set .toggle.active .toggle-button {
+    left: 24px;
+  }
   .join .btn-join {
     font-size: 18px;
   }
