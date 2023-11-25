@@ -23,4 +23,8 @@ public interface CommunityRepository {
     void delete(Long id);
 
     Long findAllCount(Long categoryId, String query);
+
+    void toBlind(Long id);
+
+    void toVisible(Long id);
 }

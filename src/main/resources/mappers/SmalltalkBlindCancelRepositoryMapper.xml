@@ -1,0 +1,41 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper
+        PUBLIC "-//mybatis.org//DTD Config 3.0//EN"
+        "https://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="kr.co.doby.web.repository.SmalltalkBlindCancelRepository">
+    <!--리스트출력-->
+    <select id="findViewAll" resultType="SmalltalkBlindCancelView">
+        select * from smalltalk_blind_cancel_view
+        <where>
+            <if test="query !=null">and (title like '%${query}%' or
+                report_reason like '%${query}%' or cancel_reason like '%${query}%')
+            </if>
+        </where>
+        order by status_id asc, reg_date desc
+        limit #{offset},#{size}
+    </select>
+    <!--페이징-->
+    <select id="countViewByQuery" resultType="Long">
+        select count(*)
+        from smalltalk_blind_cancel_view
+        <where>
+            <if test="query !=null">and (title like '%${query}%' or
+                report_reason like '%${query}%' or cancel_reason like '%${query}%')
+            </if>
+        </where>
+    </select>
+    <!--상세페이지-->
+    <select id="findViewById" resultType="SmalltalkBlindCancelView">
+        select * from smalltalk_blind_cancel_view where id = #{id}
+    </select>
+    <!--상태변경-->
+    <select id="findById" resultType="SmalltalkBlindCancel">
+        select * from smalltalk_blind_cancel where smalltalk_id = #{smalltalkId}
+    </select>
+    <!--상태변경-->
+    <update id="updateStatus" parameterType="SmalltalkBlindCancel">
+        update smalltalk_blind_cancel set status_id = #{statusId}
+        where smalltalk_id = #{smalltalkId}
+    </update>
+
+</mapper>

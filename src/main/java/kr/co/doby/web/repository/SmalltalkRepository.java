@@ -26,4 +26,8 @@ public interface SmalltalkRepository {
     void delete(Long id);
 
     Long findAllCount(String query);
+
+    void toBlind(Long id);
+
+    void toVisible(Long id);
 }

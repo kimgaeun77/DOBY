@@ -165,5 +165,13 @@
 
     </select>
 
+    <update id="toBlind">
+        update `with` set blind=1 where id=#{id}
+    </update>
+
+    <update id="toVisible">
+        update `with` set blind=0 where id=#{id}
+    </update>
+
 
 </mapper>

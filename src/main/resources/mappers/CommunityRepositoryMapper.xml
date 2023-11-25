@@ -62,4 +62,13 @@
             and (title like '%${query}%' or content like '%${query}%')
         </if>
     </select>
+
+    <update id="toBlind">
+        update community set blind=1 where id=#{id}
+    </update>
+
+    <update id="toVisible">
+        update community set blind=0 where id=#{id}
+    </update>
+
 </mapper>

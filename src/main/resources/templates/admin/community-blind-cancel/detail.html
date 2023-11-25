@@ -1,0 +1,81 @@
+<!DOCTYPE html>
+<html
+  lang="en"
+  xmlns:th="http://www.thymeleaf.org"
+  xmlns:layout="http://www.ultraq.net.nz/thymeleaf/layout"
+  layout:decorate="~{admin/inc/layout_header.html}"
+>
+  <head>
+    <title>Document</title>
+    <script src="/js/admin/community-blind-cancel/detail.js"></script>
+    <link
+      href="/css/components/admin/community-blind-cancel/detail.css"
+      rel="stylesheet"
+      type="text/css"
+    />
+  </head>
+
+  <body class="modal-body">
+    <main layout:fragment="main" th:object="${communityBlindCancelDetail}">
+      <!-- 게시글 정보 -->
+      <section>
+        <h1 class="d:none">게시글정보</h1>
+        <div class="board-info">
+          <!-- 게시글 제목, ... 버튼   -->
+          <div class="title-dots-btn-container">
+            <h2>
+              <a
+                th:href="@{/member/community/details(id=${communityBlindCancelDetail.id})}"
+                class="title"
+                th:text="*{title}"
+              ></a>
+            </h2>
+
+            <div class="dots-btn-list-container">
+              <button
+                class="dots-btn icon icon-size-1 icon-dots icon-color-3 cursor:pointer"
+              >
+                게시글 상세 버튼모음
+              </button>
+              <!-- 관리자일때만 보이는 메뉴 -->
+              <ul class="list d:none">
+                <li class="item">처리중</li>
+                <li class="item">승인</li>
+                <li class="item">거절</li>
+              </ul>
+            </div>
+          </div>
+
+          <!-- 작성 정보, 조회수 -->
+          <dl class="write-info">
+            <div class="item">
+              <dt class="dt hit">카테고리</dt>
+              <dd th:text="*{categoryName}"></dd>
+            </div>
+            <div class="item">
+              <dt class="dt reg-date">작성일자</dt>
+              <dd th:text="*{differenceRegDate}"></dd>
+            </div>
+            <div class="item">
+              <dt class="dt writer"></dt>
+              <dd><a class="cursor:pointer" th:text="*{nickname}"></a></dd>
+            </div>
+          </dl>
+          <div class="report-reason">
+            <span th:text="*{reportReason}"></span>
+          </div>
+        </div>
+      </section>
+
+      <!-- 게시글 내용 -->
+
+      <section>
+        <h1 class="d:none">게시글내용</h1>
+        <div class="content-container">
+          <!-- 글 내용 -->
+          <div class="content" th:text="*{cancelReason}"></div>
+        </div>
+      </section>
+    </main>
+  </body>
+</html>
