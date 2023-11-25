@@ -8,4 +8,13 @@
         select member_id, role_name from member_role_view where member_id = #{id}
     </select>
 
+    <select id="findViewAllByMemberId" resultType="MemberRoleView">
+        select * from member_role_view where member_id = #{memberId}
+    </select>
+
+    <insert id="save" parameterType="MemberRole">
+        insert into member_role(member_id, role_id)
+        value( #{memberId},#{roleId} )
+    </insert>
+
 </mapper>
