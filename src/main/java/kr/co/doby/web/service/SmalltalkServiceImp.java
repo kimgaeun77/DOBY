@@ -101,7 +101,7 @@ public class SmalltalkServiceImp implements SmalltalkService{
     public Boolean isGood(Long id, Long memberId) {
         SmalltalkGood good =  smalltalkGoodRepository.findById(id, memberId);
         if(good == null) return false;
-        else return true;
+        return true;
     }
 
     @Override

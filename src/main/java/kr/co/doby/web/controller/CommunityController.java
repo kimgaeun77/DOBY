@@ -1,8 +1,10 @@
 package kr.co.doby.web.controller;
 
+import kr.co.doby.web.config.auth.DobyUserDetails;
 import kr.co.doby.web.entity.*;
 import kr.co.doby.web.service.CommunityService;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.security.core.Authentication;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
@@ -29,7 +31,7 @@ public class CommunityController {
     }
     // 상세
     @GetMapping("detail")
-    public String detail(Long id, Model model) {
+    public String detail(Long id, Model model, Authentication authentication) {
         // 글 상세
         Community community = service.getById(id);
         // 커뮤니티 태그 목록
@@ -38,12 +40,13 @@ public class CommunityController {
         Member member =  service.getMemberByMemberId(community.getMemberId());
         String categoryName = service.getCategoryNameByCategoryId(community.getCategoryId());
 
-        // 좋아요 여부 (현재 요청한 사용자 아이디와 조회할 게시글 번호를 가지고 community_good 테이블에서 확인)
-        // DobyUserDetails userDetails = (DobyUserDetails)authentication.getPrincipal();
-        // Long memberId = userDetails.getId();
-        // 임시 테스트
-        Long memberId = 1L;
-        Boolean isGood = service.isGood(community.getId(), memberId);
+        // 좋아요 여부
+        Boolean isGood = false;
+        if(authentication != null) {
+            DobyUserDetails userDetails = (DobyUserDetails) authentication.getPrincipal();
+            Long memberId = userDetails.getId();
+            isGood = service.isGood(community.getId(), memberId);
+        }
 
         // 꺼내올것들 글 상세, 태그 목록, 게시글 카테고리 이름, 작성자, 요청자가 현재 게시글에 좋아요 눌렀는지
         model.addAttribute("community", community);

@@ -110,7 +110,7 @@ public class CommunityServiceImp implements CommunityService {
     public Boolean isGood(Long id, Long memberId) {
         CommunityGood good =  communityGoodRepository.findById(id, memberId);
         if(good == null) return false;
-        else return true;
+        return true;
     }
 
     @Override

@@ -2,6 +2,7 @@
 <html lang="en"
       xmlns:th="http://www.thymeleaf.org"
       xmlns:layout="http://www.ultraq.net.nz/thymeleaf/layout"
+      xmlns:sec="http://www.thymeleaf.org/extras/spring-security"
       layout:decorate="~{inc/layout.html}">
 <head>
   <meta charset="UTF-8">
@@ -11,10 +12,12 @@
   <link href="/css/utils/editor/style.css" rel="stylesheet" type="text/css"/>
   <script src="/js/utils/highlight/highlight.min.js"></script>
   <script src="/js/utils/highlight/setting.js"></script>
-  <script src="/js/smalltalk/detail.js"></script>
+  <script type="module" src="/js/smalltalk/detail.js"></script>
 </head>
 <body>
 <main class="main" layout:fragment="main">
+  <!--  모달 영역 -->
+  <div id="host"></div>
   <!-- 게시글 정보 -->
   <section>
     <h1 class="d:none">게시글정보</h1>
@@ -26,13 +29,13 @@
       <div class="title-dots-btn-container">
         <h2 class="title" th:text="${smalltalk.title}" th:data-smalltalk-id="${smalltalk.id}">DOBY 개발일지#2 플젝 이름 정하기 정말 중요하니까 다들 참여해주세요!!</h2>
 
-        <div class="dots-btn-list-container">
+        <div class="dots-btn-list-container" sec:authorize="hasAnyRole('ROLE_ADMIN', 'ROLE_MEMBER')">
           <button class="dots-btn icon icon-size-1 icon-dots icon-color-3 cursor:pointer" type="button">게시글 상세 버튼모음</button>
           <!-- 회원일때만 보이는 메뉴 (작성자, 게시글을 보는 사람등으로도 나뉨) -->
-          <ul class="list d:none">
-            <li class="item"><a th:href="@{/member/smalltalk/edit(id=${smalltalk.id})}">수정하기</a></li>
-            <li class="item"><a class="delete">삭제하기</a></li>
-            <li class="item"><a>신고하기</a></li>
+          <ul class="list d:none" th:with="currentUserId=${#authentication.principal.id}">
+            <li class="item" th:if="${smalltalk.memberId == currentUserId}"><a th:href="@{/member/smalltalk/edit(id=${smalltalk.id})}">수정하기</a></li>
+            <li class="item" th:if="${smalltalk.memberId == currentUserId}"><a class="delete">삭제하기</a></li>
+            <li class="item" th:unless="${smalltalk.memberId == currentUserId}"><a>신고하기</a></li>
           </ul>
         </div>
       </div>
