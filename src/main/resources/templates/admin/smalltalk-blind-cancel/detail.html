@@ -9,33 +9,29 @@
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>Document</title>
-    <script src="/js/admin/detail.js"></script>
-    <link href="/css/reset.css" rel="stylesheet" type="text/css" />
-    <link href="/css/root.css" rel="stylesheet" type="text/css" />
-    <link href="/css/utils.css" rel="stylesheet" type="text/css" />
-    <link href="/css/style.css" rel="stylesheet" type="text/css" />
-    <link href="/css/icon.css" rel="stylesheet" type="text/css" />
+    <script src="/js/admin/smalltalk-blind-cancel/detail.js"></script>
     <link
-      href="/css/components/admin/blind/parts/detail.css"
+      href="/css/components/admin/smalltalk-blind-cancel/detail.css"
       rel="stylesheet"
       type="text/css"
     />
-    <!-- <script src="/js/board/detail.js"></script> -->
   </head>
 
   <body>
-    <main layout:fragment="main" th:object="${boardBlindCancelDetail}">
+    <main layout:fragment="main" th:object="${smalltalkBlindCancelDetail}">
       <!-- 게시글 정보 -->
       <section>
         <h1 class="d:none">게시글정보</h1>
         <div class="board-info">
           <!-- 게시글 카테고리  -->
-          <!-- <div class="category">LOG</div> -->
 
           <!-- 게시글 제목, ... 버튼   -->
           <div class="title-dots-btn-container">
             <h2>
-              <a href="/board" class="title" th:text="*{title}"
+              <a
+                th:href="@{/member/smalltalk/details(id=${smalltalkBlindCancelDetail.id})}"
+                class="title"
+                th:text="*{title}"
                 >@왈$라viTy로 오세요@@@</a
               >
             </h2>
@@ -59,13 +55,11 @@
           <dl class="write-info">
             <div class="item">
               <dt class="dt hit">카테고리</dt>
-              <dd th:text="*{categoryName}">Smalltalk</dd>
+              <dd>스몰톡</dd>
             </div>
             <div class="item">
               <dt class="dt reg-date">작성일자</dt>
-              <dd th:text="*{#dates.format(regDate, 'yyyy.MM.dd  HH:mm')}">
-                2023.08.01
-              </dd>
+              <dd th:text="*{differenceRegDate}">2023.08.01</dd>
             </div>
             <div class="item">
               <dt class="dt writer">작성자</dt>
@@ -81,27 +75,12 @@
       </section>
 
       <!-- 게시글 내용 -->
+
       <section>
         <h1 class="d:none">게시글내용</h1>
         <div class="content-container">
           <!-- 글 내용 -->
-          <div class="content" th:text="*{cancelReason}">
-            <p>2023.08.07</p>
-            <p>팀원들과 프로젝트 회의를 했습니다!</p>
-            <p>아직 커뮤니티의 이름이 정해지지 않아 다들</p>
-            <p>머리를 쥐어짜느라 고생좀 했습니다^^;</p>
-            <!-- 에디터에서 줄바꿈 할 때 넣어주는 거 -->
-            <p>&nbsp;</p>
-            <p>이름 후보를 몇 개 올려드립니다!</p>
-            <p>도비님들이 보시기에는 어떤게 제일 낫나요?</p>
-            <!-- 에디터에서 줄바꿈 할 때 넣어주는 거 -->
-            <p>&nbsp;</p>
-            <p>왈라왈라쿼카쿼카</p>
-            <p>PODT (POtatoDevsTalk)</p>
-            <p>개발5분전</p>
-            <p>왈라비티</p>
-            <p>개물 (개발 물어보는 사람들)</p>
-          </div>
+          <div class="content" th:text="*{cancelReason}"></div>
         </div>
       </section>
     </main>

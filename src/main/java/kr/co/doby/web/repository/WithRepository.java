@@ -26,4 +26,8 @@ public interface WithRepository {
     Integer count(Long categoryId, String query, List<Long> techList, Long positionId, Long wayId, Boolean isWish, Long memberId);
 
     void updateHitById(Long id);
+
+    void toBlind(Long id);
+
+    void toVisible(Long id);
 }

@@ -1,5 +1,7 @@
 <!DOCTYPE html>
 <html
+  lang="en"
+  xmlns:th="http://www.thymeleaf.org"
   xmlns:layout="http://www.ultraq.net.nz/thymeleaf/layout"
   layout:decorate="~{admin/inc/layout.html}"
 >
@@ -7,23 +9,22 @@
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>Document</title>
-    <script src="/js/admin/communityBlindCancel.js"></script>
-    <link href="/css/reset.css" rel="stylesheet" type="text/css" />
-    <link href="/css/utils.css" rel="stylesheet" type="text/css" />
-    <link href="/css/style.css" rel="stylesheet" type="text/css" />
-    <link href="/css/root.css" rel="stylesheet" type="text/css" />
-    <link href="/css/icon.css" rel="stylesheet" type="text/css" />
+    <script src="/js/admin/smalltalk-blind-cancel/list.js"></script>
     <link
-      href="/css/components/admin/blind/parts/blind_banner.css"
+      href="/css/components/admin/parts/blind-cancel-banner.css"
       rel="stylesheet"
       type="text/css"
     />
     <link
-      href="/css/components/admin/blind/parts/blind_list.css"
+      href="/css/components/admin/parts/blind-cancel.css"
       rel="stylesheet"
       type="text/css"
     />
-
+    <link
+      href="/css/components/admin/smalltalk-blind-cancel/list.css"
+      rel="stylesheet"
+      type="text/css"
+    />
     <link
       href="/css/components/admin/aside.css"
       rel="stylesheet"
@@ -50,7 +51,7 @@
       type="text/css"
     />
     <link
-      href="/css/components/admin/blind/parts/blind.css"
+      href="/css/components/admin/blind/blind.css"
       rel="stylesheet"
       type="text/css"
     />
@@ -64,9 +65,8 @@
         <section class="blind-cancel-content">
           <!-- 카테고리 + 검색 filiter -->
           <div class="category-search-filter-box">
-            <ul class="category">
-              <li><a class="item community active" href="">커뮤니티</a></li>
-              <!--                    <li><a class="item smalltalk" href="">스몰톡</a></li>-->
+            <ul class="category smalltalk">
+              <li><a class="item smalltalk" href="">스몰톡</a></li>
             </ul>
             <div class="search-filter-box md:align-self:center">
               <button
@@ -83,7 +83,6 @@
                   placeholder="검색어를 입력해주세요"
                 />
                 <input class="search" value="검색" />
-                <!--                               type="submit"-->
               </fieldset>
             </form>
           </div>
@@ -91,28 +90,19 @@
           <section class="board-list">
             <h1 class="d:none">블라인드 철회요청 게시글</h1>
             <ul class="blind_list content">
-              <li class="blind-cancel-unit" th:each="b: ${communityList}">
-                <!--                            <div class="status" th:text="${b.status}">처리중</div>-->
-                <div
-                  class="status"
-                  th:text="${b.status}"
-                  th:classappend="${b.status != '처리중'} ? 'finish' : ''"
-                >
-                  처리중
-                </div>
+              <li class="blind-cancel-unit" th:each="b: ${smalltalkList}">
+                <div class="status" th:text="${b.status}">처리중</div>
                 <div class="title-box">
                   <a href="" class="user" th:text="${b.nickname}"
                     >신사동도라에몽주먹</a
                   >
                   <a
-                    th:href="@{/admin/community-blind-cancel/detail(id=${b.id})}"
+                    th:href="@{/admin/smalltalk-blind-cancel/detail(id=${b.id})}"
                     class="title"
                     th:text="${b.title}"
                     >신고 철회 요청:게시글번호 61654</a
                   >
-                  <div class="category" th:text="${b.categoryName}">
-                    커뮤니티
-                  </div>
+                  <div class="category smalltalk">스몰톡</div>
                 </div>
                 <div class="reason d:none md:d:block">
                   사유: <span th:text="${b.reportReason}">욕설 및 비방</span>
