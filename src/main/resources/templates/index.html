@@ -10,7 +10,7 @@
     <link href="/css/index/list.css" rel="stylesheet" type="text/css">
     <script src="/js/utils/jquery.js" type="text/javascript"></script>
     <script src="/js/utils/slider/slick.js" type="text/javascript" defer></script>
-    <script src="/js/index/index.js" type="text/javascript" defer></script>
+    <script src="/js/index/index.js" type="module" defer></script>
     <script src="/js/index/card.js" type="text/javascript" defer></script>
 
     <title>DOBY!</title>
@@ -18,7 +18,7 @@
 
 <body>
 <main layout:fragment="main" class="main">
-
+    <div id="host"></div>
     <section class="main-banner-block">
         <h1 class="d:none">배너</h1>
 
@@ -166,12 +166,17 @@
 
                                 <div class="title-box">
                                     <a class="title" href="" th:text="${p.title}"
-                                       th:href="@{${link}(id=${p.id})}" th:with="link=(${p.boardName} == '커뮤니티' ? '/community/detail' : '/smalltalk/detail' )">최종합격 30곳! 어디로 가야할까요?ㅎㅎ 기분이 좋네요 아주~</a>
+                                       th:href="@{${link}(id=${p.id})}"
+                                       th:with="link=(${p.boardName} == '커뮤니티' ? '/community/detail' : '/smalltalk/detail' )">최종합격
+                                        30곳! 어디로 가야할까요?ㅎㅎ 기분이 좋네요 아주~</a>
                                 </div>
 
                                 <div class="board-info">
                                     <div class="category-name-tag-box">
-                                        <div class="category-name" th:classappend="${p.boardName} == '커뮤니티' ? 'community' : 'smalltalk'" th:text="${p.boardName}">커뮤니티</div>
+                                        <div class="category-name"
+                                             th:classappend="${p.boardName} == '커뮤니티' ? 'community' : 'smalltalk'"
+                                             th:text="${p.boardName}">커뮤니티
+                                        </div>
                                         <ul class="tag-list">
                                             <li class="tag" th:each=" t : ${p.tagList}" th:text="${t.name}">개발</li>
                                         </ul>
