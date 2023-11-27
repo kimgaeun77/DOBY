@@ -14,8 +14,8 @@ window.addEventListener('load', function () {
     let command;
 
     // 모달 보여주는 함수
-    function showModal(config){
-        modal.title =  config.title;
+    function showModal(config) {
+        modal.title = config.title;
         modal.hasContent = config.hasContent;
         modal.content = config.content;
         modal.btnCount = config.btnCount;
@@ -45,9 +45,9 @@ window.addEventListener('load', function () {
             if (el.classList.contains("delete")) {
                 e.preventDefault();
                 let config = {
-                    title:"글을 삭제하시겠습니까?",
+                    title: "글을 삭제하시겠습니까?",
                     hasContent: false,
-                    content :  "",
+                    content: "",
                     btnCount: 2,
                     btnMsg: [{msg: "네"}, {msg: "아니요"}]
                 }
@@ -63,9 +63,9 @@ window.addEventListener('load', function () {
                         let result = await del(smalltalkId);
                         if (result.success) {
                             let config = {
-                                title:"정상적으로 삭제되었습니다.",
+                                title: "정상적으로 삭제되었습니다.",
                                 hasContent: false,
-                                content :  "",
+                                content: "",
                                 btnCount: 1,
                                 btnMsg: [{msg: "확인"}]
                             }
@@ -77,8 +77,7 @@ window.addEventListener('load', function () {
                                 if (target.classList.contains("ok-btn")) location.href = "/smalltalk/list";
                             }
                         }
-                    }
-                    else if (target.classList.contains("cancel-btn")) modal.close();
+                    } else if (target.classList.contains("cancel-btn")) modal.close();
                 }
             }
         }
@@ -136,9 +135,9 @@ window.addEventListener('load', function () {
         e.preventDefault();
         if (!memberId) {
             let config = {
-                title:"로그인이 필요합니다.",
+                title: "로그인이 필요합니다.",
                 hasContent: false,
-                content :  "",
+                content: "",
                 btnCount: 2,
                 btnMsg: [{msg: "확인"}, {msg: "닫기"}]
             }
@@ -178,26 +177,23 @@ window.addEventListener('load', function () {
     // 공유하기 버튼
     shareBtn.onclick = async function (e) {
         e.preventDefault();
-        let result = await navigator.permissions.query({name: "clipboard-write"})
-        if (result.state === "granted") {
-            let currentUrl = location.href;
-            await navigator.clipboard.writeText(currentUrl);
-            let config = {
-                title:"주소가 복사되었습니다.",
-                hasContent: false,
-                content :  "",
-                btnCount: 1,
-                btnMsg: [{msg: "닫기"}]
-            }
-            showModal(config);
+        let currentUrl = location.href;
+        await navigator.clipboard.writeText(currentUrl);
+        let config = {
+            title: "주소가 복사되었습니다.",
+            hasContent: false,
+            content: "",
+            btnCount: 1,
+            btnMsg: [{msg: "닫기"}]
+        }
+        showModal(config);
 
-            // 모달 확인, 닫기 버튼
-            command = modal.command;
-            command.onclick = function (e) {
-                let target = e.target;
-                if (target.nodeName !== "BUTTON") return;
-                if (target.classList.contains("ok-btn")) modal.close();
-            }
+        // 모달 확인, 닫기 버튼
+        command = modal.command;
+        command.onclick = function (e) {
+            let target = e.target;
+            if (target.nodeName !== "BUTTON") return;
+            if (target.classList.contains("ok-btn")) modal.close();
         }
     }
 });

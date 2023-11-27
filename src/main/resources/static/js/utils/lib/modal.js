@@ -13,8 +13,8 @@ export default class Modal {
         return this.#root;
     }
 
-    get command(){
-         return this.#root.querySelector(".frame .modal .command");
+    get command() {
+        return this.#root.querySelector(".frame .modal .command");
     }
 
     set title(title) {
@@ -152,11 +152,11 @@ export default class Modal {
                     }
                 
                     .frame .modal {
-                      min-width: 370px;
+                      min-width: 330px;
                       min-height: 190px;
                 
                       background-color: #fff;
-                      padding: 30px 50px;
+                      padding: 30px;
                       border-radius: 10px;
                 
                       display: flex;
@@ -179,13 +179,13 @@ export default class Modal {
                 
                     .frame .modal .title {
                       /* text */
-                      font-size: 22px;
+                      font-size: 20px;
                       font-weight: 700;
                     }
                 
                     .frame .modal .content {
                       order: -1;
-                      font-size: 20px;
+                      font-size: 18px;
                     }
                 
                     .frame .modal .command {
@@ -205,7 +205,7 @@ export default class Modal {
                       justify-content: center;
                       align-items: center;
                 
-                      font-size: 18px;
+                      font-size: 16px;
                       font-weight: 600;
                       color: #fff;
                     }
@@ -214,6 +214,20 @@ export default class Modal {
                       background-color: #fff;
                       border: 1px solid  #878787;
                       color: #878787;
+                    }
+                    
+                    @media(min-width: 700px){
+                      .frame .modal .title {
+                         font-size: 22px;
+                      }
+                      
+                     .frame .modal .content {
+                        font-size: 20px;
+                     }
+                     
+                     .frame .modal .command .btn {
+                        font-size: 18px;
+                     }
                     }
                `;
     }
