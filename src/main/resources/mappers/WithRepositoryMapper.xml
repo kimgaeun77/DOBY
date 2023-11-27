@@ -49,6 +49,7 @@
         from with_view
         where `close` = 0
           and del = 0
+          and blind = 0
           and deadline >= CURDATE()
         group by id
         order by deadline
