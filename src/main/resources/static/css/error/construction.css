@@ -1,0 +1,89 @@
+.container{
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  height: 100%;
+}
+/* ----- 공사중 이미지 ---------- */
+.container
+  .img-box{
+      width: 370px;
+      height: 218px;
+      transition: width .5s ease-in-out, height .5s ease-in-out;
+}
+
+.container
+  .img-box
+    img{
+      object-fit: contain;
+      width: inherit;
+      height: inherit;
+}
+
+/* ----- 설명 ---------- */
+.container
+  .description{
+    text-align: center;
+    line-height: 1.5em;
+    /* text */
+    font-size: var(--font-size-3);
+    /* margin */
+    margin-top: 20px;
+}
+
+/* ----- 버튼 ---------- */
+.container
+  .btn-box{
+
+    display: flex;
+    justify-content: center;
+    column-gap: 15px;
+
+    /* margin */
+    margin-top: 20px;
+}
+
+.container
+  .btn-box
+    .btn{
+    padding: 0.625em 1.25em;
+    border-radius: 50px;
+    background-color: var(--color-main-3); 
+
+    /* text */
+    color: var(--color-base-white);
+    font-weight: 600;
+    
+}
+
+.container
+  .btn-box
+    .btn.index{
+    border: 1px solid var(--color-main-3); 
+    background-color: var(--color-base-white);
+
+    /* text */
+    color: var(--color-main-3);
+
+    
+}
+
+@media(min-width: 700px){
+  .container
+    .img-box{
+        width: 500px;
+        height: 295px;
+  }
+
+  .container
+    .description{
+      font-size: var(--font-size-4);
+  }
+
+  .container
+    .btn-box
+      .btn{
+        font-size: var(--font-size-3);
+  } 
+}
