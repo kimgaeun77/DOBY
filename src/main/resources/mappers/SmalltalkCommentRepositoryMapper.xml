@@ -1,0 +1,38 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper
+        PUBLIC "-//mybatis.org//DTD Config 3.0//EN"
+        "https://mybatis.org/dtd/mybatis-3-mapper.dtd">
+
+<mapper namespace="kr.co.doby.web.repository.SmalltalkCommentRepository">
+    <select id="findCountBySmalltalkId" resultType="long">
+        select count(id) from smalltalk_comment where smalltalk_id = #{smalltalkId} and del = 0
+    </select>
+
+    <select id="findViewAllBySmalltalkId" resultType="SmalltalkCommentView">
+        select * from smalltalk_comment_view
+        where del = 0 and smalltalk_id = #{smalltalkId} and
+        <if test="parentId != null">
+            parent_id = #{parentId}
+        </if>
+        <if test="parentId == null">
+            parent_id is null
+        </if>
+    </select>
+
+    <insert id="save" parameterType="SmalltalkComment">
+        insert into smalltalk_comment
+        (content, member_id, <if test="parentId != null"> parent_id,</if> smalltalk_id)
+        values
+        (#{content}, #{memberId}, <if test="parentId != null"> #{parentId},</if> #{smalltalkId} )
+    </insert>
+
+    <select id="last" resultType="SmalltalkComment">
+        select * from smalltalk_comment
+        where id = (select max(id) from smalltalk_comment)
+    </select>
+
+    <update id="delete">
+        update smalltalk_comment set del = 1 where id = #{id} or parent_id = #{id}
+    </update>
+
+</mapper>

@@ -1,5 +1,8 @@
 import Modal from "/js/utils/lib/modal.js";
 
+// 모달 관련
+export const modal = new Modal();
+
 window.addEventListener('load', function () {
     const dotsBtnSection = document.querySelector(".dots-btn-list-container");
     const likeBtn = document.querySelector(".content-container .like-share-btn-container .like-btn");
@@ -9,8 +12,6 @@ window.addEventListener('load', function () {
     const memberId = document.querySelector("#member-id");
     const csrf = document.querySelector("#csrf").content;
 
-    // 모달 관련
-    const modal = new Modal();
     let command;
 
     // 모달 보여주는 함수

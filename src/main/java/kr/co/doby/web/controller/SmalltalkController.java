@@ -45,10 +45,18 @@ public class SmalltalkController {
             isGood = service.isGood(smalltalk.getId(), memberId);
         }
 
+        // 댓글 개수
+        Long commentCount = service.getCommentCountById(id);
+
+        // (부모)댓글 목록
+        List<SmalltalkCommentView> commentList = service.getCommentViewListById(id, null, authentication);
+
         model.addAttribute("smalltalk", smalltalk);
         model.addAttribute("tagList", tagList);
         model.addAttribute("writer", member);
         model.addAttribute("isGood", isGood);
+        model.addAttribute("commentCount", commentCount);
+        model.addAttribute("commentList", commentList);
 
         return "smalltalk/detail";
     }
