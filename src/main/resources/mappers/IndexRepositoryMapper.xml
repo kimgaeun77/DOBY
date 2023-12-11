@@ -6,7 +6,7 @@
 <mapper namespace="kr.co.doby.web.repository.IndexRepository">
 
     <select id="findPopularViewAll" resultType="PopularView">
-        select * from popular_view
+        select * from popular_view where del = 0
         order by ${filterName} desc limit #{offset}, #{size}
     </select>
 
