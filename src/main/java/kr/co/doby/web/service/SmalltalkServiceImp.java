@@ -1,9 +1,11 @@
 package kr.co.doby.web.service;
 
+import kr.co.doby.web.config.auth.DobyUserDetails;
 import kr.co.doby.web.entity.*;
 import kr.co.doby.web.etc.TimeDifference;
 import kr.co.doby.web.repository.*;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.security.core.Authentication;
 import org.springframework.stereotype.Service;
 
 import java.util.Date;
@@ -23,6 +25,12 @@ public class SmalltalkServiceImp implements SmalltalkService{
 
     @Autowired
     private SmalltalkGoodRepository smalltalkGoodRepository;
+
+    @Autowired
+    private SmalltalkCommentRepository smalltalkCommentRepository;
+
+    @Autowired
+    private SmalltalkCommentGoodRepository smalltalkCommentGoodRepository;
 
     @Override
     public List<SmalltalkView> getViewList(Integer page, String query, Integer filterId) {
@@ -119,5 +127,33 @@ public class SmalltalkServiceImp implements SmalltalkService{
         if("".equals(query))
             query = null;
         return repository.findAllCount(query);
+    }
+
+    @Override
+    public Long getCommentCountById(Long id) {
+        return smalltalkCommentRepository.findCountBySmalltalkId(id);
+    }
+
+    @Override
+    public List<SmalltalkCommentView> getCommentViewListById(Long id, Long parentId, Authentication authentication) {
+        List<SmalltalkCommentView> commentList = smalltalkCommentRepository.findViewAllBySmalltalkId(id, parentId);
+
+        for (SmalltalkCommentView comment : commentList) {
+
+            // 등록시간
+            Date regDate = comment.getRegDate();
+            String timeDifference = TimeDifference.getTimeDifference(regDate);
+            comment.setTimeDifference(timeDifference);
+
+            // 좋아요 확인
+            if (authentication == null) continue;
+            DobyUserDetails userDetails = (DobyUserDetails) authentication.getPrincipal();
+            Long memberId = userDetails.getId();
+            SmalltalkCommentGood smalltalkCommentGood = smalltalkCommentGoodRepository.findById(comment.getId(), memberId);
+            Boolean result = smalltalkCommentGood != null;
+            comment.setIsGood(result);
+
+        }
+        return commentList;
     }
 }

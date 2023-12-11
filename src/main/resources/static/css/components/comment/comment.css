@@ -100,7 +100,7 @@
     background-color: var(--color-main-3);
 }
 
-.community .comment-list-box .icon-likes_fill::before {
+.community .comment-list-box .icon-likes-fill::before {
     background-color: var(--color-main-2);
 }
 
@@ -108,7 +108,7 @@
     background-color: var(--color-main-0);
 }
 
-.smalltalk .comment-list-box .icon-likes_fill::before {
+.smalltalk .comment-list-box .icon-likes-fill::before {
     background-color: var(--color-main-3);
 }
 
@@ -313,6 +313,28 @@ sub-comment-editor-box {
 
 .content-box {
     overflow: auto;
+}
+/* 버튼, place-holder 변경 (로그인 안 되었을 때)*/
+#comment-reg
+    .img-form-box
+        .comment-reg-form.disabled
+            .editor-box
+                .ck-editor
+                    .ck-editor__main
+                        .ck-placeholder::before{
+                        text-decoration: underline;
+}
+
+.community .comment-reg-form.disabled .submit-btn {
+    background-color: rgba(111, 166, 244, 0.5);
+}
+
+.with .comment-reg-form.disabled .submit-btn {
+    background-color: rgba(250, 115, 115, 0.5);
+}
+
+.smalltalk .comment-reg-form.disabled .submit-btn {
+    background-color: rgba(250, 204, 87, 0.5);
 }
 
 /* layout */

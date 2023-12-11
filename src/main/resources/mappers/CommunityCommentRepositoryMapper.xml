@@ -1,0 +1,38 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper
+        PUBLIC "-//mybatis.org//DTD Config 3.0//EN"
+        "https://mybatis.org/dtd/mybatis-3-mapper.dtd">
+
+<mapper namespace="kr.co.doby.web.repository.CommunityCommentRepository">
+    <select id="findCountByCommunityId" resultType="long">
+        select count(id) from community_comment where community_id = #{communityId} and del = 0
+    </select>
+
+    <select id="findViewAllByCommunityId" resultType="CommunityCommentView">
+        select * from community_comment_view
+        where del = 0 and community_id = #{communityId} and
+        <if test="parentId != null">
+            parent_id = #{parentId}
+        </if>
+        <if test="parentId == null">
+            parent_id is null
+        </if>
+    </select>
+
+    <insert id="save" parameterType="CommunityComment">
+        insert into community_comment
+        (content, member_id, <if test="parentId != null"> parent_id,</if> community_id)
+        values
+        (#{content}, #{memberId}, <if test="parentId != null"> #{parentId},</if> #{communityId} )
+    </insert>
+
+    <select id="last" resultType="CommunityComment">
+        select * from community_comment
+        where id = (select max(id) from community_comment)
+    </select>
+
+    <update id="delete">
+        update community_comment set del = 1 where id = #{id} or parent_id = #{id}
+    </update>
+
+</mapper>

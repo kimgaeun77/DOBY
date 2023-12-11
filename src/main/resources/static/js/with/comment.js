@@ -5,11 +5,15 @@ window.addEventListener('load', async function () {
     const csrfToken = document.querySelector('#csrf').content;
     const memberIdMeta = document.querySelector('#member-id');
     const memberProfileMeta = document.querySelector('#profile-image');
+    const commentRegForm = document.querySelector("#comment-reg .comment-reg-form");
     let memberId = null;
     let memberProfile = `/image/user.svg`;
 
     if (memberIdMeta)
         memberId = memberIdMeta.content;
+    else
+        commentRegForm.classList.add("disabled");
+
 
     if (memberProfileMeta)
         memberProfile = `https://file.doby.co.kr/profiles/${memberProfileMeta.content}`;
@@ -47,8 +51,6 @@ window.addEventListener('load', async function () {
 
         let res = await fetch(`/api/with-comments/${withId}`);
         let data = await res.json();
-
-        console.log(data);
 
         bindCommentCount(data);
     }
@@ -439,8 +441,5 @@ window.addEventListener('load', async function () {
         list.classList.remove('d:none');
 
         currentMenuList = list;
-
     }
-
-
 });

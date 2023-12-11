@@ -1,3 +1,10 @@
+let placeHolder;
+window.addEventListener("load", function (){
+    const memberId = document.querySelector("#member-id");
+    if (!memberId) placeHolder = "로그인 후 이용 가능합니다.";
+    else placeHolder = "내용을 입력해 주세요.";
+});
+
 export default function createEditor(className) {
     return ClassicEditor.create(document.querySelector(className), {
         ckfinder: {
@@ -14,7 +21,7 @@ export default function createEditor(className) {
             options: [10, 12, 14, 'default', 18, 20, 22],
             supportAllValues: true,
         },
-        placeholder: '내용을 입력해주세요.'
+        placeholder: placeHolder
     })
         .then(editor => editor)
         .catch((error) => {

@@ -1,6 +1,7 @@
 package kr.co.doby.web.service;
 
 import kr.co.doby.web.entity.*;
+import org.springframework.security.core.Authentication;
 
 import java.util.List;
 
@@ -29,4 +30,8 @@ public interface CommunityService {
     void deleteById(Long id);
 
     Long getTotalDataCount(Long categoryId, String query);
+
+    Long getCommentCountById(Long id);
+
+    List<CommunityCommentView> getCommentViewListById(Long id, Long parentId, Authentication authentication);
 }

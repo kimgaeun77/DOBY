@@ -1,9 +1,11 @@
 package kr.co.doby.web.service;
 
+import kr.co.doby.web.config.auth.DobyUserDetails;
 import kr.co.doby.web.entity.*;
 import kr.co.doby.web.etc.TimeDifference;
 import kr.co.doby.web.repository.*;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.security.core.Authentication;
 import org.springframework.stereotype.Service;
 
 import java.util.Date;
@@ -26,6 +28,13 @@ public class CommunityServiceImp implements CommunityService {
 
     @Autowired
     private CommunityGoodRepository communityGoodRepository;
+
+    @Autowired
+    private CommunityCommentRepository communityCommentRepository;
+
+    @Autowired
+    private CommunityCommentGoodRepository communityCommentGoodRepository;
+
 
 
     @Override
@@ -133,5 +142,33 @@ public class CommunityServiceImp implements CommunityService {
         if("".equals(query))
             query = null;
         return repository.findAllCount(categoryId, query);
+    }
+
+    @Override
+    public Long getCommentCountById(Long id) {
+        return communityCommentRepository.findCountByCommunityId(id);
+    }
+
+    @Override
+    public List<CommunityCommentView> getCommentViewListById(Long id, Long parentId, Authentication authentication) {
+        List<CommunityCommentView> commentList = communityCommentRepository.findViewAllByCommunityId(id, parentId);
+
+        for (CommunityCommentView comment : commentList) {
+
+            // 등록시간
+            Date regDate = comment.getRegDate();
+            String timeDifference = TimeDifference.getTimeDifference(regDate);
+            comment.setTimeDifference(timeDifference);
+
+            // 좋아요 확인
+            if (authentication == null) continue;
+            DobyUserDetails userDetails = (DobyUserDetails) authentication.getPrincipal();
+            Long memberId = userDetails.getId();
+            CommunityCommentGood communityCommentGood = communityCommentGoodRepository.findById(comment.getId(), memberId);
+            Boolean result = communityCommentGood != null;
+            comment.setIsGood(result);
+
+        }
+        return commentList;
     }
 }
