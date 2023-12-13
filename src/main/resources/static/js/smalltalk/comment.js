@@ -443,7 +443,7 @@ window.addEventListener("load", async function () {
                                                 </div>
                                                  ${menuBoxTemplate}
                                                 <div class="content-box">
-                                                    <span class="content">${item.content}</span>
+                                                    <span class="content editor-content">${item.content}</span>
                                                 </div>
                                                 <div class="like-box">
                                                     <a class="like icon icon-size-1 cursor:pointer ${likeClassName}">좋아요</a>

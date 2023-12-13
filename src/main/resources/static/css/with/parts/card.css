@@ -82,6 +82,7 @@
     word-break: break-all;
     /* 컨텐츠가 줄어들었을때를 위함 */
     min-height: 45px;
+    max-height: 45px;
 }
 
 /* -------- 기술 스택 태그 ------------ */
