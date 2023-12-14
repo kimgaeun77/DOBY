@@ -58,6 +58,10 @@ window.addEventListener("load", async function () {
         let target = e.target;
         if (!target.classList.contains("submit-btn"))
             return;
+        if (!memberId) {
+            loginModal();
+            return;
+        }
         saveMainComment();
     }
 
