@@ -42,7 +42,7 @@
                     <li><a>마이페이지</a></li>
                     <li><a>활동내역</a></li>
                     <li><a>신고당한 글</a></li>
-                    <li>
+                    <li sec:authorize="isAuthenticated()">
                         <button type="submit" class="link">로그아웃</button>
                     </li>
                 </ul>
