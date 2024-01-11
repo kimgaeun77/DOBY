@@ -1,0 +1,50 @@
+/* display */
+.d\:none {
+    display: none !important;
+}
+
+.d\:inline {
+    display: inline !important;
+}
+
+.d\:inline-block {
+    display: inline-block !important;
+}
+
+.d\:block {
+    display: block !important;
+}
+
+.d\:flex {
+    display: flex !important;
+}
+
+@media (min-width: 700px) {
+    .md\:d\:none {
+        display: none !important;
+    }
+
+    .md\:d\:inline {
+        display: inline !important;
+    }
+
+    .md\:d\:inline-block {
+        display: inline-block !important;
+    }
+
+    .md\:d\:block {
+        display: block !important;
+    }
+
+    .md\:d\:flex {
+        display: flex !important;
+    }
+    /* 필터 버튼 (grid-item)*/
+    .md\:align-self\:center{
+        align-self: center;
+    }
+}
+
+.cursor\:pointer:hover{
+    cursor: pointer;
+}

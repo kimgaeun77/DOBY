@@ -1,0 +1,104 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8"/>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+    <title>Document</title>
+    <link href="/css/reset.css" rel="stylesheet" type="text/css"/>
+    <link href="/css/style.css" rel="stylesheet" type="text/css"/>
+    <link href="/css/root.css" rel="stylesheet" type="text/css"/>
+    <link href="/css/utils.css" rel="stylesheet" type="text/css"/>
+    <link href="/css/icon.css" rel="stylesheet" type="text/css"/>
+    <link href="/css/components/user/login/parts/login-button.css" rel="stylesheet" type="text/css"/>
+
+    <link href="/css/components/user/login/login.css" rel="stylesheet" type="text/css"/>
+    <script src="/js/user/login.js"></script>
+</head>
+<body>
+<main class="login-page">
+    <section>
+        <h1 class="d:none">로그인 페이지</h1>
+        <div class="login-box">
+            <div class="d:inline-block">
+                <a class="icon-logo md:icon-logo" href="/">메인화면돌아가기</a>
+            </div>
+            <div class="login-icon-box md:login-icon-box">
+                <ul class="login-icon">
+                    <li>
+                        <a
+                                class="btn-icon icon icon-kakao icon-color-3 icon-size-1 md:btn-icon md:icon-size-2 btn-hover"
+                        ></a>
+                    </li>
+                    <li>
+                        <a
+                                class="btn-icon icon icon-google icon-color-3 icon-size-1 md:btn-icon md:icon-size-2 btn-hover"
+                        ></a>
+                    </li>
+                    <li>
+                        <a
+                                class="btn-icon icon icon-naver icon-color-3 icon-size-1 md:btn-icon md:icon-size-2 btn-hover"
+                        ></a>
+                    </li>
+                </ul>
+            </div>
+
+            <div class="login-content-box">
+            <span class="login-content md:login-content"
+            >DOBY! 아이디로 로그인</span
+            >
+            </div>
+
+            <form class="login-form" action="/user/login" method="post">
+                <fieldset class="login-form-box">
+                    <legend class="d:none">로그인</legend>
+
+                    <div class="input-box">
+                        <label class="content md:content"
+                        >아이디
+                            <input
+                                    class="email md:email"
+                                    name="username"
+                                    type="text"
+                                    placeholder="아이디를 입력해주세요"
+                            /></label>
+                    </div>
+                    <div class="input-box">
+                        <label class="content md:content"
+                        >비밀번호
+                            <input
+                                    class="password md:password"
+                                    name="password"
+                                    type="password"
+                                    autoComplete="off"
+                                    placeholder="비밀번호를 입력해주세요"
+                            /></label>
+                    </div>
+                    <div th:class="${param.error}? 'password-check md:password-check login-deco icon-warning' : 'd:none'">
+                        아이디 또는 비밀번호를 다시 확인해주세요.
+                    </div>
+                    <div>
+                        <input type="hidden" name="return-url" th:value="${param.returnURL}">
+                        <button type="submit" class="btn-login md:btn-login cursor:pointer">로그인</button>
+                    </div>
+                    <input type="hidden"
+                           th:name="${_csrf.parameterName}"
+                           th:value="${_csrf.token}">
+                </fieldset>
+            </form>
+
+            <div>
+            <span class="join-content md:join-content"
+            >아직 회원이 아니신가요?</span
+            >
+            </div>
+
+            <div class="join-account md:join-account">
+                <a class="join-link" href="join">회원가입</a>
+                <div>또는</div>
+                <a class="find-account" href="forget">계정찾기</a>
+            </div>
+        </div>
+    </section>
+</main>
+</body>
+</html>

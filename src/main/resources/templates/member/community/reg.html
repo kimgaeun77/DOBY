@@ -1,0 +1,84 @@
+<!DOCTYPE html>
+<html lang="en"
+      xmlns:th="http://www.thymeleaf.org"
+      xmlns:layout="http://www.ultraq.net.nz/thymeleaf/layout"
+      layout:decorate="~{inc/layout.html}">
+<head>
+    <meta charset="UTF-8">
+    <title>커뮤니티 등록</title>
+    <link href="/css/components/board/reg.css" rel="stylesheet" type="text/css">
+    <link href="/css/utils/editor/style.css" rel="stylesheet" type="text/css">
+    <script src="/js/utils/ckeditor/ckeditor.js"></script>
+    <script type="module" src="/js/member/community/reg.js"></script>
+
+</head>
+<body>
+<main class="main" layout:fragment="main">
+    <!--  모달 영역 -->
+    <div id="host"></div>
+    <section>
+        <h1 class="d:none">게시글 등록 페이지</h1>
+        <div class="container">
+
+            <!-- 캐치프레이즈 , 뒤로가기 버튼 -->
+            <div class="catchphrase-back-btn-box">
+                <h2 class="catchphrase">당신의 열정을 나눠보세요!</h2>
+                <a class="back-btn icon icon-size-1 icon-x cursor:pointer md:d:none">뒤로 가기 버튼</a>
+            </div>
+
+            <!-- 사용자 입력란 -->
+            <form>
+
+                <!-- 카테고리 선택 -->
+                <div class="section-box category-outer-box">
+                    <label for="input-category">카테고리</label>
+
+                    <div class="category-inner-box">
+                        <input id="input-category" class="input input-category cursor:pointer" type="text" placeholder="카테고리를 선택해 주세요." readonly>
+                        <ul class="d:none categorys">
+                            <li class="item" th:each="c : ${categoryList}" th:text="${c.name}" th:data-category-id="${c.id}"></li>
+                        </ul>
+                        <span class="warning category-warning d:none">카테고리를 선택해 주세요.</span>
+                    </div>
+
+                </div>
+
+                <!-- 제목 -->
+                <div class="section-box title-box">
+                    <label for="input-title">제목</label>
+                    <input id="input-title" class="input input-title" type="text" placeholder="제목을 입력해 주세요.">
+                    <span class="warning title-warning d:none">제목을 최소 5자 이상 입력해주세요.</span>
+                </div>
+
+                <!-- 본문 -->
+                <div class="section-box content-box">
+                    <label for="input-content">본문</label>
+                    <input id="input-content" class="input-content editor" type="text" placeholder="내용을 입력해 주세요.">
+                </div>
+
+                <!-- 태그 -->
+                <div class="section-box tag-outer-box">
+                    <label for="input-tag">태그</label>
+                    <div class="tag-inner-box">
+                        <div class="input input-tag-box">
+                            <input id="input-tag" class="input-tag" type="text" placeholder="태그를 입력해주세요.">
+                        </div>
+                        <ul class="d:none tags">
+                        </ul>
+                        <span class="tag-msg">내용을 대표하는 태그 1개 이상 입력해 주세요.</span>
+                    </div>
+                </div>
+
+                <!-- 저장, 취소 버튼 -->
+                <div class="save-cancel-btn-box">
+                    <a class="btn cancel-btn d:none md:d:block cursor:pointer">취소</a>
+                    <input class="btn save-btn cursor:pointer" type="button" value="등록">
+                </div>
+            </form>
+
+        </div>
+
+    </section>
+</main>
+</body>
+</html>

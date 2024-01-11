@@ -1,0 +1,125 @@
+.admin-aside {
+    flex-shrink: 0;
+
+    width: 280px;
+    background-color: var(--color-main-5);
+
+    position: fixed;
+    left: 0;
+    bottom: 0;
+
+    height: 100%;
+    /* overflow: auto; */
+
+    color: var(--color-base-white);
+
+}
+
+.admin-aside-title {
+    font-family: 'CookieRun';
+    font-size: 45px;
+    font-weight: bold;
+    padding: 20px 68px;
+}
+
+.admin-aside nav h1 {
+    font-size: 14px;
+    font-weight: bold;
+    color: var(--color-base-4);
+    margin: 10px 0px 10px 20px;
+}
+
+.admin-aside .management {
+    display: flex;
+    flex-direction: column;
+
+    font-family: 'pretendard';
+    font-size: 16px;
+    color: var(--color-base-white);
+
+    font-weight: 500;
+
+    margin: 0px 30px;
+}
+
+
+.admin-aside .management span{
+    display: flex;
+    align-items: center;
+    
+    padding-top: 40px;
+}
+
+.admin-aside .management span a{
+    display: flex;
+    align-items: center;
+}
+
+.admin-aside .management ul{
+    margin-top: 5px;
+}
+
+
+.admin-aside .management li {
+    display: flex;
+    align-items: center;
+    justify-content: left;
+
+    color: var(--color-base-4);
+    font-weight: 400;
+    font-size: 16px;
+
+    padding: 7px 25px;
+}
+
+.admin-aside .management li::before {
+    content: '-';
+    margin-right: 5px;
+}
+
+.admin-aside .management li:hover {
+    color: var(--color-main-1);
+
+}
+
+
+.admin-aside .todoby-logout {
+    display: flex;
+    flex-direction: column;
+
+
+    margin: 50px 0px;
+    font-family: 'pretendard';
+    font-size: 16px;
+    color: var(--color-base-white);
+
+    font-weight: 400;
+
+    margin: 50px 0px 0px 20px;
+}
+
+.admin-aside .todoby-logout button{
+    padding: 10px 0px;
+}
+
+
+
+.admin-aside .todoby-logout button:hover {
+
+    color: var(--color-main-1);
+}
+
+/* 활성화 되었을 때 */
+
+.admin-aside .management li a.active {
+    color: var(--color-main-1);
+}
+
+
+@media (min-width: 700px) {
+    .md\:admin-aside {
+        display: flex !important;
+        flex-direction: column;
+
+    }
+}

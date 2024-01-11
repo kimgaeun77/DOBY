@@ -1,0 +1,63 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper
+        PUBLIC "-//mybatis.org//DTD Config 3.0//EN"
+        "https://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="kr.co.doby.web.repository.MemberRepository">
+
+    <select id="findById" resultType="Member">
+        select *
+        from member
+        where id = ${id}
+    </select>
+
+    <select id="findByUsername" resultType="Member">
+        select *
+        from member
+        where username = #{username}
+    </select>
+
+    <insert id="save" parameterType="Member">
+        insert into member(username, password,phone, nickname, profile_image, email, email_agree)
+        value(#{username}, #{password}, #{phone}, #{nickname}, 'profile.jpg' ,#{email}, #{emailAgree})
+    </insert>
+
+    <select id="last" resultType="Member">
+        select * from member order by id desc limit 1
+    </select>
+
+    <select id="countByUsername" parameterType="String">
+        select count(username) from member where username=#{username}
+    </select>
+
+    <select id="findByNickname" resultType="Member">
+        select * from member where nickname =#{nickname}
+    </select>
+
+    <select id="countByEmail" parameterType="String">
+        select count(email) from member where email=#{email}
+    </select>
+
+    <select id="countByPhone" parameterType="String">
+        select count(phone) from member where phone=#{phone}
+    </select>
+
+    <select id="findAll" resultType="Member">
+        select * from member
+        <where>
+            <if test="query != null">and (id like '%${query}%' or username like '%${query}%' or
+                email like '%${query}%' or phone like '%${query}%' or nickname like '%${query}%')
+            </if>
+        </where>
+        order by id limit #{offset},#{size}
+    </select>
+
+    <select id="countByQuery" resultType="Long">
+        select count(*) from member
+        <where>
+            <if test="query != null">and (id like '%${query}%' or username like '%${query}%' or
+                email like '%${query}%' or phone like '%${query}%' or nickname like '%${query}%')
+            </if>
+        </where>
+    </select>
+
+</mapper>

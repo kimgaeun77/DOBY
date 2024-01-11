@@ -1,0 +1,110 @@
+@import url('https://fonts.googleapis.com/css2?family=JetBrains+Mono:ital,wght@0,100;0,200;0,300;0,400;0,500;0,600;0,700;0,800;1,100;1,200;1,300;1,400;1,500;1,600;1,700;1,800&family=Noto+Sans+KR:wght@100;200;300;400;500;600;700;800;900&display=swap');
+
+.ck.ck-editor {
+    width: 100%;
+}
+
+.ck-editor__editable {
+    height: 100px;
+    transition: height .5s;
+}
+
+.ck.ck-editor ul,
+.ck.ck-editor ol {
+    padding-left: 40px;
+}
+
+.ck.ck-editor ul {
+    list-style-type: disc;
+}
+
+.ck.ck-editor ol {
+    list-style-type: decimal;
+}
+
+.ck.ck-editor strong {
+    font-weight: 600;
+}
+
+.ck.ck-reset.ck-list {
+    padding: 0;
+}
+
+.ck.ck-editor__editable > .ck-placeholder::before {
+    font-size: var(--font-size-1);
+}
+
+.ck-editor__editable_inline p {
+    font-size: var(--font-size-1) !important;
+}
+
+.ck-rounded-corners .ck.ck-editor__top .ck-sticky-panel .ck-toolbar {
+    border-radius: 10px 10px 0 0 !important;
+}
+
+.ck-rounded-corners .ck.ck-editor__main > .ck-editor__editable,
+.ck.ck-editor__main > .ck-editor__editable.ck-rounded-corners {
+    border-radius: 0 0 10px 10px !important;
+}
+
+.ck.ck-code-block-dropdown .ck-dropdown__panel {
+    max-height: 100px !important;
+}
+
+code,
+code > * {
+    font-family: JetBrains Mono, Pretendard Variable, Pretendard, serif !important;
+    font-size: 12px !important;
+    border-radius: 5px;
+    text-wrap: wrap;
+}
+
+figure img {
+    width: 100% !important;
+}
+
+.ck a,
+.editor-content a,
+.editor ~ * a {
+    color: #0090f9 !important;
+    text-decoration: underline #0090f9;
+}
+
+.ck ul,
+.editor-content ul,
+.editor ~ * ul {
+    list-style: unset;
+    padding-left: 40px;
+}
+
+.ck ol,
+.editor-content ol,
+.editor ~ * ol {
+    list-style: decimal;
+    padding-left: 40px;
+}
+
+.ck strong,
+.editor-content strong,
+.editor ~ * strong {
+    font-weight: 600;
+}
+
+.ck .ck-powered-by {
+    display: none !important;
+}
+
+@media (min-width: 700px) {
+    .ck-editor__editable {
+        height: 300px;
+    }
+
+    .ck.ck-code-block-dropdown .ck-dropdown__panel {
+        max-height: 200px !important;
+    }
+
+    code,
+    code > * {
+        font-size: 14px !important;
+    }
+}

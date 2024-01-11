@@ -1,0 +1,265 @@
+<!DOCTYPE html>
+<html lang="en"
+      xmlns:th="http://www.thymeleaf.org"
+      xmlns:layout="http://www.ultraq.net.nz/thymeleaf/layout"
+      xmlns:sec="http://www.thymeleaf.org/extras/spring-security"
+      layout:decorate="~{inc/layout}">
+<head>
+    <link href="/css/with/list.css" rel="stylesheet" type="text/css">
+    <link href="/css/utils/slider/slick.css" rel="stylesheet" type="text/css">
+    <link href="/css/with/parts/card.css" rel="stylesheet" type="text/css">
+    <link href="/css/with/parts/filter.css" rel="stylesheet" type="text/css">
+    <script src="/js/utils/jquery.js" type="text/javascript"></script>
+    <script src="/js/utils/slider/slick.js" type="text/javascript" defer></script>
+    <script src="/js/with/card.js" type="text/javascript" defer></script>
+    <script src="/js/with/list.js" type="text/javascript" defer></script>
+    <title>모임 목록</title>
+</head>
+
+<body>
+<main layout:fragment="main" class="main">
+
+    <!-------------------- 게시글 배너 ----------------------->
+    <div class="banner-box">
+        <section class="banner">
+            <h1 class="board-name">WITH ME!</h1>
+            <p class="catchphrase">마감 임박 모임🔥</p>
+            <section>
+                <h1 class="d:none">모임 카드 목록</h1>
+
+                <div class="with-card-list">
+
+                    <div class="slider-list">
+                        <!-- 카드 10개씩 제한 -->
+                        <div class="card cursor:pointer" th:each="w : ${deadlineList}"
+                             th:data-href="${'/with/detail?id='+w.id}">
+                            <a class="link" th:href="@{/with/detail(id=${w.id})}"></a>
+                            <div class="deadline deco deco-size-1 icon-fire" th:if="${w.dateGap != 0}">
+                                마감&nbsp<span
+                                    th:text="${w.dateGap}">1</span>일 전
+                            </div>
+                            <div class="deadline deco deco-size-1 icon-fire" th:if="${w.dateGap == 0}">마감
+                                당일
+                            </div>
+
+                            <div class="title-box d:inline-block">
+                                <a class="title" th:text="${w.title}">모여봐요! 동물의 숲 개발자 구인합니다.1</a>
+                            </div>
+
+                            <!-- 최대 5개만 나오기로 -->
+                            <ul class="stack-list">
+                                <li class="stack" th:each="t, i : ${w.techList}" th:if="${i.index} < 5"
+                                    th:text="${t.name}">java
+                                </li>
+                            </ul>
+
+                            <div class="hit deco icon-color-1 icon-views">조회수&nbsp<span
+                                    th:text="${w.hit}">376</span>회
+                            </div>
+
+                        </div>
+                    </div>
+
+                    <!-- 카드 움직이는 버튼 -->
+                    <div class="card-btn-box">
+                        <button class="btn previous deco icon-prev deco-size-1 cursor:pointer"></button>
+                        <button class="btn next deco icon-next deco-size-1 cursor:pointer"></button>
+                    </div>
+
+                </div>
+
+            </section>
+        </section>
+    </div>
+    <!--------------------- 게시글 부분 ------------------>
+    <div class="container">
+        <!--작성하기 button -->
+        <div class="btn-write-box d:inline-block">
+            <a sec:authorize="!isAuthenticated()" class="btn btn-write deco deco-size-1 icon-write" href="/user/login">작성하기</a>
+            <a sec:authorize="isAuthenticated()" class="btn btn-write deco deco-size-1 icon-write"
+               href="/member/with/reg">작성하기</a>
+        </div>
+
+        <!-- 카테고리 + 검색 filiter -->
+        <div class="category-search-filter-box">
+            <ul class="category" id="category-list">
+                <li><a class="item cursor:pointer active" data-id="">전체</a></li>
+                <li><a class="item cursor:pointer" data-id="1">프로젝트</a></li>
+                <li><a class="item cursor:pointer" data-id="2">스터디</a></li>
+            </ul>
+
+            <div class="search-filter-box md:align-self:center">
+                <button class="btn search-btn cursor:pointer deco deco-size-1 icon-color-1 icon-search md:d:none">
+                </button>
+                <div class="filter">
+                    <button class="btn filter-btn deco icon-color-1 icon-filter cursor:pointer">
+                    </button>
+                    <!-- 필터 버튼 눌렀을 때 -->
+                    <section class="filter-box d:none">
+                        <h1 class="d:none">모임 필터</h1>
+                        <div class="category-menu d:flex">
+                            <ul class="list d:flex">
+                                <li class="item active"><a>기술스택</a></li>
+                                <li class="item"><a>포지션</a></li>
+                                <li class="item"><a>진행방식</a></li>
+                                <li class="item"><a>찜</a></li>
+                            </ul>
+                        </div>
+                        <form class="item-box" id="filter">
+                            <div class="category tech">
+                                <ul class="list d:flex">
+                                    <li><label class="item tech-item stack-icon java"><input
+                                            class="tech check-box d:none"
+                                            type="checkbox"
+                                            name="tech" data-id="1"/>Java</label>
+                                    </li>
+                                    <li><label class="item tech-item stack-icon spring"><input
+                                            class="tech check-box d:none"
+                                            type="checkbox"
+                                            name="tech" data-id="2"/>Spring</label>
+                                    </li>
+                                    <li><label class="item tech-item stack-icon kotlin"><input
+                                            class="tech check-box d:none"
+                                            type="checkbox"
+                                            name="tech" data-id="3"/>Kotlin</label>
+                                    </li>
+                                    <li><label class="item tech-item stack-icon js"><input class="tech check-box d:none"
+                                                                                           type="checkbox"
+                                                                                           name="tech" data-id="4"/>JavaScript</label>
+                                    </li>
+                                    <li><label class="item tech-item stack-icon ts"><input class="tech check-box d:none"
+                                                                                           type="checkbox"
+                                                                                           name="tech" data-id="5"/>TypeScript</label>
+                                    </li>
+                                    <li><label class="item tech-item stack-icon node"><input
+                                            class="tech check-box d:none"
+                                            type="checkbox"
+                                            name="tech" data-id="6"/>Node.js</label>
+                                    </li>
+                                    <li><label class="item tech-item stack-icon react"><input
+                                            class="tech check-box d:none"
+                                            type="checkbox"
+                                            name="tech" data-id="7"/>React</label>
+                                    </li>
+                                    <li><label class="item tech-item stack-icon vue"><input
+                                            class="tech check-box d:none"
+                                            type="checkbox"
+                                            name="tech"
+                                            data-id="8"/>Vue</label>
+                                    </li>
+                                    <li><label class="item tech-item stack-icon angular"><input
+                                            class="tech check-box d:none"
+                                            type="checkbox"
+                                            name="tech"
+                                            data-id="9"/>Angular</label>
+                                    </li>
+                                    <li><label class="item tech-item stack-icon python"><input
+                                            class="tech check-box d:none"
+                                            type="checkbox"
+                                            name="tech"
+                                            data-id="10"/>Python</label>
+                                    </li>
+                                    <li><label class="item tech-item stack-icon django"><input
+                                            class="tech check-box d:none"
+                                            type="checkbox"
+                                            name="tech"
+                                            data-id="11"/>Django</label>
+                                    </li>
+                                </ul>
+                            </div>
+
+                            <div class="category position d:none">
+                                <ul class="list d:flex">
+                                    <li><label class="item position-item"><input class="position check-box d:none"
+                                                                                 type="radio"
+                                                                                 name="position"/>전체</label>
+                                    </li>
+                                    <li><label class="item position-item"><input class="position check-box d:none"
+                                                                                 type="radio"
+                                                                                 name="position"
+                                                                                 data-id="1"/>백엔드</label></li>
+                                    <li><label class="item position-item"><input class="position check-box d:none"
+                                                                                 type="radio"
+                                                                                 name="position"
+                                                                                 data-id="2"/>프론트엔드</label></li>
+                                    <li><label class="item position-item"><input class="position check-box d:none"
+                                                                                 type="radio"
+                                                                                 name="position"
+                                                                                 data-id="3"/>퍼블리셔</label></li>
+                                </ul>
+                            </div>
+
+                            <div class="category way d:none">
+                                <ul class="list d:flex">
+                                    <li><label class="item way-item"><input class="way check-box d:none" type="radio"
+                                                                            name="way" data-id=""/>전체</label>
+                                    </li>
+                                    <li><label class="item way-item"><input class="way check-box d:none" type="radio"
+                                                                            name="way"
+                                                                            data-id="1"/>온라인</label></li>
+                                    <li><label class="item way-item"><input class="way check-box d:none" type="radio"
+                                                                            name="way"
+                                                                            data-id="2"/>오프라인</label></li>
+                                    <li><label class="item way-item"><input class="way check-box d:none" type="radio"
+                                                                            name="way" data-id="3"/>온
+                                        · 오프라인 병행</label></li>
+                                </ul>
+                            </div>
+
+                            <div class="category wish d:none">
+                                <ul class="list d:flex">
+                                    <li><label class="item wish-item"><input class="wish check-box d:none" type="radio"
+                                                                             name="wish"/>전체</label></li>
+                                    <li sec:authorize="isAuthenticated()"><label class="item wish-item"><input
+                                            class="wish check-box d:none" type="radio"
+                                            name="wish"
+                                            data-id="1"/>찜 한 모임</label></li>
+                                </ul>
+                            </div>
+                        </form>
+                        <div class="clear-apply-box d:flex">
+                            <div id="clear-btn" class="clear-box cursor:pointer"><a class="clear">초기화</a></div>
+                            <div id="close-btn" class="apply cursor:pointer">닫기</div>
+                        </div>
+                    </section>
+                </div>
+            </div>
+
+            <!-- 검색 버튼 눌렀을 때 -->
+            <form class="search-form d:none md:d:block" id="form">
+                <fieldset class="search-input-box">
+                    <legend class="d:none">검색어입력</legend>
+                    <input id="search-input" class="input" type="text" placeholder="검색어를 입력해주세요">
+                    <input class="search cursor:pointer" type="submit" value="검색">
+                </fieldset>
+            </form>
+
+        </div>
+
+        <!-- --게시글 목록------ -->
+        <section class="board-list">
+            <h1 class="d:none">게시글 목록</h1>
+            <ul class="board-list" id="board-list">
+
+            </ul>
+        </section>
+
+        <!-- --페이징------ -->
+        <section class="paging-block">
+            <h1 class="d:none">페이징</h1>
+            <div class="paging" id="paging">
+                <div class="prev-box d:none">
+                    <a class="item arrow arrow-prev prev"></a>
+                </div>
+                <ul class="paging num-list">
+
+                </ul>
+                <div class="next-box d:none">
+                    <a class="item arrow arrow-next next"></a>
+                </div>
+            </div>
+        </section>
+    </div>
+</main>
+</body>
+</html>

@@ -1,0 +1,195 @@
+
+.with-card-list {
+    font-size: var(--font-size-0);
+    /* 부모 */
+    position: relative;
+}
+
+/* 카드 */
+.with-card-list
+.card {
+    height: 200px;
+    padding: 1em;
+    border-radius: 20px;
+    border: 1px solid var(--color-base-3);
+    box-shadow: 0px 4px 12px 0px rgba(0, 0, 0, 0.12);
+
+    background-color: var(--color-base-white);
+
+    /* margin */
+    margin: 12px;
+
+    position: relative;
+}
+
+.with-card-list .card .link {
+    position: absolute;
+    width: 100%;
+    height: 100%;
+    left: 0;
+    top: 0;
+
+    z-index: 999;
+}
+
+/* -------- 마감일 ------------ */
+.with-card-list
+.card
+.deadline {
+    display: flex;
+    width: fit-content;
+    align-items: center;
+    padding: 8px 10px;
+    border-radius: 50px;
+    border: 1px solid var(--color-main-0);
+
+    /* text style */
+    color: var(--color-main-0);
+    font-size: var(--font-size-2);
+    font-weight: 600;
+}
+
+
+.with-card-list
+.card
+.deadline.deco::before {
+    background-color: var(--color-main-0);
+}
+
+/* -------- 카드 제목 ------------ */
+.with-card-list
+.card
+.title-box {
+
+    /* text style */
+    font-size: var(--font-size-3);
+    font-weight: 700;
+
+    /* margin */
+    margin-top: 20px;
+}
+
+.with-card-list
+.card
+.title-box
+.title {
+    /* 2줄이상 말줄임 */
+    display: -webkit-box;
+    overflow: hidden;
+    text-overflow: ellipsis;
+    -webkit-line-clamp: 2;
+    -webkit-box-orient: vertical;
+    word-break: break-all;
+    /* 컨텐츠가 줄어들었을때를 위함 */
+    min-height: 45px;
+    max-height: 45px;
+}
+
+/* -------- 기술 스택 태그 ------------ */
+.with-card-list
+.card
+.stack-list {
+
+    display: flex;
+    flex-wrap: wrap;
+    column-gap: 8px;
+
+    /* 컨텐츠가 줄어들었을때를 위함 */
+    min-height: 28px;
+
+    /* margin */
+    margin-top: 10px;
+
+}
+
+.with-card-list
+.card
+.stack-list
+.stack::before {
+    content: '#';
+}
+
+.with-card-list .catchphrase {
+    font-size: var(--font-size-4);
+    font-weight: 700;
+}
+
+/* -------- 조회수 ------------ */
+
+.with-card-list .card .hit {
+    display: flex;
+    align-items: center;
+    justify-content: flex-end;
+
+    /* text style */
+    color: var(--color-base-5);
+    font-weight: 600;
+
+    /* margin */
+    margin-top: 15px;
+}
+
+/* -------- 카드 움직이는 버튼 ------------ */
+.card-btn-box {
+    display: inline-flex;
+    column-gap: 10px;
+
+    /* 자식 */
+    position: absolute;
+    right: 10px;
+    top: 260px;
+}
+
+/* 버튼 공통 속성 */
+.card-btn-box
+.btn {
+    width: 30px;
+    height: 30px;
+    border-radius: 9999px;
+    border: 1px solid var(--color-base-4);
+
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.card-btn-box
+.btn::before {
+    margin: 0;
+    background-color: var(--color-base-4);
+}
+
+
+.with-card-list .catchphrase {
+    font-size: var(--font-size-4);
+    font-weight: 700;
+}
+
+
+.with-card-list {
+    margin-top: 30px;
+    /*margin-left: 10px;*/
+}
+
+.with-card-list .catchphrase {
+    margin-left: 10px;
+}
+
+
+/* -------media 쿼리----------------------------- */
+@media (min-width: 700px) {
+
+    /* 폰트 사이즈 변경 */
+    /* 제목 폰트 사이즈 변경 */
+    /* .with-card-list
+    .card
+      .title-box {
+        font-size: var(--font-size-4);
+      } */
+    /* ---------- layout ---------------*/
+    .with-card-list {
+        max-width: 1120px;
+        margin: 0 auto;
+    }
+
+}

@@ -1,0 +1,181 @@
+<!DOCTYPE html>
+<html lang="en"
+      xmlns:th="http://www.thymeleaf.org"
+      xmlns:layout="http://www.ultraq.net.nz/thymeleaf/layout"
+      xmlns:sec="http://www.thymeleaf.org/extras/spring-security"
+      layout:decorate="~{inc/layout.html}">
+<head>
+    <meta charset="UTF-8">
+    <title>커뮤니티 상세</title>
+    <link href="/css/components/board/detail.css" rel="stylesheet" type="text/css">
+    <link href="/css/components/comment/comment.css" rel="stylesheet" type="text/css"/>
+    <link href="/css/components/board/comment.css" rel="stylesheet" type="text/css">
+    <link href="/css/utils/editor/style.css" rel="stylesheet" type="text/css"/>
+    <link href="/css/utils/highlight/styles/atom-one-dark.min.css" rel="stylesheet">
+    <script src="/js/utils/ckeditor/ckeditor.js"></script>
+    <script src="/js/utils/highlight/highlight.min.js"></script>
+    <script src="/js/utils/highlight/setting.js"></script>
+    <script type="module" src="/js/community/detail.js"></script>
+    <script type="module" src="/js/community/comment.js"></script>
+
+</head>
+
+<body>
+
+<main class="main" layout:fragment="main">
+    <!--  모달 영역 -->
+    <div id="host"></div>
+
+    <!-- 게시글 정보 -->
+    <section>
+        <h1 class="d:none">게시글정보</h1>
+        <div class="board-info">
+            <!-- 게시글 카테고리  -->
+            <div class="category" th:text="${categoryName}">LOG</div>
+
+            <!-- 게시글 제목, ... 버튼   -->
+            <div class="title-dots-btn-container">
+                <h2 class="title" th:text="${community.title}" th:data-community-id="${community.id}">DOBY 개발일지#2 플젝 이름
+                    정하기 정말 중요하니까 다들 참여해주세요!!</h2>
+
+                <div class="dots-btn-list-container" sec:authorize="isAuthenticated()">
+                    <button class="dots-btn icon icon-size-1 icon-dots icon-color-3 cursor:pointer" type="button">게시글 상세
+                        버튼모음
+                    </button>
+                    <!-- 회원일때만 보이는 메뉴 (작성자, 게시글을 보는 사람등으로도 나뉨) -->
+                    <ul class="list d:none" th:with="currentUserId=${#authentication.principal.id}">
+                        <li class="item" th:if="${community.memberId == currentUserId}"><a
+                                th:href="@{/member/community/edit(id=${community.id})}">수정하기</a></li>
+                        <li class="item" th:if="${community.memberId == currentUserId}"><a class="delete">삭제하기</a></li>
+                        <li class="item" th:unless="${community.memberId == currentUserId}"><a>신고하기</a></li>
+                    </ul>
+                </div>
+            </div>
+
+            <!-- 작성 정보, 조회수 -->
+            <dl class="write-info">
+                <div class="item">
+                    <dt class="dt writer">작성자</dt>
+                    <dd><a class="cursor:pointer" th:text="${writer.nickname}">김구리</a></dd>
+                </div>
+
+                <div class="item">
+                    <dt class="dt reg-date">작성일자</dt>
+                    <dd th:text="${community.timeDifference}">2023.08.01</dd>
+                </div>
+
+                <div class="item">
+                    <dt class="dt hit">조회수</dt>
+                    <dd th:text="${community.hit}">543</dd>
+                </div>
+            </dl>
+
+        </div>
+    </section>
+
+    <!-- 게시글 내용 -->
+    <section>
+        <h1 class="d:none">게시글내용</h1>
+        <div class="content-container">
+            <!-- 글 내용 -->
+            <div class="content editor-content" th:utext="${community.content}">
+                <p>2023.08.07</p>
+                <p>팀원들과 프로젝트 회의를 했습니다!</p>
+                <p>아직 커뮤니티의 이름이 정해지지 않아 다들 </p>
+                <p>머리를 쥐어짜느라 고생좀 했습니다^^;</p>
+                <p>&nbsp;</p>
+                <p>이름 후보를 몇 개 올려드립니다!</p>
+                <p>도비님들이 보시기에는 어떤게 제일 낫나요?</p>
+                <p>&nbsp;</p>
+                <p>왈라왈라쿼카쿼카</p>
+                <p>PODT (POtatoDevsTalk)</p>
+                <p>개발5분전</p>
+                <p>왈라비티</p>
+                <p>개물 (개발 물어보는 사람들)</p>
+            </div>
+
+            <!-- 태그 목록 -->
+            <ul class="tag-list">
+                <li class="item" th:each="t : ${tagList}" th:text="${t.name}">프로젝트명</li>
+            </ul>
+
+            <!-- 좋아요, 공유하기 버튼 목록 -->
+            <ul class="like-share-btn-container">
+                <li><a class="like-btn icon icon-size-1-1 icon-color-1 cursor:pointer"
+                       th:classappend="${isGood}? 'icon-likes-fill':'icon-likes'">좋아요버튼</a></li>
+                <li><a class="share-btn icon icon-size-1 icon-color-1 icon-share cursor:pointer">공유하기버튼</a></li>
+            </ul>
+        </div>
+    </section>
+
+    <!-- 댓글 -->
+
+    <section id="comment-reg-list" class="community">
+        <section id="comment-reg" class="d:flex">
+            <h1 class="d:none">댓글 작성</h1>
+            <div class="comment-reg-count-box">
+                <div class="comment-count-box">
+                    <span><span class="comment-count" th:text="${commentCount}">10</span>개의 댓글</span>
+                </div>
+                <div class="img-form-box">
+                    <div class="img-box">
+                        <img class="profile-img" src="/image/user.svg" alt="프로필_이미지" th:if="${#authentication.principal} == 'anonymousUser'">
+                        <img class="profile-img" alt="프로필_이미지" th:unless="${#authentication.principal} == 'anonymousUser'" th:src="@{https://file.doby.co.kr/profiles/{img}(img=${#authentication.principal.profileImage})}">
+                    </div>
+                    <div class="comment-reg-form">
+                        <div class="editor-box">
+                            <span class="comment-editor"></span>
+                        </div>
+                        <div class="btn-box d:flex">
+                            <button class="submit-btn cursor:pointer" type="button">댓글 작성</button>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <section id="comment-list">
+            <h1 class="d:none">댓글 목록</h1>
+            <ul class="comment-list-box">
+                <li class="item comment-item" th:each="comment : ${commentList}" th:data-comment-id="${comment.id}">
+                    <div class="root-comment comment-box">
+                        <div class="img-box">
+                            <img class="profile-img" src="https://avatars.githubusercontent.com/u/143318125?v=4"
+                                 alt="" th:src="@{https://file.doby.co.kr/profiles/{img}(img=${comment.profileImage})}">
+                        </div>
+                        <div class="comment-info-box">
+                            <div class="info-box">
+                                <span class="nickname cursor:pointer" th:text="${comment.nickname}">김가구리</span>
+                                <span class="reg-time" th:text="${comment.timeDifference}">12:31</span>
+                            </div>
+                            <div class="menu-box" th:if="${#authentication.principal != 'anonymousUser' and #authentication.principal.id == comment.memberId}">
+                                <div class="menu-btn-box">
+                                    <a class="menu icon icon-dots icon-size-3 icon-color-3 cursor:pointer">메뉴</a>
+                                </div>
+                                <ul class="list d:none">
+                                    <li><a class="item delete">삭제하기</a></li>
+                                </ul>
+                            </div>
+                            <div class="content-box">
+                                <span class="content editor-content" th:utext="${comment.content}">왈라비티 추천합니다!</span>
+                            </div>
+                            <div class="util-box">
+                                <a class="comment-down-btn btn cursor:pointer icon-color-2 icon-down_arrow deco" th:if="${comment.replyCount != 0}">
+                                    댓글&nbsp;<span class="comment-count" th:text="${comment.replyCount}">3</span>개</a>
+                                <a class="comment-reg-btn btn cursor:pointer">댓글 쓰기</a>
+                            </div>
+                            <div class="like-box">
+                                <a class="like icon icon-size-1 cursor:pointer" th:classappend="${comment.isGood}? 'icon-likes-fill':'icon-likes'">좋아요</a>
+                                <span class="like-count" th:text="${comment.goodCount}">15</span>
+                            </div>
+                        </div>
+                    </div>
+                    <ul class="sub-comment-list d:none"></ul>
+                </li>
+            </ul>
+        </section>
+    </section>
+
+</main>
+</body>
+</html>

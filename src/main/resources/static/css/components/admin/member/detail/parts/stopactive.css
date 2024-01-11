@@ -1,0 +1,22 @@
+.stop {
+    width: 70px;
+    height: 40px;
+    
+    border: 1px solid var(--color-base-7);
+    border-radius: 10px;
+
+    text-align: center;
+
+    font-family: 'pretendard';
+    font-size: 16px;
+    font-weight: 600;
+
+    color: var(--color-base-7);
+
+    padding: 0px 15px;
+}
+
+.stop:hover {
+    color: var(--color-base-white);
+    background-color: var(--color-base-7);
+}

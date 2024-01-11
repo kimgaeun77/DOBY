@@ -1,0 +1,14 @@
+.btn-write-box
+  .btn-write{
+  display: flex;
+  align-items: center;
+
+  padding: 8px 15px;
+  background-color: var(--color-main-2);
+  border-radius: 5px;
+
+  /* text style */
+  color: var(--color-base-white);
+  font-size: var(--font-size-3);
+  font-weight: 600;
+}

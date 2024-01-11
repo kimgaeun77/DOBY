@@ -1,0 +1,116 @@
+.banner {
+  background-color: var(--color-trans-3);
+  height: 220px;
+  display: flex;
+}
+
+.banner_title {
+  font-size: 33px;
+  font-weight: bold;
+  margin-left: 20px;
+  margin-top: 60px;
+}
+.category-box {
+  display: flex;
+  margin-top: 50px;
+}
+.category-list {
+  display: flex;
+  gap: 25px;
+  font-size: 18px;
+  margin-left: 35px;
+}
+.category-list li:hover {
+  font-weight: bold;
+}
+
+.category-list li:first-child {
+  font-weight: bold;
+}
+
+.search-box {
+  display: flex;
+  flex-direction: column;
+  align-items: end;
+}
+
+.btn-search {
+  width: 40px;
+  height: 25px;
+  border: 0.5px solid var(--color-base-3);
+  border-radius: 3px;
+  margin-left: auto;
+  margin-right: 20px;
+  background-color: var(--color-base-white);
+  background-image: url(/icon/search.svg);
+  background-repeat: no-repeat;
+  background-position: center;
+  position: relative;
+}
+
+.bar-search {
+  display: none;
+  content: " ";
+  overflow: hidden;
+  min-width: 200px;
+  width: 330px;
+  height: 30px;
+  border-radius: 15px;
+  border: 0.5px solid var(--color-base-3);
+  margin-right: 0px;
+  align-items: center;
+  color: var(--color-base-5);
+  font-size: 13px;
+  padding-left: 40px;
+  margin-right: 20px;
+  margin-top: 20px;
+}
+
+.category-box input::placeholder {
+  text-indent: 50px;
+}
+
+@media (min-width: 700px) {
+  .banner {
+    background-color: transparent;
+    height: unset;
+    display: flex;
+  }
+
+  .banner_title {
+    font-size: 20px;
+    font-weight: 600;
+    margin-left: 20px;
+    margin-top: 130px;
+  }
+  .category-box {
+    min-width: 700px;
+  }
+  .category-list {
+    margin-left: 30px;
+    font-size: 20px;
+    min-width: 283px;
+  }
+  .btn-search {
+    display: none;
+  }
+  .bar-search {
+    min-width: 200px;
+    width: 330px;
+    height: 30px;
+    border-radius: 15px;
+    border: 0.5px solid var(--color-base-3);
+    margin: 0 20px 0 auto;
+    display: flex;
+    align-items: center;
+    color: var(--color-base-5);
+    font-size: 13px;
+    padding-left: 40px;
+    background-position: bottom 4px left 10px;
+    background-image: url(/icon/search.svg);
+    background-repeat: no-repeat;
+  }
+  .category-box .bar-search::placeholder {
+    text-indent: 1px;
+  }
+}

@@ -1,0 +1,39 @@
+@import 'https://cdn.jsdelivr.net/gh/orioncactus/pretendard@v1.3.8/dist/web/static/pretendard.css';
+@import 'https://webfontworld.github.io/cookierun/CookieRun.css';
+
+html,
+body {
+    height: 100%;
+    /* 페이지 기본 폰트 색 지정 */
+    color: var(--color-base-7);
+}
+
+* {
+    box-sizing: border-box;
+}
+
+
+body,
+input,
+*::before,
+*::placeholder {
+    font-family: Pretendard Variable, Pretendard, -apple-system, BlinkMacSystemFont, system-ui, Roboto, Helvetica Neue,
+    Segoe UI, Apple SD Gothic Neo, Noto Sans KR, Malgun Gothic, 'Apple Color Emoji', 'Segoe UI Emoji',
+    Segoe UI Symbol, sans-serif;
+}
+
+body {
+    display: flex;
+    flex-direction: column;
+}
+
+header,
+footer {
+    flex-shrink: 0;
+}
+
+main {
+    display: flex;
+    flex-direction: column;
+    flex-grow: 1;
+}

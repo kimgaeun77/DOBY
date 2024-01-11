@@ -1,0 +1,375 @@
+.container {
+    width: 100%;
+    padding: 0 20px;
+}
+/* ----------- 게시글 목록 -------------------- */
+
+.container
+.board-list{
+    /* margin */
+    margin: 20px 0px 40px 0px;
+}
+
+
+.container
+.board-list
+.item{
+    border-bottom: 0.5px solid var(--color-base-3);
+    padding: 12px;
+
+}
+
+.container
+.board-list
+.item:last-child {
+    border: none;
+}
+
+.container
+.board-list
+.item
+.board{
+    display: flex;
+    flex-direction: column;
+    row-gap: 12px;
+
+    /* margin */
+    margin: 5px 0px;
+}
+
+/* 프로필 이미지, 닉네임, 작성시간 box */
+.container
+.board-list
+.item
+.write-info-box{
+    display: flex;
+    align-items: center;
+    column-gap: 10px;
+    color: var(--color-base-black);
+}
+
+/* 프로필 이미지, 닉네임 box */
+.container
+.board-list
+.item
+.write-info-box
+.profile{
+    display: flex;
+    align-items: center;
+    column-gap: 5px;
+}
+
+
+/* 프로필 이미지 컨테이너*/
+.container
+.board-list
+.item
+.write-info-box
+.profile
+.img-container{
+    width: 20px;
+    height: 20px;
+    overflow: hidden;
+    border-radius: 9999px;
+}
+
+/* 프로필 이미지 */
+.container
+.board-list
+.item
+.write-info-box
+.profile
+.img{
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+
+}
+
+/* 닉네임 */
+.container
+.board-list
+.item
+.write-info-box
+.profile
+.nickname{
+    font-size: 13px;
+    /* 글자수 넘치는거 닉네임 제한 둘거면 굳이 안해도 될 듯*/
+    overflow: hidden;
+    text-overflow: ellipsis;
+    white-space: nowrap;
+}
+
+/* 닉네임 호버시 */
+.community
+.container
+.board-list
+.item
+.write-info-box
+.profile
+.nickname:hover{
+    color: var(--color-main-2);
+}
+
+.with
+.container
+.board-list
+.item
+.write-info-box
+.profile
+.nickname:hover{
+    color: var(--color-main-0);
+}
+
+.smalltalk
+.container
+.board-list
+.item
+.write-info-box
+.profile
+.nickname:hover {
+    color: var(--color-main-3);
+}
+
+.popular
+.container
+.board-list
+.item
+.write-info-box
+.profile
+.nickname:hover {
+    color: var(--color-base-3);
+}
+
+/* 작성시간 */
+.container
+.board-list
+.item
+.write-info-box
+.reg-date{
+    font-size: 13px;
+}
+
+/* ---- 게시글 제목 부분 ----- */
+
+/* 게시글 제목 */
+.container
+.board-list
+.item
+.title-box{
+    display: flex;
+    align-items: center;
+    column-gap: 10px;
+    /* text style */
+    font-size: var(--font-size-2);
+    font-weight: 600;
+}
+
+.container
+.board-list
+.item
+.title-box
+.title{
+    /* text 넘치는거 처리 */
+    overflow: hidden;
+    text-overflow: ellipsis;
+    white-space: nowrap;
+    width: calc(100%);
+}
+
+/* 링크누르면 제목 색깔 변경 */
+.container
+.board-list
+.item
+.title-box
+.title:visited{
+    color: var(--color-base-4);
+}
+
+/* 카테고리이름, tag, views, likes, comments - box */
+.container
+.board-list
+.item
+.board-info{
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+}
+
+.container
+.board-list
+.item
+.board-info
+.category-name-tag-box{
+    display: flex;
+    align-items: center;
+    column-gap: 10px;
+
+    /* 추가 */
+    overflow: hidden;
+}
+
+/* ---------- 카테고리 이름(조약돌)*-----/
+
+/* 공통 속성 */
+.container
+.board-list
+.item
+.board-info
+.category-name{
+
+    background-color: var(--color-base-white);
+    border-radius: 150px;
+    border: 1px solid var(--color-main-2);
+    padding: 3px 8px;
+
+    /* text style*/
+    color: var(--color-main-2);
+    font-weight: 600;
+    font-size: var(--font-size-0);
+
+    flex-shrink: 0;
+
+}
+/* 커뮤니티 */
+.community
+.container
+.board-list
+.item
+.board-info
+.category-name{
+
+    border: 1px solid var(--color-main-2);
+    color: var(--color-main-2);
+
+}
+
+/* 모임 */
+.with
+.container
+.board-list
+.item
+.board-info
+.category-name{
+    border: 1px solid var(--color-main-0);
+    color: var(--color-main-0);
+}
+
+/* 인기게시글 */
+.popular
+.container
+.board-list
+.item
+.board-info
+.category-name.community{
+    border: 1px solid var(--color-main-2);
+    color: var(--color-main-2);
+}
+
+.popular
+.container
+.board-list
+.item
+.board-info
+.category-name.smalltalk{
+    border: 1px solid var(--color-main-3);
+    color: var(--color-main-3);
+}
+
+
+
+
+/* 태그 */
+.container
+.board-list
+.item
+.board-info
+.tag-list{
+    display: flex;
+    column-gap: 8px;
+
+    color: var(--color-base-8);
+    font-size: var(--font-size-1);
+
+    /* 자신이 가지고 있는 태그들의 길이가 길어져도(컨텐츠 길이) flex container 못나가게 설정 */
+    overflow: hidden;
+
+}
+/* 태그 줄임 추가 (375px까지 줄였을 때 줄임을 위해서) */
+.container
+.board-list
+.item
+.board-info
+.tag-list
+.tag{
+    overflow: hidden;
+    text-overflow: ellipsis;
+    white-space: nowrap;
+}
+
+.container
+.board-list
+.item
+.board-info
+.tag-list
+.tag::before{
+    content: '#';
+}
+
+.container
+.board-list
+.item
+.board-info
+.view-like-comment-box{
+    display: flex;
+    font-size: 13px;
+    column-gap: 8px;
+    color: var(--color-base-black);
+
+}
+
+/* 조회 수 */
+.container
+.board-list
+.item
+.view-like-comment-box
+.views{
+    display: flex;
+    align-items: center;
+}
+
+/* 좋아요 수 */
+.container
+.board-list
+.item
+.view-like-comment-box
+.likes{
+    display: flex;
+    align-items: center;
+}
+
+
+/* 댓글 수 */
+.container
+.board-list
+.item
+.view-like-comment-box
+.comments{
+    display: flex;
+    align-items: center;
+}
+
+
+/* -------media 쿼리----------------------------- */
+
+@media(min-width: 700px){
+
+    /* 게시글 제목 키우기 */
+    .container
+    .board-list
+    .item
+    .title-box
+    .title{
+        font-size: var(--font-size-3);
+    }
+}

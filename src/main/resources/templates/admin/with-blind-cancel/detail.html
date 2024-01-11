@@ -1,0 +1,103 @@
+<!DOCTYPE html>
+<html
+  lang="en"
+  xmlns:th="http://www.thymeleaf.org"
+  xmlns:layout="http://www.ultraq.net.nz/thymeleaf/layout"
+  layout:decorate="~{admin/inc/layout_header.html}"
+>
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Document</title>
+    <script src="/js/admin/with-blind-cancel/detail.js"></script>
+    <link
+      href="/css/components/admin/with-blind-cancel/detail.css"
+      rel="stylesheet"
+      type="text/css"
+    />
+  </head>
+
+  <body>
+    <main layout:fragment="main" th:object="${withBlindCancelDetail}">
+      <!-- 게시글 정보 -->
+      <section>
+        <h1 class="d:none">게시글정보</h1>
+        <div class="board-info">
+          <!-- 게시글 카테고리  -->
+          <!-- <div class="category">LOG</div> -->
+
+          <!-- 게시글 제목, ... 버튼   -->
+          <div class="title-dots-btn-container">
+            <h2>
+              <a href="/board" class="title" th:text="*{title}"
+                >@왈$라viTy로 오세요@@@</a
+              >
+            </h2>
+
+            <div class="dots-btn-list-container">
+              <button
+                class="dots-btn icon icon-size-1 icon-dots icon-color-3 cursor:pointer"
+              >
+                게시글 상세 버튼모음
+              </button>
+              <!-- 관리자일때만 보이는 메뉴 -->
+              <ul class="list d:none">
+                <li class="item"><a>처리중</a></li>
+                <li class="item"><a>승인</a></li>
+                <li class="item"><a>거절</a></li>
+              </ul>
+            </div>
+          </div>
+
+          <!-- 작성 정보, 조회수 -->
+          <dl class="write-info">
+            <div class="item">
+              <dt class="dt hit">카테고리</dt>
+              <dd th:text="*{categoryName}">Smalltalk</dd>
+            </div>
+            <div class="item">
+              <dt class="dt reg-date">작성일자</dt>
+              <dd th:text="*{#dates.format(regDate, 'yyyy.MM.dd  HH:mm')}">
+                2023.08.01
+              </dd>
+            </div>
+            <div class="item">
+              <dt class="dt writer">작성자</dt>
+              <dd>
+                <a class="cursor:pointer" th:text="*{nickname}">김구리</a>
+              </dd>
+            </div>
+          </dl>
+          <div class="report-reason">
+            사유: <span th:text="*{reportReason}">광고성 글 게재</span>
+          </div>
+        </div>
+      </section>
+
+      <!-- 게시글 내용 -->
+      <section>
+        <h1 class="d:none">게시글내용</h1>
+        <div class="content-container">
+          <!-- 글 내용 -->
+          <div class="content" th:text="*{cancelReason}">
+            <p>2023.08.07</p>
+            <p>팀원들과 프로젝트 회의를 했습니다!</p>
+            <p>아직 커뮤니티의 이름이 정해지지 않아 다들</p>
+            <p>머리를 쥐어짜느라 고생좀 했습니다^^;</p>
+            <!-- 에디터에서 줄바꿈 할 때 넣어주는 거 -->
+            <p>&nbsp;</p>
+            <p>이름 후보를 몇 개 올려드립니다!</p>
+            <p>도비님들이 보시기에는 어떤게 제일 낫나요?</p>
+            <!-- 에디터에서 줄바꿈 할 때 넣어주는 거 -->
+            <p>&nbsp;</p>
+            <p>왈라왈라쿼카쿼카</p>
+            <p>PODT (POtatoDevsTalk)</p>
+            <p>개발5분전</p>
+            <p>왈라비티</p>
+            <p>개물 (개발 물어보는 사람들)</p>
+          </div>
+        </div>
+      </section>
+    </main>
+  </body>
+</html>

@@ -1,0 +1,178 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper
+        PUBLIC "-//mybatis.org//DTD Config 3.0//EN"
+        "https://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="kr.co.doby.web.repository.WithRepository">
+
+
+    <select id="findViewAll" resultType="WithView">
+
+        SELECT
+        *
+        from
+        with_view
+        <where>
+            `close` = 0 and del = 0 and blind = 0 and deadline >= CURDATE()
+            <if test="categoryId != null">
+                and category_id = #{categoryId}
+            </if>
+            <if test="query != null">
+                and (title like '%${query}%' or content like '%${query}%')
+            </if>
+            <if test="positionId != null">
+                and position_id = #{positionId}
+            </if>
+            <if test="wayId != null">
+                and way_id = #{wayId}
+            </if>
+            <if test="isWish != null">
+                and member_id = #{memberId}
+            </if>
+            <if test="techList != null">
+                and tech_id in
+                <foreach item="item" index="index" collection="techList"
+                         open="(" separator="," close=")">
+                    #{item}
+                </foreach>
+            </if>
+
+        </where>
+
+        group by id
+        order by id desc
+        limit #{offset}, #{size}
+    </select>
+
+    <select id="findViewAllByOrderByDeadlineAsc" resultType="WithView">
+
+        SELECT *
+        from with_view
+        where `close` = 0
+          and del = 0
+          and blind = 0
+          and deadline >= CURDATE()
+        group by id
+        order by deadline
+        limit 10
+
+    </select>
+
+    <select id="count">
+        select
+        count(*)
+        from
+        (SELECT
+        *
+        from
+        with_view
+        <where>
+            `close` = 0 and del = 0 and blind = 0 and deadline >= CURDATE()
+            <if test="categoryId != null">
+                and category_id = #{categoryId}
+            </if>
+            <if test="query != null">
+                and (title like '%${query}%' or content like '%${query}%')
+            </if>
+            <if test="positionId != null">
+                and position_id = #{positionId}
+            </if>
+            <if test="wayId != null">
+                and way_id = #{wayId}
+            </if>
+            <if test="isWish != null">
+                and member_id = #{memberId}
+            </if>
+            <if test="techList != null">
+                and tech_id in
+                <foreach item="item" index="index" collection="techList"
+                         open="(" separator="," close=")">
+                    #{item}
+                </foreach>
+            </if>
+
+        </where>
+
+        group by id) w
+
+    </select>
+
+    <select id="findById" resultType="With">
+        select *
+        from `with`
+        where id = #{id}
+          and `close` = 0
+          and del = 0
+          and blind = 0
+          and deadline >= CURDATE()
+    </select>
+
+    <insert id="save" parameterType="With">
+        insert into `with`(title,
+                           content,
+                           deadline,
+                           member_id,
+                           period_id,
+                           category_id,
+                           way_id,
+                           contact_id,
+                           link)
+        values (#{title},
+                #{content},
+                #{deadline},
+                #{memberId},
+                #{periodId},
+                #{categoryId},
+                #{wayId},
+                #{contactId},
+                #{link})
+    </insert>
+
+    <update id="update" parameterType="With">
+        update
+        `with`
+        set
+        title=#{title},
+        content=#{content},
+        deadline=#{deadline},
+        period_id=#{periodId},
+        category_id=#{categoryId},
+        way_id=#{wayId},
+        contact_id=#{contactId},
+        link=#{link}
+        where
+        id=#{id}
+    </update>
+
+
+    <select id="last" resultType="With">
+        select *
+        from `with`
+        WHERE id = (select MAX(id) from `with`)
+    </select>
+
+    <delete id="deleteById">
+        update
+            `with`
+        SET del = 1
+        WHERE id = ${id}
+    </delete>
+
+    <select id="updateHitById">
+
+        update
+            `with`
+        set hit = hit + 1
+        where id = #{id}
+
+    </select>
+
+    <update id="toBlind">
+        update `with` set blind=1 where id=#{id}
+    </update>
+
+    <update id="toVisible">
+        update `with` set blind=0 where id=#{id}
+    </update>
+
+
+</mapper>

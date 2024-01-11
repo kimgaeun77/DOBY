@@ -1,0 +1,91 @@
+.blind-cancel-unit {
+  height: 100px;
+  border-bottom: 1px solid var(--color-base-3);
+  display: flex;
+  padding: 16px 25px 13px 0px;
+  align-items: center;
+  overflow: hidden;
+}
+
+.blind-cancel-unit .status {
+  color: var(--color-base-5);
+  font-weight: 600;
+  font-size: 14px;
+  min-width: 70px;
+  text-align: center;
+  margin-bottom: 7px;
+  padding-right: 10px;
+}
+.blind-cancel-unit .status.finish {
+  color: var(--color-main-0);
+}
+.title-box {
+  display: flex;
+  flex-direction: column;
+  height: fit-content;
+}
+.blind-cancel-unit .user {
+  color: var(--color-base-5);
+  font-weight: 400;
+  font-size: 13px;
+}
+
+.blind-cancel-unit .title {
+  color: var(--color-base-7);
+  font-weight: 500;
+  font-size: 16px;
+  line-height: 30px;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  white-space: nowrap;
+}
+
+.blind-cancel-unit .category {
+  font-weight: bold;
+  height: 21px;
+  width: 70px;
+  background-color: var(--color-main-2);
+  color: var(--color-base-white);
+  font-size: 12px;
+  border-radius: 50px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+.blind-cancel-unit .title-box .community {
+  background-color: var(--color-main-2);
+}
+.blind-cancel-unit .title-box .with {
+  background-color: var(--color-main-0);
+}
+.blind-cancel-unit .title-box .smalltalk {
+  background-color: var(--color-main-3);
+}
+
+@media (min-width: 700px) {
+  .blind-cancel-unit {
+    height: 110px;
+    margin-left: 0px;
+    margin-right: 0px;
+  }
+  .blind-cancel-unit .reason {
+    display: block;
+    padding-left: 30px;
+    margin-left: auto;
+
+    margin-bottom: 8px;
+    overflow: hidden;
+    text-overflow: ellipsis;
+    white-space: nowrap;
+  }
+  .blind-cancel-unit .status {
+    font-size: 18px;
+    min-width: 110px;
+    margin-bottom: 9px;
+  }
+  .blind-cancel-unit .title {
+    padding-top: 6px;
+    padding-bottom: 9px;
+    font-size: 18px;
+  }
+}

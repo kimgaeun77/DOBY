@@ -1,0 +1,45 @@
+<!DOCTYPE html>
+<html
+  lang="en"
+  xmlns:th="http://www.thymeleaf.org"
+  xmlns:layout="http://www.ultraq.net.nz/thymeleaf/layout"
+  xmlns:sec="http://www.thymeleaf.org/extras/spring-security"
+>
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <meta name="_csrf" th:content="${_csrf.token}" id="csrf" />
+    <meta
+      name="member-id"
+      sec:authorize="isAuthenticated()"
+      th:content="${#authentication.principal.id}"
+      id="member-id"
+    />
+    <title>Document</title>
+    <link href="/css/reset.css" rel="stylesheet" type="text/css" />
+    <link href="/css/root.css" rel="stylesheet" type="text/css" />
+    <link href="/css/utils.css" rel="stylesheet" type="text/css" />
+    <link href="/css/style.css" rel="stylesheet" type="text/css" />
+    <link href="/css/icon.css" rel="stylesheet" type="text/css" />
+    <link
+      href="/css/components/header/header.css"
+      rel="stylesheet"
+      type="text/css"
+    />
+    <link
+      href="/css/components/footer/footer.css"
+      rel="stylesheet"
+      type="text/css"
+    />
+    <link
+      href="/css/components/admin/aside.css"
+      rel="stylesheet"
+      type="text/css"
+    />
+  </head>
+  <body class="d:flex">
+    <div th:replace="~{admin/inc/header::.header}"></div>
+    <div layout:fragment="main"></div>
+    <div th:replace="~{admin/inc/footer::.footer}"></div>
+  </body>
+</html>

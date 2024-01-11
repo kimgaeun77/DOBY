@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Document</title>
+    <link href="/css/reset.css" rel="stylesheet" type="text/css" />
+    <link href="/css/root.css" rel="stylesheet" type="text/css" />
+    <link href="/css/style.css" rel="stylesheet" type="text/css" />
+    <link href="/css/utils.css" rel="stylesheet" type="text/css" />
+    <link href="/css/icon.css" rel="stylesheet" type="text/css" />
+
+    <link
+      href="/css/components/modals/blind-cancel/blind-cancel-modal.css"
+      rel="stylesheet"
+      type="text/css"
+    />
+  </head>
+  <body>
+    <main class="modal-main">
+      <section class="blind-cancel-modal">
+        <h1 class="d:none">블라인드 철회 요청</h1>
+
+        <form class="blind-cancel-content">
+          <div class="title-close-box">
+            <p class="title">철회 요청</p>
+            <button class="btn-close icon icon-close">x</button>
+          </div>
+          <textarea
+            class="blind-cancel-reason"
+            placeholder="내용을 입력해주세요.(선택)"
+          ></textarea>
+          <p class="note">
+            무분별한 철회 요청 남용 시 제재를 받을 수 있습니다.
+          </p>
+          <input type="submit" class="btn" value="제출하기" />
+        </form>
+      </section>
+    </main>
+  </body>
+</html>

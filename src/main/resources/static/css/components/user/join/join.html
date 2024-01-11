@@ -1,0 +1,148 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Document</title>
+    <script src="/js/user/join.js"></script>
+    <link href="/css/reset.css" rel="stylesheet" type="text/css" />
+    <link href="/css/utils.css" rel="stylesheet" type="text/css" />
+    <link href="/css/style.css" rel="stylesheet" type="text/css" />
+    <link href="/css/root.css" rel="stylesheet" type="text/css" />
+    <link href="/css/icon.css" rel="stylesheet" type="text/css" />
+    <link
+      href="/css/components/user/join/join.css"
+      rel="stylesheet"
+      type="text/css"
+    />
+    <link
+      href="/css/components/user/join/parts/btn-join.css"
+      rel="stylesheet"
+      type="text/css"
+    />
+    <link
+      href="/css/components/user/join/parts/toggle.css"
+      rel="stylesheet"
+      type="text/css"
+    />
+    <link
+      href="/css/components/user/join/parts/inputbox.css"
+      rel="stylesheet"
+      type="text/css"
+    />
+  </head>
+  <body>
+    <main class="join-page">
+      <section class="join">
+        <h1 class="d:none">회원가입</h1>
+        <div class="logo-link-box">
+          <a href="" class="logo-link d:inline-block">
+            <!-- <img src="/icon/logo_full.svg" class="logo" alt="DOBY"/> -->
+          </a>
+        </div>
+        <p class="greet">DOBY의 회원이 되어주세요</p>
+
+        <form action="" class="join-form">
+          <fieldset class="input-box-set-bundle">
+            <!-------- 이메일 ---------->
+            <div class="input-box-set">
+              <label class="input-label" for="email">이메일 </label>
+              <input
+                type="email"
+                id="email"
+                placeholder="이메일을 입력해주세요"
+                class="email-input-box input-box"
+                required
+              />
+              <span class="warning deco icon-warning d:none"
+                >이메일 주소가 정확한지 확인해 주세요.</span
+              >
+              <span class="warning duplication deco icon-warning d:none"
+                >중복된 이메일입니다.</span
+              >
+            </div>
+            <!-------- 비밀번호 ---------->
+            <div class="input-box-set icon-firstline">
+              <label class="input-label" for="password">비밀번호</label>
+              <input
+                type="password"
+                id="password"
+                placeholder="8자 이상 입력해주세요 (영문, 숫자 및 특수문자 필수)"
+                class="password-input-box input-box"
+                required
+              />
+              <span class="warning deco icon-warning d:none"
+                >8~16자의 영문 대/소문자, 숫자, 특수문자만 사용
+                가능합니다.</span
+              >
+            </div>
+            <!-------- 이름 ---------->
+            <div class="input-box-set">
+              <label class="input-label" for="name">이름</label>
+              <input
+                type="text"
+                id="name"
+                placeholder="이름을 입력해주세요."
+                class="name-input-box input-box"
+                required
+              />
+              <span class="warning deco icon-warning d:none"
+                >2자 이상 입력해주세요.</span
+              >
+            </div>
+            <!-------- 전화번호 ---------->
+            <div class="input-box-set">
+              <label class="input-label phone-input-label" for="phone"
+                >전화번호</label
+              >
+              <!-- 인증번호 요청 -->
+              <div class="phone-input-certif-box">
+                <div class="phone-input-certif">
+                  <input
+                    type="tel"
+                    id="phone"
+                    placeholder="전화번호를 입력해주세요."
+                    class="phone-input-box input-box"
+                    required
+                  />
+                  <button id="certif" class="btn-certif">인증요청</button>
+                </div>
+                <span class="warning deco icon-warning d:none"
+                  >휴대전화번호가 정확한지 확인해 주세요.</span
+                >
+              </div>
+              <!-- 인증번호 입력 -->
+              <div class="certif-number-box">
+                <input
+                  type="number"
+                  id="certif-input"
+                  placeholder="인증번호를 입력해주세요."
+                  class="certif-input-box input-box"
+                  required
+                />
+                <span class="cnt-down">2:58</span>
+              </div>
+            </div>
+            <!-------- 이메일 수신동의 ---------->
+            <div class="input-box-set">
+              <label class="toggle-box">
+                <div class="email-allow">이메일 수신동의</div>
+                <input type="checkbox" id="toggle" hidden />
+                <label for="toggle" class="toggleSwitch">
+                  <span class="toggleButton"></span> </label
+              ></label>
+            </div>
+            <!-------- 가입하기 버튼 ---------->
+            <div class="input-box-set">
+              <input
+                type="submit"
+                class="btn-certif btn-join"
+                value="가입하기"
+              />
+            </div>
+          </fieldset>
+        </form>
+      </section>
+    </main>
+  </body>
+</html>

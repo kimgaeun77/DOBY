@@ -1,0 +1,233 @@
+.header {
+    /* min-width: 300px; */
+    height: 60px;
+
+    flex-direction: row;
+    align-items: center;
+    justify-content: center;
+
+    box-shadow: 0px 1px 2px rgba(85, 85, 85, 0.25);
+    font-weight: 500;
+    flex-shrink: 0;
+
+    display: flex;
+}
+
+.header .box .icon::before {
+    background-color: rgba(135, 135, 135, 0.8);
+}
+
+.header .category {
+    display: flex;
+    flex-shrink: 0;
+    flex-basis: 300px;
+}
+
+.header .category,
+.header .login,
+.header .search-form {
+    display: none;
+}
+
+.header .category .item-box {
+    width: 360px;
+    justify-content: space-between;
+}
+
+.header .box {
+    justify-content: space-between;
+    align-items: center;
+    height: 100%;
+    width: 100%;
+}
+
+.header .logo {
+    width: 90px;
+    height: 30px;
+    flex-shrink: 0;
+    background-image: url(/icon/logo.svg);
+    background-repeat: no-repeat;
+    background-position: center;
+    background-size: contain;
+    text-indent: -999px;
+}
+
+.header .category {
+    display: none;
+    font-size: 20px;
+}
+
+/* --------------------- */
+.header .box .search-form {
+    flex-shrink: 0;
+    width: 280px;
+}
+
+.header .box .search-form .search-input-box {
+    width: 100%;
+
+    display: flex;
+    align-items: center;
+
+    position: relative;
+}
+
+.header .box .search-form .search-input-box .input {
+    width: 100%;
+    height: 30px;
+    border: 1.5px solid var(--color-base-3);
+    border-radius: 15px;
+    padding-left: 35px;
+}
+
+.header .box .search-form .search-input-box .input::placeholder {
+    font-size: var(--font-size-1);
+    color: var(--color-base-5);
+}
+
+.header .box .search-form .search-input-box .search {
+    order: -1;
+    position: absolute;
+    left: 10px;
+}
+
+.header .box .search-form .search-input-box .search {
+    display: inline-block;
+    width: var(--icon-size-1);
+    height: var(--icon-size-1);
+
+    -webkit-mask-size: var(--icon-size-1);
+    mask-size: var(--icon-size-1);
+
+    -webkit-mask-image: url(/icon/search.svg);
+    mask-image: url(/icon/search.svg);
+    background-color: var(--color-base-5);
+
+    text-indent: -999px;
+}
+
+.header .box .profile-box {
+    position: relative;
+
+    display: none;
+
+    height: 40px;
+    width: 40px;
+}
+
+.header .box .profile-box .profile {
+    border-radius: 100px;
+
+    height: inherit;
+    width: inherit;
+
+    object-fit: cover;
+}
+
+.header .box .profile-box .list-box {
+    position: absolute;
+
+    right: 0;
+    z-index: 99;
+
+
+    border: 1px solid var(--color-base-3);
+    border-radius: 8px;
+
+    background-color: var(--color-base-white);
+
+    font-size: 16px;
+    font-weight: 500;
+
+    width: 90px;
+}
+
+.header .box .profile-box .list-box .list {
+    flex-direction: column;
+    align-items: center;
+}
+
+.header .box .profile-box .list-box .list .item {
+    padding: 7px 0;
+}
+
+.header .box .profile-box .list-box .list .item:first-child {
+    padding-top: 10px;
+}
+
+.header .box .profile-box .list-box .list .item:last-child {
+    padding-bottom: 10px;
+}
+
+/*----------- hover ------------------------------------------*/
+
+.header .category .c\:main-0:hover {
+    color: var(--color-main-0);
+}
+
+.header .category .c\:main-2:hover {
+    color: var(--color-main-2);
+}
+
+.header .category .c\:main-3:hover {
+    color: var(--color-main-3);
+}
+
+.header .category .c\:main-5:hover {
+    color: grey;
+}
+
+.header .menu,
+.header .box .profile-box:hover {
+    cursor: pointer;
+}
+
+.header .box .profile-box .list-box .list .item:hover {
+    font-weight: 600;
+}
+
+@media (min-width: 700px) {
+    .header {
+        width: 100%;
+        height: 70px;
+        align-items: center;
+    }
+
+    .header .box {
+        width: 100%;
+        max-width: 1120px;
+    }
+
+    .header .category,
+    .header .login,
+    .header .search-form,
+    .header .box .profile-box {
+        display: block;
+    }
+}
+
+/*----------- layout ------------------------------------------*/
+.header .logo,
+.header .menu {
+    margin: 0 20px;
+}
+
+.header .category {
+    margin-left: 50px;
+}
+
+.header .search-form {
+    margin-left: auto;
+}
+
+.header .login,
+.header .box .profile-box {
+    margin-left: 64px;
+}
+
+@media (min-width: 700px) {
+    .header .logo {
+        margin: 0 20px 0 0;
+    }
+}
+

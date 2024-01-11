@@ -1,0 +1,141 @@
+<!DOCTYPE html>
+<html
+  xmlns:layout="http://www.ultraq.net.nz/thymeleaf/layout"
+  layout:decorate="~{admin/inc/layout.html}"
+>
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Document</title>
+    <script src="/js/admin/community-blind-cancel/list.js"></script>
+    <link
+            href="/css/components/admin/parts/blind-cancel-banner.css"
+            rel="stylesheet"
+            type="text/css"
+    />
+    <link
+            href="/css/components/admin/parts/blind-cancel.css"
+            rel="stylesheet"
+            type="text/css"
+    />
+    <link
+            href="/css/components/admin/community-blind-cancel/list.css"
+            rel="stylesheet"
+            type="text/css"
+    />
+    <link
+      href="/css/components/admin/aside.css"
+      rel="stylesheet"
+      type="text/css"
+    />
+    <link
+      href="/css/components/board/parts/category.css"
+      rel="stylesheet"
+      type="text/css"
+    />
+    <link
+      href="/css/components/board/parts/search-form.css"
+      rel="stylesheet"
+      type="text/css"
+    />
+    <link
+      href="/css/components/board/parts/search-filter-btn.css"
+      rel="stylesheet"
+      type="text/css"
+    />
+    <link
+      href="/css/components/board/parts/paging.css"
+      rel="stylesheet"
+      type="text/css"
+    />
+
+  </head>
+  <body>
+    <main class="blind-main" layout:fragment="main">
+      <section class="blind">
+        <section class="banner">
+          <h1 class="banner_title">블라인드 취소 요청</h1>
+        </section>
+        <section class="blind-cancel-content">
+          <!-- 카테고리 + 검색 filiter -->
+          <div class="category-search-filter-box">
+            <ul class="category">
+              <li><a class="item community active" href="">커뮤니티</a></li>
+            </ul>
+            <div class="search-filter-box md:align-self:center">
+              <button
+                class="btn search-btn deco deco-size-1 icon-color-1 icon-search md:d:none"
+              ></button>
+            </div>
+            <!-- 검색 버튼 눌렀을 때 -->
+            <form class="search-form d:none md:d:block" action="" method="">
+              <fieldset class="search-input-box">
+                <legend class="d:none">검색어입력</legend>
+                <input
+                  class="input"
+                  type="text"
+                  placeholder="검색어를 입력해주세요"
+                />
+                <input class="search" value="검색" />
+              </fieldset>
+            </form>
+          </div>
+
+          <section class="board-list">
+            <h1 class="d:none">블라인드 철회요청 게시글</h1>
+            <ul class="blind_list content">
+              <li class="blind-cancel-unit" th:each="b: ${communityList}">
+                <div
+                  class="status"
+                  th:text="${b.status}"
+                  th:classappend="${b.status != '처리중'} ? 'finish' : ''"
+                >
+                  처리중
+                </div>
+                <div class="title-box">
+                  <a href="" class="user" th:text="${b.nickname}"></a>
+                  <a
+                    th:href="@{/admin/community-blind-cancel/detail(id=${b.id})}"
+                    class="title"
+                    th:text="${b.title}"
+                  ></a>
+                  <div class="category" th:text="${b.categoryName}"></div>
+                </div>
+                <div class="reason d:none md:d:block">
+                  사유: <span th:text="${b.reportReason}"></span>
+                </div>
+              </li>
+            </ul>
+          </section>
+
+          <section>
+            <h1 class="d:none">페이징</h1>
+            <ul class="paging" id="js-pagination">
+              <li>
+                <a class="item arrow arrow-prev" href=""></a>
+              </li>
+              <li>
+                <a class="item num active" href="">1</a>
+              </li>
+              <li>
+                <a class="item num" href="">2</a>
+              </li>
+              <li>
+                <a class="item num" href="">3</a>
+              </li>
+              <li>
+                <a class="item num" href="">4</a>
+              </li>
+              <li>
+                <a class="item num" href="">5</a>
+              </li>
+              <li>
+                <a class="item arrow arrow-next" href=""></a>
+              </li>
+            </ul>
+          </section>
+        </section>
+      </section>
+    </main>
+  </body>
+</html>
